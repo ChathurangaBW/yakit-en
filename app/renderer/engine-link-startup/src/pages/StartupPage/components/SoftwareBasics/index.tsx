@@ -97,25 +97,6 @@ export const SoftwareBasics: React.FC<SoftwareBasicsProps> = React.memo((props) 
           <div className={styles['softwareBasics-mode-desc']}>{YAKIT_MODE_CONFIG[softMode].desc}</div>
         </div>
       </div>
-      {/* <div className={styles["softwareBasics-item"]}>
-                <div className={styles["softwareBasics-item-title"]}>语言设置</div>
-                <div className={styles["softwareBasics-item-cont"]}>
-                    <YakitSelect
-                        value={newLang}
-                        options={[
-                            {
-                                label: "Chinese（Simplified）简体中文",
-                                value: "zh"
-                            },
-                            {
-                                label: "English",
-                                value: "en"
-                            }
-                        ]}
-                        onChange={setNewLang}
-                    ></YakitSelect>
-                </div>
-            </div> */}
     </div>
   )
 })

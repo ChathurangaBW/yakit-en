@@ -21,42 +21,42 @@ import { MoreYaklangVersion } from '../MoreYaklangVersion'
 import classNames from 'classnames'
 import styles from './YakitLoading.module.scss'
 export interface YakitLoadingProp extends SoftwareBasicsProps {
-  /** loading 文案 */
+  /** Loading message */
   yakitLoadingTip: string
-  /** 界面暂时无法操作 */
+  /** Whether the UI is temporarily disabled */
   disableYakitLoading: boolean
 
   isTop: ModalIsTop
   setIsTop: (top: ModalIsTop) => void
 
-  /** 操作系统 */
+  /** Operating system */
   system: System
-  /** 内置引擎版本号 */
+  /** Built-in engine version */
   buildInEngineVersion: string
-  /** yakit模式 */
+  /** Yakit status */
   yakitStatus: YakitStatusType
-  /** 引擎模式 */
+  /** Engine mode */
   engineMode: YaklangEngineMode
 
-  /** 软件检查日志 */
+  /** Software check logs */
   checkLog: string[]
 
-  /** 手动重连引擎时的按钮loading */
+  /** Button loading state while manually reconnecting the engine */
   restartLoading: boolean
 
-  /** 数据库修复失败时，数据库路径 */
+  /** Database path when database repair fails */
   dbPath: string[]
 
-  /** 当前连接端口号 */
+  /** Current connection port */
   port: number
 
-  /** 倒计时秒数 */
+  /** Countdown seconds */
   countdown?: number
 
-  /** 更多引擎列表 */
+  /** Additional engine versions */
   moreYaklangVersionList: string[]
 
-  /** 设置指定下载引擎版本号 */
+  /** Set the specific engine version to download */
   setYaklangSpecifyVersion: (version: string) => void
 
   btnClickCallback: (type: YaklangEngineMode | YakitStatusType, extra?: LoadingClickExtra) => void
@@ -90,13 +90,13 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
 
   const [moreVersionPopShow, setMoreVersionPopShow] = useState<boolean>(false)
   const [form] = Form.useForm()
-  /** 用户协议勾选状态 */
+  /** User agreement checked state */
   const [agrCheck, setAgrCheck] = useState<boolean>(false)
-  /** 执行一键安装功能时判断用户协议状态 */
+  /** User agreement state used before one-click install */
   const [checkStatus, setCheckStatus] = useState<boolean>(false)
-  /** 展示抖动动画 */
+  /** Whether to show the shake animation */
   const [isShake, setIsShake] = useState<boolean>(false)
-  // 弹窗置顶
+  // Keep the modal on top.
   const [agrShow, setAgrShow] = useState<boolean>(false)
   useEffect(() => {
     getLocalValue(LocalGVS.IsCheckedUserAgreement).then((val: boolean) => {
@@ -149,7 +149,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
   const judgmentAgreement = useMemoizedFn(() => {
     setCheckStatus(true)
     if (!agrCheck) {
-      /** 抖动提示动画 */
+      /** Shake hint animation */
       setIsShake(true)
       setTimeout(() => setIsShake(false), 1000)
       return false
@@ -316,7 +316,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('start_timeout')}
           >
-            重新执行
+            Retry
           </YakitButton>
         </>
       )
@@ -713,14 +713,14 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             </>
           ) : (
             <div className={styles['footer-btn']}>
-              {/* 倒计时状态时不显示底部按钮 */}
+              {/* Hide footer buttons during countdown state */}
               {yakitStatus !== 'link_countdown' && (
                 <>
                   <Divider type="vertical"></Divider>
                   <span className={styles['secondary-btn']} onClick={() => grpcOpenYaklangPath()}>
                     Open Engine File
                   </span>
-                  {/* 中断连接按钮：在空状态或连接状态成功 时显示 */}
+                  {/* Disconnect button: shown in empty state or after a successful connection */}
                   {showBreakBtn && (
                     <>
                       <Divider type="vertical"></Divider>
@@ -734,7 +734,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
                       </span>
                     </>
                   )}
-                  {/* 远程连接按钮：在非连接状态时显示 */}
+                  {/* Remote connection button: shown while disconnected */}
                   {unLinkStatus && (
                     <>
                       <Divider type="vertical"></Divider>
@@ -754,7 +754,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
                       </span>
                     </>
                   )}
-                  {/* 更多版本按钮：在非连接状态时显示 */}
+                  {/* More versions button: shown while disconnected */}
                   {unLinkStatus && (
                     <div className={styles['more-version-btn']}>
                       <YakitPopover

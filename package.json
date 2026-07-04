@@ -1,7 +1,7 @@
 {
-  "name": "yakit",
-  "version": "1.4.7-0630",
-  "description": "Yakit is for yaklang.io Electron GUI Entry",
+  "name": "@chathurangabw/yakit-english-ui",
+  "version": "1.0.0-en.0",
+  "description": "Unofficial English-language localization fork of Yakit",
   "main": "app/main/index.js",
   "scripts": {
     "cli": "node ./cli/cli.mjs",
@@ -113,9 +113,28 @@
     "ci:media-size": "node scripts/check-media-size.js",
     "prepare": "husky"
   },
-  "keywords": [],
+  "keywords": [
+    "yakit",
+    "yaklang",
+    "electron",
+    "localization",
+    "english"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/ChathurangaBW/yakit-en",
+  "bugs": {
+    "url": "https://github.com/ChathurangaBW/yakit-en/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChathurangaBW/yakit-en.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "upstreamRepository": "https://github.com/yaklang/yakit",
   "devDependencies": {
     "@electron/notarize": "^2.5.0",
     "@testing-library/jest-dom": "^5.16.5",
