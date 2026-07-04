@@ -1,32 +1,32 @@
 {
   "AnalysisMain": {
-    "cancel_traffic_analysis_error": "取消流量分析出错：",
-    "confirm_reset_hot_reload_code": "确认重置热加载代码？",
-    "execution_result": "执行结果",
-    "set_hot_reload_or_rules_then_execute": "设置好热加载或规则后，即可点击执行进行处理",
-    "data_type": "数据类型：",
-    "filter_traffic": "筛选流量",
-    "packet": "数据包",
-    "select_traffic_to_view_packet": "请选中流量查看数据包内容",
-    "filter_traffic_analysis_tip": "筛选上面流量勾选后进行分析，未勾选默认跑所有流量",
-    "concurrency": "并发：",
-    "deduplicate_within_single_record": "单条记录内数据去重：",
-    "matcher": "匹配器",
-    "discard_or_keep_traffic_analysis_tip": "[丢弃/保留]不会删除History流量数据，而用来决定流量是否会进入流量分析",
-    "rule": "规则",
-    "hot_reload": "热加载"
+    "cancel_traffic_analysis_error": "Error canceling traffic analysis:",
+    "confirm_reset_hot_reload_code": "Confirm resetting hot-reload code?",
+    "execution_result": "Execution Result",
+    "set_hot_reload_or_rules_then_execute": "Set up hot-reload or rules, then click 'Execute' to process",
+    "data_type": "Data Type:",
+    "filter_traffic": "Filter Traffic",
+    "packet": "Packet",
+    "select_traffic_to_view_packet": "Please select traffic to view packet content",
+    "filter_traffic_analysis_tip": "Check the traffic above to analyze; if nothing is checked, all traffic will be analyzed by default",
+    "concurrency": "Concurrency:",
+    "deduplicate_within_single_record": "Deduplicate data within a single record:",
+    "matcher": "Matcher",
+    "discard_or_keep_traffic_analysis_tip": "[Discard/Keep] does not delete History traffic data, but determines whether traffic will enter the traffic analysis",
+    "rule": "Rule",
+    "hot_reload": "Hot Reload"
   },
   "HttpRuleTable": {
-    "packet_id": "数据包ID",
-    "method": "方法",
-    "statusCode": "状态码",
-    "rule_name": "规则名",
-    "rule_data": "规则数据",
-    "export_rule_data": "导出规则数据",
-    "query_in_database": "查询数据库中",
-    "export_failed_path_not_found": "导出失败，路径找不到"
+    "packet_id": "Packet ID",
+    "method": "Method",
+    "statusCode": "Status Code",
+    "rule_name": "Rule Name",
+    "rule_data": "Rule Data",
+    "export_rule_data": "Export Rule Data",
+    "query_in_database": "Querying in database",
+    "export_failed_path_not_found": "Export failed, path not found"
   },
   "MatchersAndExtractorsListItemOperate": {
-    "debug": "调试"
+    "debug": "Debug"
   }
 }

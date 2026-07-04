@@ -101,7 +101,7 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
         }
       })
     })
-    setTimeout(() => yakitNotify('success', '引擎进程关闭中...'), 1000)
+    setTimeout(() => yakitNotify('success', 'Engine process is closing...'), 1000)
   })
 
   const isLocal = useMemo(() => {
@@ -163,7 +163,7 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
                         onClick={() => {
                           setShow(false)
                           showYakitModal({
-                            title: 'YakProcess 详情',
+                            title: 'YakProcess Details',
                             content: <div style={{ padding: 8 }}>{JSON.stringify(i)}</div>,
                             footer: null,
                           })

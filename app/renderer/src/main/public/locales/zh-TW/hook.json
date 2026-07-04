@@ -1,10 +1,10 @@
 {
   "useDownloadUrlToLocal": {
-    "cancelDownloadFailed": "取消下載失敗：{{error}}"
+    "cancelDownloadFailed": "Failed to cancel download: {{error}}"
   },
   "useUploadOSSHooks": {
-    "uploadFailed": "專案上傳失敗：{{error}}",
-    "notepadFiledHashRequired": "type為notepad時，filedHash必傳",
-    "cancelUploadFailed": "取消上傳失敗：{{error}}"
+    "uploadFailed": "Project upload failed: {{error}}",
+    "notepadFiledHashRequired": "When type is notepad, filedHash is required",
+    "cancelUploadFailed": "Failed to cancel upload: {{error}}"
   }
 }

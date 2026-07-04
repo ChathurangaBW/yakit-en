@@ -1,47 +1,47 @@
 {
   "Login": {
-    "loginError": "登录错误: {{error}}",
-    "dataSync": "数据同步",
-    "syncDataConfirm": "是否选择将远端的数据同步本地",
-    "login": "登录",
-    "loginWithGithub": "使用 GitHub 账号登录",
-    "loginWithWechat": "使用微信账号登录"
+    "loginError": "Login error: {{error}}",
+    "dataSync": "Data Sync",
+    "syncDataConfirm": "Do you want to sync remote data to local?",
+    "login": "Login",
+    "loginWithGithub": "Login with GitHub account",
+    "loginWithWechat": "Login with WeChat account"
   },
   "EnterpriseJudgeLogin": {
-    "reActivateNotice": "请重新激活License",
-    "verifyingLicense": "验证License中"
+    "reActivateNotice": "Please re-activate License",
+    "verifyingLicense": "Verifying License"
   },
   "LicensePage": {
-    "getLicenseFailed": "获取License失败: {{error}}",
-    "loadingLicense": "加载 license",
-    "emptyLicense": "空 License...",
-    "registerProduct": "使用 License 注册您的产品",
-    "licenseRequestCode": "License 申请码",
-    "requestCodeHelp": "在申请 license 时，请把这一串申请码给销售人员以便生成您专属的 License",
-    "copyRequestCode": "点此复制该 License 请求码",
-    "yourLicense": "您的许可证",
-    "activateProduct": "点此使用 License 激活您的产品"
+    "getLicenseFailed": "Failed to get License: {{error}}",
+    "loadingLicense": "Loading license",
+    "emptyLicense": "Empty License...",
+    "registerProduct": "Register your product with License",
+    "licenseRequestCode": "License Request Code",
+    "requestCodeHelp": "When applying for a license, please give this request code to the salesperson to generate your exclusive License",
+    "copyRequestCode": "Click to copy the License request code",
+    "yourLicense": "Your License",
+    "activateProduct": "Click to activate your product with License"
   },
   "SetPassword": {
-    "passwordMismatch": "新密码两次输入内容不匹配，请检查重试",
-    "updateSuccess": "密码修改成功,请重新登录",
-    "updateFailed": "密码修改失败：{{error}}",
-    "passwordRule": "密码为8-20位，且必须包含大小写字母、数字及特殊字符",
-    "oldPassword": "旧密码",
-    "inputOldPassword": "请输入你的旧密码",
-    "newPassword": "新密码",
-    "inputNewPassword": "请输入你的新密码",
-    "confirmPassword": "确认密码",
-    "inputConfirmPassword": "请确认你的密码",
-    "updatePassword": "修改密码"
+    "passwordMismatch": "New passwords do not match, please check and try again",
+    "updateSuccess": "Password modified successfully, please login again",
+    "updateFailed": "Password modification failed: {{error}}",
+    "passwordRule": "Password must be 8-20 characters long and include uppercase/lowercase letters, numbers, and special characters",
+    "oldPassword": "Old Password",
+    "inputOldPassword": "Please enter your old password",
+    "newPassword": "New Password",
+    "inputNewPassword": "Please enter your new password",
+    "confirmPassword": "Confirm Password",
+    "inputConfirmPassword": "Please confirm your password",
+    "updatePassword": "Change Password"
   },
   "SelectUpload": {
-    "uploadSuccess": "上传数据成功",
-    "uploadFailed": "项目上传失败",
-    "cancelSuccess": "取消上传成功",
-    "processDataFailed": "处理项目数据失败: {{error}}",
-    "queryProjectsFailed": "查询 Projects 失败：{{error}}",
-    "project": "项目",
-    "selectProject": "请选择项目"
+    "uploadSuccess": "Data uploaded successfully",
+    "uploadFailed": "Project upload failed",
+    "cancelSuccess": "Upload canceled successfully",
+    "processDataFailed": "Failed to process project data: {{error}}",
+    "queryProjectsFailed": "Failed to query Projects: {{error}}",
+    "project": "Project",
+    "selectProject": "Please select a project"
   }
 }

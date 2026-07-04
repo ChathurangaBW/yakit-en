@@ -111,21 +111,21 @@ export interface MonacoEditorActions extends IMonacoActionDescriptor {
 }
 
 export const MonacoEditorCodecActions: MonacoEditorActions[] = [
-  { id: 'urlencode', label: 'URL 编码' },
-  { id: 'urlescape', label: 'URL 编码(只编码特殊字符)' },
-  { id: 'base64', label: 'Base64 编码' },
-  { id: 'base64-decode', label: 'Base64 解码' },
-  { id: 'htmlencode', label: 'HTML 编码' },
-  { id: 'htmldecode', label: 'HTML 解码' },
-  { id: 'urlunescape', label: 'URL 解码' },
-  { id: 'double-urlencode', label: '双重 URL 编码' },
-  { id: 'unicode-decode', label: 'Unicode 解码（\\uXXXX 解码）' },
-  { id: 'unicode-encode', label: 'Unicode 编码（\\uXXXX 编码）' },
-  { id: 'base64-url-encode', label: '先 Base64 后 URL 编码' },
-  { id: 'url-base64-decode', label: '先 URL 后 Base64 解码' },
-  { id: 'hex-decode', label: 'HEX 解码（十六进制解码）' },
-  { id: 'hex-encode', label: 'HEX 编码（十六进制编码）' },
-  { id: 'jwt-parse-weak', label: 'JWT 解析（同时测试弱 Key）' },
+  { id: 'urlencode', label: 'URL Encode' },
+  { id: 'urlescape', label: 'URL Encode (special characters only)' },
+  { id: 'base64', label: 'Base64 Encode' },
+  { id: 'base64-decode', label: 'Base64 Decode' },
+  { id: 'htmlencode', label: 'HTML Encode' },
+  { id: 'htmldecode', label: 'HTML Decode' },
+  { id: 'urlunescape', label: 'URL Decode' },
+  { id: 'double-urlencode', label: 'Double URL Encode' },
+  { id: 'unicode-decode', label: 'Unicode Decode (\\uXXXX)' },
+  { id: 'unicode-encode', label: 'Unicode Encode (\\uXXXX)' },
+  { id: 'base64-url-encode', label: 'Base64 then URL Encode' },
+  { id: 'url-base64-decode', label: 'URL then Base64 Decode' },
+  { id: 'hex-decode', label: 'HEX Decode' },
+  { id: 'hex-encode', label: 'HEX Encode' },
+  { id: 'jwt-parse-weak', label: 'JWT Parse (test weak keys)' },
 ].map((i) => {
   return { id: i.id, label: i.label, contextMenuGroupId: 'codec', run: editorCodecHandlerFactory(i.id as CodecType) }
 })
@@ -138,27 +138,27 @@ export const MonacoEditorMutateHTTPRequestActions: {
 }[] = [
   {
     id: 'mutate-http-method-get',
-    label: '改变 HTTP 方法成 GET',
+    label: 'Change HTTP method to GET',
     params: { FuzzMethods: ['GET'] } as MutateHTTPRequestParams,
   },
   {
     id: 'mutate-http-method-post',
-    label: '改变 HTTP 方法成 POST',
+    label: 'Change HTTP method to POST',
     params: { FuzzMethods: ['POST'] } as MutateHTTPRequestParams,
   },
   {
     id: 'mutate-http-method-head',
-    label: '改变 HTTP 方法成 HEAD',
+    label: 'Change HTTP method to HEAD',
     params: { FuzzMethods: ['HEAD'] } as MutateHTTPRequestParams,
   },
   {
     id: 'mutate-chunked',
-    label: 'HTTP Chunk 编码',
+    label: 'HTTP Chunk Encode',
     params: { ChunkEncode: true } as MutateHTTPRequestParams,
   },
   {
     id: 'mutate-upload',
-    label: '修改为上传数据包',
+    label: 'Convert to upload packet',
     params: { UploadEncode: true } as MutateHTTPRequestParams,
   },
 ].map((i) => {

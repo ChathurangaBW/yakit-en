@@ -111,14 +111,14 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
       {
         key: 'pending',
         color: 'neutral-with-border',
-        title: '待处理',
+        title: 'Pending',
         footerLeft: 0,
         footerRight: <AIPendingNodeIcon />,
       },
-      { key: 'doing', color: 'main', title: '进行中', footerLeft: 0, footerRight: <AIDoingNodeIcon /> },
-      { key: 'done', color: 'green', title: '已完成', footerLeft: 0, footerRight: <AIDoneNodeIcon /> },
-      { key: 'skipped', color: 'neutral', title: '已跳过', footerLeft: 0, footerRight: <AISkippedNodeIcon /> },
-      { key: 'deleted', color: 'red', title: '已删除', footerLeft: 0, footerRight: <AIDeleteNodeIcon /> },
+      { key: 'doing', color: 'main', title: 'In Progress', footerLeft: 0, footerRight: <AIDoingNodeIcon /> },
+      { key: 'done', color: 'green', title: 'Completed', footerLeft: 0, footerRight: <AIDoneNodeIcon /> },
+      { key: 'skipped', color: 'neutral', title: 'Skipped', footerLeft: 0, footerRight: <AISkippedNodeIcon /> },
+      { key: 'deleted', color: 'red', title: 'Deleted', footerLeft: 0, footerRight: <AIDeleteNodeIcon /> },
     ]
 
     for (const item of planItemDetailsData?.todoList?.items || []) {
@@ -174,21 +174,21 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
 
   const toolCall = useCreation(() => {
     if (!planItemDetailsData?.execution)
-      return ['成功', '失败次数', '总次数'].map((item) => ({ Id: item, Data: '暂无', Timestamp: 0 }))
+      return ['Success', 'Failure Count', 'Total Count'].map((item) => ({ Id: item, Data: 'N/A', Timestamp: 0 }))
     return [
       {
         Data: `${planItemDetailsData?.execution?.tool_call_success ?? `0`}`,
-        Id: '成功',
+        Id: 'Success',
         Timestamp: 0,
       },
       {
         Data: `${planItemDetailsData?.execution?.tool_call_failed ?? `0`}`,
-        Id: '失败次数',
+        Id: 'Failure Count',
         Timestamp: 0,
       },
       {
         Data: `${planItemDetailsData?.execution?.tool_call_total ?? `0`}`,
-        Id: '总次数',
+        Id: 'Total Count',
         Timestamp: 0,
       },
     ]
@@ -200,8 +200,8 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
   const executionMinutes = useCreation(() => {
     const startedAt = planItemDetailsData?.execution?.started_at || 0
     const endedAt = planItemDetailsData?.execution?.ended_at || 0
-    if (!startedAt) return '暂无'
-    if (startedAt && !endedAt) return '执行中'
+    if (!startedAt) return 'N/A'
+    if (startedAt && !endedAt) return 'Running'
 
     return timeDiffWithMoment(startedAt, endedAt)
   }, [
@@ -210,11 +210,11 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
     planItemDetailsData?.execution?.ended_at,
   ])
   const httpFlowCount = useCreation(() => {
-    if (!planItemDetailsData?.execution) return '暂无'
+    if (!planItemDetailsData?.execution) return 'N/A'
     return `${planItemDetailsData?.execution.http_flow_count ?? `0`}`
   }, [planItemDetailsData?.execution?.http_flow_count])
   const riskCount = useCreation(() => {
-    if (!planItemDetailsData?.execution) return '暂无'
+    if (!planItemDetailsData?.execution) return 'N/A'
     return `${planItemDetailsData?.execution.risk_count ?? `0`}`
   }, [planItemDetailsData?.execution?.risk_count])
 
@@ -250,7 +250,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
         <div className={styles['header-row']}>
           <div className={styles['header-title']}>
             <OutlinePresentationchartbarIcon className={styles['header-icon']} />
-            <span className={styles['title-text']}>任务执行详情</span>
+            <span className={styles['title-text']}>Task Execution Details</span>
             <div className={styles['header-subtitle']}>{taskName}</div>
           </div>
           {onClose && <YakitButton icon={<OutlineXIcon />} type="text2" onClick={onClose} />}
@@ -259,38 +259,38 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
 
       <div className={styles['content-body']}>
         <div className={styles['summary-section']}>
-          <HorizontalScrollCardItemInfoMultiple info={toolCall} tag={'工具调用'} />
+          <HorizontalScrollCardItemInfoMultiple info={toolCall} tag={'Tool Calls'} />
           <HorizontalScrollCardItemInfoSingle
-            item={{ Id: '执行时长', Data: executionMinutes, Timestamp: 0 }}
-            tag="执行时长"
+            item={{ Id: 'Execution Time', Data: executionMinutes, Timestamp: 0 }}
+            tag="Execution Time"
             compact={false}
           />
 
           <HorizontalScrollCardItemInfoSingle
-            item={{ Id: '产生流量数', Data: httpFlowCount, Timestamp: 0 }}
-            tag="产生流量数"
+            item={{ Id: 'HTTP Flow Count', Data: httpFlowCount, Timestamp: 0 }}
+            tag="HTTP Flow Count"
             compact={false}
           />
 
           <HorizontalScrollCardItemInfoSingle
-            item={{ Id: '漏洞数', Data: riskCount, Timestamp: 0 }}
-            tag="漏洞数"
+            item={{ Id: 'Risk Count', Data: riskCount, Timestamp: 0 }}
+            tag="Risk Count"
             compact={false}
           />
         </div>
         {/* 左侧目标与意图 + 右侧统计 */}
         <div className={styles['top-section']}>
           <div className={styles['top-left']}>
-            <AITaskExecutionDetailsCard title="任务目标" content={taskGoal} />
-            <AITaskExecutionDetailsCard title="意图感知" content={perception?.summary} />
+            <AITaskExecutionDetailsCard title="Task Goal" content={taskGoal} />
+            <AITaskExecutionDetailsCard title="Intent Summary" content={perception?.summary} />
           </div>
           <div className={styles['task-statistics']}>
             <div className={styles['stats-header']}>
-              <span className={styles['title']}>待办任务</span>
+              <span className={styles['title']}>To-Do Tasks</span>
               {!!total && (
                 <>
                   <span className={styles['progress-text']}>
-                    进度
+                    Progress
                     <span className={styles['progress-number']}>
                       {finishedCount}/{total || 1}
                     </span>
@@ -314,7 +314,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
                   {/* 待办列表区块 */}
                   <div className={styles['todo-list-wrapper']}>
                     <div className={styles['todo-list-header']}>
-                      <span className={styles['todo-title']}>待办</span>
+                      <span className={styles['todo-title']}>Pending</span>
                       <YakitTag border={false} fullRadius size="small">
                         {todoData.unFinish.length}
                       </YakitTag>
@@ -328,7 +328,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
                   {/* 已结束 */}
                   <div className={styles['todo-list-wrapper']}>
                     <div className={styles['todo-list-header']}>
-                      <span className={styles['todo-title']}>已结束</span>
+                      <span className={styles['todo-title']}>Finished</span>
                       <YakitTag border={false} fullRadius size="small">
                         {todoData.finished.length}
                       </YakitTag>
@@ -345,8 +345,8 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <div className={styles['empty-body']}>
                 <YakitEmpty
                   imageStyle={{ width: 160, height: 140 }}
-                  title="暂无待办任务"
-                  description="当前任务暂未生成待办任务，请稍后查看"
+                  title="No to-do tasks yet"
+                  description="This task has not generated any to-do items yet. Please check again later."
                 />
               </div>
             )}
@@ -364,7 +364,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <AITaskDetailsCardList
                 key="forge"
                 type="forge"
-                colTitle="技能"
+                colTitle="Skills"
                 taskId={taskId}
                 fixedList={forgeFixedList}
                 dynamicList={forgeDynamicList}
@@ -374,7 +374,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <AITaskDetailsCardList
                 key="tool"
                 type="tool"
-                colTitle={'工具'}
+                colTitle={'Tools'}
                 taskId={taskId}
                 fixedList={planItemDetailsData?.tool.fixed || []}
                 dynamicList={planItemDetailsData?.tool.dynamic || []}
@@ -384,7 +384,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <AITaskDetailsCardList
                 key="yak_plugin"
                 type="yak_plugin"
-                colTitle={'插件'}
+                colTitle={'Plugins'}
                 taskId={taskId}
                 fixedList={planItemDetailsData?.plugins.fixed || []}
                 dynamicList={planItemDetailsData?.plugins.dynamic || []}
@@ -422,7 +422,7 @@ const AIBrowserProcesses: React.FC<AIBrowserProcessesProps> = React.memo((props)
   })
   return (
     <div className={classNames(styles['browser-processes'])}>
-      <div className={styles['browser-processes-title']}>{'浏览器进程管理'}</div>
+      <div className={styles['browser-processes-title']}>{'Browser Process Management'}</div>
       <AITaskExecutionList<AIBrowserProcessesProps['list'][number]>
         classNameList={styles['browser-processes-list']}
         list={list}
@@ -431,7 +431,7 @@ const AIBrowserProcesses: React.FC<AIBrowserProcessesProps> = React.memo((props)
             key={processes.process_id}
             title={processes.process_name}
             titleExtra={
-              <YakitPopconfirm title={'确定要关闭嘛?'} onConfirm={() => onRemove(processes)}>
+              <YakitPopconfirm title={'Are you sure you want to close this?'} onConfirm={() => onRemove(processes)}>
                 <YakitButton isHover icon={<OutlineTrashIcon />} type="secondary2" colors="danger" />
               </YakitPopconfirm>
             }
@@ -685,7 +685,7 @@ const AITaskDetailsAddPopover: React.FC<AITaskDetailsAddPopoverProps> = React.me
         <div className={styles['ai-add-popover-title']}>
           {title}
           <YakitInput.Search
-            placeholder="请输入关键词搜索"
+            placeholder="Enter a keyword to search"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             onSearch={onSearch}
@@ -733,16 +733,16 @@ const AITaskDetailsAddPopover: React.FC<AITaskDetailsAddPopoverProps> = React.me
         <div className={styles['footer-left']}>
           <div className={styles['select-all']}>
             <YakitCheckbox checked={allSelected} onChange={() => toggleAll()} indeterminate={partiallySelected} />
-            <span>全选</span>
+            <span>Select All</span>
           </div>
           <TableTotalAndSelectNumber total={response.total} selectNum={selected.length} />
         </div>
         <div className={styles['footer-right']}>
           <YakitButton onClick={onClose} type="outline1">
-            取消
+            Cancel
           </YakitButton>
           <YakitButton type="primary" onClick={onSave}>
-            确定
+            Confirm
           </YakitButton>
         </div>
       </div>
@@ -764,11 +764,11 @@ const getType = (value: string) => {
 }
 const typeOptions = [
   {
-    label: '固定加载',
+    label: 'Fixed Load',
     value: 'fixed',
   },
   {
-    label: '动态加载',
+    label: 'Dynamic Load',
     value: 'dynamic',
   },
 ]
@@ -818,7 +818,7 @@ const AITaskDetailsCardList: React.FC<AITaskDetailsCardListProps> = React.memo((
             content={
               <AITaskDetailsAddPopover
                 type={type}
-                title={`添加${colTitle}`}
+                title={`Add ${colTitle}`}
                 taskId={taskId}
                 onClose={() => setVisible(false)}
               />
@@ -831,7 +831,7 @@ const AITaskDetailsCardList: React.FC<AITaskDetailsCardListProps> = React.memo((
             overlayClassName={styles['add-popover']}
           >
             <YakitButton type="text" className={styles['add-btn']}>
-              添加
+              Add
             </YakitButton>
           </YakitPopover>
         )}
@@ -852,7 +852,10 @@ const AITaskDetailsCardList: React.FC<AITaskDetailsCardListProps> = React.memo((
               description={dynamicItem.description}
               category={dynamicItem.category}
               titleExtra={
-                <YakitPopconfirm title={'确定删除嘛?'} onConfirm={() => onRemove(dynamicItem)}>
+                <YakitPopconfirm
+                  title={'Are you sure you want to delete this?'}
+                  onConfirm={() => onRemove(dynamicItem)}
+                >
                   <YakitButton isHover icon={<OutlineTrashIcon />} type="secondary2" colors="danger" />
                 </YakitPopconfirm>
               }
@@ -883,7 +886,7 @@ const AITaskExecutionDetailsCard: React.FC<AITaskExecutionDetailsCardProps> = Re
     <div className={classNames(styles['card'], className)}>
       <div className={styles['card-title']}>{title}</div>
       <div className={styles['card-content']}>
-        {!!content ? content : <span className={styles['empty-text']}>暂无信息...</span>}
+        {!!content ? content : <span className={styles['empty-text']}>No information available...</span>}
       </div>
     </div>
   )

@@ -122,7 +122,7 @@ export const AIMilkdownInputBase: React.FC<AIMilkdownInputBaseProps> = React.mem
                     continue
                   }
                   if (file.size > 1 * 1024 * 1024) {
-                    yakitNotify('error', '图片大小不能超过1M')
+                    yakitNotify('error', 'Image size cannot exceed 1 MB')
                     continue
                   }
                   images.push(file)
@@ -270,11 +270,11 @@ export const AIMilkdownInputBase: React.FC<AIMilkdownInputBaseProps> = React.mem
       handleOpenFileSystemDialog({
         properties: ['openFile', 'multiSelections'],
         filters: [
-          { name: '图片', extensions: getAIImageSuffix() }, // 关键：设置文件过滤器
+          { name: 'Images', extensions: getAIImageSuffix() }, // 关键：设置文件过滤器
         ],
       }).then((data) => {
         if (data.filePaths.length > 8) {
-          yakitNotify('warning', '一次最多只能上传8张图片')
+          yakitNotify('warning', 'You can upload up to 8 images at a time')
         }
         const filePaths = data.filePaths.slice(0, 8)
         const filesLength = filePaths.length
@@ -293,7 +293,7 @@ export const AIMilkdownInputBase: React.FC<AIMilkdownInputBaseProps> = React.mem
       e.stopPropagation()
       showByRightContext(
         {
-          data: [{ label: '转为纯文本后按 Markdown 解析', key: 'pasteMarkdown' }],
+          data: [{ label: 'Convert to plain text and parse as Markdown', key: 'pasteMarkdown' }],
           onClick: ({ key }) => {
             if (key === 'pasteMarkdown') {
               handlePasteMarkdown()
@@ -312,7 +312,7 @@ export const AIMilkdownInputBase: React.FC<AIMilkdownInputBaseProps> = React.mem
       try {
         text = await navigator.clipboard.readText()
       } catch (e) {
-        yakitNotify('error', '读取剪贴板失败')
+        yakitNotify('error', 'Failed to read clipboard')
         return
       }
 

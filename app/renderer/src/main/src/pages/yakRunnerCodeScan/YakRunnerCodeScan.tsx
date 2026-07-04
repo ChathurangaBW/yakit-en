@@ -322,7 +322,7 @@ const CodeScanRuleByGroup: React.FC<CodeScanRuleByGroupProps> = React.memo((prop
               <YakitInput.Search
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
-                placeholder="请输入组名搜索"
+                placeholder="Enter a group name to search"
                 onSearch={onSearch}
                 onPressEnter={onPressEnter}
               />
@@ -331,7 +331,7 @@ const CodeScanRuleByGroup: React.FC<CodeScanRuleByGroupProps> = React.memo((prop
           <div className={styles['filter-body']}>
             <div className={styles['filter-body-left']}>
               <YakitCheckbox indeterminate={indeterminate} checked={checked} onChange={onSelectAll}>
-                全选
+                Select All
               </YakitCheckbox>
               <span className={styles['count-num']}>
                 Total<span className={styles['num-style']}>{total}</span>
@@ -347,10 +347,10 @@ const CodeScanRuleByGroup: React.FC<CodeScanRuleByGroupProps> = React.memo((prop
                 checked={pageInfo?.Purpose?.includes('vuln')}
                 onChange={(e) => onComplianceModeChange(e.target.checked ? 'exclude' : 'include')}
               >
-                排除合规检测
+                Exclude compliance checks
               </YakitCheckbox>
               <YakitButton type="text" danger onClick={onClearSelect}>
-                清空
+                Clear
               </YakitButton>
             </div>
           </div>
@@ -403,13 +403,13 @@ const CodeScanRuleSetting: React.FC<CodeScanRuleSettingProps> = React.memo((prop
               checked={pageInfo?.Purpose?.includes('vuln')}
               onChange={(e) => onComplianceModeChange(e.target.checked ? 'exclude' : 'include')}
             >
-              排除合规检测
+              Exclude compliance checks
             </YakitCheckbox>
             <YakitCheckbox
               checked={filterLibRuleKind !== 'noLib'}
               onChange={(e) => onFilterLibRuleKindChange(e.target.checked ? '' : 'noLib')}
             >
-              包含Lib规则
+              Include Lib rules
             </YakitCheckbox>
           </div>
         }
@@ -418,7 +418,7 @@ const CodeScanRuleSetting: React.FC<CodeScanRuleSettingProps> = React.memo((prop
         placement="bottomRight"
         trigger={'click'}
       >
-        <Tooltip title="规则设置">
+        <Tooltip title="Rule Settings">
           <YakitButton
             type="text"
             icon={
@@ -589,14 +589,14 @@ const CodeScanRuleByKeyWord: React.FC<CodeScanRuleByKeyWordProps> = React.memo((
     <>
       <div className={styles['left-header-search']}>
         <div className={styles['header-type-wrapper']}>
-          <span className={styles['header-text']}>扫描规则</span>
+          <span className={styles['header-text']}>Scan Rules</span>
         </div>
         {inViewport && (
           <div className={styles['header-filter-search']}>
             <YakitInput.Search
               value={keywords}
               onChange={(e) => setKeywords(e.target.value)}
-              placeholder="请输入关键字搜索"
+              placeholder="Enter a keyword to search"
               onSearch={onSearch}
               onPressEnter={onPressEnter}
             />
@@ -638,7 +638,7 @@ const CodeScanRuleByKeyWord: React.FC<CodeScanRuleByKeyWordProps> = React.memo((
               >
                 <FolderOpenIcon />
                 <span>
-                  规则组 <span className={styles['total-style']}>{groupList.length}</span>
+                  Rule Groups <span className={styles['total-style']}>{groupList.length}</span>
                 </span>
                 {(groupTagShow && <ChevronUpIcon className={styles['chevron-down']} />) || (
                   <ChevronDownIcon className={styles['chevron-down']} />
@@ -650,7 +650,7 @@ const CodeScanRuleByKeyWord: React.FC<CodeScanRuleByKeyWordProps> = React.memo((
           <div className={styles['filter-body']} style={{ padding: '0px 8px 0px 7px' }}>
             <div className={styles['filter-body-left']}>
               <YakitCheckbox indeterminate={indeterminate} checked={checked} onChange={onSelectAll}>
-                全选
+                Select All
               </YakitCheckbox>
               <span className={styles['count-num']}>
                 Total<span className={styles['num-style']}>{response.Total}</span>
@@ -669,7 +669,7 @@ const CodeScanRuleByKeyWord: React.FC<CodeScanRuleByKeyWordProps> = React.memo((
                 setPageInfo={setPageInfo}
               />
               <YakitButton type="text" danger onClick={onClearSelect}>
-                清空
+                Clear
               </YakitButton>
             </div>
           </div>
@@ -706,11 +706,11 @@ const CodeScanRuleByKeyWord: React.FC<CodeScanRuleByKeyWordProps> = React.memo((
 })
 const YakRunnerCodeScanTab: YakitTabsProps[] = [
   {
-    label: '按组选',
+    label: 'By Group',
     value: 'group',
   },
   {
-    label: '按关键词',
+    label: 'By Keyword',
     value: 'keyword',
   },
 ]
@@ -937,7 +937,7 @@ const CodeScanByExecute: React.FC<CodeScanByExecuteProps> = React.memo((props) =
   return (
     <div className={classNames(styles['code-scan-by-execute-wrapper'])}>
       {data.length === 0 ? (
-        <YakitEmpty title="暂无更多执行规则" style={{ paddingTop: 48 }} />
+        <YakitEmpty title="No more execution rules" style={{ paddingTop: 48 }} />
       ) : (
         <RollingLoadList<SyntaxFlowScanActiveTaskShow>
           data={data}
@@ -948,11 +948,11 @@ const CodeScanByExecute: React.FC<CodeScanByExecuteProps> = React.memo((props) =
             // 计算分钟、秒
             const minutes = m.minutes()
             const seconds = m.seconds()
-            const time = `${minutes === 0 ? '' : minutes + '分'}${seconds}秒`
+            const time = `${minutes === 0 ? '' : minutes + ' min '}${seconds} sec`
             return (
               <>
-                <span className={classNames(styles['name'], 'content-ellipsis')}>规则名: {info.RuleName}</span>
-                <span className="content-ellipsis">项目名 : {info.ProgramName}</span>
+                <span className={classNames(styles['name'], 'content-ellipsis')}>Rule Name: {info.RuleName}</span>
+                <span className="content-ellipsis">Project Name: {info.ProgramName}</span>
                 <span className="content-ellipsis">Info : {info.Info}</span>
                 <span className={styles['footer']}>
                   <span
@@ -960,7 +960,7 @@ const CodeScanByExecute: React.FC<CodeScanByExecuteProps> = React.memo((props) =
                       [styles['progress-gray']]: info.Progress === 1,
                     })}
                   >
-                    执行进度: {Math.round(info.Progress * 100)}%
+                    Progress: {Math.round(info.Progress * 100)}%
                   </span>
                   <span className={classNames(styles['time'])}>{time}</span>
                 </span>
@@ -990,7 +990,7 @@ const CodeScanGroupByKeyWordItem: React.FC<CodeScanGroupByKeyWordItemProps> = Re
     >
       <div className={styles['item-tip']}>
         <span className={styles['item-tip-name']}>{item.GroupName}</span>
-        <span className={styles['item-tip-number']}>{item.Count}个规则</span>
+        <span className={styles['item-tip-number']}>{item.Count} rules</span>
       </div>
     </div>
   )
@@ -1207,7 +1207,7 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
       {executeStatus !== 'default' && CodeScanByExecuteData.length > 0 && (
         <div className={styles['midden-wrapper']}>
           <div className={styles['midden-heard']}>
-            <span className={styles['header-text']}>规则执行</span>
+            <span className={styles['header-text']}>Rule Execution</span>
           </div>
           <CodeScanByExecute data={CodeScanByExecuteData} />
         </div>
@@ -1215,7 +1215,7 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
       <div className={styles['code-scan-execute-wrapper']}>
         <ExpandAndRetract isExpand={isExpand} onExpand={onExpand} status={executeStatus}>
           <div className={styles['code-scan-executor-title']}>
-            <span className={styles['code-scan-executor-title-text']}>规则执行</span>
+            <span className={styles['code-scan-executor-title-text']}>Rule Execution</span>
             {(pageInfo.selectTotal || 0) > 0 && (
               <YakitTag closable onClose={onRemove} color="info">
                 {pageInfo.selectTotal}
@@ -1226,7 +1226,7 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
             {progressShow && (
               <PluginExecuteProgress
                 percent={progressShow.progress}
-                name={progressShow.type === 'new' ? '编译' : '扫描'}
+                name={progressShow.type === 'new' ? 'Compile' : 'Scan'}
               />
             )}
             <YakitButton
@@ -1237,29 +1237,29 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
               }}
               style={{ padding: 0 }}
             >
-              任务列表
+              Task List
             </YakitButton>
             {isExecuting
               ? !isExpand && (
                   <>
                     {executeType === 'new' ? (
                       <YakitButton danger onClick={onStopAuditExecute}>
-                        停止
+                        Stop
                       </YakitButton>
                     ) : (
                       <>
                         {executeStatus === 'paused' && !pauseLoading && (
                           <YakitButton onClick={onContinue} loading={continueLoading}>
-                            继续
+                            Continue
                           </YakitButton>
                         )}
                         {(executeStatus === 'process' || pauseLoading) && (
                           <YakitButton onClick={onPause} loading={pauseLoading}>
-                            暂停
+                            Pause
                           </YakitButton>
                         )}
                         <YakitButton danger onClick={onStopExecute} disabled={pauseLoading || continueLoading}>
-                          停止
+                          Stop
                         </YakitButton>
                       </>
                     )}
@@ -1269,16 +1269,16 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
               : !isExpand && (
                   <>
                     {executeType === 'new' ? (
-                      <YakitButton onClick={onAuditExecuteInTop}>编译</YakitButton>
+                      <YakitButton onClick={onAuditExecuteInTop}>Compile</YakitButton>
                     ) : (
-                      <YakitButton onClick={onExecuteInTop}>执行</YakitButton>
+                      <YakitButton onClick={onExecuteInTop}>Run</YakitButton>
                     )}
                     {/* <div className={styles["divider-style"]} /> */}
                   </>
                 )}
 
             <YakitButton icon={<OutlineClipboardlistIcon />} disabled={disabledReport} onClick={onCreateReport}>
-              生成报告
+              Generate Report
             </YakitButton>
             <div className={styles['divider-style']} />
 
@@ -1336,10 +1336,12 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
       </React.Suspense>
       <YakitHint
         visible={selectProject.length > 0}
-        title={'选择项目打开'}
+        title={'Select a project to open'}
         children={
           <>
-            <div className={styles['default-content']}>代码审计只能打开一个项目，请选择项目在代码审计中查看</div>
+            <div className={styles['default-content']}>
+              Code audit can open only one project. Select the project you want to view in code audit.
+            </div>
             <Radio.Group
               className="plugins-radio-wrapper"
               value={openProject}
@@ -1466,11 +1468,11 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
         const { runtimeId, codeScanMode, pageId: pId } = value
         if (pageId !== pId) return
         if (!runtimeId) {
-          yakitNotify('error', '未设置正常得 runtimeId')
+          yakitNotify('error', 'A valid runtimeId is not set')
           return
         }
         if (codeScanMode === 'new') {
-          yakitNotify('error', '重试(new)不走该操作,请传入正确的codeScanMode')
+          yakitNotify('error', 'Retry (new) does not use this action. Please provide the correct codeScanMode')
           return
         }
         onMultipleTask(runtimeId, codeScanMode)
@@ -1678,7 +1680,7 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
       const projectName = pageInfo?.projectName || projectItem?.label
 
       if (projectName) {
-        reportName = `${projectName}代码扫描报告`
+        reportName = `${projectName} Code Scan Report`
       }
 
       const params: CreateReportContentProps = {
@@ -1800,7 +1802,7 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
     const SyntaxFlowScanParamsRef = useRef<SyntaxFlowScanRequest>()
     const onSyntaxFlowScan = useMemoizedFn(async () => {
       if (!SyntaxFlowScanParamsRef.current) {
-        failed('获取扫描参数失败，请重试')
+        failed('Failed to get scan parameters. Please try again.')
         return
       }
       apiSyntaxFlowScan(SyntaxFlowScanParamsRef.current, token).then(() => {
@@ -1819,12 +1821,12 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
     /**开始执行 */
     const onStartExecute = useMemoizedFn(async (value, isSetForm?: boolean) => {
       if ((pageInfo.selectTotal || 0) === 0) {
-        warn('请选择扫描规则')
+        warn('Please select scan rules')
         return
       }
       const { project, history } = value
       if (!project) {
-        warn('请输入项目名称')
+        warn('Please enter a project name')
         return
       }
       // 设置表单
@@ -1858,7 +1860,7 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
       if (history === 'recompileAndScan') {
         const JSONStringConfig = auditCodeList.find((item) => item.value === project)?.JSONStringConfig
         if (!JSONStringConfig) {
-          failed('未找到对应项目编译配置，请重试')
+          failed('No matching project compile configuration was found. Please try again.')
           return
         }
         setJSONStringConfig(JSONStringConfig)
@@ -1908,7 +1910,7 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
       form.validateFields().then((value) => {
         const { project } = value
         if (!project) {
-          warn('请输入项目名称')
+          warn('Please enter a project name')
           return
         }
         setContinueLoading(true)
@@ -2023,7 +2025,7 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
               value: item.Name,
             }
           })
-          newCompileHistoryList.unshift({ label: '编译并扫描最新代码', value: 'recompileAndScan' })
+          newCompileHistoryList.unshift({ label: 'Compile and scan the latest code', value: 'recompileAndScan' })
           setCompileHistoryList(newCompileHistoryList)
         })
         .finally(() => {
@@ -2095,11 +2097,11 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
                 options={[
                   {
                     value: 'new',
-                    label: '新项目',
+                    label: 'New Project',
                   },
                   {
                     value: 'old',
-                    label: '项目列表',
+                    label: 'Project List',
                   },
                 ]}
               />
@@ -2130,25 +2132,29 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
               wrapperCol={{ span: 12 }} //这样设置是为了让输入框居中
               validateMessages={{
                 /* eslint-disable no-template-curly-in-string */
-                required: '${label} 是必填字段',
+                required: '${label} is required',
               }}
               labelWrap={true}
             >
-              <Form.Item label="项目名称" name="project" rules={[{ required: true, message: '请选择项目名称' }]}>
+              <Form.Item
+                label="Project Name"
+                name="project"
+                rules={[{ required: true, message: 'Please select a project name' }]}
+              >
                 <YakitSelect
                   allowClear
                   showSearch
-                  placeholder="请选择项目名称"
+                  placeholder="Please select a project name"
                   options={auditCodeList}
                   onChange={onSelectProject}
                 />
               </Form.Item>
 
-              <Form.Item label="编译历史" name="history">
+              <Form.Item label="Compile History" name="history">
                 <YakitSelect
                   allowClear
                   showSearch
-                  placeholder="请选择编译历史"
+                  placeholder="Please select compile history"
                   options={compileHistoryList}
                   disabled={compileHistoryList.length === 0}
                 />
@@ -2160,12 +2166,12 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
                     <>
                       {executeStatus === 'paused' && !pauseLoading && (
                         <YakitButton size="large" onClick={onContinue} loading={continueLoading}>
-                          继续
+                          Continue
                         </YakitButton>
                       )}
                       {(executeStatus === 'process' || pauseLoading) && (
                         <YakitButton size="large" onClick={onPause} loading={pauseLoading} disabled={stopLoading}>
-                          暂停
+                          Pause
                         </YakitButton>
                       )}
                       <YakitButton
@@ -2175,18 +2181,18 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
                         loading={stopLoading}
                         disabled={pauseLoading || continueLoading}
                       >
-                        停止
+                        Stop
                       </YakitButton>
                     </>
                   ) : (
                     <>
                       <YakitButton htmlType="submit" size="large">
-                        开始执行
+                        Start Run
                       </YakitButton>
                     </>
                   )}
                   <YakitButton type="text" onClick={openExtraPropsDrawer} disabled={isAuditExecuting} size="large">
-                    额外参数
+                    Additional Parameters
                   </YakitButton>
                 </div>
               </Form.Item>
@@ -2228,10 +2234,10 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
               visible={auditDetailShow}
               onClose={handleCancelDetail}
               width="90%"
-              title="审计详情"
+              title="Audit Details"
               extra={
                 <YakitButton icon={<OutlineTerminalIcon />} type="outline2" onClick={() => jumpCodeScanPage()}>
-                  在代码审计中打开
+                  Open in Code Audit
                 </YakitButton>
               }
               bodyStyle={{ overflow: 'hidden', padding: 0 }}
@@ -2404,7 +2410,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
         setExecuteStatus('error')
       },
       setRuntimeId: (rId) => {
-        yakitNotify('info', `调试任务启动成功，运行时 ID: ${rId}`)
+        yakitNotify('info', `Debug task started successfully. Runtime ID: ${rId}`)
       },
     })
     const projectIdCacheRef = useRef<number>()
@@ -2470,7 +2476,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
         setExecuteStatus('error')
       },
       setRuntimeId: (rId) => {
-        yakitNotify('info', `Compile调试任务启动成功，运行时 ID: ${rId}`)
+        yakitNotify('info', `Compile debug task started successfully. Runtime ID: ${rId}`)
       },
     })
     // 通过插件（SSA 项目编译）执行
@@ -2513,7 +2519,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
               true,
             )
           } else {
-            failed('项目名获取失败')
+            failed('Failed to get project name')
           }
         }, 300)
       }
@@ -2542,7 +2548,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
             resolve(null)
           })
           .catch((error) => {
-            yakitNotify('error', '创建项目管理数据失败')
+            yakitNotify('error', 'Failed to create project management data')
             reject(error)
           })
       })
@@ -2566,7 +2572,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
             switch (kind) {
               // 链接错误
               case 'connectFailException':
-                warn('链接错误')
+                warn('Connection error')
                 setActiveKey(['defalut'])
                 setTimeout(() => {
                   form.setFields([
@@ -2594,7 +2600,9 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
                     errors: [],
                   },
                 ])
-                warn('输入文件无法解析，请检查输入的路径为文件夹或jar/war/zip文件，或链接是否包含http/https/git协议头')
+                warn(
+                  'The input file could not be parsed. Check whether the input path is a folder or a jar/war/zip file, or whether the link includes an http/https/git protocol prefix.',
+                )
                 break
               // 文件不存在错误
               case 'fileNotFoundException':
@@ -2609,12 +2617,14 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
                   },
                 ])
                 warn(
-                  '路径错误或者输入的内容无法识别，请检查输入的路径是否存在文件或文件夹或链接是否有http/https/git协议头。',
+                  'The path is invalid or the input could not be recognized. Check whether the input path exists as a file or folder, or whether the link has an http/https/git protocol prefix.',
                 )
                 break
               // 无法自动确定语言
               case 'languageNeedSelectException':
-                warn('该输入无法自动确定语言，请指定编译语言')
+                warn(
+                  'The language for this input could not be detected automatically. Please specify the compile language.',
+                )
                 setActiveKey(['defalut'])
                 form.setFields([
                   {
@@ -2640,7 +2650,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
                 break
             }
           } catch (error) {
-            failed('启动解析失败')
+            failed('Failed to start parsing')
           }
         }
       }
@@ -2656,7 +2666,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
         return
       }
       if (!plugin) {
-        failed('插件获取失败')
+        failed('Failed to get plugin')
         return
       }
       const requestParams: DebugPluginRequest = {
@@ -2680,7 +2690,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
       }
       const result = getJsonSchemaListResult(jsonSchemaListRef.current)
       if (result.jsonSchemaError.length > 0) {
-        failed(`jsonSchema校验失败`)
+        failed(`jsonSchema validation failed`)
         return
       }
       result.jsonSchemaSuccess.forEach((item) => {
@@ -2713,18 +2723,22 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
           wrapperCol={{ span: 12 }} //这样设置是为了让输入框居中
           validateMessages={{
             /* eslint-disable no-template-curly-in-string */
-            required: '${label} 是必填字段',
+            required: '${label} is required',
           }}
           labelWrap={true}
           className={styles['code-scan-form']}
         >
-          <Form.Item name="target" label="项目路径" rules={[{ required: true, message: '请输入项目路径' }]}>
+          <Form.Item
+            name="target"
+            label="Project Path"
+            rules={[{ required: true, message: 'Please enter the project path' }]}
+          >
             <YakitDragger
               isShowPathNumber={false}
               selectType="all"
               renderType="textarea"
               multiple={false}
-              help="可将项目文件拖入框内或点击此处"
+              help="Drag the project files here or click to select"
               disabled={false}
               // accept=""
               cacheFilePathKey="CodeScan_File_Path"
@@ -2757,7 +2771,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
             <Row>
               <Col span={18}>
                 <div className={styles['additional-params-divider']} style={{ marginLeft: 'calc(33% - 98px)' }}>
-                  <div className={styles['text-style']}>额外参数 (非必填)</div>
+                  <div className={styles['text-style']}>Additional Parameters (Optional)</div>
                   <div className={styles['divider-style']} />
                 </div>
               </Col>
@@ -2784,13 +2798,13 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
                     setActiveKey(v)
                   }}
                 >
-                  <YakitPanel key="defalut" header={`参数组`}>
-                    <Form.Item name="language" label="语言">
+                  <YakitPanel key="defalut" header={`Parameter Group`}>
+                    <Form.Item name="language" label="Language">
                       <YakitSelect options={customParams.languageArr.data} />
                     </Form.Item>
                     <Form.Item
                       name="proxy"
-                      label="代理"
+                      label="Proxy"
                       extra={
                         <>
                           <div className={styles['agent-down-stream-proxy']} onClick={onClickDownstreamProxy}>
@@ -2831,8 +2845,8 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
                     </Form.Item>
                     <Form.Item
                       name="peephole"
-                      label="编译速度"
-                      help="小文件无需配置，大文件可根据需求选择，速度越快，精度越小"
+                      label="Compile Speed"
+                      help="Small files usually do not need this. For large files, choose based on your needs: faster speed means lower precision."
                     >
                       <Slider
                         style={{ width: 300 }}
@@ -2842,13 +2856,13 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
                         tipFormatter={(value) => {
                           switch (value) {
                             case 0:
-                              return '关闭，精度IV'
+                              return 'Off, Precision IV'
                             case 1:
-                              return '慢速，精度III'
+                              return 'Slow, Precision III'
                             case 2:
-                              return '中速，精度II'
+                              return 'Medium, Precision II'
                             case 3:
-                              return '快速，精度I'
+                              return 'Fast, Precision I'
                             default:
                               return value
                           }
@@ -2872,15 +2886,15 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
             <div className={styles['code-scan-execute-form-operate']}>
               {isAuditExecuting ? (
                 <YakitButton danger onClick={onCancelAudit} size="large">
-                  停止
+                  Stop
                 </YakitButton>
               ) : (
                 <YakitButton htmlType="submit" size="large" loading={isVerifyForm}>
-                  {isVerifyForm ? '正在校验' : '开始编译'}
+                  {isVerifyForm ? 'Validating' : 'Start Compile'}
                 </YakitButton>
               )}
               <YakitButton type="text" onClick={openExtraPropsDrawer} disabled={isAuditExecuting} size="large">
-                额外参数
+                Additional Parameters
               </YakitButton>
             </div>
           </Form.Item>

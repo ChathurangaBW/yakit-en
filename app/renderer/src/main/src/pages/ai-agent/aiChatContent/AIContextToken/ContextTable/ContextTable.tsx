@@ -16,10 +16,10 @@ import { useI18nNamespaces } from '@/i18n/useI18nNamespaces'
 
 /** 旧版 sections 仅有少量固定 role 时的展示回退 */
 const LEGACY_ROLE_LABELS: Record<string, string> = {
-  mixed: '混合',
-  runtime_context: '运行内容',
-  user_input: '用户输入',
-  system_prompt: '系统信息',
+  mixed: 'Mixed',
+  runtime_context: 'Runtime Context',
+  user_input: 'User Input',
+  system_prompt: 'System Prompt',
 }
 
 const collectSectionRoles = (nodes: AIAgentGrpcApi.AIContextSections[] | undefined, out = new Set<string>()) => {
@@ -73,10 +73,10 @@ const RoleFilterDropdown: React.FC<{
             confirm()
           }}
         >
-          清空
+          Clear
         </YakitButton>
         <YakitButton className={styles['filter-action-btn']} type="primary" onClick={() => confirm()}>
-          确定
+          Confirm
         </YakitButton>
       </div>
     </div>
@@ -158,7 +158,7 @@ const ContextTable: FC<{
   const columns: TableColumnsType<AIAgentGrpcApi.AIContextSections> = useMemo(
     () => [
       {
-        title: '上下文成分',
+        title: 'Context Component',
         dataIndex: 'label',
         key: 'label',
         ellipsis: true,
@@ -211,7 +211,7 @@ const ContextTable: FC<{
         },
       },
       {
-        title: '类型',
+        title: 'Type',
         dataIndex: 'role',
         align: 'center',
         key: 'role',
@@ -233,7 +233,7 @@ const ContextTable: FC<{
         },
       },
       {
-        title: '操作',
+        title: 'Actions',
         key: 'action',
         align: 'center',
         width: 80,
@@ -246,7 +246,7 @@ const ContextTable: FC<{
 
           return (
             <YakitButton className={styles['view-btn']} type="text" onClick={() => setPreviewKey(record.key)}>
-              查看
+              View
             </YakitButton>
           )
         },
@@ -309,7 +309,7 @@ const ContextTable: FC<{
         }}
       />
       <YakitModal
-        title="详情"
+        title="Details"
         visible={!!previewKey}
         footer={null}
         width={720}

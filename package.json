@@ -5,7 +5,8 @@
   "main": "app/main/index.js",
   "scripts": {
     "cli": "node ./cli/cli.mjs",
-    "start-electron": "electron .",
+    "start-electron": "node scripts/start-electron.cjs",
+    "start-electron-built": "node scripts/start-electron.cjs --built",
     "install-link-render": "cd app/renderer/engine-link-startup && yarn install",
     "install-render": "cd app/renderer/src/main && yarn install",
     "render-yarn": "cd app/renderer/src/main && yarn",

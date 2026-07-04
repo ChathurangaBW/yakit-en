@@ -1088,19 +1088,19 @@ const ModeSwitch = () => {
   if (isCommunityYakit()) {
     return {
       key: 'modeSwitching',
-      label: '模式切换',
+      label: 'Mode Switch',
       children: [
         {
           key: YakitModeEnum.Classic,
-          label: '经典模式',
+          label: 'Classic Mode',
         },
         {
           key: YakitModeEnum.SecurityExpert,
-          label: '安全专家模式',
+          label: 'Security Expert Mode',
         },
         {
           key: YakitModeEnum.Scan,
-          label: '扫描模式',
+          label: 'Scan Mode',
         },
       ],
     }
@@ -1113,17 +1113,17 @@ const DBCacheManager = () => {
   if (SystemInfo.mode === 'local') {
     return {
       key: 'db-cache-manager',
-      label: '数据库与缓存管理',
+      label: 'Database & Cache Management',
       children: [
-        { key: 'invalidCache', label: '删除缓存数据' },
-        { key: 'reclaimDatabaseSpace', label: '回收数据库空间' },
+        { key: 'invalidCache', label: 'Delete Cached Data' },
+        { key: 'reclaimDatabaseSpace', label: 'Reclaim Database Space' },
       ],
     }
   }
   return {
     key: 'db-cache-manager',
-    label: '数据库与缓存管理',
-    children: [{ key: 'invalidCache', label: '删除缓存数据' }],
+    label: 'Database & Cache Management',
+    children: [{ key: 'invalidCache', label: 'Delete Cached Data' }],
   }
 }
 
@@ -1133,51 +1133,51 @@ const GetUIOpSettingMenu = () => {
     return [
       {
         key: 'pcapfix',
-        label: '网卡权限修复',
+        label: 'Repair NIC Permissions',
       },
       {
         key: 'store',
-        label: '配置插件源',
+        label: 'Configure Plugin Source',
       },
       DBCacheManager(),
       {
         key: 'diagnose-network',
-        label: '网络诊断',
+        label: 'Network Diagnosis',
       },
       {
         key: 'link',
-        label: '切换连接模式',
+        label: 'Switch Connection Mode',
         children: [
-          { label: '本地', key: 'local' },
-          { label: '远程', key: 'remote' },
+          { label: 'Local', key: 'local' },
+          { label: 'Remote', key: 'remote' },
         ],
       },
       {
         key: 'i18nSwitching',
-        label: '语言切换',
+        label: 'Language',
         children: [
           {
             key: 'zh',
-            label: '简体中文',
+            label: 'Simplified Chinese',
           },
           {
             key: 'en',
-            label: '英文',
+            label: 'English',
           },
           {
             key: 'zh-TW',
-            label: '繁体中文',
+            label: 'Traditional Chinese',
           },
         ],
       },
       { type: 'divider' },
       {
         key: 'logs',
-        label: ' 日志收集',
+        label: 'Log Collection',
         children: [
-          { label: '渲染端日志', key: 'renderLog' },
-          { label: '引擎日志', key: 'engineLog' },
-          { label: '调试信息日志', key: 'printLog' },
+          { label: 'Renderer Logs', key: 'renderLog' },
+          { label: 'Engine Logs', key: 'engineLog' },
+          { label: 'Debug Logs', key: 'printLog' },
         ],
       },
     ]
@@ -1187,83 +1187,83 @@ const GetUIOpSettingMenu = () => {
   return [
     {
       key: 'pcapfix',
-      label: '网卡权限修复',
+      label: 'Repair NIC Permissions',
     },
     {
       key: 'project',
-      label: '项目管理',
+      label: 'Project Management',
       children: [
-        { label: '切换项目', key: 'changeProject' },
-        { label: '加密导出', key: 'encryptionProject' },
-        { label: '明文导出', key: 'plaintextProject' },
+        { label: 'Switch Project', key: 'changeProject' },
+        { label: 'Encrypted Export', key: 'encryptionProject' },
+        { label: 'Plaintext Export', key: 'plaintextProject' },
       ],
     },
     {
       key: 'explab',
-      label: '试验性功能',
+      label: 'Experimental Features',
       children: [
         {
           key: 'bas-chaosmaker',
-          label: 'BAS实验室',
+          label: 'BAS Lab',
         },
         {
           key: 'debug-monaco-editor',
-          label: '(DEV)调试Playground',
+          label: '(DEV) Debug Playground',
         },
         {
           key: 'vulinbox-manager',
-          label: '(靶场)Vulinbox',
+          label: '(Lab) Vulinbox',
         },
         {
           key: 'debug-traffic-analize',
-          label: '流量分析',
+          label: 'Traffic Analysis',
         },
         {
           key: 'run-node',
-          label: '运行节点',
+          label: 'Run Node',
         },
         {
           key: 'webshell-manager',
-          label: '网站管理',
+          label: 'Website Management',
         },
         { key: 'mcp', label: 'Yak Mcp' },
         { key: 'ai-agent', label: 'AI Agent' },
         { key: 'ssa-result-diff', label: 'ssa-result-diff' },
-        { key: 'ai-repository', label: '知识库' },
-        { key: 'ssa-compile-history', label: 'SSA项目编译历史' },
-        { key: 'memory-base', label: '记忆库' },
+        { key: 'ai-repository', label: 'Knowledge Base' },
+        { key: 'ssa-compile-history', label: 'SSA Compile History' },
+        { key: 'memory-base', label: 'Memory Base' },
       ],
     },
     ModeSwitch(),
     {
       key: 'themeSwitching',
-      label: '主题切换',
+      label: 'Theme',
       children: [
         {
           key: 'light',
-          label: '亮色',
+          label: 'Light',
         },
         {
           key: 'dark',
-          label: '暗色',
+          label: 'Dark',
         },
       ],
     },
     {
       key: 'i18nSwitching',
-      label: '语言切换',
+      label: 'Language',
       children: [
         {
           key: 'zh',
-          label: '简体中文',
+          label: 'Simplified Chinese',
         },
         {
           key: 'en',
-          label: '英文',
+          label: 'English',
         },
         {
           key: 'zh-TW',
-          label: '繁体中文',
+          label: 'Traditional Chinese',
         },
       ],
     },
@@ -1271,61 +1271,61 @@ const GetUIOpSettingMenu = () => {
     DBCacheManager(),
     {
       key: 'store',
-      label: '配置插件源',
+      label: 'Configure Plugin Source',
     },
     {
       key: 'proxy-management',
-      label: '网络代理管理',
+      label: 'Network Proxy Management',
     },
     {
       key: 'hotPatch-management',
-      label: '全局热加载管理',
+      label: 'Global Hot Patch Management',
     },
     {
       key: 'cve-database',
-      label: 'CVE 数据库',
+      label: 'CVE Database',
       children: [
-        { label: '全量更新', key: 'cve-database-all-update' },
-        { label: '差量更新', key: 'cve-database-differential-update' },
+        { label: 'Full Update', key: 'cve-database-all-update' },
+        { label: 'Differential Update', key: 'cve-database-differential-update' },
       ],
     },
     {
       key: 'link',
-      label: '切换连接模式',
+      label: 'Switch Connection Mode',
       children: [
-        { label: '本地', key: 'local' },
-        { label: '远程', key: 'remote' },
+        { label: 'Local', key: 'local' },
+        { label: 'Remote', key: 'remote' },
       ],
     },
     { type: 'divider' },
     {
       key: 'systemSet',
-      label: '系统设置',
+      label: 'System Settings',
       children: [
-        { key: 'reverse', label: '全局反连' },
-        { key: 'agent', label: '系统代理' },
+        { key: 'reverse', label: 'Global Reverse Connection' },
+        { key: 'agent', label: 'System Proxy' },
         // { key: "engineVar",label: "引擎环境变量" },
-        { key: 'config-network', label: '全局配置' },
-        { key: 'setShortcutKey', label: '快捷键设置' },
-        { key: 'configMcp', label: 'Yak Mcp配置' },
+        { key: 'config-network', label: 'Global Config' },
+        { key: 'setShortcutKey', label: 'Shortcut Settings' },
+        { key: 'configMcp', label: 'Yak MCP Config' },
       ],
     },
     {
       key: 'diagnose-network',
-      label: '网络诊断',
+      label: 'Network Diagnosis',
     },
     {
       key: 'refreshMenu',
-      label: '刷新菜单',
+      label: 'Refresh Menu',
     },
     { type: 'divider' },
     {
       key: 'logs',
-      label: ' 日志收集',
+      label: 'Log Collection',
       children: [
-        { label: '渲染端日志', key: 'renderLog' },
-        { label: '引擎日志', key: 'engineLog' },
-        { label: '调试信息日志', key: 'printLog' },
+        { label: 'Renderer Logs', key: 'renderLog' },
+        { label: 'Engine Logs', key: 'engineLog' },
+        { label: 'Debug Logs', key: 'printLog' },
       ],
     },
   ].filter((item) => item)
@@ -1641,15 +1641,15 @@ const UIDevTool: React.FC<UIDevTool> = React.memo((props) => {
       data={[
         {
           key: 'devtool',
-          label: '控制台',
+          label: 'Console',
         },
         {
           key: 'reload',
-          label: '刷新',
+          label: 'Refresh',
         },
         {
           key: 'reloadCache',
-          label: '强制刷新',
+          label: 'Force Refresh',
         },
       ]}
       onClick={({ key }) => menuSelect(key)}
@@ -1732,10 +1732,10 @@ const UIOpUpdateYakit: React.FC<UIOpUpdateProps> = React.memo((props) => {
 
   const versionTitle = useMemoizedFn(() => {
     if (isCommunityEdition()) {
-      return '社区版'
+      return 'Community Edition'
     } else {
-      if (intranet) return '内网版'
-      return '官方版'
+      if (intranet) return 'Intranet Edition'
+      return 'Official Edition'
     }
   })
 
@@ -1774,22 +1774,22 @@ const UIOpUpdateYakit: React.FC<UIOpUpdateProps> = React.memo((props) => {
                 <OutlineRefreshIcon onClick={() => fetchIntranetYakitVersion(true)} />
               )}
             </div>
-            <div className={styles['update-time']}>{`当前版本: ${version}`}</div>
+            <div className={styles['update-time']}>{`Current version: ${version}`}</div>
           </div>
         </div>
 
         <div className={styles['header-btn']}>
           {isUpdateWait ? (
-            <YakitButton onClick={handleOpenPath}>{`安装 `}</YakitButton>
+            <YakitButton onClick={handleOpenPath}>{`Install `}</YakitButton>
           ) : lastVersion === '' ? (
-            '获取失败'
+            'Failed to fetch'
           ) : isUpdate ? (
             <div className={styles['update-btn']} onClick={() => onDownload(intranet ? 'intranetYakit' : 'yakit')}>
               <UpdateSvgIcon style={{ marginRight: 4 }} />
-              立即下载
+              Download now
             </div>
           ) : (
-            '已是最新'
+            'Up to date'
           )}
           {isShowModify && (
             <div
@@ -1813,7 +1813,9 @@ const UIOpUpdateYakit: React.FC<UIOpUpdateProps> = React.memo((props) => {
             })}
           >
             {content.length === 0 ? (
-              <div className={isShowModify ? styles['empty-content'] : ''}>管理员未编辑更新通知</div>
+              <div className={isShowModify ? styles['empty-content'] : ''}>
+                No update notice has been edited by the administrator.
+              </div>
             ) : (
               content.map((item, index) => {
                 return (
@@ -1902,13 +1904,13 @@ const UIOpUpdateYaklang: React.FC<UIOpUpdateProps> = React.memo((props) => {
             }}
           >
             <div className={styles['update-title']}>{`Yaklang ${lastVersion || version}`}</div>
-            <div className={styles['update-time']}>{`当前版本: ${version}`}</div>
+            <div className={styles['update-time']}>{`Current version: ${version}`}</div>
           </div>
         </div>
 
         <div className={styles['header-btn']}>
           {isRemoteMode ? (
-            <>{isUpdate && '远程连接无法更新'}</>
+            <>{isUpdate && 'Remote connections cannot be updated'}</>
           ) : (
             <>
               <YakitPopover
@@ -1929,7 +1931,7 @@ const UIOpUpdateYaklang: React.FC<UIOpUpdateProps> = React.memo((props) => {
                   setMoreVersionPopShow(visible)
                 }}
               >
-                <div className={styles['more-version-btn']}>更多版本</div>
+                <div className={styles['more-version-btn']}>More versions</div>
               </YakitPopover>
               {isUpdate && (
                 <div
@@ -1944,15 +1946,15 @@ const UIOpUpdateYaklang: React.FC<UIOpUpdateProps> = React.memo((props) => {
                   }}
                 >
                   <UpdateSvgIcon style={{ marginRight: 4 }} />
-                  立即更新
+                  Update now
                 </div>
               )}
               <YakitHint
                 visible={updateHint}
-                title="更新提示"
-                content={`更新${getReleaseEditionName()}可同步更新引擎，建议先更新${getReleaseEditionName()}`}
-                okButtonText={`更新${getReleaseEditionName()}`}
-                cancelButtonText="更新引擎"
+                title="Update Notice"
+                content={`Updating ${getReleaseEditionName()} can also sync the engine. We recommend updating ${getReleaseEditionName()} first.`}
+                okButtonText={`Update ${getReleaseEditionName()}`}
+                cancelButtonText="Update Engine"
                 footerExtra={
                   <YakitButton
                     size="max"
@@ -1961,7 +1963,7 @@ const UIOpUpdateYaklang: React.FC<UIOpUpdateProps> = React.memo((props) => {
                       setUpdateHint(false)
                     }}
                   >
-                    取消
+                    Cancel
                   </YakitButton>
                 }
                 onOk={() => {
@@ -1973,8 +1975,10 @@ const UIOpUpdateYaklang: React.FC<UIOpUpdateProps> = React.memo((props) => {
                   onDownload('yaklang')
                 }}
               />
-              {isKillEngine && <YakitButton onClick={() => yakitEngine.killOldEngineProcess()}>{`更新 `}</YakitButton>}
-              {!lastVersion ? '获取失败' : !isUpdate && !isKillEngine && '已是最新'}
+              {isKillEngine && (
+                <YakitButton onClick={() => yakitEngine.killOldEngineProcess()}>{`Update `}</YakitButton>
+              )}
+              {!lastVersion ? 'Failed to fetch' : !isUpdate && !isKillEngine && 'Up to date'}
             </>
           )}
           {isShowModify && (
@@ -1998,7 +2002,9 @@ const UIOpUpdateYaklang: React.FC<UIOpUpdateProps> = React.memo((props) => {
           })}
         >
           {content.length === 0 ? (
-            <div className={isShowModify ? styles['empty-content'] : ''}>管理员未编辑更新通知</div>
+            <div className={isShowModify ? styles['empty-content'] : ''}>
+              No update notice has been edited by the administrator.
+            </div>
           ) : (
             content.map((item, index) => {
               return (
@@ -2046,8 +2052,9 @@ const MoreYaklangVersion: React.FC<MoreYaklangVersionProps> = React.memo((props)
       JSON.stringify({
         version,
         killPssText: {
-          title: '替换引擎，需关闭所有本地进程',
-          content: '确认下载并安装此版本引擎，将会关闭所有引擎，包括正在连接的本地引擎进程，同时页面将进入加载页。',
+          title: 'Replace engine and close all local processes',
+          content:
+            'Downloading and installing this engine version will close all engines, including the currently connected local engine process, and the page will enter the loading screen.',
         },
       }),
     )
@@ -2276,14 +2283,14 @@ const UIOpNotice: React.FC<UIOpNoticeProp> = React.memo((props) => {
           }
           setYakitLastIntranetVersion(data)
           if (isShowInfo) {
-            info('内网版版本号刷新成功')
+            info('Intranet version number refreshed successfully')
           }
         })
         .catch(() => {
-          isShowInfo && yakitNotify('error', '获取版本失败')
+          isShowInfo && yakitNotify('error', 'Failed to fetch version')
         })
     } else {
-      isShowInfo && yakitNotify('error', '获取版本失败')
+      isShowInfo && yakitNotify('error', 'Failed to fetch version')
     }
   })
 
@@ -2582,18 +2589,18 @@ const UIOpNotice: React.FC<UIOpNoticeProp> = React.memo((props) => {
               buttonStyle="solid"
               options={[
                 {
-                  label: '消息中心',
+                  label: 'Message Center',
                   value: 'message',
                 },
                 {
-                  label: '更新通知',
+                  label: 'Update Notice',
                   value: 'update',
                 },
               ]}
             />
             {noticeType === 'update' ? (
               <div className={styles['switch-title']}>
-                启动检测更新
+                Check updates on startup
                 <YakitSwitch
                   style={{ marginLeft: 4 }}
                   showInnerText={true}
@@ -2612,13 +2619,13 @@ const UIOpNotice: React.FC<UIOpNoticeProp> = React.memo((props) => {
                     {messageList.length > 0 && (
                       <>
                         <YakitButton type="text" style={{ fontWeight: 400 }} onClick={onRedAllMessage}>
-                          全部已读
+                          Mark all as read
                         </YakitButton>
                         <Divider type={'vertical'} style={{ margin: '0px 8px 0px' }} />
                       </>
                     )}
                     <YakitButton type="text" style={{ fontWeight: 400, color: '#85899E' }} onClick={getAllMessage}>
-                      查看全部
+                      View all
                     </YakitButton>
                   </>
                 )}
@@ -2675,7 +2682,7 @@ const UIOpNotice: React.FC<UIOpNoticeProp> = React.memo((props) => {
                   className={styles['content-style']}
                   onClick={() => yakitShell.openExternal(WebsiteGV.YakitHistoryVersionAddress)}
                 >
-                  <GithubSvgIcon className={styles['icon-style']} /> 历史版本
+                  <GithubSvgIcon className={styles['icon-style']} /> Version History
                 </div>
               </div>
             </div>
@@ -2744,8 +2751,8 @@ const UIOpNotice: React.FC<UIOpNoticeProp> = React.memo((props) => {
       <YakitModal
         title={
           editShow.type === 'yakit'
-            ? `${getReleaseEditionName()} ${yakitLastVersion} 更新通知`
-            : `Yaklang ${yaklangLastVersion} 更新通知`
+            ? `${getReleaseEditionName()} ${yakitLastVersion} Update Notice`
+            : `Yaklang ${yaklangLastVersion} Update Notice`
         }
         centered={true}
         closable={true}
@@ -2771,8 +2778,8 @@ const UIOpNotice: React.FC<UIOpNoticeProp> = React.memo((props) => {
         type="white"
         size="large"
         visible={isShowEnpriTraceUpdateVisible}
-        title="检测到 内网版 EnpriTrace 版本升级"
-        children={`检测到有新版本${yakitLastIntranetVersion}，请立即更新`}
+        title="Detected EnpriTrace intranet version upgrade"
+        children={`A new version ${yakitLastIntranetVersion} was detected. Please update now.`}
         onCancel={() => {
           setShowEnpriTraceUpdateVisible(false)
         }}
@@ -2780,7 +2787,7 @@ const UIOpNotice: React.FC<UIOpNoticeProp> = React.memo((props) => {
         footer={
           <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12, width: '100%' }}>
             <YakitButton size="max" type="outline1" onClick={() => yakitShell.openYakitPath()}>
-              打开路径
+              Open path
             </YakitButton>
             <YakitButton
               loading={intranetHintLoading}
@@ -2793,14 +2800,14 @@ const UIOpNotice: React.FC<UIOpNoticeProp> = React.memo((props) => {
                     setShowEnpriTraceUpdateVisible(false)
                   })
                   .catch((e) => {
-                    failed(`内网版更新失败：${e}`)
+                    failed(`Intranet update failed: ${e}`)
                   })
                   .finally(() => {
                     setIntranetHintLoading(false)
                   })
               }}
             >
-              立即更新
+              Update now
             </YakitButton>
           </div>
         }
@@ -3001,7 +3008,7 @@ const UIOpRisk: React.FC<UIOpRiskProp> = React.memo((props) => {
         if (!res) return
         const m = showYakitModal({
           width: '80%',
-          title: '详情',
+          title: 'Details',
           content: (
             <div style={{ overflow: 'auto', maxHeight: '70vh' }}>
               {isShowCodeScanDetail(res) ? (
@@ -3047,7 +3054,7 @@ const UIOpRisk: React.FC<UIOpRiskProp> = React.memo((props) => {
       <div className={styles['ui-op-plus-wrapper']}>
         <div className={styles['ui-op-risk-body']}>
           <div className={styles['risk-header']}>
-            漏洞和风险统计（共 {risks.Total || 0} 条，其中未读 {risks.Unread || 0} 条）
+            Vulnerability and Risk Summary ({risks.Total || 0} total, {risks.Unread || 0} unread)
           </div>
 
           <div className={styles['risk-info']}>
@@ -3078,10 +3085,10 @@ const UIOpRisk: React.FC<UIOpRiskProp> = React.memo((props) => {
 
           <div className={styles['risk-footer']}>
             <div className={styles['risk-footer-btn']} onClick={allRead}>
-              全部已读
+              Mark all as read
             </div>
             <div className={styles['risk-footer-btn']} onClick={viewAll}>
-              查看全部
+              View all
             </div>
           </div>
         </div>
@@ -3240,7 +3247,7 @@ const UIOpIRifyRisk: React.FC<UIOpRiskProp> = React.memo((props) => {
       setShow(false)
       let m = showModal({
         width: '80%',
-        title: '详情',
+        title: 'Details',
         content: (
           <div style={{ overflow: 'auto', maxHeight: '70vh' }}>
             <YakitAuditRiskDetails info={res.Data[0]} isShowExtra={true} isExtraClick={() => m.destroy()} />
@@ -3275,7 +3282,7 @@ const UIOpIRifyRisk: React.FC<UIOpRiskProp> = React.memo((props) => {
       <div className={styles['ui-op-plus-wrapper']}>
         <div className={styles['ui-op-risk-body']}>
           <div className={styles['risk-header']}>
-            漏洞和风险统计（共 {risks.Total || 0} 条，其中未读 {risks.Unread || 0} 条）
+            Vulnerability and Risk Summary ({risks.Total || 0} total, {risks.Unread || 0} unread)
           </div>
 
           <div className={styles['risk-info']}>
@@ -3309,10 +3316,10 @@ const UIOpIRifyRisk: React.FC<UIOpRiskProp> = React.memo((props) => {
 
           <div className={styles['risk-footer']}>
             <div className={styles['risk-footer-btn']} onClick={allRead}>
-              全部已读
+              Mark all as read
             </div>
             <div className={styles['risk-footer-btn']} onClick={viewAll}>
-              查看全部
+              View all
             </div>
           </div>
         </div>
@@ -3358,11 +3365,11 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
     if (system === 'Darwin' || system === 'Windows_NT') {
       return [
         {
-          label: '性能采样',
+          label: 'Performance Sampling',
           key: 'performance-sampling',
         },
         {
-          label: '崩溃日志收集',
+          label: 'Crash Log Collection',
           key: 'crash-log',
         },
         {
@@ -3373,11 +3380,11 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
                 yakitUILayout.cancelScreenRecorder(token)
               }}
             >
-              停止录屏
+              Stop Recording
             </div>
           ) : (
             <div className={styles['screen-and-screenshot-menu-item']}>
-              <span>录屏</span>
+              <span>Screen Recording</span>
               {/* <span className={styles["shortcut-keys"]}>
                                 {system === "Darwin"
                                     ? `${MacKeyborad[17]} ${MacKeyborad[16]} X`
@@ -3390,7 +3397,7 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
         {
           label: (
             <div className={styles['screen-and-screenshot-menu-item']}>
-              <span>截屏</span>
+              <span>Screenshot</span>
               {
                 screenshotLoading && (
                   <div className={styles['icon-loading-wrapper']} onClick={(e) => e.stopPropagation()}>
@@ -3413,14 +3420,14 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
           type: 'divider',
         },
         {
-          label: '录屏管理',
+          label: 'Recording Manager',
           key: 'screen-recorder',
         },
       ]
     }
     return [
       {
-        label: '性能采样',
+        label: 'Performance Sampling',
         key: 'performance-sampling',
       },
       {
@@ -3431,11 +3438,11 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
               yakitUILayout.cancelScreenRecorder(token)
             }}
           >
-            停止录屏
+            Stop Recording
           </div>
         ) : (
           <div className={styles['screen-and-screenshot-menu-item']}>
-            <span>录屏</span>
+            <span>Screen Recording</span>
             <span className={styles['shortcut-keys']}>{`${WinKeyborad[17]} ${WinKeyborad[16]} X`}</span>
           </div>
         ),
@@ -3445,7 +3452,7 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
         type: 'divider',
       },
       {
-        label: <span>录屏管理</span>,
+        label: <span>Recording Manager</span>,
         key: 'screen-recorder',
       },
     ]
@@ -3513,7 +3520,7 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
           }
         })
         setPerformanceSamplingLog(logs)
-        yakitNotify('success', '采样完成，点击顶部绿色按钮可查看结果')
+        yakitNotify('success', 'Sampling complete. Click the green button at the top to view the results.')
       }
     } catch (error) {
       setPerformanceSamplingLog([])
@@ -3542,7 +3549,7 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
           }
         })
         let m = showYakitModal({
-          title: '性能采样',
+          title: 'Performance Sampling',
           width: 400,
           closable: true,
           centered: true,
@@ -3557,12 +3564,12 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
             ></PerformanceSampleForm>
           ),
           okButtonProps: { icon: <SolidPlayIcon /> },
-          onOkText: '开始检测',
+          onOkText: 'Start Check',
           onOk: () => {
             const yakExecutorParams: YakExecutorParam[] = []
             initRequiredFormValue['timeout'] = Number(performanceParamsRef.current.timeout) || 0
             if (!initRequiredFormValue['timeout']) {
-              yakitNotify('error', '检测时间必须大于0')
+              yakitNotify('error', 'The duration must be greater than 0')
               return
             }
             const executeParams: DebugPluginRequest = {
@@ -3598,7 +3605,7 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
       })
       .catch(() => {
         performanceModalLoading.current = false
-        yakitNotify('info', '找不到Yak 原生插件：核心引擎性能采样')
+        yakitNotify('info', 'Yak native plugin not found: Core Engine Performance Sampling')
       })
   }
   const cancelPerformanceSampling = () => {
@@ -3638,7 +3645,7 @@ const ScreenAndScreenshot: React.FC<ScreenAndScreenshotProps> = React.memo((prop
         setCrashLogVisible(true)
       })
       .catch(() => {
-        yakitNotify('info', '找不到Yak 原生插件：崩溃日志收集')
+        yakitNotify('info', 'Yak native plugin not found: Crash Log Collection')
       })
   }
 
@@ -3707,7 +3714,7 @@ const CrashLogModal: React.FC<CrashLogModalProps> = (props) => {
       }, 300)
     },
     setRuntimeId: (rId) => {
-      yakitNotify('info', `调试任务启动成功，运行时 ID: ${rId}`)
+      yakitNotify('info', `Debug task started successfully. Runtime ID: ${rId}`)
       setRuntimeId(rId)
     },
   })
@@ -3743,14 +3750,14 @@ const CrashLogModal: React.FC<CrashLogModalProps> = (props) => {
 
   return (
     <YakitModal
-      title="崩溃日志采集"
+      title="Crash Log Collection"
       width={'70%'}
       visible={!!runtimeId}
       destroyOnClose
       onCancel={onCancel}
       footer={
         <div className={styles['crash-log-footer']}>
-          <YakitButton onClick={onCancel}>取消</YakitButton>
+          <YakitButton onClick={onCancel}>Cancel</YakitButton>
         </div>
       }
     >

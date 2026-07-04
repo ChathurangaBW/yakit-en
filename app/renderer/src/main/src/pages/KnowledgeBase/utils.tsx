@@ -68,10 +68,10 @@ export enum KnowledgeTabListEnum {
   AI_Model = 'AIModel',
 }
 export const KnowledgeTabList: YakitSideTabProps['yakitTabs'] = [
-  { value: KnowledgeTabListEnum.Knowledge, label: '知识库', icon: <OutlineBookOpenTextIcon /> },
+  { value: KnowledgeTabListEnum.Knowledge, label: 'Knowledge Base', icon: <OutlineBookOpenTextIcon /> },
   {
     value: KnowledgeTabListEnum.Plugin,
-    label: '插件',
+    label: 'Plugins',
     icon: <OutlinePuzzleIcon />,
   },
   {
@@ -79,7 +79,7 @@ export const KnowledgeTabList: YakitSideTabProps['yakitTabs'] = [
     label: () => (
       <div className="first-step" style={{ display: 'flex', gap: 4 }}>
         <OutlineChipIcon />
-        模型
+        Models
       </div>
     ),
   },
@@ -88,162 +88,162 @@ export const KnowledgeTabList: YakitSideTabProps['yakitTabs'] = [
 const insertModaOptions = [
   {
     value: 'manual',
-    label: '手动添加',
+    label: 'Manual Add',
   },
   {
     value: 'external',
-    label: '外部导入',
+    label: 'External Import',
   },
   {
     value: 'other',
-    label: '其他',
+    label: 'Other',
   },
 ]
 
 const knowledgeTypeOptions = [
   {
-    value: '漏洞情报',
-    label: '漏洞情报',
+    value: 'Vulnerability Intelligence',
+    label: 'Vulnerability Intelligence',
   },
   {
-    value: '攻击技术',
-    label: '攻击技术',
+    value: 'Attack Techniques',
+    label: 'Attack Techniques',
   },
   {
-    value: '恶意软件',
-    label: '恶意软件',
+    value: 'Malware',
+    label: 'Malware',
   },
   {
-    value: '渗透测试',
-    label: '渗透测试',
+    value: 'Penetration Testing',
+    label: 'Penetration Testing',
   },
   {
-    value: '红蓝对抗',
-    label: '红蓝对抗',
+    value: 'Red Team vs Blue Team',
+    label: 'Red Team vs Blue Team',
   },
   {
-    value: '威胁情报',
-    label: '威胁情报',
+    value: 'Threat Intelligence',
+    label: 'Threat Intelligence',
   },
   {
-    value: '应急响应',
-    label: '应急响应',
+    value: 'Incident Response',
+    label: 'Incident Response',
   },
   {
-    value: '代码审计',
-    label: '代码审计',
+    value: 'Code Audit',
+    label: 'Code Audit',
   },
   {
-    value: '逆向工程',
-    label: '逆向工程',
+    value: 'Reverse Engineering',
+    label: 'Reverse Engineering',
   },
   {
-    value: 'Web安全',
-    label: 'Web安全',
+    value: 'Web Security',
+    label: 'Web Security',
   },
   {
-    value: '内网渗透',
-    label: '内网渗透',
+    value: 'Internal Network Penetration',
+    label: 'Internal Network Penetration',
   },
   {
-    value: '云原生安全',
-    label: '云原生安全',
+    value: 'Cloud-Native Security',
+    label: 'Cloud-Native Security',
   },
   {
-    value: '移动安全',
-    label: '移动安全',
+    value: 'Mobile Security',
+    label: 'Mobile Security',
   },
   {
-    value: 'IoT安全',
-    label: 'IoT安全',
+    value: 'IoT Security',
+    label: 'IoT Security',
   },
   {
-    value: '密码学',
-    label: '密码学',
+    value: 'Cryptography',
+    label: 'Cryptography',
   },
   {
-    value: '协议分析',
-    label: '协议分析',
+    value: 'Protocol Analysis',
+    label: 'Protocol Analysis',
   },
   {
-    value: '供应链安全',
-    label: '供应链安全',
+    value: 'Supply Chain Security',
+    label: 'Supply Chain Security',
   },
   {
-    value: '安全工具',
-    label: '安全工具',
+    value: 'Security Tools',
+    label: 'Security Tools',
   },
   {
-    value: '武器库',
-    label: '武器库',
+    value: 'Arsenal',
+    label: 'Arsenal',
   },
   {
-    value: '靶场环境',
-    label: '靶场环境',
+    value: 'Lab Environment',
+    label: 'Lab Environment',
   },
   {
-    value: '字典规则',
-    label: '字典规则',
+    value: 'Dictionary Rules',
+    label: 'Dictionary Rules',
   },
   {
-    value: '等保合规',
-    label: '等保合规',
+    value: 'Compliance Protection',
+    label: 'Compliance Protection',
   },
   {
-    value: '安全标准',
-    label: '安全标准',
+    value: 'Security Standards',
+    label: 'Security Standards',
   },
   {
-    value: '法律法规',
-    label: '法律法规',
+    value: 'Laws and Regulations',
+    label: 'Laws and Regulations',
   },
   {
-    value: '安全基线',
-    label: '安全基线',
+    value: 'Security Baseline',
+    label: 'Security Baseline',
   },
   {
-    value: '编程语言',
-    label: '编程语言',
+    value: 'Programming Languages',
+    label: 'Programming Languages',
   },
   {
-    value: '开发框架',
-    label: '开发框架',
+    value: 'Development Frameworks',
+    label: 'Development Frameworks',
   },
   {
-    value: '数据库',
-    label: '数据库',
+    value: 'Databases',
+    label: 'Databases',
   },
   {
     value: 'DevOps',
     label: 'DevOps',
   },
   {
-    value: '系统运维',
-    label: '系统运维',
+    value: 'System Operations',
+    label: 'System Operations',
   },
   {
-    value: '行业报告',
-    label: '行业报告',
+    value: 'Industry Reports',
+    label: 'Industry Reports',
   },
   {
-    value: '技术博客',
-    label: '技术博客',
+    value: 'Technical Blogs',
+    label: 'Technical Blogs',
   },
   {
-    value: '培训教程',
-    label: '培训教程',
+    value: 'Training Tutorials',
+    label: 'Training Tutorials',
   },
   {
-    value: '产品文档',
-    label: '产品文档',
+    value: 'Product Documentation',
+    label: 'Product Documentation',
   },
   {
-    value: '项目管理',
-    label: '项目管理',
+    value: 'Project Management',
+    label: 'Project Management',
   },
   {
-    value: 'AI与安全',
-    label: 'AI与安全',
+    value: 'AI and Security',
+    label: 'AI and Security',
   },
 ]
 
@@ -264,45 +264,45 @@ const getFileInfoList = (filename?: string): KnowledgeBaseFile[] => {
 const manageMenuList = [
   {
     key: 'edit',
-    label: '编辑',
+    label: 'Edit',
   },
   {
     key: 'export',
-    label: '导出',
+    label: 'Export',
   },
   {
     key: 'delete',
-    label: '删除',
+    label: 'Delete',
   },
   {
     key: 'default',
-    label: '设为默认',
+    label: 'Set as Default',
   },
 ]
 
 const createMenuList = [
   {
     key: 'create',
-    label: '新建',
+    label: 'Create',
   },
   {
     key: 'import',
-    label: '导入',
+    label: 'Import',
   },
 ]
 
 const tableHeaderGroupOptions = [
   {
     value: 'entity',
-    label: '实体',
+    label: 'Entities',
   },
   {
     value: 'knowledge',
-    label: '知识',
+    label: 'Knowledge',
   },
   {
     value: 'vector',
-    label: '向量',
+    label: 'Vectors',
   },
 ]
 
@@ -321,7 +321,7 @@ const apiSearchKnowledgeBaseEntry: (
       .invoke('SearchKnowledgeBaseEntry', query)
       .then(resolve)
       .catch((e) => {
-        yakitNotify('error', `查询失败: ${e}`)
+        yakitNotify('error', `Query failed: ${e}`)
         reject(e)
       })
   })
@@ -336,7 +336,7 @@ const apiListVectorStoreEntries: (query?: ListVectorStoreEntriesRequest) => Prom
       .invoke('ListVectorStoreEntries', query)
       .then(resolve)
       .catch((e) => {
-        yakitNotify('error', `查询失败: ${e}`)
+        yakitNotify('error', `Query failed: ${e}`)
         reject(e)
       })
   })
@@ -349,7 +349,7 @@ const apiQueryEntity: (query?: QueryEntityRequest) => Promise<QueryEntityRespons
       .invoke('QueryEntity', query)
       .then(resolve)
       .catch((e) => {
-        yakitNotify('error', `查询失败: ${e}`)
+        yakitNotify('error', `Query failed: ${e}`)
         reject(e)
       })
   })
@@ -617,23 +617,23 @@ const checkAIModelAvailability = async (params, streamToken) => {
 
 const documentType = [
   {
-    label: '实体',
+    label: 'Entities',
     value: 'entity',
   },
   {
-    label: '关系',
+    label: 'Relationships',
     value: 'relationship',
   },
   {
-    label: '知识',
+    label: 'Knowledge',
     value: 'knowledge',
   },
   {
-    label: '图',
+    label: 'Graph',
     value: 'khop',
   },
   {
-    label: '问题索引',
+    label: 'Question Index',
     value: 'question_index',
   },
 ]
@@ -811,22 +811,22 @@ const extractStreamTokenChangedItem = (currentList, previousList) => {
 const answerOptions = [
   {
     value: 'hypothetical_answer',
-    label: '假设回答',
+    label: 'Hypothetical Answer',
     // description: "这里是改模式的简短介绍"
   },
   {
     value: 'generalize_query',
-    label: '泛化回答',
+    label: 'Generalized Answer',
     // description: "这里是改模式的简短介绍"
   },
   {
     value: 'split_query',
-    label: '多次查询',
+    label: 'Multiple Queries',
     // description: "这里是改模式的简短介绍"
   },
   {
     value: 'hypothetical_answer_with_split',
-    label: '假设并多次查询',
+    label: 'Hypothetical + Multiple Queries',
     // description: "这里是改模式的简短介绍"
   },
 ]
@@ -933,19 +933,19 @@ export const apiFetchQueryOnlieRageLatest: () => Promise<any> = () => {
 
 const stopList = [
   {
-    title: 'AI 召回',
-    description: '可用于校验生成的知识库内容是否正确',
+    title: 'AI Recall',
+    description: 'Use this to verify whether generated knowledge-base content is accurate.',
     images: knowledgeJoyrideFirst,
   },
   {
-    title: '从实体生成知识',
+    title: 'Generate Knowledge from Entities',
     description:
-      '可从已经生成的实体和知识中，选择需要的实体或知识再次生成相关知识，当感觉知识内容有缺少时可用此方法对知识进行补充',
+      'Select existing entities or knowledge to generate related knowledge again when the current content feels incomplete.',
     images: knowledgeJoyrideLast,
   },
   {
-    title: '知识图谱演示',
-    description: '通过勾选实体可以动态绘制知识图谱，便于查看实体之间的关联',
+    title: 'Knowledge Graph Demo',
+    description: 'Select entities to dynamically render a knowledge graph and inspect their relationships.',
     images: knowledgeJoyrideThree,
   },
 ]
@@ -957,11 +957,12 @@ const joyrideSteps: Step[] = [
     disableBeacon: true,
     placement: 'right',
     spotlightPadding: 5,
-    title: '添加模型',
+    title: 'Add Model',
     content: (
       <div className={styles['joyride-steps-content']}>
         <div>
-          选择厂商后输入 ApiKey 选择对应使用模型即可。（注：需要添加<span>视觉模型</span>）
+          Select a provider, enter the API key, and choose the model to use. (Note: a <span>vision model</span> is
+          required.)
         </div>
         <div className={styles['joyride-steps-img-wrapper']}>
           <img src={joyrideFirstStepImg} alt="" style={{ width: '351px' }} />
@@ -973,10 +974,10 @@ const joyrideSteps: Step[] = [
     target: '.second-step',
     disableBeacon: true,
     spotlightPadding: 2,
-    title: '知识库可用性诊断',
+    title: 'Knowledge Base Availability Check',
     content: (
       <div className={styles['joyride-steps-content']}>
-        <div>添加模型后，可以使用可用性诊断，判断模型是否可用于生成知识库</div>
+        <div>After adding a model, run the availability check to verify whether it can generate a knowledge base.</div>
       </div>
     ),
   },
@@ -984,10 +985,10 @@ const joyrideSteps: Step[] = [
     target: '.third-step',
     disableBeacon: true,
     spotlightPadding: 2,
-    title: '新建知识库',
+    title: 'Create Knowledge Base',
     content: (
       <div className={styles['joyride-steps-content']}>
-        <div>输入知识库名后拖拽文件创建即可</div>
+        <div>Enter a knowledge base name, then drag in files to create it.</div>
       </div>
     ),
   },
@@ -1046,7 +1047,7 @@ type TValidatorFilePath = (_: RuleObject, value: string) => Promise<any>
 
 const ValidatorFilePath: TValidatorFilePath = (_, value) => {
   if (!value) {
-    return Promise.reject('请上传文件')
+    return Promise.reject('Please upload a file')
   }
 
   const files = value.split(',').map((i) => i.trim())
@@ -1059,7 +1060,7 @@ const ValidatorFilePath: TValidatorFilePath = (_, value) => {
     const reg = /^.+\.[^.]+$/
 
     if (!fileName || !reg.test(fileName)) {
-      return Promise.reject('请上传有效的文件')
+      return Promise.reject('Please upload a valid file')
     }
   }
 

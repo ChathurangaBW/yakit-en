@@ -1,75 +1,75 @@
 {
   "LocalRuleGroupList": {
-    "title": "規則管理",
-    "searchPlaceholder": "請輸入組名",
-    "uploadTitle": "上傳提示",
-    "uploadContent": "如果存在同名規則庫，會直接覆蓋",
-    "uploadConfirm": "確認上傳",
-    "renameFailed": "修改本地規則組名稱錯誤"
+    "title": "Rule Management",
+    "searchPlaceholder": "Enter group name",
+    "uploadTitle": "Upload Tips",
+    "uploadContent": "If a rule library with the same name exists, it will be overwritten.",
+    "uploadConfirm": "Confirm Upload",
+    "renameFailed": "Failed to rename local rule group"
   },
   "EditRuleDrawer": {
-    "formMissing": "未獲取到表單資訊，請關閉彈框重試!",
-    "saveAndCloseConfirm": "請問是否要儲存規則並關閉彈框？",
-    "formRequired": "請填寫完整規則必須資訊",
-    "logTab": "日誌",
-    "auditResultTab": "審計結果",
-    "rule": "規則",
-    "auditDetail": "審計詳情",
-    "relatedHoles": "相關漏洞",
-    "ruleContent": "規則內容",
-    "executionResult": "執行結果",
-    "basicInfo": "基礎資訊",
-    "collapseBasicInfo": "收起基礎資訊",
-    "ruleName": "規則名",
-    "ruleNameRequired": "規則名必填",
-    "enterRuleName": "請輸入規則名",
-    "language": "語言",
-    "languageRequired": "語言必填",
-    "groupName": "所屬分組",
-    "selectGroup": "請選擇分組",
-    "description": "描述",
-    "expandBasicInfo": "展開基礎資訊",
-    "executionProgress": "執行進度",
-    "autoDetect": "自動檢測",
-    "projectName": "專案名稱",
-    "selectProjectToDebug": "請選擇專案後除錯",
-    "syntaxflowCheck": "SyntaxFlow規則檢測",
-    "scoreHint1": "基礎編譯測試,判斷SyntaxFlow規則的語法是否符合規範,是否存在不正確語法導致編譯不透過",
-    "scoreHint2": "檢查規則中的描述部分是否包含desc和solution欄位",
-    "scoreHint3": "檢查規則中是否包含alert, 規則應該包含alert語句產生檢測結果",
-    "scoreHint4": "檢查規則中的測試用例是否能透過規則檢測,SyntaxFlow規則中應該包含正反測試用例,對於正向漏洞程式碼SyntaxFlow規則應該能正常產生alert,而對於反向測試不應該產生alert(誤報)"
+    "formMissing": "Form data not found. Please close the dialog and try again.",
+    "saveAndCloseConfirm": "Do you want to save the rule and close the dialog?",
+    "formRequired": "Please complete all required rule fields",
+    "logTab": "Logs",
+    "auditResultTab": "Audit Results",
+    "rule": " Rule",
+    "auditDetail": "Audit Details",
+    "relatedHoles": "Related Vulnerabilities",
+    "ruleContent": "Rule Content",
+    "executionResult": "Execution Result",
+    "basicInfo": "Basic Information",
+    "collapseBasicInfo": "Collapse Basic Information",
+    "ruleName": "Rule Name",
+    "ruleNameRequired": "Rule name is required",
+    "enterRuleName": "Enter rule name",
+    "language": "Language",
+    "languageRequired": "Language is required",
+    "groupName": "Group",
+    "selectGroup": "Select a group",
+    "description": "Description",
+    "expandBasicInfo": "Expand Basic Information",
+    "executionProgress": "Execution Progress",
+    "autoDetect": "Auto Detect",
+    "projectName": "Project Name",
+    "selectProjectToDebug": "Select a project to debug",
+    "syntaxflowCheck": "SyntaxFlow Rule Check",
+    "scoreHint1": "Basic compilation test to verify the SyntaxFlow rule syntax is valid and compiles.",
+    "scoreHint2": "Check whether the description contains desc and solution fields.",
+    "scoreHint3": "Check whether the rule contains alert statements that produce results.",
+    "scoreHint4": "Check whether the test cases can pass rule validation; positive cases should alert and negative cases should not."
   },
   "UpdateRuleToGroup": {
-    "groupCount": "規則組{{count}}",
-    "hint": "勾選表示加入組，取消勾選則表示移出組，建立新分組直接在輸入框輸入名稱回車即可。",
-    "addGroup": "新增分組 \"{{search}}\"",
-    "addGroupButton": "新增分組"
+    "groupCount": "Rule Group {{count}}",
+    "hint": "Checked items will be added to the group; unchecked items will be removed. Create a new group by typing its name and pressing Enter.",
+    "addGroup": "Add group \"{{search}}\"",
+    "addGroupButton": "Add Group"
   },
   "RuleDebugAuditDetail": {
-    "readFailed": "讀取失敗",
-    "openError": "開啟錯誤：{{error}}",
-    "selectLeft": "請選擇左邊內容"
+    "readFailed": "Read failed",
+    "openError": "Open failed: {{error}}",
+    "selectLeft": "Please select an item on the left"
   },
   "RuleDebugAuditList": {
-    "title": "審計結果列表"
+    "title": "Audit Results List"
   },
   "RuleUploadAndDownloadModal": {
-    "streamError": "錯誤：{{error}}",
-    "ruleUpload": "規則上傳",
-    "ruleDownload": "規則下載",
-    "progress": "進度 {{percent}}%"
+    "streamError": "Error: {{error}}",
+    "ruleUpload": "Rule Upload",
+    "ruleDownload": "Rule Download",
+    "progress": "Progress {{percent}}%"
   },
   "OnlineRuleGroupList": {
-    "noPermissionTitle": "暫無檢視許可權",
-    "noPermissionDesc": "登入後即可檢視",
-    "loginNow": "立即登入",
-    "searchPlaceholder": "請輸入組名",
-    "downloadTitle": "下載提示",
-    "downloadContent": "如果規則id相同則會直接覆蓋，是否確認下載"
+    "noPermissionTitle": "No viewing permission",
+    "noPermissionDesc": "Log in to view",
+    "loginNow": "Log In",
+    "searchPlaceholder": "Enter group name",
+    "downloadTitle": "Download Tips",
+    "downloadContent": "If the rule ID is the same, it will be overwritten. Confirm download?"
   },
   "RelatedHoleList": {
-    "type": "型別",
-    "description": "漏洞描述",
-    "solution": "修復建議"
+    "type": "Type",
+    "description": "Vulnerability Description",
+    "solution": "Fix Suggestion"
   }
 }

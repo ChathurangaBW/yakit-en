@@ -381,19 +381,19 @@ const AIPlanReviewTreeItem: React.FC<AIPlanReviewTreeItemProps> = React.memo((pr
     const menu = [
       {
         key: 'sub',
-        label: '添加子任务',
+        label: 'Add Subtask',
       },
     ]
     if (item.index.length > 1) {
       menu.push({
         key: 'brother',
-        label: '添加兄弟任务',
+        label: 'Add Sibling Task',
       })
     }
     return menu
   }, [item.index])
   const name = useCreation(() => {
-    if (item?.isRemove && !item.name) return '该节点被删除'
+    if (item?.isRemove && !item.name) return 'This node was deleted'
     return item.name
   }, [item.name, item?.isRemove])
   return (

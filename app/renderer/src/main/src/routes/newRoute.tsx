@@ -210,14 +210,14 @@ export const YakitRouteToPageInfo: Record<
   YakitRoute,
   { label: string; labelUi?: string; describe?: string; describeUi?: string }
 > = {
-  'new-home': { label: '首页', labelUi: 'YakitRoute.home' },
+  'new-home': { label: 'Home', labelUi: 'YakitRoute.home' },
   httpHacker: {
-    label: 'MITM 交互式劫持 v1',
+    label: 'MITM Interactive Hijacking v1',
     labelUi: 'YakitRoute.MITM',
     describeUi: 'YakitRoute.mitmSslHijack',
   },
   'mitm-hijack': {
-    label: 'MITM 交互式劫持',
+    label: 'MITM Interactive Hijacking',
     labelUi: 'YakitRoute.MITM',
     describeUi: 'YakitRoute.mitmSslHijack',
   },
@@ -237,33 +237,33 @@ export const YakitRouteToPageInfo: Record<
     describeUi: 'YakitRoute.dataProcessingDescription',
   },
   dataCompare: {
-    label: '数据对比',
+    label: 'Data Compare',
     labelUi: 'YakitRoute.dataCompare',
     describeUi: 'YakitRoute.quicklyIdentifyDifferencesInData',
   },
   'scan-port': {
-    label: '端口/指纹扫描',
+    label: 'Port/Fingerprint Scan',
     labelUi: 'YakitRoute.portAndFingerprintScan',
     describeUi: 'YakitRoute.portScanDescription',
   },
   poc: {
-    label: '专项漏洞检测',
+    label: 'Targeted Vulnerability Scan',
     labelUi: 'YakitRoute.vulnTargetedScan',
     describeUi: 'YakitRoute.vulnerabilityDetectionDescription',
   },
-  'plugin-op': { label: '插件', labelUi: 'YakitRoute.plugin' },
+  'plugin-op': { label: 'Plugin', labelUi: 'YakitRoute.plugin' },
   brute: {
-    label: '弱口令检测',
+    label: 'Weak Password Check',
     labelUi: 'YakitRoute.weakPasswordCheck',
     describeUi: 'YakitRoute.bruteForceDescription',
   },
   'plugin-hub': {
-    label: '插件仓库',
+    label: 'Plugin Hub',
     labelUi: 'YakitRoute.pluginHub',
     describeUi: 'YakitRoute.massiveYakitPluginsOne-ClickDownload',
   },
   'batch-executor-page-ex': {
-    label: '批量执行',
+    label: 'Batch Execute',
     labelUi: 'YakitRoute.batchExecute',
     describeUi: 'YakitRoute.batchPOCScan',
   },
@@ -288,12 +288,12 @@ export const YakitRouteToPageInfo: Record<
     describeUi: 'YakitRoute.fuzzPayLoadDeserialization',
   },
   ReverseServer_New: {
-    label: '反连服务器',
+    label: 'Reverse Server',
     labelUi: 'YakitRoute.reverseServer',
     describeUi: 'YakitRoute.simultaneouslyProvideHTTP/RMI/HTTPSReverseConnectionsOnOnePort',
   },
   shellReceiver: {
-    label: '端口监听器',
+    label: 'Port Listener',
     labelUi: 'YakitRoute.portListener',
     describeUi: 'YakitRoute.reverseShellTool',
   },
@@ -302,84 +302,84 @@ export const YakitRouteToPageInfo: Record<
     labelUi: 'YakitRoute.History',
     describeUi: 'YakitRoute.viewAndManageAllHistoricalTrafficFromMITMPluginsAndFuzzing',
   },
-  'db-http-request-analysis': { label: '流量分析器', labelUi: 'YakitRoute.historyAnalyzer' },
+  'db-http-request-analysis': { label: 'Traffic Analyzer', labelUi: 'YakitRoute.historyAnalyzer' },
   'db-reports-results': {
-    label: '报告',
+    label: 'Reports',
     labelUi: 'YakitRoute.report',
     describeUi: 'YakitRoute.viewAndManageReportsGeneratedDuringScanning',
   },
   'db-risks': {
-    label: '漏洞与风险',
+    label: 'Vulnerabilities & Risks',
     labelUi: 'YakitRoute.vulnerabilityAndrisk',
     describeUi: 'YakitRoute.manageAllDetectedVulnerabilitiesAndRisks',
   },
-  misstatement: { label: '误报记录', labelUi: 'YakitRoute.falsePositiveRecords' },
-  'db-ports': { label: '端口', labelUi: 'YakitRoute.port', describeUi: 'YakitRoute.manageAllDiscoveredPortAssets' },
+  misstatement: { label: 'False Positive Records', labelUi: 'YakitRoute.falsePositiveRecords' },
+  'db-ports': { label: 'Ports', labelUi: 'YakitRoute.port', describeUi: 'YakitRoute.manageAllDiscoveredPortAssets' },
   'db-domains': {
-    label: '域名',
+    label: 'Domains',
     labelUi: 'YakitRoute.domain',
     describeUi: 'YakitRoute.manageAllDiscoveredDomainAssets',
   },
-  cve: { label: 'CVE 管理', labelUi: 'YakitRoute.cVEManagement', describeUi: 'YakitRoute.searchAndQueryCVEData' },
+  cve: { label: 'CVE Management', labelUi: 'YakitRoute.cVEManagement', describeUi: 'YakitRoute.searchAndQueryCVEData' },
   yakScript: {
     label: 'Yak Runner',
     labelUi: 'YakitRoute.YakRunner',
     describeUi: 'YakitRoute.yaklangProgramming',
   },
   'payload-manager': {
-    label: '字典管理',
+    label: 'Payload Management',
     labelUi: 'YakitRoute.Payload',
     describeUi: 'YakitRoute.customPayload',
   },
-  'account-admin-page': { label: '用户管理', labelUi: 'YakitRoute.userManagement' },
-  'role-admin-page': { label: '角色管理', labelUi: 'YakitRoute.roleManagement' },
-  'hole-collect-page': { label: '漏洞汇总', labelUi: 'YakitRoute.vulnerabilitySummary' },
-  'license-admin-page': { label: 'License管理', labelUi: 'YakitRoute.licenseManagement' },
-  'trust-list-admin-page': { label: '用户管理', labelUi: 'YakitRoute.userManagement' },
-  'plug-in-admin-page': { label: '插件权限', labelUi: 'YakitRoute.pluginPermissions' },
-  'control-admin-page': { label: '远程管理', labelUi: 'YakitRoute.remoteManagement' },
+  'account-admin-page': { label: 'User Management', labelUi: 'YakitRoute.userManagement' },
+  'role-admin-page': { label: 'Role Management', labelUi: 'YakitRoute.roleManagement' },
+  'hole-collect-page': { label: 'Vulnerability Summary', labelUi: 'YakitRoute.vulnerabilitySummary' },
+  'license-admin-page': { label: 'License Management', labelUi: 'YakitRoute.licenseManagement' },
+  'trust-list-admin-page': { label: 'User Management', labelUi: 'YakitRoute.userManagement' },
+  'plug-in-admin-page': { label: 'Plugin Permissions', labelUi: 'YakitRoute.pluginPermissions' },
+  'control-admin-page': { label: 'Remote Management', labelUi: 'YakitRoute.remoteManagement' },
   'batch-executor-recover': {
-    label: '继续任务：批量执行插件',
+    label: 'Resume Task: Batch Plugin Execution',
     labelUi: 'YakitRoute.continueTaskBatchExecutePlugin',
   },
-  'packet-scan-page': { label: '数据包扫描', labelUi: 'YakitRoute.packetScan' },
-  'add-yakit-script': { label: '新建插件', labelUi: 'YakitRoute.createPlugin' },
-  'simple-detect': { label: '安全检测', labelUi: 'YakitRoute.securityCheck' },
+  'packet-scan-page': { label: 'Packet Scan', labelUi: 'YakitRoute.packetScan' },
+  'add-yakit-script': { label: 'Create Plugin', labelUi: 'YakitRoute.createPlugin' },
+  'simple-detect': { label: 'Security Check', labelUi: 'YakitRoute.securityCheck' },
   'screen-recorder-page': {
-    label: '录屏管理',
+    label: 'Recording Management',
     labelUi: 'YakitRoute.recordingManagement',
     describeUi: 'YakitRoute.manageAllRecordedVideoFiles',
   },
-  'db-chaosmaker': { label: 'BAS实验室', labelUi: 'YakitRoute.BASLab' },
-  'beta-debug-monaco-editor': { label: '插件编辑器', labelUi: 'YakitRoute.pluginEditor' },
-  'beta-vulinbox-manager': { label: 'Vulinbox 管理器', labelUi: 'YakitRoute.vulinboxManager' },
-  'beta-diagnose-network': { label: '网络异常诊断', labelUi: 'YakitRoute.networkDiagnosis' },
-  'beta-config-network': { label: '全局配置', labelUi: 'YakitRoute.globalConfig' },
-  'plugin-audit': { label: '插件管理', labelUi: 'YakitRoute.pluginManagement' },
-  '**beta-debug-traffic-analize': { label: '流量分析', labelUi: 'YakitRoute.trafficAnalysis' },
-  'beta-webshell-manager': { label: '网站管理', labelUi: 'YakitRoute.websiteManagement' },
-  'beta-webshell-opt': { label: 'WebShell 实例', labelUi: 'YakitRoute.webShellInstance' },
-  data_statistics: { label: '数据统计', labelUi: 'YakitRoute.dataStatistics' },
-  'space-engine': { label: '空间引擎', labelUi: 'YakitRoute.spaceEngine' },
+  'db-chaosmaker': { label: 'BAS Lab', labelUi: 'YakitRoute.BASLab' },
+  'beta-debug-monaco-editor': { label: 'Plugin Editor', labelUi: 'YakitRoute.pluginEditor' },
+  'beta-vulinbox-manager': { label: 'Vulinbox Manager', labelUi: 'YakitRoute.vulinboxManager' },
+  'beta-diagnose-network': { label: 'Network Diagnosis', labelUi: 'YakitRoute.networkDiagnosis' },
+  'beta-config-network': { label: 'Global Config', labelUi: 'YakitRoute.globalConfig' },
+  'plugin-audit': { label: 'Plugin Management', labelUi: 'YakitRoute.pluginManagement' },
+  '**beta-debug-traffic-analize': { label: 'Traffic Analysis', labelUi: 'YakitRoute.trafficAnalysis' },
+  'beta-webshell-manager': { label: 'Website Management', labelUi: 'YakitRoute.websiteManagement' },
+  'beta-webshell-opt': { label: 'WebShell Instance', labelUi: 'YakitRoute.webShellInstance' },
+  data_statistics: { label: 'Data Statistics', labelUi: 'YakitRoute.dataStatistics' },
+  'space-engine': { label: 'Space Engine', labelUi: 'YakitRoute.spaceEngine' },
   'yakrunner-code-scan': {
-    label: '代码扫描',
+    label: 'Code Scan',
     labelUi: 'YakitRoute.codeScan',
     describeUi: 'YakitRoute.richRuleLibrary',
   },
   'yakrunner-audit-code': {
-    label: '代码审计',
+    label: 'Code Audit',
     labelUi: 'YakitRoute.codeAudit',
     describeUi: 'YakitRoute.auditRuleCodeAnalysis',
   },
   'irify-ai-code-audit': {
-    label: 'AI代码审计',
+    label: 'AI Code Audit',
     labelUi: 'YakitRoute.irifyAiCodeAudit',
     describeUi: 'YakitRoute.irifyAiCodeAuditDescribe',
   },
-  'yakrunner-project-manager': { label: '项目管理', labelUi: 'YakitRoute.projectManagement' },
-  yakrunner_scanHistory: { label: '项目历史', labelUi: 'YakitRoute.projectHistory' },
+  'yakrunner-project-manager': { label: 'Project Management', labelUi: 'YakitRoute.projectManagement' },
+  yakrunner_scanHistory: { label: 'Project History', labelUi: 'YakitRoute.projectHistory' },
   'rule-management': {
-    label: '规则管理',
+    label: 'Rule Management',
     labelUi: 'YakitRoute.ruleManagement',
     describeUi: 'YakitRoute.customAuditRules',
   },
@@ -390,27 +390,27 @@ export const YakitRouteToPageInfo: Record<
   'modify-notepad': {
     label: getNotepadNameByEditionMulLang(),
   },
-  'yakrunner-audit-hole': { label: '审计漏洞', labelUi: 'YakitRoute.auditVulnerability' },
-  'system-config': { label: '系统配置', labelUi: 'YakitRoute.systemConfig' },
-  'yak-java-decompiler': { label: 'Java 反编译', labelUi: 'YakitRoute.javaDecompile' },
-  'shortcut-key': { label: '快捷键设置', labelUi: 'YakitRoute.shortcutSettings' },
-  'fingerprint-manage': { label: '指纹库', labelUi: 'YakitRoute.fingerprintDatabase' },
+  'yakrunner-audit-hole': { label: 'Audit Vulnerabilities', labelUi: 'YakitRoute.auditVulnerability' },
+  'system-config': { label: 'System Config', labelUi: 'YakitRoute.systemConfig' },
+  'yak-java-decompiler': { label: 'Java Decompiler', labelUi: 'YakitRoute.javaDecompile' },
+  'shortcut-key': { label: 'Shortcut Settings', labelUi: 'YakitRoute.shortcutSettings' },
+  'fingerprint-manage': { label: 'Fingerprint Database', labelUi: 'YakitRoute.fingerprintDatabase' },
   'ai-agent': { label: 'AIAgent', labelUi: 'YakitRoute.AIAgent' },
   'ssa-result-diff': { label: 'ssa-result-diff', labelUi: 'YakitRoute.ssa-result-diff' },
-  'ai-repository': { label: '知识库', labelUi: 'YakitRoute.ai-repository' },
-  'add-ai-forge': { label: '新建 Forge', labelUi: 'YakitRoute.createForge' },
-  'modify-ai-forge': { label: '编辑 Forge', labelUi: 'YakitRoute.editForge' },
-  'add-ai-tool': { label: '新建 Tool', labelUi: 'YakitRoute.createTool' },
-  'modify-ai-tool': { label: '编辑 Tool', labelUi: 'YakitRoute.editTool' },
-  'ssa-compile-history': { label: 'SSA项目编译历史', labelUi: 'YakitRoute.ssaCompileHistory' },
+  'ai-repository': { label: 'Knowledge Base', labelUi: 'YakitRoute.ai-repository' },
+  'add-ai-forge': { label: 'Create Forge', labelUi: 'YakitRoute.createForge' },
+  'modify-ai-forge': { label: 'Edit Forge', labelUi: 'YakitRoute.editForge' },
+  'add-ai-tool': { label: 'Create Tool', labelUi: 'YakitRoute.createTool' },
+  'modify-ai-tool': { label: 'Edit Tool', labelUi: 'YakitRoute.editTool' },
+  'ssa-compile-history': { label: 'SSA Compile History', labelUi: 'YakitRoute.ssaCompileHistory' },
   'config-management': {
-    label: '配置管理',
+    label: 'Configuration Management',
     labelUi: 'YakitRoute.configManagement',
     describeUi: 'YakitRoute.unifiedConfigurationManagementForPayloadProxyAndHotPatch',
   },
-  'ai-memory': { label: '记忆库', labelUi: 'YakitRoute.ai-memory' },
-  'ai-tool': { label: '工具库', labelUi: 'YakitRoute.ai-tool' },
-  'ai-forge': { label: '技能库', labelUi: 'YakitRoute.ai-forge' },
+  'ai-memory': { label: 'Memory Base', labelUi: 'YakitRoute.ai-memory' },
+  'ai-tool': { label: 'Tool Library', labelUi: 'YakitRoute.ai-tool' },
+  'ai-forge': { label: 'Forge Library', labelUi: 'YakitRoute.ai-forge' },
 }
 /** 页面路由(无法多开的页面) */
 export const SingletonPageRoute: YakitRoute[] = [
@@ -700,14 +700,14 @@ function withRouteToPage(WrappedComponent) {
       <ErrorBoundary
         FallbackComponent={({ error, resetErrorBoundary }) => {
           if (!error) {
-            return <div>未知错误</div>
+            return <div>Unknown error</div>
           }
           return (
             <div style={{ padding: '20px', fontFamily: 'monospace' }}>
-              <h3>页面发生错误</h3>
-              <p>逻辑性崩溃，请关闭重试！</p>
+              <h3>Page Error</h3>
+              <p>A logic error occurred. Please close this page and try again.</p>
               <div style={{ marginTop: '16px' }}>
-                <h4>错误信息:</h4>
+                <h4>Error Message:</h4>
                 <pre
                   style={{
                     background: 'var(--Colors-Use-Neutral-Bg)',
@@ -719,7 +719,7 @@ function withRouteToPage(WrappedComponent) {
                 </pre>
               </div>
               <div style={{ marginTop: '16px' }}>
-                <h4>错误堆栈:</h4>
+                <h4>Stack Trace:</h4>
                 <pre
                   style={{
                     background: 'var(--Colors-Use-Neutral-Bg)',
@@ -730,11 +730,11 @@ function withRouteToPage(WrappedComponent) {
                     fontSize: '12px',
                   }}
                 >
-                  {error?.stack || '无堆栈信息'}
+                  {error?.stack || 'No stack trace available'}
                 </pre>
               </div>
               <div style={{ marginTop: '16px' }}>
-                <h4>组件信息:</h4>
+                <h4>Component Info:</h4>
                 <pre
                   style={{
                     background: 'var(--Colors-Use-Neutral-Bg)',
@@ -742,11 +742,11 @@ function withRouteToPage(WrappedComponent) {
                     borderRadius: '4px',
                   }}
                 >
-                  组件名称: {WrappedComponent?.name || WrappedComponent?.displayName || '未知组件'}
+                  Component Name: {WrappedComponent?.name || WrappedComponent?.displayName || 'Unknown Component'}
                 </pre>
               </div>
               <div style={{ marginTop: '16px' }}>
-                <h4>传入参数:</h4>
+                <h4>Props:</h4>
                 <pre
                   style={{
                     background: 'var(--Colors-Use-Neutral-Bg)',
@@ -772,7 +772,7 @@ function withRouteToPage(WrappedComponent) {
                   cursor: 'pointer',
                 }}
               >
-                重试
+                Retry
               </button>
             </div>
           )
@@ -1082,7 +1082,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
     return [
       {
         page: undefined,
-        label: '代码审计',
+        label: 'Code Audit',
         labelUi: 'YakitRoute.codeAudit',
         children: [
           {
@@ -1117,7 +1117,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
       },
       {
         page: undefined,
-        label: '数据库',
+        label: 'Database',
         labelUi: 'YakitRoute.database',
         children: [{ page: YakitRoute.DB_Report, ...YakitRouteToPageInfo[YakitRoute.DB_Report] }],
       },
@@ -1139,7 +1139,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
       },
       {
         page: undefined,
-        label: '数据库',
+        label: 'Database',
         labelUi: 'YakitRoute.database',
         children: [
           {
@@ -1162,7 +1162,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
         return [
           {
             page: undefined,
-            label: '渗透测试',
+            label: 'Penetration Testing',
             labelUi: 'YakitRoute.penTest',
             children: [
               {
@@ -1193,7 +1193,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
           },
           {
             page: undefined,
-            label: '安全工具',
+            label: 'Security Tools',
             labelUi: 'YakitRoute.securityTools',
             children: [
               {
@@ -1203,20 +1203,20 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
               { page: YakitRoute.PoC, ...YakitRouteToPageInfo[YakitRoute.PoC] },
               {
                 page: YakitRoute.Plugin_OP,
-                label: '子域名收集',
+                label: 'Subdomain Collection',
                 labelUi: 'YakitRoute.subdomainCollection',
                 yakScripName: ResidentPluginName.SubDomainCollection,
               },
               {
                 page: YakitRoute.Plugin_OP,
-                label: '基础爬虫',
+                label: 'Basic Crawler',
                 labelUi: 'YakitRoute.basicCrawler',
                 yakScripName: ResidentPluginName.BasicCrawler,
               },
               { page: YakitRoute.Space_Engine, ...YakitRouteToPageInfo[YakitRoute.Space_Engine] },
               {
                 page: undefined,
-                label: '爆破与未授权检测',
+                label: 'Brute Force & Unauthorized Check',
                 labelUi: 'YakitRoute.bruteForceAndUnauthorizedCheck',
                 children: [
                   {
@@ -1225,7 +1225,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
                   },
                   {
                     page: YakitRoute.Plugin_OP,
-                    label: '目录扫描',
+                    label: 'Directory Scan',
                     labelUi: 'YakitRoute.directoryScan',
                     yakScripName: ResidentPluginName.DirectoryScanning,
                   },
@@ -1235,7 +1235,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
           },
           {
             page: undefined,
-            label: '插件',
+            label: 'Plugins',
             labelUi: 'YakitRoute.plugin',
             children: [
               {
@@ -1250,12 +1250,12 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
           },
           {
             page: undefined,
-            label: '反连',
+            label: 'Reverse Connection',
             labelUi: 'YakitRoute.reverseConnection',
             children: [
               {
                 page: undefined,
-                label: '反连触发器',
+                label: 'Reverse Triggers',
                 labelUi: 'YakitRoute.reverseTrigger',
                 children: [
                   {
@@ -1295,7 +1295,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
           },
           {
             page: undefined,
-            label: '数据库',
+            label: 'Database',
             labelUi: 'YakitRoute.database',
             children: [
               {
@@ -1321,7 +1321,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
         return [
           {
             page: undefined,
-            label: '安全工具',
+            label: 'Security Tools',
             labelUi: 'YakitRoute.securityTools',
             children: [
               {
@@ -1331,20 +1331,20 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
               { page: YakitRoute.PoC, ...YakitRouteToPageInfo[YakitRoute.PoC] },
               {
                 page: YakitRoute.Plugin_OP,
-                label: '子域名收集',
+                label: 'Subdomain Collection',
                 labelUi: 'YakitRoute.subdomainCollection',
                 yakScripName: ResidentPluginName.SubDomainCollection,
               },
               {
                 page: YakitRoute.Plugin_OP,
-                label: '基础爬虫',
+                label: 'Basic Crawler',
                 labelUi: 'YakitRoute.basicCrawler',
                 yakScripName: ResidentPluginName.BasicCrawler,
               },
               { page: YakitRoute.Space_Engine, ...YakitRouteToPageInfo[YakitRoute.Space_Engine] },
               {
                 page: undefined,
-                label: '爆破与未授权检测',
+                label: 'Brute Force & Unauthorized Check',
                 labelUi: 'YakitRoute.bruteForceAndUnauthorizedCheck',
                 children: [
                   {
@@ -1353,7 +1353,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
                   },
                   {
                     page: YakitRoute.Plugin_OP,
-                    label: '目录扫描',
+                    label: 'Directory Scan',
                     labelUi: 'YakitRoute.directoryScan',
                     yakScripName: ResidentPluginName.DirectoryScanning,
                   },
@@ -1363,7 +1363,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
           },
           {
             page: undefined,
-            label: '渗透测试',
+            label: 'Penetration Testing',
             labelUi: 'YakitRoute.penTest',
             children: [
               {
@@ -1394,7 +1394,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
           },
           {
             page: undefined,
-            label: '插件',
+            label: 'Plugins',
             labelUi: 'YakitRoute.plugin',
             children: [
               {
@@ -1409,7 +1409,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
           },
           {
             page: undefined,
-            label: '数据库',
+            label: 'Database',
             labelUi: 'YakitRoute.database',
             children: [
               {
@@ -1439,7 +1439,7 @@ export const getPublicRouteMenu = (softMode: SoftMode) => {
 export const PublicCommonPlugins: PublicRouteMenuProps[] = [
   {
     page: undefined,
-    label: '基础工具',
+    label: 'Basic Tools',
     children: [
       'web登录页面用户名密码爆破',
       '基础爬虫',
@@ -1454,7 +1454,7 @@ export const PublicCommonPlugins: PublicRouteMenuProps[] = [
   },
   {
     page: undefined,
-    label: '子域名收集',
+    label: 'Subdomain Collection',
     children: ['子域名收集&漏洞扫描', 'IP批量查询', '主动指纹探测', 'ICP备案查询', '瞅一下'].map((item) => {
       return { page: YakitRoute.Plugin_OP, label: item, yakScripName: item }
     }),
@@ -1630,7 +1630,7 @@ export const getExtraMenu: (softMode: SoftMode) => ExtraMenuItem[] = (softMode) 
         return [
           {
             page: undefined,
-            label: '更多',
+            label: 'More',
             labelUi: 'YakitButton.more',
             children: [
               {
@@ -1643,7 +1643,7 @@ export const getExtraMenu: (softMode: SoftMode) => ExtraMenuItem[] = (softMode) 
               },
               {
                 page: undefined,
-                label: '反连',
+                label: 'Reverse Connection',
                 labelUi: 'YakitRoute.reverseConnection',
                 children: [
                   {
@@ -1674,7 +1674,7 @@ export const getExtraMenu: (softMode: SoftMode) => ExtraMenuItem[] = (softMode) 
               },
               {
                 page: undefined,
-                label: '安全工具',
+                label: 'Security Tools',
                 labelUi: 'YakitRoute.securityTools',
                 children: [
                   {
@@ -1684,20 +1684,20 @@ export const getExtraMenu: (softMode: SoftMode) => ExtraMenuItem[] = (softMode) 
                   { page: YakitRoute.PoC, ...YakitRouteToPageInfo[YakitRoute.PoC] },
                   {
                     page: YakitRoute.Plugin_OP,
-                    label: '子域名收集',
+                    label: 'Subdomain Collection',
                     labelUi: 'YakitRoute.subdomainCollection',
                     yakScripName: ResidentPluginName.SubDomainCollection,
                   },
                   {
                     page: YakitRoute.Plugin_OP,
-                    label: '基础爬虫',
+                    label: 'Basic Crawler',
                     labelUi: 'YakitRoute.basicCrawler',
                     yakScripName: ResidentPluginName.BasicCrawler,
                   },
                   { page: YakitRoute.Space_Engine, ...YakitRouteToPageInfo[YakitRoute.Space_Engine] },
                   {
                     page: undefined,
-                    label: '爆破与未授权检测',
+                    label: 'Brute Force & Unauthorized Check',
                     labelUi: 'YakitRoute.bruteForceAndUnauthorizedCheck',
                     children: [
                       {
@@ -1706,7 +1706,7 @@ export const getExtraMenu: (softMode: SoftMode) => ExtraMenuItem[] = (softMode) 
                       },
                       {
                         page: YakitRoute.Plugin_OP,
-                        label: '目录扫描',
+                        label: 'Directory Scan',
                         labelUi: 'YakitRoute.directoryScan',
                         yakScripName: ResidentPluginName.DirectoryScanning,
                       },
@@ -1716,7 +1716,7 @@ export const getExtraMenu: (softMode: SoftMode) => ExtraMenuItem[] = (softMode) 
               },
               {
                 page: undefined,
-                label: '数据库',
+                label: 'Database',
                 labelUi: 'YakitRoute.database',
                 children: [
                   {
@@ -1754,12 +1754,12 @@ export const getExtraMenu: (softMode: SoftMode) => ExtraMenuItem[] = (softMode) 
           getVulinboxMenuItem(),
           {
             page: undefined,
-            label: '更多',
+            label: 'More',
             labelUi: 'YakitButton.more',
             children: [
               {
                 page: undefined,
-                label: '反连',
+                label: 'Reverse Connection',
                 labelUi: 'YakitRoute.reverseConnection',
                 children: [
                   {
@@ -2091,7 +2091,7 @@ export const PrivateExpertRouteMenu: PrivateRouteMenuProps[] = isIRify()
   ? [
       {
         page: undefined,
-        label: '代码审计',
+        label: 'Code Audit',
         labelUi: 'YakitRoute.codeAudit',
         children: [
           PrivateAllMenus[YakitRoute.YakRunner_Project_Manager],
@@ -2105,7 +2105,7 @@ export const PrivateExpertRouteMenu: PrivateRouteMenuProps[] = isIRify()
       },
       {
         page: undefined,
-        label: '数据库',
+        label: 'Database',
         labelUi: 'YakitRoute.database',
         children: routeToChildren([YakitRoute.DB_Report]),
       },
@@ -2118,19 +2118,19 @@ export const PrivateExpertRouteMenu: PrivateRouteMenuProps[] = isIRify()
   : [
       {
         page: undefined,
-        label: '手工渗透',
+        label: 'Manual Pen Test',
         labelUi: 'YakitRoute.manualPenTest',
         children: routeToChildren([YakitRoute.MITMHacker, YakitRoute.HTTPFuzzer, YakitRoute.WebsocketFuzzer]),
       },
       {
         page: undefined,
-        label: '安全工具',
+        label: 'Security Tools',
         labelUi: 'YakitRoute.securityTools',
         children: [
           PrivateAllMenus[YakitRoute.Mod_Brute],
           {
             page: YakitRoute.Plugin_OP,
-            label: '基础爬虫',
+            label: 'Basic Crawler',
             icon: getFixedPluginIcon(ResidentPluginName.BasicCrawler),
             hoverIcon: getFixedPluginHoverIcon(ResidentPluginName.BasicCrawler),
             describe: getFixedPluginDescribe(ResidentPluginName.BasicCrawler),
@@ -2140,7 +2140,7 @@ export const PrivateExpertRouteMenu: PrivateRouteMenuProps[] = isIRify()
           PrivateAllMenus[YakitRoute.Mod_ScanPort],
           {
             page: YakitRoute.Plugin_OP,
-            label: '子域名收集',
+            label: 'Subdomain Collection',
             icon: getFixedPluginIcon(ResidentPluginName.SubDomainCollection),
             hoverIcon: getFixedPluginHoverIcon(ResidentPluginName.SubDomainCollection),
             describe: getFixedPluginDescribe(ResidentPluginName.SubDomainCollection),
@@ -2148,7 +2148,7 @@ export const PrivateExpertRouteMenu: PrivateRouteMenuProps[] = isIRify()
           },
           {
             page: YakitRoute.Plugin_OP,
-            label: '目录扫描',
+            label: 'Directory Scan',
             icon: getFixedPluginIcon(ResidentPluginName.DirectoryScanning),
             hoverIcon: getFixedPluginHoverIcon(ResidentPluginName.DirectoryScanning),
             describe: getFixedPluginDescribe(ResidentPluginName.DirectoryScanning),
@@ -2158,19 +2158,19 @@ export const PrivateExpertRouteMenu: PrivateRouteMenuProps[] = isIRify()
       },
       {
         page: undefined,
-        label: '专项漏洞检测',
+        label: 'Targeted Vulnerability Scan',
         labelUi: 'YakitRoute.vulnTargetedScan',
         children: routeToChildren([YakitRoute.PoC]),
       },
       {
         page: undefined,
-        label: '插件',
+        label: 'Plugins',
         labelUi: 'YakitRoute.plugin',
         children: routeToChildren([YakitRoute.Plugin_Hub, YakitRoute.BatchExecutorPage]),
       },
       {
         page: undefined,
-        label: '反连',
+        label: 'Reverse Connection',
         labelUi: 'YakitRoute.reverseConnection',
         children: routeToChildren([
           YakitRoute.ShellReceiver,
@@ -2183,13 +2183,13 @@ export const PrivateExpertRouteMenu: PrivateRouteMenuProps[] = isIRify()
       },
       {
         page: undefined,
-        label: '数据处理',
+        label: 'Data Processing',
         labelUi: 'YakitRoute.dataProcessing',
         children: routeToChildren([YakitRoute.Codec, YakitRoute.DataCompare]),
       },
       {
         page: undefined,
-        label: '数据库',
+        label: 'Database',
         labelUi: 'YakitRoute.database',
         children: routeToChildren([
           YakitRoute.DB_Report,
@@ -2215,13 +2215,13 @@ export const PrivateExpertRouteMenu: PrivateRouteMenuProps[] = isIRify()
 export const PrivateScanRouteMenu: PrivateRouteMenuProps[] = [
   {
     page: undefined,
-    label: '安全工具',
+    label: 'Security Tools',
     labelUi: 'YakitRoute.securityTools',
     children: [
       PrivateAllMenus[YakitRoute.Mod_Brute],
       {
         page: YakitRoute.Plugin_OP,
-        label: '基础爬虫',
+        label: 'Basic Crawler',
         icon: getFixedPluginIcon(ResidentPluginName.BasicCrawler),
         hoverIcon: getFixedPluginHoverIcon(ResidentPluginName.BasicCrawler),
         describe: getFixedPluginDescribe(ResidentPluginName.BasicCrawler),
@@ -2231,7 +2231,7 @@ export const PrivateScanRouteMenu: PrivateRouteMenuProps[] = [
       PrivateAllMenus[YakitRoute.Mod_ScanPort],
       {
         page: YakitRoute.Plugin_OP,
-        label: '子域名收集',
+        label: 'Subdomain Collection',
         icon: getFixedPluginIcon(ResidentPluginName.SubDomainCollection),
         hoverIcon: getFixedPluginHoverIcon(ResidentPluginName.SubDomainCollection),
         describe: getFixedPluginDescribe(ResidentPluginName.SubDomainCollection),
@@ -2239,7 +2239,7 @@ export const PrivateScanRouteMenu: PrivateRouteMenuProps[] = [
       },
       {
         page: YakitRoute.Plugin_OP,
-        label: '目录扫描',
+        label: 'Directory Scan',
         icon: getFixedPluginIcon(ResidentPluginName.DirectoryScanning),
         hoverIcon: getFixedPluginHoverIcon(ResidentPluginName.DirectoryScanning),
         describe: getFixedPluginDescribe(ResidentPluginName.DirectoryScanning),
@@ -2249,25 +2249,25 @@ export const PrivateScanRouteMenu: PrivateRouteMenuProps[] = [
   },
   {
     page: undefined,
-    label: '专项漏洞检测',
+    label: 'Targeted Vulnerability Scan',
     labelUi: 'YakitRoute.vulnTargetedScan',
     children: routeToChildren([YakitRoute.PoC]),
   },
   {
     page: undefined,
-    label: '插件',
+    label: 'Plugins',
     labelUi: 'YakitRoute.plugin',
     children: routeToChildren([YakitRoute.Plugin_Hub, YakitRoute.BatchExecutorPage]),
   },
   {
     page: undefined,
-    label: '数据处理',
+    label: 'Data Processing',
     labelUi: 'YakitRoute.dataProcessing',
     children: routeToChildren([YakitRoute.Codec, YakitRoute.DataCompare]),
   },
   {
     page: undefined,
-    label: '数据库',
+    label: 'Database',
     labelUi: 'YakitRoute.database',
     children: routeToChildren([
       YakitRoute.DB_Report,
@@ -2293,7 +2293,7 @@ export const PrivateScanRouteMenu: PrivateRouteMenuProps[] = [
 export const PrivateSimpleRouteMenu: PrivateRouteMenuProps[] = [
   {
     page: undefined,
-    label: '安全检测',
+    label: 'Security Check',
     labelUi: 'YakitRoute.securityCheck',
     children: [
       {
@@ -2306,7 +2306,7 @@ export const PrivateSimpleRouteMenu: PrivateRouteMenuProps[] = [
   },
   {
     page: undefined,
-    label: '插件',
+    label: 'Plugins',
     labelUi: 'YakitRoute.plugin',
     children: [
       {
@@ -2325,7 +2325,7 @@ export const PrivateSimpleRouteMenu: PrivateRouteMenuProps[] = [
   },
   {
     page: undefined,
-    label: '数据库',
+    label: 'Database',
     labelUi: 'YakitRoute.database',
     children: [
       {

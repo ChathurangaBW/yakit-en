@@ -19,7 +19,7 @@ function register(manager, mainWindow) {
     return manager.create({
       route: ROUTE,
       singletonKey: SINGLETON_KEY,
-      title: '引擎 Console',
+      title: 'Engine Console',
     })
   })
 

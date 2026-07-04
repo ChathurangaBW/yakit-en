@@ -1,19 +1,19 @@
 {
   "DNSLogPage": {
-    "generateAvailableDomainFirst": "请先生成可用域名",
+    "generateAvailableDomainFirst": "Please generate an available domain first",
     "title": "DNSLog",
-    "subtitle": "使用 {{edition}} 自带的 DNSLog 反连服务",
-    "builtIn": "内置",
-    "custom": "自定义",
-    "builtInDnsLog": "内置DNSLog",
-    "useLocal": "使用本地",
-    "generateDomain": "生成一个可用域名",
-    "dnslogPlugin": "DNSLog插件",
-    "activeDomain": "当前激活域名为：",
-    "onlyARecord": "只看A记录",
-    "autoRefreshRecords": "自动刷新记录",
-    "domain": "域名",
-    "type": "类型",
-    "remoteIP": "远端IP"
+    "subtitle": "Use the built-in DNSLog callback service from {{edition}}",
+    "builtIn": "Built-in",
+    "custom": "Custom",
+    "builtInDnsLog": "Built-in DNSLog",
+    "useLocal": "Use Local",
+    "generateDomain": "Generate an available domain",
+    "dnslogPlugin": "DNSLog Plugin",
+    "activeDomain": "Active domain:",
+    "onlyARecord": "Only A records",
+    "autoRefreshRecords": "Auto refresh records",
+    "domain": "Domain",
+    "type": "Type",
+    "remoteIP": "Remote IP"
   }
 }
