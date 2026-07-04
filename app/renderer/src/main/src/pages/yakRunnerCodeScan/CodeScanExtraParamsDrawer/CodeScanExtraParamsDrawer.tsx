@@ -38,17 +38,21 @@ const CodeScanExtraParamsDrawer: React.FC<CodeScanExtraParamsDrawerProps> = Reac
       visible={visible}
       onClose={onClose}
       width="40%"
-      title="额外参数"
+      title="Additional Parameters"
     >
       <Form labelWrap={true} labelCol={{ span: 6 }} wrapperCol={{ span: 18 }} form={form} style={{ marginBottom: 8 }}>
-        <Form.Item label="并发" name="Concurrency" initialValue={5}>
+        <Form.Item label="Concurrency" name="Concurrency" initialValue={5}>
           <YakitInputNumber type="horizontal" min={1} />
         </Form.Item>
-        <Form.Item label="内存扫描" name="Memory" tooltip="内存扫描只会存储漏洞，不会存储过程数据">
-          <YakitSwitch size="large" checkedChildren="开" unCheckedChildren="关" />
+        <Form.Item
+          label="Memory Scan"
+          name="Memory"
+          tooltip="Memory scan stores only vulnerabilities and does not store process data"
+        >
+          <YakitSwitch size="large" checkedChildren="On" unCheckedChildren="Off" />
         </Form.Item>
       </Form>
-      <div className={styles['to-end']}>已经到底啦～</div>
+      <div className={styles['to-end']}>You have reached the end.</div>
     </YakitDrawer>
   )
 })
