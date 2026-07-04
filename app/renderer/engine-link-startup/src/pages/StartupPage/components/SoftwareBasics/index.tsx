@@ -17,16 +17,16 @@ const YAKIT_MODE_CONFIG: Record<
   }
 > = {
   classic: {
-    label: '经典模式',
-    desc: '该模式就是之前的菜单首页布局',
+    label: 'Classic Mode',
+    desc: 'The original menu and home layout',
   },
   securityExpert: {
-    label: '安全专家模式',
-    desc: '将菜单栏和固定页面调整为渗透常用功能，整体更简洁明了',
+    label: 'Security Expert Mode',
+    desc: 'Menu and fixed pages tuned for common penetration-testing workflows',
   },
   scan: {
-    label: '扫描模式',
-    desc: '将菜单栏和首页重点放在扫描性功能上，方便快捷',
+    label: 'Scan Mode',
+    desc: 'Menu and home focused on scanning features for quick access',
   },
 }
 
@@ -47,7 +47,7 @@ export const SoftwareBasics: React.FC<SoftwareBasicsProps> = React.memo((props) 
   return (
     <div className={styles['softwareBasics']}>
       <div className={styles['softwareBasics-item']}>
-        <div className={styles['softwareBasics-item-title']}>请选择您的主题</div>
+        <div className={styles['softwareBasics-item-title']}>Select Your Theme</div>
         <div className={styles['softwareBasics-item-cont']}>
           <div className={styles['softwareBasics-flex']}>
             <div
@@ -58,7 +58,7 @@ export const SoftwareBasics: React.FC<SoftwareBasicsProps> = React.memo((props) 
             >
               <img src={lightTheme} />
               <div className={styles['softwareBasics-flex']}>
-                <div className={styles['softwareBasics-theme-text']}>亮色</div>
+                <div className={styles['softwareBasics-theme-text']}>Light</div>
                 {softTheme === 'light' && <SolidCheckCircleIcon className={styles['CheckCircleIcon']} />}
               </div>
             </div>
@@ -70,7 +70,7 @@ export const SoftwareBasics: React.FC<SoftwareBasicsProps> = React.memo((props) 
             >
               <img src={darkTheme} />
               <div className={styles['softwareBasics-flex']}>
-                <div className={styles['softwareBasics-theme-text']}>暗色</div>
+                <div className={styles['softwareBasics-theme-text']}>Dark</div>
                 {softTheme === 'dark' && <SolidCheckCircleIcon className={styles['CheckCircleIcon']} />}
               </div>
             </div>
@@ -78,7 +78,7 @@ export const SoftwareBasics: React.FC<SoftwareBasicsProps> = React.memo((props) 
         </div>
       </div>
       <div className={styles['softwareBasics-item']}>
-        <div className={styles['softwareBasics-item-title']}>模式设置</div>
+        <div className={styles['softwareBasics-item-title']}>Mode Settings</div>
         <div className={styles['softwareBasics-item-cont']}>
           <div className={styles['softwareBasics-flex']}>
             {yakitSoftMode.map((mode) => (

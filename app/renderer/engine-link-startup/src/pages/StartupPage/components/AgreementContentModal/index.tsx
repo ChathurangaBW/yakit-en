@@ -68,7 +68,7 @@ export const AgreementContentModal: React.FC<AgrAndQSModalProps> = React.memo((p
                     </div>
                   )}
                 </div>
-                <span>用户协议</span>
+                <span>User Agreement</span>
               </div>
             ) : (
               <div
@@ -79,14 +79,14 @@ export const AgreementContentModal: React.FC<AgrAndQSModalProps> = React.memo((p
                 onMouseOut={() => setDisabled(true)}
                 onMouseDown={() => setIsTop(1)}
               >
-                <span className={styles['header-title']}>用户协议</span>
+                <span className={styles['header-title']}>User Agreement</span>
                 <div className={styles['close-wrapper']} onClick={() => setVisible(false)}>
                   <WinUIOpCloseSvgIcon className={styles['icon-style']} />
                 </div>
               </div>
             )}
             <div className={styles['modal-body']}>
-              <div className={styles['body-title']}>免责声明</div>
+              <div className={styles['body-title']}>Disclaimer</div>
               <div className={styles['body-content']}>
                 1. 本工具仅面向 <span className={styles['sign-content']}>合法授权</span>{' '}
                 的企业安全建设行为与个人学习行为，如您需要测试本工具的可用性，请自行搭建靶机环境。

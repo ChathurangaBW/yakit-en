@@ -218,22 +218,22 @@ export const DownloadYaklang: React.FC<DownloadYaklangProps> = React.memo((props
 
               <div className={styles['hint-right-wrapper']}>
                 <div className={classNames(styles['hint-right-download'], 'yakit-progress-wrapper')}>
-                  <div className={styles['hint-right-title']}>Yaklang 引擎下载中...</div>
+                  <div className={styles['hint-right-title']}>Downloading Yaklang Engine...</div>
                   <Progress
                     strokeColor="var(--Colors-Use-Main-Primary)"
                     trailColor="var(--Colors-Use-Neutral-Bg)"
                     percent={Math.floor((downloadProgress?.percent || 0) * 100)}
                   />
                   <div className={styles['download-info-wrapper']}>
-                    <div>剩余时间 : {(downloadProgress?.time.remaining || 0).toFixed(2)}s</div>
+                    <div>Remaining: {(downloadProgress?.time.remaining || 0).toFixed(2)}s</div>
                     <div className={styles['divider-wrapper']}>
                       <div className={styles['divider-style']}></div>
                     </div>
-                    <div>耗时 : {(downloadProgress?.time.elapsed || 0).toFixed(2)}s</div>
+                    <div>Elapsed: {(downloadProgress?.time.elapsed || 0).toFixed(2)}s</div>
                     <div className={styles['divider-wrapper']}>
                       <div className={styles['divider-style']}></div>
                     </div>
-                    <div>下载速度 : {((downloadProgress?.speed || 0) / 1000000).toFixed(2)}M/s</div>
+                    <div>Speed: {((downloadProgress?.speed || 0) / 1000000).toFixed(2)}M/s</div>
                   </div>
                   <div className={styles['download-btn']}>
                     {isFailed && (
@@ -242,11 +242,11 @@ export const DownloadYaklang: React.FC<DownloadYaklangProps> = React.memo((props
                         type="outline2"
                         onClick={() => (yaklangSpecifyVersion ? downloadYak() : fetchVersion())}
                       >
-                        重试
+                        Retry
                       </YakitButton>
                     )}
                     <YakitButton size="max" type="outline2" onClick={() => onClose(false)}>
-                      取消
+                      Cancel
                     </YakitButton>
                   </div>
                 </div>

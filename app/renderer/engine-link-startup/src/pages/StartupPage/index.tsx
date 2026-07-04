@@ -88,7 +88,7 @@ export const StartupPage: React.FC = () => {
   /** 操作系统 */
   const [system, setSystem] = useState<System>('Darwin')
   /** 本地引擎自检输出日志 */
-  const [checkLog, setCheckLog] = useState<string[]>(['正在进行环境检查...'])
+  const [checkLog, setCheckLog] = useState<string[]>(['Checking environment...'])
   /** 引擎是否安装 */
   const isEngineInstalled = useRef<boolean>(false)
   /** 内置引擎版本号 */
@@ -151,7 +151,7 @@ export const StartupPage: React.FC = () => {
   const handleBuiltInCheck = useMemoizedFn(() => {
     grpcInitCVEDatabase()
       .then(() => {
-        yakitNotify('info', '漏洞信息库自检完成')
+        yakitNotify('info', 'Vulnerability database check complete')
       })
       .catch((e: any) => {})
   })
@@ -276,21 +276,21 @@ export const StartupPage: React.FC = () => {
   /** 获取上次连接引擎的模式 */
   const handleLinkEngineMode = useMemoizedFn(() => {
     debugToPrintLog(`------ 获取上次连接引擎的模式 ------`)
-    setCheckLog(['获取上次连接引擎的模式...'])
+    setCheckLog(['Fetching last engine connection mode...'])
     getLocalValue(LocalGVS.YaklangEngineMode).then((val: YaklangEngineMode) => {
       switch (val) {
         case 'remote':
-          setCheckLog((arr) => arr.concat(['获取连接模式成功——远程模式']))
+          setCheckLog((arr) => arr.concat(['Connection mode: Remote']))
           debugToPrintLog(`------ 连接引擎的模式: remote ------`)
           handleChangeLinkMode(true)
           return
         case 'local':
-          setCheckLog((arr) => arr.concat(['获取连接模式成功——本地模式']))
+          setCheckLog((arr) => arr.concat(['Connection mode: Local']))
           debugToPrintLog(`------ 连接引擎的模式: local ------`)
           handleChangeLinkMode()
           return
         default:
-          setCheckLog((arr) => arr.concat(['未获取到连接模式-默认(本地)模式']))
+          setCheckLog((arr) => arr.concat(['No saved mode found — defaulting to Local']))
           debugToPrintLog(`------ 连接引擎的模式: local ------`)
           handleChangeLinkMode()
           return
@@ -348,15 +348,15 @@ export const StartupPage: React.FC = () => {
         setLinkLocalEngine()
         return
       }
-      setCheckLog(['检查本地是否已安装引擎...'])
-      setCheckLog(['本地已安装引擎，准备环境检查中...'])
+      setCheckLog(['Checking for local engine installation...'])
+      setCheckLog(['Local engine found, preparing environment check...'])
       setTimeout(() => {
         setLinkLocalEngine()
       }, 500)
     } else {
       debugToPrintLog(`------ 启动无本地引擎逻辑 ------`)
-      setCheckLog(['检查本地是否已安装引擎...'])
-      setCheckLog(['本地没有引擎文件...'])
+      setCheckLog(['Checking for local engine installation...'])
+      setCheckLog(['No local engine found...'])
       setTimeout(() => {
         safeSetYakitStatus(getBuildInEngineVersion() ? 'install' : 'installNetWork')
         onSetEngineMode(undefined)

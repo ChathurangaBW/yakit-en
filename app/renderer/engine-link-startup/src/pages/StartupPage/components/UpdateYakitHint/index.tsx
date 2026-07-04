@@ -61,7 +61,7 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
     grpcDownloadYakit(version, true)
       .then(() => {
         if (isBreak.current) return
-        yakitNotify('success', '下载完毕')
+        yakitNotify('success', 'Download complete')
         setYakitProgress((old) => {
           if (!old) return undefined
           return {
@@ -77,7 +77,7 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
         setStatus('installed')
       })
       .catch((e: any) => {
-        !isBreak.current && yakitNotify('error', `下载失败: ${e}`)
+        !isBreak.current && yakitNotify('error', `Download failed: ${e}`)
         setYakitProgress(undefined)
         setStatus('install')
       })
@@ -105,16 +105,16 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
   })
 
   const title = useMemo(() => {
-    if (status === 'install') return `${getReleaseEditionName()} 下载中...`
-    if (status === 'installed') return `${getReleaseEditionName()} 下载成功`
-    return '异常错误，请关闭!'
+    if (status === 'install') return `${getReleaseEditionName()} Downloading...`
+    if (status === 'installed') return `${getReleaseEditionName()} Downloaded`
+    return 'Unexpected error, please close!'
   }, [status])
 
   const footerBtn = useMemo(() => {
     if (status === 'install') {
       return (
         <YakitButton loading={breakLoading} size="max" type="outline2" onClick={yakitBreak}>
-          取消
+          Cancel
         </YakitButton>
       )
     }
@@ -123,10 +123,10 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
       return (
         <>
           <YakitButton size="max" type="outline2" onClick={handleCancel}>
-            取消
+            Cancel
           </YakitButton>
           <YakitButton size="max" onClick={yakitUpdate}>
-            确定
+            Confirm
           </YakitButton>
         </>
       )
@@ -139,7 +139,9 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
       <div className={styles['update-yakit-hint']}>
         {status === 'installed' && (
           <div className={styles['content']}>
-            <div className={styles['hint-right-content']}>安装需关闭软件，双击安装包即可安装完成，是否立即安装？</div>
+            <div className={styles['hint-right-content']}>
+              The software must be closed to install. Double-click the installer to complete. Install now?
+            </div>
           </div>
         )}
 
@@ -151,12 +153,12 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
               percent={Math.floor((yakitProgress?.percent || 0) * 100)}
             />
             <div className={styles['download-info-wrapper']}>
-              <div>剩余时间 : {(yakitProgress?.time.remaining || 0).toFixed(2)}s</div>
+              <div>Remaining: {(yakitProgress?.time.remaining || 0).toFixed(2)}s</div>
               <div className={styles['divider-wrapper']}></div>
-              <div>耗时 : {(yakitProgress?.time.elapsed || 0).toFixed(2)}s</div>
+              <div>Elapsed: {(yakitProgress?.time.elapsed || 0).toFixed(2)}s</div>
               <div className={styles['divider-wrapper']}></div>
               <div>
-                下载速度 : {((yakitProgress?.speed || 0) / 1000000).toFixed(2)}
+                Speed: {((yakitProgress?.speed || 0) / 1000000).toFixed(2)}
                 M/s
               </div>
             </div>

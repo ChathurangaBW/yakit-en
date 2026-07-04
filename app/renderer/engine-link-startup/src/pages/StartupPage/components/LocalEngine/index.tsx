@@ -62,12 +62,12 @@ export const LocalEngine: React.FC<LocalEngineProps> = memo(
       }
 
       debugToPrintLog(`------ 开始执行 check ------`)
-      setLog(['开始检查随机密码模式中...'])
+      setLog(['Checking secret password mode...'])
       try {
         const res = await grpcCheckAllowSecretLocal({ port, softwareVersion: FetchSoftwareVersion() })
         setRestartLoading(false)
         if (res.ok && res.status === 'success') {
-          setLog((arr) => arr.concat(['检查通过，已支持随机密码模式']))
+          setLog((arr) => arr.concat(['Check passed, secret password mode supported']))
           setYakitStatus('')
           allowSecretLocalJson.current = res.json
           handlePreCheckForLinkEngine(checkVersion)
@@ -76,41 +76,43 @@ export const LocalEngine: React.FC<LocalEngineProps> = memo(
         allowSecretLocalJson.current = null
         switch (res.status) {
           case 'timeout':
-            setLog((arr) => arr.concat(['命令执行超时，可查看日志详细信息...']))
+            setLog((arr) => arr.concat(['Command timed out, check logs for details...']))
             setYakitStatus('check_timeout')
             break
           case 'call_error':
-            setLog((arr) => arr.concat(['引擎连接超时，可查看日志详细信息...']))
+            setLog((arr) => arr.concat(['Engine connection timed out, check logs for details...']))
             setYakitStatus('check_timeout')
             break
           case 'old_version':
             setLog((arr) =>
-              arr.concat([`引擎版本低，可点击${buildInEngineVersion ? '重置引擎版本更新...' : '下载引擎更新...'}`]),
+              arr.concat([
+                `Engine version too old, click ${buildInEngineVersion ? 'Reset Engine Version to update...' : 'Download Engine to update...'}`,
+              ]),
             )
             setYakitStatus('old_version')
             break
           case 'port_occupied':
-            setLog((arr) => arr.concat(['端口不可用，可查看日志报错信息进行处理...']))
+            setLog((arr) => arr.concat(['Port unavailable, check logs for details...']))
             setYakitStatus('port_occupied_prev')
             break
           case 'antivirus_blocked':
-            setLog((arr) => arr.concat(['被杀软拦截，可将应用加入白名单后重启...']))
+            setLog((arr) => arr.concat(['Blocked by antivirus, whitelist the app and restart...']))
             setYakitStatus('antivirus_blocked')
             break
           case 'build_yak_error':
           case 'dial_error':
-            setLog((arr) => arr.concat(['连接引擎出现问题，可点击重置引擎版本更新...']))
+            setLog((arr) => arr.concat(['Engine connection issue, click to reset engine version...']))
             setYakitStatus('skipAgreement_Install')
             break
           case 'database_error':
-            setLog((arr) => arr.concat(['检测到本地数据库出现错误，可点击修复进行处理...']))
+            setLog((arr) => arr.concat(['Local database error detected, click Repair Database...']))
             setYakitStatus('database_error')
             break
           default:
             setLog((arr) =>
               arr.concat([
-                '无法启动，可将日志信息发送给工作人员处理...',
-                `[Reason]：${res.status}：${res.message || '无'}`,
+                'Unable to start. Please send the logs to the support team.',
+                `[Reason]: ${res.status}: ${res.message || 'none'}`,
               ]),
             )
             setYakitStatus('allow-secret-error')
@@ -138,14 +140,14 @@ export const LocalEngine: React.FC<LocalEngineProps> = memo(
 
       debugToPrintLog(`------ 开始执行初始化启动-连接引擎的前置版本检查 ------`)
       if (SystemInfo.isDev) {
-        setLog(['开发环境，直接连接引擎'])
+        setLog(['Dev environment, connecting to engine directly'])
         startYakEngine()
       } else if (checkVersion) {
         // SE 版本不进行 yakit 更新检查，直接检查引擎和内置的版本
         if (isEnpriTraceAgent()) {
           handleCheckEngineVersion()
         } else {
-          setLog(['检查软件是否有更新...'])
+          setLog(['Checking for software updates...'])
           handleCheckYakitLatestVersion()
         }
       } else {

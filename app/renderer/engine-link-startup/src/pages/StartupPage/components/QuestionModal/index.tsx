@@ -107,7 +107,7 @@ export const QuestionModal: React.FC<AgrAndQSModalProps> = React.memo((props) =>
                     </div>
                   )}
                 </div>
-                <span>Yak 核心引擎下载链接</span>
+                <span>Yak Core Engine Download Links</span>
               </div>
             ) : (
               <div
@@ -118,7 +118,7 @@ export const QuestionModal: React.FC<AgrAndQSModalProps> = React.memo((props) =>
                 onMouseOut={() => setDisabled(true)}
                 onMouseDown={() => setIsTop(2)}
               >
-                <span className={styles['header-title']}>Yak 核心引擎下载链接</span>
+                <span className={styles['header-title']}>Yak Core Engine Download Links</span>
                 <div className={styles['close-wrapper']} onClick={() => setVisible(false)}>
                   <WinUIOpCloseSvgIcon className={styles['icon-style']} />
                 </div>
@@ -126,16 +126,18 @@ export const QuestionModal: React.FC<AgrAndQSModalProps> = React.memo((props) =>
             )}
             <div className={styles['modal-body']}>
               <div className={styles['body-hint']}>
-                <span className={styles['hint-sign']}>如遇网络问题无法下载，可手动下载安装：</span>
+                <span className={styles['hint-sign']}>
+                  If download fails due to network issues, you can download manually:
+                </span>
                 <br />
-                Windows 用户可以把引擎放在 安装目录(一般为%HOME%)/yakit-projects/yak-engine/yak.exe 即可识别 MacOS /
-                Linux 用户可以把引擎放在 ~/yakit-projects/yak-engine/yak 即可识别
+                Windows: place the engine at %HOME%/yakit-projects/yak-engine/yak.exe — macOS/Linux: place it at
+                ~/yakit-projects/yak-engine/yak
               </div>
 
               <div className={styles['body-link']}>
                 <div className={styles['link-opt']}>
                   <div style={{ width: 107 }} className={styles['link-title']}>
-                    Windows(x64)下载
+                    Windows (x64)
                   </div>
                   <div className={styles['link-style']}>
                     https://{ossDomain}/yak/{latestVersion || 'latest'}
@@ -147,7 +149,7 @@ export const QuestionModal: React.FC<AgrAndQSModalProps> = React.memo((props) =>
                 </div>
                 <div className={styles['link-opt']}>
                   <div style={{ width: 122 }} className={styles['link-title']}>
-                    MacOS(intel/m1)下载
+                    macOS (Intel/M1)
                   </div>
                   <div className={styles['link-style']}>
                     https://{ossDomain}/yak/{latestVersion || 'latest'}
@@ -159,7 +161,7 @@ export const QuestionModal: React.FC<AgrAndQSModalProps> = React.memo((props) =>
                 </div>
                 <div className={styles['link-opt']}>
                   <div style={{ width: 87 }} className={styles['link-title']}>
-                    Linux(x64)下载
+                    Linux (x64)
                   </div>
                   <div className={styles['link-style']}>
                     https://{ossDomain}/yak/{latestVersion || 'latest'}
