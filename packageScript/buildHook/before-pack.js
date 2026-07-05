@@ -1,4 +1,7 @@
 const packageJson = require('../../package.json')
+const fs = require('fs')
+
+const extraFileIfExists = (from, to) => (fs.existsSync(from) ? [{ from, to }] : [])
 
 module.exports = async function (context) {
   const isLegacy = process.env.THE_LEGACY == 'true'
@@ -31,10 +34,7 @@ module.exports = async function (context) {
         from: 'bins/flag.windows.txt',
         to: 'bins/flag.windows.txt',
       },
-      {
-        from: 'bins/yak_windows_amd64.zip',
-        to: 'bins/yak.zip',
-      },
+      ...extraFileIfExists('bins/yak_windows_amd64.zip', 'bins/yak.zip'),
       {
         from: 'LICENSE.md',
         to: 'LICENSE.md',
@@ -63,25 +63,13 @@ module.exports = async function (context) {
         linuxConfig.artifactName = `${artifactName}-${productVersion}-linux${
           isLegacy ? '-legacy' : ''
         }-arm64.${'${ext}'}`
-        linuxConfig.extraFiles = [
-          ...linuxExtraFiles,
-          {
-            from: 'bins/yak_linux_arm64.zip',
-            to: 'bins/yak.zip',
-          },
-        ]
+        linuxConfig.extraFiles = [...linuxExtraFiles, ...extraFileIfExists('bins/yak_linux_arm64.zip', 'bins/yak.zip')]
         break
       case 'x64':
         linuxConfig.artifactName = `${artifactName}-${productVersion}-linux${
           isLegacy ? '-legacy' : ''
         }-amd64.${'${ext}'}`
-        linuxConfig.extraFiles = [
-          ...linuxExtraFiles,
-          {
-            from: 'bins/yak_linux_amd64.zip',
-            to: 'bins/yak.zip',
-          },
-        ]
+        linuxConfig.extraFiles = [...linuxExtraFiles, ...extraFileIfExists('bins/yak_linux_amd64.zip', 'bins/yak.zip')]
         break
 
       default:
@@ -107,27 +95,15 @@ module.exports = async function (context) {
       case 'arm64':
         macConfig.extraFiles = [
           ...darwinExtraFiles,
-          {
-            from: 'bins/yak_darwin_arm64.zip',
-            to: 'bins/yak.zip',
-          },
-          {
-            from: 'bins/yak_darwin_arm64.sha256.txt',
-            to: 'bins/engine-sha256.txt',
-          },
+          ...extraFileIfExists('bins/yak_darwin_arm64.zip', 'bins/yak.zip'),
+          ...extraFileIfExists('bins/yak_darwin_arm64.sha256.txt', 'bins/engine-sha256.txt'),
         ]
         break
       case 'x64':
         macConfig.extraFiles = [
           ...darwinExtraFiles,
-          {
-            from: 'bins/yak_darwin_amd64.zip',
-            to: 'bins/yak.zip',
-          },
-          {
-            from: 'bins/yak_darwin_amd64.sha256.txt',
-            to: 'bins/engine-sha256.txt',
-          },
+          ...extraFileIfExists('bins/yak_darwin_amd64.zip', 'bins/yak.zip'),
+          ...extraFileIfExists('bins/yak_darwin_amd64.sha256.txt', 'bins/engine-sha256.txt'),
         ]
         break
 
