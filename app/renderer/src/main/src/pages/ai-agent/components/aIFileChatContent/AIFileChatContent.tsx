@@ -91,7 +91,7 @@ const AIFileChatContent: FC<AIFileChatContentProps> = ({ qs, setting, extraValue
       </div>
       {!!attachedFilePathList?.length && (
         <div className={styles.file}>
-          <div>相关操作文件</div>
+          <div>Related Files</div>
           <div className={styles['file-content']}>
             {attachedFilePathList.map((file) => {
               return (
@@ -116,20 +116,20 @@ const AIFileChatContent: FC<AIFileChatContentProps> = ({ qs, setting, extraValue
       )}
       {!!selectForges?.length &&
         renderList({
-          title: '相关智能体',
+          title: 'Related Agents',
           list: selectForges,
           type: 'forge',
         })}
 
       {!!selectTools?.length &&
         renderList({
-          title: '相关工具',
+          title: 'Related Tools',
           list: selectTools,
           type: 'tool',
         })}
       {!!selectKnowledgeBases?.length && (
         <div className={styles.file}>
-          <div>相关知识库</div>
+          <div>Related Knowledge Bases</div>
 
           <div className={styles['file-content']}>
             {selectKnowledgeBases.map((item) => {

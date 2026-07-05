@@ -1,4 +1,4 @@
-﻿const { app, BrowserWindow, dialog, nativeImage, globalShortcut, ipcMain, protocol, Menu } = require('electron')
+const { app, BrowserWindow, dialog, nativeImage, globalShortcut, ipcMain, protocol, Menu } = require('electron')
 const isDev = require('electron-is-dev')
 const path = require('path')
 const os = require('os')
@@ -551,7 +551,7 @@ function registerGlobalIPC() {
     safeSend(engineLinkWin, 'from-win', data)
   })
 
-  // win Remote连接通知 engineLink 更新 认证信息
+  // win 远程连接通知 engineLink 更新 认证信息
   ipcMain.handle('updateCredential', async (event, data) => {
     safeSend(engineLinkWin, 'from-win-updateCredential', data)
   })
@@ -567,7 +567,7 @@ function registerGlobalIPC() {
     app.exit(0)
   })
 
-  // ------------------- 软件Exit逻辑 -------------------
+  // ------------------- 软件退出逻辑 -------------------
   ipcMain.handle('app-exit', async (e, params) => {
     const { showCloseMessageBox, isIRify, isMemfit } = params
     const parentWindow = getActiveWindow()
@@ -591,11 +591,11 @@ function registerGlobalIPC() {
         .showMessageBox(parentWindow, {
           icon: nativeImage.createFromPath(path.join(__dirname, showIcon)),
           type: 'none',
-          title: 'Prompt',
+          title: 'Notice',
           defaultId: 0,
           cancelId: 3,
-          message: 'Are you sure you want to close?',
-          buttons: ['Minimize', 'Exit'],
+          message: 'Are you sure you want to close the application?',
+          buttons: ['Minimize', 'Exit Now'],
           checkboxLabel: 'Do not show this close confirmation again',
           checkboxChecked: false,
           noLink: true,
@@ -726,9 +726,9 @@ app.on('child-process-gone', async (_e, killed) => {
 })
 
 /**
- * ---------------- 全局Exit逻辑 ----------------
+ * ---------------- 全局退出逻辑 ----------------
  */
-// 这个Exit压根执行不到 win.on("close") 阻止了默认行为
+// 这个退出压根执行不到 win.on("close") 阻止了默认行为
 app.on('window-all-closed', () => {
   app.quit()
 })

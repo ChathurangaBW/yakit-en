@@ -470,7 +470,7 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
             checked={params.Filter.OnlyRisk}
             onChange={(e) => onCheckThan(e.target.checked)}
           />
-          <span className={styles['tip']}>大于0</span>
+          <span className={styles['tip']}>Greater than 0</span>
         </div>
       ),
     },
@@ -672,7 +672,7 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
           extra={
             <div className={styles['domainAsset-table-extra']}>
               <YakitInput.Search
-                placeholder="Search by keyword"
+                placeholder="Enter a keyword to search"
                 style={{ maxWidth: 200 }}
                 onSearch={updateData}
                 onPressEnter={updateData}

@@ -2,27 +2,27 @@
   <a href="https://yaklang.io/"><img src="imgs/head.jpg" style="width: 400px"/></a>
  <h2 align="center"> YAKIT-A Cyber Security ALL-IN-ONE Platform based on Yak language</h2>
 <p align="center">
-<img src="https://img.shields.io/github/issues-pr/yaklang/yakit">
-<a href="https://github.com/yaklang/yakit/releases"><img src="https://img.shields.io/github/downloads/yaklang/yakit/total">
-<a href="https://github.com/yaklang/yakit/graphs/contributors"><img src="https://img.shields.io/github/contributors-anon/yaklang/yakit">
-<a href="https://github.com/yaklang/yakit/releases/"><img src="https://img.shields.io/github/release/yaklang/yakit">
-<a href="https://github.com/yaklang/yakit/issues"><img src="https://img.shields.io/github/issues-raw/yaklang/yakit">
-<a href="https://github.com/yaklang/yakit/discussions"><img src="https://img.shields.io/github/stars/yaklang/yakit">
-<a href="https://github.com/yaklang/yakit/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/yaklang/yakit">
+<img src="https://img.shields.io/github/issues-pr/ChathurangaBW/yakit-en">
+<a href="https://github.com/ChathurangaBW/yakit-en/releases"><img src="https://img.shields.io/github/downloads/ChathurangaBW/yakit-en/total">
+<a href="https://github.com/ChathurangaBW/yakit-en/graphs/contributors"><img src="https://img.shields.io/github/contributors-anon/ChathurangaBW/yakit-en">
+<a href="https://github.com/ChathurangaBW/yakit-en/releases/"><img src="https://img.shields.io/github/release/ChathurangaBW/yakit-en">
+<a href="https://github.com/ChathurangaBW/yakit-en/issues"><img src="https://img.shields.io/github/issues-raw/ChathurangaBW/yakit-en">
+<a href="https://github.com/ChathurangaBW/yakit-en/discussions"><img src="https://img.shields.io/github/stars/ChathurangaBW/yakit-en">
+<a href="https://github.com/ChathurangaBW/yakit-en/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/ChathurangaBW/yakit-en">
 </p>
 
 <p align="center">
   <a href="https://yaklang.oss-cn-beijing.aliyuncs.com/yakit-technical-white-paper.pdf">Whitepaper</a> •
   <a href="https://yaklang.io/products/intro/">Official documentation</a> •
-  <a href="https://github.com/yaklang/yakit/issues">Issue feedback</a> •
+  <a href="https://github.com/ChathurangaBW/yakit-en/issues">Issue feedback</a> •
   <a href="https://yaklang.io/">Official website</a> •
   <a href="#Community">Community</a> •
   <a href="#Architecture">Architecture</a>
 </p>
 
 <p align="center">
- :book:Language： <a href="https://github.com/yaklang/yakit/blob/master/README-EN.md">English</a> •
-  <a href="https://github.com/yaklang/yakit/blob/master/README.md">中文</a>
+ :book:Language： <a href="https://github.com/ChathurangaBW/yakit-en/blob/master/README-EN.md">English</a> •
+  <a href="https://github.com/ChathurangaBW/yakit-en/blob/master/README.md">中文</a>
 </p>
 
 ---
@@ -194,4 +194,3 @@ If you have any illegal behavior when using this tool, you shall bear the corres
 Before installing and using this tool, please read carefully and fully understand the terms
 
 Unless you have fully read, fully understood, and accepted all the terms of this agreement, please do not install and use this tool. Your use behavior or your acceptance of this Agreement in any other express or implied manner shall be deemed to have been read and agreed to be bound by this Agreement
-

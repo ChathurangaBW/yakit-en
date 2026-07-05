@@ -809,7 +809,7 @@ const AIModelEditContent: React.FC<AIModelEditContentProps> = React.memo((props)
           options={modelNameOptions}
           title={
             <div className={styles['edit-title']}>
-              <span>模型选择</span>
+              <span>Model Selection</span>
               <YakitButton type="text2" size="small" icon={<OutlineRefreshIcon />} onClick={onRefresh} />
             </div>
           }
@@ -818,11 +818,11 @@ const AIModelEditContent: React.FC<AIModelEditContentProps> = React.memo((props)
           listClassName={styles['model-name-list']}
           emptyTips={
             <>
-              未获取到数据，可点击
+              No data available. Click
               <YakitButton size="small" onClick={onRefresh} type="text">
-                刷新
+                Refresh
               </YakitButton>
-              重新获取
+              to fetch again
             </>
           }
         />
@@ -877,9 +877,9 @@ export const getIconByAI = (value) => {
   return AIOnlineModelIconMap[value] || <OutlineAtomIconByStatus size="small" />
 }
 export const EnableThinkingOptions = [
-  { label: '不设置', value: 'no-set' },
-  { label: '开启', value: 'open' },
-  { label: '不开启', value: 'close' },
+  { label: 'Not Set', value: 'no-set' },
+  { label: 'Enable', value: 'open' },
+  { label: 'Disable', value: 'close' },
 ]
 
 const AIModelItem: React.FC<AIModelItemProps> = React.memo((props) => {

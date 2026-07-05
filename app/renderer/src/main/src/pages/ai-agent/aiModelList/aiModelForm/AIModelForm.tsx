@@ -103,16 +103,16 @@ export const getModelLabelByModelType = (type: AIModelTypeEnumType) => {
   let label: string = ''
   switch (type) {
     case AIModelTypeEnum.TierIntelligent:
-      label = '高质模型'
+      label = 'Intelligent Model'
       break
     case AIModelTypeEnum.TierLightweight:
-      label = '轻量模型'
+      label = 'Lightweight Model'
       break
     case AIModelTypeEnum.TierVision:
-      label = '视觉模型'
+      label = 'Vision Model'
       break
     default:
-      label = '未知类型'
+      label = 'Unknown Type'
       break
   }
   return label
@@ -311,7 +311,7 @@ export const AIModelForm: React.FC<AIModelFormProps> = React.memo((props) => {
   const onOk = useMemoizedFn(() => {
     formRef.current?.form?.validateFields().then((res) => {
       if (!aiGlobalConfigData?.aiGlobalConfigRef.current) {
-        yakitNotify('error', 'AI全局配置获取失败，请稍后再试')
+        yakitNotify('error', 'Failed to get AI global configuration. Please try again later.')
         return
       }
       const type = res?.Type // 厂商
@@ -320,7 +320,7 @@ export const AIModelForm: React.FC<AIModelFormProps> = React.memo((props) => {
       const haveStandardOfLightweight =
         modelName === 'memfit-standard-free' && type === 'aibalance' && modelType === 'lightweight'
       if (haveStandardOfLightweight) {
-        yakitNotify('error', 'memfit-standard-free 是高质模型,不可设置为轻量模型')
+        yakitNotify('error', 'memfit-standard-free is an intelligent model and cannot be set as a lightweight model')
         return
       }
 
@@ -353,7 +353,7 @@ export const AIModelForm: React.FC<AIModelFormProps> = React.memo((props) => {
     const index = newConfig[fileName].findIndex((i) => isEqualAIModel(i, newItem))
     if (index !== -1) {
       isShowSaveLoadingRef.current = true
-      yakitNotify('error', '已存在相同配置的AI模型，请勿重复添加')
+      yakitNotify('error', 'An AI model with the same configuration already exists. Please do not add a duplicate.')
       return
     }
     newConfig[fileName].push(newItem)
@@ -384,7 +384,7 @@ export const AIModelForm: React.FC<AIModelFormProps> = React.memo((props) => {
         const isHave = newConfig[fileName].find((i) => isEqualAIModel(i, newUpdateItem))
         if (isHave) {
           isShowSaveLoadingRef.current = true
-          yakitNotify('error', '已存在相同配置的AI模型，请勿重复添加')
+          yakitNotify('error', 'An AI model with the same configuration already exists. Please do not add a duplicate.')
           return
         }
         // 修改了模型类型,需要先把原来模型从列表中删除,然后再新的列表末尾添加
@@ -400,7 +400,7 @@ export const AIModelForm: React.FC<AIModelFormProps> = React.memo((props) => {
       onSetAIGlobalConfig(newConfig)
     } catch (error) {
       isShowSaveLoadingRef.current = true
-      yakitNotify('error', `更新AI模型配置失败:${error}`)
+      yakitNotify('error', `Failed to update AI model configuration: ${error}`)
     }
   })
   const onSetAIGlobalConfig = useMemoizedFn((config: AIGlobalConfig) => {
@@ -427,12 +427,12 @@ export const AIModelForm: React.FC<AIModelFormProps> = React.memo((props) => {
       const config = buildAIConfigHealthCheckConfig(res)
       grpcAIConfigHealthCheck({
         Config: config,
-        Content: '测试成功',
+        Content: 'Test successful',
       })
         .then((response) => {
           const isSuccess = response.Success
           if (isSuccess) {
-            yakitNotify('success', '测试成功')
+            yakitNotify('success', 'Test successful')
             isShowSaveLoadingRef.current = false
             onOk()
           } else {
@@ -481,7 +481,7 @@ export const AIModelForm: React.FC<AIModelFormProps> = React.memo((props) => {
         <>
           <div ref={footerRef} />
           <YakitButton size="large" type="outline2" onClick={onCheckAndSave} loading={testLoading}>
-            测试并添加
+            Test and Add
           </YakitButton>
           <YakitButton
             size="large"
@@ -490,7 +490,7 @@ export const AIModelForm: React.FC<AIModelFormProps> = React.memo((props) => {
             loading={loading}
             disabled={testLoading || !isShowSaveLoadingRef.current}
           >
-            确定添加
+            Confirm Add
           </YakitButton>
         </>
       }
@@ -522,7 +522,7 @@ export const AIModelCheckResult: React.FC<AIModelCheckResultProps> = (props) => 
         tag: t('AIModelTestResult.firstByteDelay'),
         info: [
           {
-            Id: '首字节延时',
+            Id: 'First Byte Delay',
             Data: testResult.FirstByteCostMs ? `${testResult.FirstByteCostMs} ms` : '-',
             Timestamp: Date.now(),
           },
@@ -532,7 +532,7 @@ export const AIModelCheckResult: React.FC<AIModelCheckResultProps> = (props) => 
         tag: t('AIModelTestResult.totalTime'),
         info: [
           {
-            Id: '总耗时',
+            Id: 'Total Time',
             Data: testResult.TotalCostMs ? `${testResult.TotalCostMs} ms` : '-',
             Timestamp: Date.now(),
           },
@@ -542,7 +542,7 @@ export const AIModelCheckResult: React.FC<AIModelCheckResultProps> = (props) => 
         tag: t('AIModelTestResult.responseStatusCode'),
         info: [
           {
-            Id: '响应状态码',
+            Id: 'Response Status Code',
             Data: testResult.ResponseStatusCode ? `${testResult.ResponseStatusCode}` : '0',
             Timestamp: Date.now(),
           },
@@ -748,11 +748,11 @@ export const AIConfigAPIKeyFormItem: React.FC<AIConfigAPIKeyFormItemProps> = Rea
         help={
           !!aiType ? (
             <div style={{ height: 30 }}>
-              如无法自动获取，请
+              If it cannot be fetched automatically,
               <YakitButton type="text" onClick={() => getOptions(aiType)} style={{ padding: 0, fontSize: 14 }}>
-                点击刷新
+                click Refresh
               </YakitButton>
-              重新获取
+              to fetch again
             </div>
           ) : undefined
         }

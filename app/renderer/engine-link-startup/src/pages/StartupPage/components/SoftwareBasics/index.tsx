@@ -1,4 +1,4 @@
-﻿import React, { Dispatch, SetStateAction } from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import { YakitSelect } from '@/components/yakitUI/YakitSelect/YakitSelect'
 import lightTheme from '@/assets/light-theme.png'
 import darkTheme from '@/assets/dark-theme.png'
@@ -18,15 +18,15 @@ const YAKIT_MODE_CONFIG: Record<
 > = {
   classic: {
     label: 'Classic Mode',
-    desc: 'This mode uses the previous menu and home layout',
+    desc: 'The original menu and home layout',
   },
   securityExpert: {
     label: 'Security Expert Mode',
-    desc: 'Adjusts the menu and pinned pages for common penetration testing workflows, with a simpler layout',
+    desc: 'Menu and fixed pages tuned for common penetration-testing workflows',
   },
   scan: {
     label: 'Scan Mode',
-    desc: 'Focuses the menu and home page on scanning features for quick access',
+    desc: 'Menu and home focused on scanning features for quick access',
   },
 }
 
@@ -47,7 +47,7 @@ export const SoftwareBasics: React.FC<SoftwareBasicsProps> = React.memo((props) 
   return (
     <div className={styles['softwareBasics']}>
       <div className={styles['softwareBasics-item']}>
-        <div className={styles['softwareBasics-item-title']}>Choose your theme</div>
+        <div className={styles['softwareBasics-item-title']}>Select Your Theme</div>
         <div className={styles['softwareBasics-item-cont']}>
           <div className={styles['softwareBasics-flex']}>
             <div
@@ -97,25 +97,6 @@ export const SoftwareBasics: React.FC<SoftwareBasicsProps> = React.memo((props) 
           <div className={styles['softwareBasics-mode-desc']}>{YAKIT_MODE_CONFIG[softMode].desc}</div>
         </div>
       </div>
-      {/* <div className={styles["softwareBasics-item"]}>
-                <div className={styles["softwareBasics-item-title"]}>Language Settings</div>
-                <div className={styles["softwareBasics-item-cont"]}>
-                    <YakitSelect
-                        value={newLang}
-                        options={[
-                            {
-                                label: "Chinese（Simplified）Chinese (Simplified)",
-                                value: "zh"
-                            },
-                            {
-                                label: "English",
-                                value: "en"
-                            }
-                        ]}
-                        onChange={setNewLang}
-                    ></YakitSelect>
-                </div>
-            </div> */}
     </div>
   )
 })

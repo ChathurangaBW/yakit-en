@@ -119,13 +119,13 @@ export const MonacoEditorCodecActions: MonacoEditorActions[] = [
   { id: 'htmldecode', label: 'HTML Decode' },
   { id: 'urlunescape', label: 'URL Decode' },
   { id: 'double-urlencode', label: 'Double URL Encode' },
-  { id: 'unicode-decode', label: 'Unicode Decode (\\\\uXXXX)' },
-  { id: 'unicode-encode', label: 'Unicode Encode (\\\\uXXXX)' },
+  { id: 'unicode-decode', label: 'Unicode Decode (\\uXXXX)' },
+  { id: 'unicode-encode', label: 'Unicode Encode (\\uXXXX)' },
   { id: 'base64-url-encode', label: 'Base64 then URL Encode' },
   { id: 'url-base64-decode', label: 'URL then Base64 Decode' },
   { id: 'hex-decode', label: 'HEX Decode' },
   { id: 'hex-encode', label: 'HEX Encode' },
-  { id: 'jwt-parse-weak', label: 'JWT Parse (also test weak keys)' },
+  { id: 'jwt-parse-weak', label: 'JWT Parse (test weak keys)' },
 ].map((i) => {
   return { id: i.id, label: i.label, contextMenuGroupId: 'codec', run: editorCodecHandlerFactory(i.id as CodecType) }
 })
@@ -138,27 +138,27 @@ export const MonacoEditorMutateHTTPRequestActions: {
 }[] = [
   {
     id: 'mutate-http-method-get',
-    label: 'Change HTTP Method to GET',
+    label: 'Change HTTP method to GET',
     params: { FuzzMethods: ['GET'] } as MutateHTTPRequestParams,
   },
   {
     id: 'mutate-http-method-post',
-    label: 'Change HTTP Method to POST',
+    label: 'Change HTTP method to POST',
     params: { FuzzMethods: ['POST'] } as MutateHTTPRequestParams,
   },
   {
     id: 'mutate-http-method-head',
-    label: 'Change HTTP Method to HEAD',
+    label: 'Change HTTP method to HEAD',
     params: { FuzzMethods: ['HEAD'] } as MutateHTTPRequestParams,
   },
   {
     id: 'mutate-chunked',
-    label: 'HTTP Chunk Encoding',
+    label: 'HTTP Chunk Encode',
     params: { ChunkEncode: true } as MutateHTTPRequestParams,
   },
   {
     id: 'mutate-upload',
-    label: 'Convert to Upload Request',
+    label: 'Convert to upload packet',
     params: { UploadEncode: true } as MutateHTTPRequestParams,
   },
 ].map((i) => {

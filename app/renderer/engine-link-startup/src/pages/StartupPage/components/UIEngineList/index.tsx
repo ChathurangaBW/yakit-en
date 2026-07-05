@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { TypeCallbackExtra, YakitStatusType, YaklangEngineMode, YaklangEngineWatchDogCredential } from '../../types'
 import { useInViewport, useMemoizedFn } from 'ahooks'
 import { YakitPopover } from '@/components/yakitUI/YakitPopover/YakitPopover'
@@ -117,9 +117,9 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
         <div ref={listRef} className={styles['ui-engine-list-wrapper']}>
           <div className={styles['ui-engine-list-body']}>
             <div className={styles['engine-list-header']}>
-              Local Yak Process Management
+              Local Yak Process Manager
               <YakitPopconfirm
-                title={'Reset Engine restores the original bundled engine version and forces a restart'}
+                title={'Resetting the engine will restore the factory default and force a restart'}
                 onConfirm={async () => {
                   process.map((i) => {
                     yakitEngine.killYakGrpc(i.pid)
@@ -136,7 +136,7 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
                     })
                 }}
               >
-                <YakitButton style={{ marginLeft: 8 }}>Reset Engine Version</YakitButton>
+                <YakitButton style={{ marginLeft: 8 }}>Reset Engine</YakitButton>
               </YakitPopconfirm>
               {psLoading && <LoadingOutlined className={styles['loading-icon']} />}
             </div>
@@ -150,10 +150,10 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
                         {isLocal && +i.port === port && engineLink && <CheckedSvgIcon style={{ marginLeft: 8 }} />}
                       </YakitTag>
                       <div className={styles['engine-ps-info']}>
-                        {`yak grpc --port ${i.port === 0 ? 'Loading' : i.port}`}
+                        {`yak grpc --port ${i.port === 0 ? 'fetching' : i.port}`}
                         &nbsp;
                         {isLocal && +i.port === port && engineLink && (
-                          <span className={styles['current-ps-info']}>{'(Current)'}</span>
+                          <span className={styles['current-ps-info']}>(current)</span>
                         )}
                       </div>
                     </div>
@@ -163,7 +163,7 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
                         onClick={() => {
                           setShow(false)
                           showYakitModal({
-                            title: 'Yak Process Details',
+                            title: 'YakProcess Details',
                             content: <div style={{ padding: 8 }}>{JSON.stringify(i)}</div>,
                             footer: null,
                           })
@@ -173,10 +173,10 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
                       </YakitButton>
 
                       <YakitPopconfirm
-                        title={<>Confirm engine switch</>}
+                        title={<>Confirm switch to this engine?</>}
                         onConfirm={async () => {
                           if (!isLocal) {
-                            yakitNotify('info', 'Remote Mode does not support switching engines')
+                            yakitNotify('info', 'Remote mode, engine switching not supported')
                             return
                           }
                           let oldPort = port
@@ -188,18 +188,18 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
                             .connectYaklangEngine(switchEngine)
                             .then(() => {
                               setTimeout(() => {
-                                yakitNotify('success', `Core engine switched successfully!`)
+                                yakitNotify('success', `Engine switched successfully!`)
                               }, 500)
                             })
                             .catch((e) => {
-                              yakitNotify('error', 'Failed to switch engine. Try another port and reconnect')
+                              yakitNotify('error', 'Engine switch failed, try reconnecting on a different port')
                               process.forEach((item) => {
                                 if (item.port == oldPort) {
                                   yakitEngine
                                     .killYakGrpc(item.pid)
                                     .then((val) => {
                                       if (!val) {
-                                        yakitNotify('success', 'Engine process is closing...')
+                                        yakitNotify('success', 'Closing engine process...')
                                         typeCallback('break')
                                       }
                                     })
@@ -221,12 +221,11 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
                       <YakitPopconfirm
                         title={
                           <>
-                            Confirming will force-close the process,
+                            Closing will force-terminate the process.
                             <br />
-                            If this is the currently connected engine and {getReleaseEditionName()} is not closed before
-                            reconnecting,
+                            If this is the active engine, close {getReleaseEditionName()} before reconnecting,
                             <br />
-                            click "Other connection modes - manually start engine" on the loading page
+                            then use "Manual Connect" on the loading page.
                           </>
                         }
                         onConfirm={async () => {
@@ -235,7 +234,7 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
                             .then((val) => {
                               if (!val) {
                                 isLocal && +i.port === port && typeCallback('break')
-                                yakitNotify('success', 'Engine process is closing...')
+                                yakitNotify('success', 'Closing engine process...')
                               }
                             })
                             .catch((e: any) => {})
@@ -256,12 +255,11 @@ export const UIEngineList: React.FC<UIEngineListProp> = React.memo((props) => {
               <YakitPopconfirm
                 title={
                   <div style={{ width: 330 }}>
-                    Confirming will force-close the process,
+                    Closing will force-terminate all processes.
                     <br />
-                    If this is the currently connected engine and {getReleaseEditionName()} is not closed before
-                    reconnecting,
+                    If any is the active engine, close {getReleaseEditionName()} before reconnecting,
                     <br />
-                    click "Other connection modes - manually start engine" on the loading page
+                    then use "Manual Connect" on the loading page.
                   </div>
                 }
                 onConfirm={() => allClose()}

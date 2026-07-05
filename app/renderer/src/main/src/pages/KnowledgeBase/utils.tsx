@@ -51,7 +51,7 @@ import { RuleObject } from 'antd/lib/form'
 
 const { ipcRenderer } = window.require('electron')
 
-// Knowledge Base所需安装Plugins名称列表
+// 知识库所需安装插件名称列表
 const targetInstallList = [
   'ffmpeg',
   'llama-server',
@@ -88,7 +88,7 @@ export const KnowledgeTabList: YakitSideTabProps['yakitTabs'] = [
 const insertModaOptions = [
   {
     value: 'manual',
-    label: 'Add Manually',
+    label: 'Manual Add',
   },
   {
     value: 'external',
@@ -102,147 +102,147 @@ const insertModaOptions = [
 
 const knowledgeTypeOptions = [
   {
-    value: '漏洞情报',
+    value: 'Vulnerability Intelligence',
     label: 'Vulnerability Intelligence',
   },
   {
-    value: '攻击技术',
+    value: 'Attack Techniques',
     label: 'Attack Techniques',
   },
   {
-    value: '恶意软件',
+    value: 'Malware',
     label: 'Malware',
   },
   {
-    value: '渗透测试',
+    value: 'Penetration Testing',
     label: 'Penetration Testing',
   },
   {
-    value: '红蓝对抗',
+    value: 'Red Team vs Blue Team',
     label: 'Red Team vs Blue Team',
   },
   {
-    value: '威胁情报',
+    value: 'Threat Intelligence',
     label: 'Threat Intelligence',
   },
   {
-    value: '应急响应',
+    value: 'Incident Response',
     label: 'Incident Response',
   },
   {
-    value: '代码审计',
+    value: 'Code Audit',
     label: 'Code Audit',
   },
   {
-    value: '逆向工程',
+    value: 'Reverse Engineering',
     label: 'Reverse Engineering',
   },
   {
-    value: 'Web安全',
+    value: 'Web Security',
     label: 'Web Security',
   },
   {
-    value: '内网渗透',
+    value: 'Internal Network Penetration',
     label: 'Internal Network Penetration',
   },
   {
-    value: '云原生安全',
+    value: 'Cloud-Native Security',
     label: 'Cloud-Native Security',
   },
   {
-    value: '移动安全',
+    value: 'Mobile Security',
     label: 'Mobile Security',
   },
   {
-    value: 'IoT安全',
+    value: 'IoT Security',
     label: 'IoT Security',
   },
   {
-    value: '密码学',
+    value: 'Cryptography',
     label: 'Cryptography',
   },
   {
-    value: '协议分析',
+    value: 'Protocol Analysis',
     label: 'Protocol Analysis',
   },
   {
-    value: '供应链安全',
+    value: 'Supply Chain Security',
     label: 'Supply Chain Security',
   },
   {
-    value: '安全工具',
+    value: 'Security Tools',
     label: 'Security Tools',
   },
   {
-    value: '武器库',
-    label: 'Tool Arsenal',
+    value: 'Arsenal',
+    label: 'Arsenal',
   },
   {
-    value: '靶场环境',
+    value: 'Lab Environment',
     label: 'Lab Environment',
   },
   {
-    value: '字典规则',
+    value: 'Dictionary Rules',
     label: 'Dictionary Rules',
   },
   {
-    value: '等保合规',
-    label: 'Compliance',
+    value: 'Compliance Protection',
+    label: 'Compliance Protection',
   },
   {
-    value: '安全标准',
+    value: 'Security Standards',
     label: 'Security Standards',
   },
   {
-    value: '法律法规',
+    value: 'Laws and Regulations',
     label: 'Laws and Regulations',
   },
   {
-    value: '安全基线',
+    value: 'Security Baseline',
     label: 'Security Baseline',
   },
   {
-    value: '编程语言',
+    value: 'Programming Languages',
     label: 'Programming Languages',
   },
   {
-    value: '开发框架',
+    value: 'Development Frameworks',
     label: 'Development Frameworks',
   },
   {
-    value: '数据库',
+    value: 'Databases',
     label: 'Databases',
   },
   {
-    value: '开发运维',
+    value: 'DevOps',
     label: 'DevOps',
   },
   {
-    value: '系统运维',
+    value: 'System Operations',
     label: 'System Operations',
   },
   {
-    value: '行业报告',
+    value: 'Industry Reports',
     label: 'Industry Reports',
   },
   {
-    value: '技术博客',
+    value: 'Technical Blogs',
     label: 'Technical Blogs',
   },
   {
-    value: '培训教程',
+    value: 'Training Tutorials',
     label: 'Training Tutorials',
   },
   {
-    value: '产品文档',
+    value: 'Product Documentation',
     label: 'Product Documentation',
   },
   {
-    value: '项目管理',
+    value: 'Project Management',
     label: 'Project Management',
   },
   {
-    value: 'AI与安全',
+    value: 'AI and Security',
     label: 'AI and Security',
   },
 ]
@@ -312,7 +312,7 @@ const totalKeyMap: Record<string, keyof TResultAllTableTotal> = {
   vector: 'vectorTotal',
 }
 
-// 查询Knowledge Base-Knowledge列表
+// 查询知识库-知识列表
 const apiSearchKnowledgeBaseEntry: (
   query?: SearchKnowledgeBaseEntryRequest,
 ) => Promise<SearchKnowledgeBaseEntryResponse> = (query) => {
@@ -321,13 +321,13 @@ const apiSearchKnowledgeBaseEntry: (
       .invoke('SearchKnowledgeBaseEntry', query)
       .then(resolve)
       .catch((e) => {
-        yakitNotify('error', `查询失败: ${e}`)
+        yakitNotify('error', `Query failed: ${e}`)
         reject(e)
       })
   })
 }
 
-// 查询Knowledge Base-Vectors列表
+// 查询知识库-向量列表
 const apiListVectorStoreEntries: (query?: ListVectorStoreEntriesRequest) => Promise<VectorStoreEntryResponse> = (
   query,
 ) => {
@@ -336,20 +336,20 @@ const apiListVectorStoreEntries: (query?: ListVectorStoreEntriesRequest) => Prom
       .invoke('ListVectorStoreEntries', query)
       .then(resolve)
       .catch((e) => {
-        yakitNotify('error', `查询失败: ${e}`)
+        yakitNotify('error', `Query failed: ${e}`)
         reject(e)
       })
   })
 }
 
-// 查询Knowledge Base-Entities列表
+// 查询知识库-实体列表
 const apiQueryEntity: (query?: QueryEntityRequest) => Promise<QueryEntityResponse> = (query) => {
   return new Promise((resolve, reject) => {
     ipcRenderer
       .invoke('QueryEntity', query)
       .then(resolve)
       .catch((e) => {
-        yakitNotify('error', `查询失败: ${e}`)
+        yakitNotify('error', `Query failed: ${e}`)
         reject(e)
       })
   })
@@ -394,7 +394,7 @@ const mergeKnowledgeBaseData = (localData: KnowledgeBaseItem[], apiData: Knowled
       )
 
 /**
- * 对比两个Knowledge Base数组，判断新增或Delete
+ * 对比两个知识库数组，判断新增或删除
  * @param prev 上一次的数据
  * @param next 当前的数据
  */
@@ -408,7 +408,7 @@ const compareKnowledgeBaseChange = (
   const prevMap = new Map(prev.map((item) => [item.ID, item]))
   const nextMap = new Map(next.map((item) => [item.ID, item]))
 
-  // 查找被Delete的对象
+  // 查找被删除的对象
   const deleted = prev.find((item) => !nextMap.has(item.ID))
   if (deleted) return { delete: deleted, increase: null }
 
@@ -430,13 +430,13 @@ const compareKnowledgeBaseChangeList = (
   const prevMap = new Map(prev.map((item) => [item.ID, item]))
   const nextMap = new Map(next.map((item) => [item.ID, item]))
 
-  // Delete项：prev 里有，但 next 没有
+  // 删除项：prev 里有，但 next 没有
   const deleted = prev.filter((item) => !nextMap.has(item.ID))
 
   // 新增项：next 里有，但 prev 没有
   const increased = next.filter((item) => !prevMap.has(item.ID))
 
-  // === 核心: 没有任何新增或Delete时，返回 true ===
+  // === 核心: 没有任何新增或删除时，返回 true ===
   const unchanged = deleted.length === 0 && increased.length === 0
 
   return {
@@ -453,7 +453,7 @@ const findChangedObjects = (before, after) => {
 }
 
 const BuildingKnowledgeBase = async (targetKnowledgeBase: KnowledgeBaseItem) => {
-  const plugin = await grpcFetchLocalPluginDetail({ Name: '构建Knowledge Base' }, true)
+  const plugin = await grpcFetchLocalPluginDetail({ Name: '构建知识库' }, true)
   const files = (targetKnowledgeBase.KnowledgeBaseFile?.map((it) => it.path) || []).join(',')
   const ExecParams = [
     { Key: 'files', Value: files },
@@ -488,7 +488,7 @@ const BuildingKnowledgeBase = async (targetKnowledgeBase: KnowledgeBaseItem) => 
 }
 
 const BuildingKnowledgeBaseEntry = async (targetKnowledgeBase: any, depth?: number) => {
-  const plugin = await grpcFetchLocalPluginDetail({ Name: '构建Knowledge条目' }, true)
+  const plugin = await grpcFetchLocalPluginDetail({ Name: '构建知识条目' }, true)
   const executeParam = [
     {
       Key: 'kbName',
@@ -532,7 +532,7 @@ const BuildingKnowledgeBaseEntry = async (targetKnowledgeBase: any, depth?: numb
     params: {
       Code: '',
       PluginType: 'yak',
-      PluginName: '构建Knowledge条目',
+      PluginName: '构建知识条目',
       ExecParams: executeParam,
     },
     pluginCustomParams: plugin?.Params,
@@ -544,7 +544,7 @@ const BuildingKnowledgeBaseEntry = async (targetKnowledgeBase: any, depth?: numb
   })
 }
 
-// 清空Knowledge BasePlugins调用所需参数
+// 清空知识库插件调用所需参数
 const ClearAllKnowledgeBase = (params: TClearKnowledgeResponse) => async (streamToken: string) => {
   const executeParams: DebugPluginRequest = {
     Code: '',
@@ -597,7 +597,7 @@ const BuildingOnlineKnowledgeBase = async (params: any, streamToken: string) => 
   })
 }
 
-// Knowledge Base Availability Diagnostics
+// 知识库可用性诊断
 const checkAIModelAvailability = async (params, streamToken) => {
   const executeParams: DebugPluginRequest = {
     Code: '',
@@ -621,7 +621,7 @@ const documentType = [
     value: 'entity',
   },
   {
-    label: 'Relations',
+    label: 'Relationships',
     value: 'relationship',
   },
   {
@@ -719,7 +719,7 @@ const transformToGraphData = (data: BackendData): GraphData => {
   const maxSymbol = Math.max(...nodesTemp.map((n) => n.symbolSize))
   const maxSize = maxSymbol < 40 ? 40 : maxSymbol
 
-  // 哪些是被指向的节点？Other节点放外围
+  // 哪些是被指向的节点？其他节点放外围
   const targetIds = new Set(data.Relationships.map((rel) => indexMap.get(rel.TargetEntityIndex)).filter(Boolean))
 
   // 存放已分配位置，避免堆叠
@@ -910,7 +910,7 @@ export interface OnlieRageLatestResponse {
   installToken: string
 }
 
-// 获取线上Knowledge Base数据
+// 获取线上知识库数据
 export const apiFetchQueryOnlieRageLatest: () => Promise<any> = () => {
   return new Promise((resolve, reject) => {
     try {
@@ -934,18 +934,18 @@ export const apiFetchQueryOnlieRageLatest: () => Promise<any> = () => {
 const stopList = [
   {
     title: 'AI Recall',
-    description: '可用于校验生成的Knowledge Base内容是否正确',
+    description: 'Use this to verify whether generated knowledge-base content is accurate.',
     images: knowledgeJoyrideFirst,
   },
   {
     title: 'Generate Knowledge from Entities',
     description:
-      '可从已经生成的Entities和Knowledge中，选择需要的Entities或Knowledge再次生成相关Knowledge，当感觉Knowledge内容有缺少时可用此方法对Knowledge进行补充',
+      'Select existing entities or knowledge to generate related knowledge again when the current content feels incomplete.',
     images: knowledgeJoyrideLast,
   },
   {
     title: 'Knowledge Graph Demo',
-    description: '通过勾选Entities可以动态绘制KnowledgeGraph谱，便于查看Entities之间的关联',
+    description: 'Select entities to dynamically render a knowledge graph and inspect their relationships.',
     images: knowledgeJoyrideThree,
   },
 ]
@@ -961,7 +961,8 @@ const joyrideSteps: Step[] = [
     content: (
       <div className={styles['joyride-steps-content']}>
         <div>
-          选择厂商后输入 ApiKey 选择对应使用模型即可。（注：需要Add<span>视觉模型</span>）
+          Select a provider, enter the API key, and choose the model to use. (Note: a <span>vision model</span> is
+          required.)
         </div>
         <div className={styles['joyride-steps-img-wrapper']}>
           <img src={joyrideFirstStepImg} alt="" style={{ width: '351px' }} />
@@ -973,10 +974,10 @@ const joyrideSteps: Step[] = [
     target: '.second-step',
     disableBeacon: true,
     spotlightPadding: 2,
-    title: 'Knowledge Base Availability Diagnostics',
+    title: 'Knowledge Base Availability Check',
     content: (
       <div className={styles['joyride-steps-content']}>
-        <div>Add Model后，可以使用可用性诊断，判断模型是否可用于生成Knowledge Base</div>
+        <div>After adding a model, run the availability check to verify whether it can generate a knowledge base.</div>
       </div>
     ),
   },
@@ -984,10 +985,10 @@ const joyrideSteps: Step[] = [
     target: '.third-step',
     disableBeacon: true,
     spotlightPadding: 2,
-    title: 'CreateKnowledge Base',
+    title: 'Create Knowledge Base',
     content: (
       <div className={styles['joyride-steps-content']}>
-        <div>输入Knowledge Base名后拖拽文件创建即可</div>
+        <div>Enter a knowledge base name, then drag in files to create it.</div>
       </div>
     ),
   },
@@ -1046,7 +1047,7 @@ type TValidatorFilePath = (_: RuleObject, value: string) => Promise<any>
 
 const ValidatorFilePath: TValidatorFilePath = (_, value) => {
   if (!value) {
-    return Promise.reject('请Upload File')
+    return Promise.reject('Please upload a file')
   }
 
   const files = value.split(',').map((i) => i.trim())
@@ -1059,7 +1060,7 @@ const ValidatorFilePath: TValidatorFilePath = (_, value) => {
     const reg = /^.+\.[^.]+$/
 
     if (!fileName || !reg.test(fileName)) {
-      return Promise.reject('请上传有效的文件')
+      return Promise.reject('Please upload a valid file')
     }
   }
 

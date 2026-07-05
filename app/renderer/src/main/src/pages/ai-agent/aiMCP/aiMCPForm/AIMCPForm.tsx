@@ -242,9 +242,9 @@ export const AIMCPForm: React.FC<AIMCPFormProps> = React.memo((props) => {
           <YakitSwitch />
         </Form.Item>
         <Form.Item
-          label="协议类型"
+          label="Protocol Type"
           name="Type"
-          rules={[{ required: true, message: '请选择协议类型' }]}
+          rules={[{ required: true, message: 'Please select a protocol type' }]}
           initialValue={AIMCPServerTypeEnum.SSE}
         >
           <YakitSelect options={typeOptions} />

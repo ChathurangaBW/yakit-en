@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { System } from '../../types'
 import React from 'react'
 import { useMemoizedFn } from 'ahooks'
@@ -127,18 +127,17 @@ export const QuestionModal: React.FC<AgrAndQSModalProps> = React.memo((props) =>
             <div className={styles['modal-body']}>
               <div className={styles['body-hint']}>
                 <span className={styles['hint-sign']}>
-                  If network issues prevent downloading, install the engine manually:
+                  If download fails due to network issues, you can download manually:
                 </span>
                 <br />
-                Windows users can place the engine at the install directory, usually
-                %HOME%/yakit-projects/yak-engine/yak.exe. macOS / Linux users can place the engine at
-                ~/yakit-projects/yak-engine/yak.
+                Windows: place the engine at %HOME%/yakit-projects/yak-engine/yak.exe — macOS/Linux: place it at
+                ~/yakit-projects/yak-engine/yak
               </div>
 
               <div className={styles['body-link']}>
                 <div className={styles['link-opt']}>
                   <div style={{ width: 107 }} className={styles['link-title']}>
-                    Download Windows (x64)
+                    Windows (x64)
                   </div>
                   <div className={styles['link-style']}>
                     https://{ossDomain}/yak/{latestVersion || 'latest'}
@@ -150,7 +149,7 @@ export const QuestionModal: React.FC<AgrAndQSModalProps> = React.memo((props) =>
                 </div>
                 <div className={styles['link-opt']}>
                   <div style={{ width: 122 }} className={styles['link-title']}>
-                    Download macOS (Intel/M1)
+                    macOS (Intel/M1)
                   </div>
                   <div className={styles['link-style']}>
                     https://{ossDomain}/yak/{latestVersion || 'latest'}
@@ -162,7 +161,7 @@ export const QuestionModal: React.FC<AgrAndQSModalProps> = React.memo((props) =>
                 </div>
                 <div className={styles['link-opt']}>
                   <div style={{ width: 87 }} className={styles['link-title']}>
-                    Download Linux (x64)
+                    Linux (x64)
                   </div>
                   <div className={styles['link-style']}>
                     https://{ossDomain}/yak/{latestVersion || 'latest'}

@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Checkbox, Divider, Form, Tooltip } from 'antd'
 import { getLocalValue, setLocalValue } from '@/utils/kv'
 import { OutlineArrowcirclerightIcon, OutlineExitIcon, OutlineQuestionmarkcircleIcon } from '@/assets/outline'
@@ -21,42 +21,42 @@ import { MoreYaklangVersion } from '../MoreYaklangVersion'
 import classNames from 'classnames'
 import styles from './YakitLoading.module.scss'
 export interface YakitLoadingProp extends SoftwareBasicsProps {
-  /** loading 文案 */
+  /** Loading message */
   yakitLoadingTip: string
-  /** 界面暂时None法操作 */
+  /** Whether the UI is temporarily disabled */
   disableYakitLoading: boolean
 
   isTop: ModalIsTop
   setIsTop: (top: ModalIsTop) => void
 
-  /** 操作系统 */
+  /** Operating system */
   system: System
-  /** 内置引擎版本号 */
+  /** Built-in engine version */
   buildInEngineVersion: string
-  /** yakit模式 */
+  /** Yakit status */
   yakitStatus: YakitStatusType
-  /** 引擎模式 */
+  /** Engine mode */
   engineMode: YaklangEngineMode
 
-  /** 软件检查日志 */
+  /** Software check logs */
   checkLog: string[]
 
-  /** 手动重连引擎时的按钮loading */
+  /** Button loading state while manually reconnecting the engine */
   restartLoading: boolean
 
-  /** 数据库修复失败时，数据库路径 */
+  /** Database path when database repair fails */
   dbPath: string[]
 
-  /** CurrentConnect端口号 */
+  /** Current connection port */
   port: number
 
-  /** 倒计时秒数 */
+  /** Countdown seconds */
   countdown?: number
 
-  /** 更多引擎列表 */
+  /** Additional engine versions */
   moreYaklangVersionList: string[]
 
-  /** 设置指定Download Engine版本号 */
+  /** Set the specific engine version to download */
   setYaklangSpecifyVersion: (version: string) => void
 
   btnClickCallback: (type: YaklangEngineMode | YakitStatusType, extra?: LoadingClickExtra) => void
@@ -90,13 +90,13 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
 
   const [moreVersionPopShow, setMoreVersionPopShow] = useState<boolean>(false)
   const [form] = Form.useForm()
-  /** User Agreement勾选状态 */
+  /** User agreement checked state */
   const [agrCheck, setAgrCheck] = useState<boolean>(false)
-  /** 执行一键Install功能时判断User Agreement状态 */
+  /** User agreement state used before one-click install */
   const [checkStatus, setCheckStatus] = useState<boolean>(false)
-  /** 展示抖动动画 */
+  /** Whether to show the shake animation */
   const [isShake, setIsShake] = useState<boolean>(false)
-  // 弹窗置顶
+  // Keep the modal on top.
   const [agrShow, setAgrShow] = useState<boolean>(false)
   useEffect(() => {
     getLocalValue(LocalGVS.IsCheckedUserAgreement).then((val: boolean) => {
@@ -130,7 +130,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
           onChange={(e) => setAgrCheck(e.target.checked)}
         ></Checkbox>
         <span>
-          Check to agree to{' '}
+          I agree to the{' '}
           <span
             className={styles['agreement-style']}
             onClick={(e) => {
@@ -141,7 +141,6 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
           >
             User Agreement
           </span>
-          to continue
         </span>
       </div>
     )
@@ -150,7 +149,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
   const judgmentAgreement = useMemoizedFn(() => {
     setCheckStatus(true)
     if (!agrCheck) {
-      /** 抖动提示动画 */
+      /** Shake hint animation */
       setIsShake(true)
       setTimeout(() => setIsShake(false), 1000)
       return false
@@ -218,7 +217,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('check_timeout')}
           >
-            Run Again
+            Retry
           </YakitButton>
         </>
       )
@@ -317,7 +316,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('start_timeout')}
           >
-            Run Again
+            Retry
           </YakitButton>
         </>
       )
@@ -378,7 +377,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             }}
           >
             {dbPath.join(',')}
-            <Tooltip title={`After opening the folder, repair the database manually`}>
+            <Tooltip title={`Open the folder and repair the database manually`}>
               <OutlineQuestionmarkcircleIcon />
             </Tooltip>
           </div>
@@ -395,7 +394,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('fix_database_timeout')}
           >
-            Run Again
+            Retry
           </YakitButton>
         </>
       )
@@ -417,7 +416,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             menu={{
               data: [
                 { key: 'ignoreThisTime', label: 'Ignore This Time' },
-                { key: 'ignoreUpdates', label: 'Do Not Remind Again' },
+                { key: 'ignoreUpdates', label: "Don't Remind Again" },
               ],
               onClick: ({ key }) => {
                 switch (key) {
@@ -481,7 +480,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('check_yak_version_error')}
           >
-            Manual Connect Engine
+            Manual Connect
           </YakitButton>
         </>
       )
@@ -496,7 +495,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('softwareBasics')}
           >
-            Manual Connect Engine
+            Manual Connect
           </YakitButton>
         </>
       )
@@ -511,7 +510,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('break', { linkAgain: true })}
           >
-            Manual Connect Engine
+            Manual Connect
           </YakitButton>
         </>
       )
@@ -526,7 +525,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('reclaimDatabaseSpace_success')}
           >
-            Manual Connect Engine
+            Manual Connect
           </YakitButton>
         </>
       )
@@ -541,7 +540,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('reclaimDatabaseSpace_error')}
           >
-            Manual Connect Engine
+            Manual Connect
           </YakitButton>
         </>
       )
@@ -556,7 +555,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             loading={restartLoading}
             onClick={() => btnClickCallback('error')}
           >
-            Manual Connect Engine
+            Manual Connect
           </YakitButton>
         </>
       )
@@ -579,7 +578,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             type="secondary2"
             onClick={() => btnClickCallback('link_countdown')}
           >
-            CancelConnect
+            Cancel Connection
           </YakitButton>
         </>
       )
@@ -661,11 +660,9 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
           >
             <div className={styles['log-body']}>
               {yakitStatus === 'link_countdown' ? (
-                <div className={styles['log-item']}>
-                  Engine connected successfully!{countdown} seconds before automatic entry...
-                </div>
+                <div className={styles['log-item']}>Engine connected! Auto-entering in {countdown}s...</div>
               ) : yakitStatus === 'break' ? (
-                <div className={styles['log-item']}>Disconnected. Click Manual Connect Engine</div>
+                <div className={styles['log-item']}>Connection interrupted. Click Manual Connect to reconnect.</div>
               ) : (
                 checkLog.map((item, index, arr) => {
                   return (
@@ -691,15 +688,15 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             <Form.Item
               label={''}
               rules={[
-                { required: true, message: `Please enter a port` },
+                { required: true, message: `Please enter a port number` },
                 {
                   pattern: /^(?:[1-9]\d{0,3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/,
-                  message: 'Please enter a valid port',
+                  message: 'Please enter a valid port number',
                 },
               ]}
               name={'newLinkport'}
             >
-              <YakitInput placeholder="Switch Port..." disabled={restartLoading} />
+              <YakitInput placeholder="Switch port..." disabled={restartLoading} />
             </Form.Item>
           </Form>
           {btns}
@@ -716,14 +713,14 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
             </>
           ) : (
             <div className={styles['footer-btn']}>
-              {/* 倒计时状态时不显示底部按钮 */}
+              {/* Hide footer buttons during countdown state */}
               {yakitStatus !== 'link_countdown' && (
                 <>
                   <Divider type="vertical"></Divider>
                   <span className={styles['secondary-btn']} onClick={() => grpcOpenYaklangPath()}>
                     Open Engine File
                   </span>
-                  {/* Interrupt Connection按钮：在空状态或Connect状态成功 时显示 */}
+                  {/* Disconnect button: shown in empty state or after a successful connection */}
                   {showBreakBtn && (
                     <>
                       <Divider type="vertical"></Divider>
@@ -733,11 +730,11 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
                           btnClickCallback('break')
                         }}
                       >
-                        Interrupt Connection
+                        Disconnect
                       </span>
                     </>
                   )}
-                  {/* Remote Connection按钮：在非Connect状态时显示 */}
+                  {/* Remote connection button: shown while disconnected */}
                   {unLinkStatus && (
                     <>
                       <Divider type="vertical"></Divider>
@@ -757,7 +754,7 @@ export const YakitLoading: React.FC<YakitLoadingProp> = (props) => {
                       </span>
                     </>
                   )}
-                  {/* 更多版本按钮：在非Connect状态时显示 */}
+                  {/* More versions button: shown while disconnected */}
                   {unLinkStatus && (
                     <div className={styles['more-version-btn']}>
                       <YakitPopover

@@ -62,13 +62,13 @@ export const CodeScanTaskListDrawer: React.FC<CodeScanTaskListDrawerProps> = (pr
       extra={
         <>
           {selectedRowKeys.length === 0 ? (
-            <YakitPopconfirm title="This action will clear all data below." onConfirm={onRemove}>
+            <YakitPopconfirm title="This action will clear all data below" onConfirm={onRemove}>
               <YakitButton loading={removeLoading} type="primary" danger>
-                清空
+                Clear
               </YakitButton>
             </YakitPopconfirm>
           ) : (
-            <YakitPopconfirm title="This action will delete the selected data." onConfirm={onRemove}>
+            <YakitPopconfirm title="This action will delete the selected data" onConfirm={onRemove}>
               <YakitButton loading={removeLoading} type="primary" danger>
                 Delete
               </YakitButton>
@@ -245,7 +245,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
                 onPaused(record)
               }}
             >
-              Paused
+              Pause
             </YakitButton>
           )
         case 'paused':
@@ -257,7 +257,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
                 onContinue(record)
               }}
             >
-              继续
+              Continue
             </YakitButton>
           )
         default:
@@ -280,7 +280,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
     const onCreateReport = useMemoizedFn((record: SyntaxFlowScanTask) => {
       setVisible(false)
       const params: CreateReportContentProps = {
-        reportName: `Code Scan报告 ${formatTimestamp(moment().unix())}`,
+        reportName: `Code Scan Report ${formatTimestamp(moment().unix())}`,
         runtimeId: `${record.TaskId}`,
         type: 'codeScan',
       }
@@ -347,7 +347,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
           render: (value) => {
             switch (value) {
               case 'debug':
-                return 'Rule Debugging'
+                return 'Rule Debug'
               case 'scan':
                 return 'Code Scan'
               default:
@@ -367,7 +367,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
                 value: 'scan',
               },
               {
-                label: 'Rule Debugging',
+                label: 'Rule Debug',
                 value: 'debug',
               },
             ],
@@ -407,7 +407,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
                     onCreateReport(record)
                   }}
                 >
-                  生成报告
+                  Generate Report
                 </YakitButton>
               ) : (
                 <>
@@ -421,7 +421,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
                         onDetails(record, 'new')
                       }}
                     >
-                      重试
+                      Retry
                     </YakitButton>
                   ) : (
                     <YakitButton
@@ -431,7 +431,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
                         onDetails(record, 'status')
                       }}
                     >
-                      查看
+                      View
                     </YakitButton>
                   )}
                   {record.Status === 'done' && (
@@ -444,7 +444,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
                           onCreateReport(record)
                         }}
                       >
-                        生成报告
+                        Generate Report
                       </YakitButton>
                     </>
                   )}
@@ -487,7 +487,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
           }
         })
         .catch((e) => {
-          yakitNotify('error', '获取Task ListFailed:' + e)
+          yakitNotify('error', 'Failed to get task list: ' + e)
         })
         .finally(() => setTimeout(() => setLoading(false), 300))
     })
@@ -552,7 +552,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
         }
         setVisible(false)
       } catch (error) {
-        failed('ActionsFailed：' + error)
+        failed('Operation failed: ' + error)
       }
     })
 
@@ -630,7 +630,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
       }
     })
 
-    /**Paused任务 */
+    /**暂停任务 */
     const onPaused = useMemoizedFn((record: SyntaxFlowScanTask) => {
       onDetails(record, 'pause')
     })
@@ -657,7 +657,7 @@ export const CodeScanTaskList: React.FC<CodeScanTaskListProps> = React.memo(
         }}
         onChange={onTableChange}
         isShowTotal={!readonly}
-        title={readonly && <div>Please select scan results to generate a report.</div>}
+        title={readonly && <div>Please select a scan result to generate a report</div>}
         rowSelection={
           !readonly
             ? {

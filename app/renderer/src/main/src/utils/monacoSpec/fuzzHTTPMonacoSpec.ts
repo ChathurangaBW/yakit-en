@@ -76,14 +76,14 @@ const customize_code = [
 const httpHeaderSuggestions = [
   {
     kind: languages.CompletionItemKind.Snippet,
-    label: 'Authorization: Basic ... 快速添加基础认证',
+    label: 'Authorization: Basic ... quick add basic auth',
     insertText: 'Authorization: Basic {{base64(${1:username}:${2:password})}}',
     insertTextRules: languages.CompletionItemInsertTextRule.InsertAsSnippet,
     documentation: 'Authorization',
   } as languages.CompletionItem,
   {
     kind: languages.CompletionItemKind.Snippet,
-    label: 'Authorization: Bearer ... 快速添加 JWT',
+    label: 'Authorization: Bearer ... quick add JWT',
     insertText: 'Authorization: Bearer ${1:...}',
     insertTextRules: languages.CompletionItemInsertTextRule.InsertAsSnippet,
     documentation: 'Authorization',
@@ -101,14 +101,14 @@ const httpHeaderSuggestions = [
     label: 'X-Forwarded-For',
     insertText: 'X-Forwarded-For: ${1:127.0.0.1}',
     insertTextRules: languages.CompletionItemInsertTextRule.InsertAsSnippet,
-    documentation: 'XFF 快捷设置',
+    documentation: 'XFF quick setup',
   } as languages.CompletionItem,
   {
     kind: languages.CompletionItemKind.Snippet,
-    label: 'Range 设置 Bytes 构造 206 响应',
+    label: 'Range bytes setup for 206 response',
     insertText: 'Range: bytes=0-${1:1023}',
     insertTextRules: languages.CompletionItemInsertTextRule.InsertAsSnippet,
-    documentation: '构造206响应：Range 设置 Bytes',
+    documentation: 'Build a 206 response: set Range bytes',
   } as languages.CompletionItem,
   ...customize_code.map((i) => {
     return {

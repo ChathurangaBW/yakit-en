@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 // app 信息配置
 let appInfoOption = null
 let files = null
@@ -13,6 +15,7 @@ let nsisUninstallerIcon = null
 
 // 生成构建包的自定义配置
 const platform = process.env.PLATFORM
+const extraFileIfExists = (from, to) => (fs.existsSync(from) ? [{ from, to }] : [])
 /**
  * @synchronize [IDENTIFIER_NAME]
  * 注意：case的选项必须全局保持一致。
@@ -94,6 +97,7 @@ switch (platform) {
     // yakit
     appInfoOption = {
       appId: 'io.yaklang.yakit',
+      extraMetadata: { name: 'yakit-english-ui' },
       productName: 'Yakit',
       copyright: 'Copyright © 2024 yaklang.io',
     }
@@ -115,13 +119,14 @@ switch (platform) {
 
 const configOption = {
   ...(appInfoOption || {}),
+  executableName: 'Yakit',
   /** @description extraFiles 可以在各自平台独立配置 */
   extraFiles: [
     { from: 'bins/scripts/auto-install-cert.zip', to: 'bins/scripts/auto-install-cert.zip' },
     { from: 'bins/scripts/start-engine.zip', to: 'bins/scripts/start-engine.zip' },
     { from: 'bins/scripts/google-chrome-plugin.zip', to: 'bins/scripts/google-chrome-plugin.zip' },
     { from: 'bins/flag.txt', to: 'bins/flag.txt' },
-    { from: 'bins/engine-version.txt', to: 'bins/engine-version.txt' },
+    ...extraFileIfExists('bins/engine-version.txt', 'bins/engine-version.txt'),
     {
       from: 'bins/resources',
       to: 'bins/resources',

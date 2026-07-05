@@ -1,14 +1,8 @@
-﻿import { Architecture, DownloadingState, System, SystemInfoProps, YaklangEngineMode } from './types'
+import { Architecture, DownloadingState, System, SystemInfoProps, YaklangEngineMode } from './types'
 import { yakitEngine, yakitSystem } from '@/utils/electronBridge'
 
 /**
- * 根据引擎运行模式（YaklangEngineMode）返回对应的中文描述。
- *
- * @param {YaklangEngineMode} m - 引擎模式，可为 "local" 或 "remote"。
- * @returns {string} 返回模式的中文名称：
- * - `"local"` → `"Local Mode"`
- * - `"remote"` → `"Remote Mode"`
- * - 其他值 → `"Unknown Mode"`
+ * Return the display label for a Yaklang engine mode.
  */
 export const EngineModeVerbose = (m: YaklangEngineMode): string => {
   switch (m) {
@@ -63,10 +57,10 @@ export const handleFetchIsDev = async (callback?: (value: boolean | undefined) =
   if (callback) callback(SystemInfo.isDev)
 }
 
-/** @name 处理进度条数据(防止异常数据) */
+/** @name Normalize progress data and guard against malformed values */
 export const safeFormatDownloadProcessState = (state: DownloadingState) => {
   try {
-    // 使用可选链操作符来安全地访问深层 times属性，如果不存在，则默认为0
+    // Safely read nested values and default missing values to 0.
     const total = state.size?.total || 0
     const transferred = state.size?.transferred || 0
     const elapsed = state.time?.elapsed || 0

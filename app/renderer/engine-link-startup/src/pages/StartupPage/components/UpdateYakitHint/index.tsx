@@ -1,4 +1,4 @@
-﻿import React, { useRef } from 'react'
+import React, { useRef } from 'react'
 import { useMemoizedFn } from 'ahooks'
 import { useEffect, useMemo, useState } from 'react'
 import { DownloadingState } from '../../types'
@@ -54,7 +54,7 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
     }
   }, [])
 
-  /** Download */
+  /** 下载 */
   const handleDownload = useMemoizedFn(() => {
     let version = latest.startsWith('v') ? latest.substring(1) : latest
     setStatus('install')
@@ -83,7 +83,7 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
       })
   })
 
-  /** 停止Download */
+  /** 停止下载 */
   const yakitBreak = useMemoizedFn(() => {
     isBreak.current = true
     grpcCancelDownloadYakit(true).catch(() => {})
@@ -96,7 +96,7 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
     }, 300)
   })
 
-  /** 立即更新-已Download完成 */
+  /** 立即更新-已下载完成 */
   const yakitUpdate = useMemoizedFn(() => {
     yakitShell.openYakitPath()
     setTimeout(() => {
@@ -105,8 +105,8 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
   })
 
   const title = useMemo(() => {
-    if (status === 'install') return `${getReleaseEditionName()} downloading...`
-    if (status === 'installed') return `${getReleaseEditionName()} downloaded successfully`
+    if (status === 'install') return `${getReleaseEditionName()} Downloading...`
+    if (status === 'installed') return `${getReleaseEditionName()} Downloaded`
     return 'Unexpected error, please close!'
   }, [status])
 
@@ -140,7 +140,7 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
         {status === 'installed' && (
           <div className={styles['content']}>
             <div className={styles['hint-right-content']}>
-              Installation requires closing the app. Double-click the installer to complete installation. Install now?
+              The software must be closed to install. Double-click the installer to complete. Install now?
             </div>
           </div>
         )}
@@ -153,12 +153,12 @@ export const UpdateYakitHint: React.FC<UpdateYakitHintProps> = React.memo((props
               percent={Math.floor((yakitProgress?.percent || 0) * 100)}
             />
             <div className={styles['download-info-wrapper']}>
-              <div>Remaining time : {(yakitProgress?.time.remaining || 0).toFixed(2)}s</div>
+              <div>Remaining: {(yakitProgress?.time.remaining || 0).toFixed(2)}s</div>
               <div className={styles['divider-wrapper']}></div>
-              <div>Elapsed : {(yakitProgress?.time.elapsed || 0).toFixed(2)}s</div>
+              <div>Elapsed: {(yakitProgress?.time.elapsed || 0).toFixed(2)}s</div>
               <div className={styles['divider-wrapper']}></div>
               <div>
-                Download speed : {((yakitProgress?.speed || 0) / 1000000).toFixed(2)}
+                Speed: {((yakitProgress?.speed || 0) / 1000000).toFixed(2)}
                 M/s
               </div>
             </div>

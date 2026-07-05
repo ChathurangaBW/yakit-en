@@ -1,4 +1,4 @@
-﻿import classNames from 'classnames'
+import classNames from 'classnames'
 import { PEMExampleProps, RemoteEngineProps, RemoteLinkInfo, YakitAuthInfo } from './RemoteEngineType'
 import React, { useEffect, useState } from 'react'
 import { getLocalValue, setLocalValue } from '@/utils/kv'
@@ -34,9 +34,9 @@ const DefaultRemoteLink: RemoteLinkInfo = {
 export const RemoteEngine: React.FC<RemoteEngineProps> = React.memo((props) => {
   const { loading, setLoading, onSubmit, onSwitchLocalEngine } = props
 
-  /** Remote主机参数 */
+  /** Remote host parameters */
   const [remote, setRemote] = useState<RemoteLinkInfo>({ ...DefaultRemoteLink })
-  /** 是否进入检查状态 */
+  /** Whether validation has started */
   const [isCheck, setIsCheck] = useState<boolean>(false)
 
   const [auths, setAuths] = useState<YakitAuthInfo[]>([])
@@ -112,14 +112,14 @@ export const RemoteEngine: React.FC<RemoteEngineProps> = React.memo((props) => {
     onSubmit({ ...remote })
   })
 
-  // 返回到软件初始化界面
+  // Return to the software initialization screen.
   const handleSwitchLocalEngine = useMemoizedFn(() => {
     setRemote({ ...DefaultRemoteLink })
     setIsCheck(false)
     onSwitchLocalEngine()
   })
 
-  // 删除指定Remote历史记录
+  // Delete the selected remote history item.
   const delRemoteHistoryItem = useMemoizedFn((authItem: YakitAuthInfo) => {
     setAuths((prev) => prev.filter((item) => item.name !== authItem.name))
     yakitEngine
@@ -168,7 +168,7 @@ export const RemoteEngine: React.FC<RemoteEngineProps> = React.memo((props) => {
                 <Form.Item
                   label={
                     <div className={styles.requiredLabel}>
-                      Yak gRPC Host Address<span className={styles.redStar}>*</span>
+                      Yak gRPC Host<span className={styles.redStar}>*</span>
                     </div>
                   }
                   required={true}
@@ -271,7 +271,7 @@ export const RemoteEngine: React.FC<RemoteEngineProps> = React.memo((props) => {
                     </div>
                   }
                   required={true}
-                  help="After this is filled in, this record will be saved to Connection History for quick reuse"
+                  help="After this is filled in, the connection is saved to history for quick reuse."
                 >
                   <YakitInput
                     className={classNames(styles['input-style'], {
@@ -284,7 +284,7 @@ export const RemoteEngine: React.FC<RemoteEngineProps> = React.memo((props) => {
               )}
               <Form.Item label="">
                 <YakitButton size="large" onClick={submit} className={styles['btn-style']}>
-                  Start Connection
+                  Connect
                 </YakitButton>
               </Form.Item>
             </Form>
@@ -314,7 +314,7 @@ export const RemoteEngine: React.FC<RemoteEngineProps> = React.memo((props) => {
   )
 })
 
-/** PEM证书示例 */
+/** PEM certificate example */
 const PemPlaceHolder = `-----BEGIN CERTIFICATE-----
 MIIDDjCCAfagAwIBAgIQdtJUoUlZeG+SAmgFo8TjpzANBgkqhkiG9w0BAQsFADAg
 MR4wHAYDVQQDExVZYWtpdCBUZWFtU2VydmVyIFJvb3QwIBcNOTkxMjMxMTYwMDAw
@@ -335,15 +335,15 @@ FRmP2Nx+zifhMNe300xfHzqNeN3D+Uix6+GOkBoYI65KNPGqwi8uy9HlJVx3Jkht
 WOG+9PGLcr4IRJx5LUEZ5FB1
 -----END CERTIFICATE-----`
 
-/** @name PEM示例弹窗 */
+/** @name PEM help popover */
 const PEMExample: React.FC<PEMExampleProps> = React.memo((props) => {
   const { children, setShow } = props
 
   const content = (
     <div className={classNames(styles['pem-example'], styles['pem-wrapper'])}>
-      <div className={styles['title-style']}>A PEM certificate is required</div>
-      When starting the core server with <div className={styles['content-code']}>yak grpc --tls</div> the Root CA will
-      be printed on screen. Copy it into this input:
+      <div className={styles['title-style']}>A PEM-format certificate is required</div>
+      When you start the core server with <div className={styles['content-code']}>yak grpc --tls</div>, the Root CA is
+      printed to the screen. Copy it into this input:
       <br />
       For example:
       <br />
@@ -365,7 +365,7 @@ const PEMExample: React.FC<PEMExampleProps> = React.memo((props) => {
     </YakitPopover>
   )
 })
-/** @name PEM说明弹窗 */
+/** @name PEM help popover */
 const PEMHint: React.FC<PEMExampleProps> = React.memo((props) => {
   const { children, setShow } = props
 
@@ -385,9 +385,9 @@ const PEMHint: React.FC<PEMExampleProps> = React.memo((props) => {
 
   const content = (
     <div className={classNames(styles['pem-hint'], styles['pem-wrapper'])}>
-      Note:{getReleaseEditionName()} does not upload history records to the internet
+      Note: {getReleaseEditionName()} does not upload history records to the internet.
       <br />
-      You can find remote login information in your local client directory
+      You can find remote login information in your local client directory.
       <br />
       <div className={styles['path-wrapper']}>
         <div className={styles['link-wrapper']}>

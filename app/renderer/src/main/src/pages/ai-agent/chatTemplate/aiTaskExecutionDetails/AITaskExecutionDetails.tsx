@@ -174,21 +174,21 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
 
   const toolCall = useCreation(() => {
     if (!planItemDetailsData?.execution)
-      return ['成功', '失败次数', '总次数'].map((item) => ({ Id: item, Data: '暂无', Timestamp: 0 }))
+      return ['Success', 'Failure Count', 'Total Count'].map((item) => ({ Id: item, Data: 'N/A', Timestamp: 0 }))
     return [
       {
         Data: `${planItemDetailsData?.execution?.tool_call_success ?? `0`}`,
-        Id: '成功',
+        Id: 'Success',
         Timestamp: 0,
       },
       {
         Data: `${planItemDetailsData?.execution?.tool_call_failed ?? `0`}`,
-        Id: '失败次数',
+        Id: 'Failure Count',
         Timestamp: 0,
       },
       {
         Data: `${planItemDetailsData?.execution?.tool_call_total ?? `0`}`,
-        Id: '总次数',
+        Id: 'Total Count',
         Timestamp: 0,
       },
     ]
@@ -200,8 +200,8 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
   const executionMinutes = useCreation(() => {
     const startedAt = planItemDetailsData?.execution?.started_at || 0
     const endedAt = planItemDetailsData?.execution?.ended_at || 0
-    if (!startedAt) return '暂无'
-    if (startedAt && !endedAt) return '执行中'
+    if (!startedAt) return 'N/A'
+    if (startedAt && !endedAt) return 'Running'
 
     return timeDiffWithMoment(startedAt, endedAt)
   }, [
@@ -210,11 +210,11 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
     planItemDetailsData?.execution?.ended_at,
   ])
   const httpFlowCount = useCreation(() => {
-    if (!planItemDetailsData?.execution) return '暂无'
+    if (!planItemDetailsData?.execution) return 'N/A'
     return `${planItemDetailsData?.execution.http_flow_count ?? `0`}`
   }, [planItemDetailsData?.execution?.http_flow_count])
   const riskCount = useCreation(() => {
-    if (!planItemDetailsData?.execution) return '暂无'
+    if (!planItemDetailsData?.execution) return 'N/A'
     return `${planItemDetailsData?.execution.risk_count ?? `0`}`
   }, [planItemDetailsData?.execution?.risk_count])
 
@@ -259,22 +259,22 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
 
       <div className={styles['content-body']}>
         <div className={styles['summary-section']}>
-          <HorizontalScrollCardItemInfoMultiple info={toolCall} tag={'工具调用'} />
+          <HorizontalScrollCardItemInfoMultiple info={toolCall} tag={'Tool Calls'} />
           <HorizontalScrollCardItemInfoSingle
-            item={{ Id: '执行时长', Data: executionMinutes, Timestamp: 0 }}
-            tag="执行时长"
+            item={{ Id: 'Execution Time', Data: executionMinutes, Timestamp: 0 }}
+            tag="Execution Time"
             compact={false}
           />
 
           <HorizontalScrollCardItemInfoSingle
-            item={{ Id: '产生流量数', Data: httpFlowCount, Timestamp: 0 }}
-            tag="产生流量数"
+            item={{ Id: 'HTTP Flow Count', Data: httpFlowCount, Timestamp: 0 }}
+            tag="HTTP Flow Count"
             compact={false}
           />
 
           <HorizontalScrollCardItemInfoSingle
-            item={{ Id: '漏洞数', Data: riskCount, Timestamp: 0 }}
-            tag="漏洞数"
+            item={{ Id: 'Risk Count', Data: riskCount, Timestamp: 0 }}
+            tag="Risk Count"
             compact={false}
           />
         </div>
@@ -282,15 +282,15 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
         <div className={styles['top-section']}>
           <div className={styles['top-left']}>
             <AITaskExecutionDetailsCard title="Task Goal" content={taskGoal} />
-            <AITaskExecutionDetailsCard title="Intent Perception" content={perception?.summary} />
+            <AITaskExecutionDetailsCard title="Intent Summary" content={perception?.summary} />
           </div>
           <div className={styles['task-statistics']}>
             <div className={styles['stats-header']}>
-              <span className={styles['title']}>Todo Tasks</span>
+              <span className={styles['title']}>To-Do Tasks</span>
               {!!total && (
                 <>
                   <span className={styles['progress-text']}>
-                    进度
+                    Progress
                     <span className={styles['progress-number']}>
                       {finishedCount}/{total || 1}
                     </span>
@@ -308,13 +308,13 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
             </div>
             {!!total ? (
               <>
-                {/* Status统计区块 */}
+                {/* 状态统计区块 */}
                 <AITaskStatisticsStatus list={todoData.progressNumber} />
                 <div className={styles['stats-content']}>
-                  {/* Todo列表区块 */}
+                  {/* 待办列表区块 */}
                   <div className={styles['todo-list-wrapper']}>
                     <div className={styles['todo-list-header']}>
-                      <span className={styles['todo-title']}>Todo</span>
+                      <span className={styles['todo-title']}>Pending</span>
                       <YakitTag border={false} fullRadius size="small">
                         {todoData.unFinish.length}
                       </YakitTag>
@@ -325,7 +325,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
                       ))}
                     </div>
                   </div>
-                  {/* Finished */}
+                  {/* 已结束 */}
                   <div className={styles['todo-list-wrapper']}>
                     <div className={styles['todo-list-header']}>
                       <span className={styles['todo-title']}>Finished</span>
@@ -345,8 +345,8 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <div className={styles['empty-body']}>
                 <YakitEmpty
                   imageStyle={{ width: 160, height: 140 }}
-                  title="No Todo Tasks"
-                  description="当前任务暂未生成Todo Tasks，请稍后查看"
+                  title="No to-do tasks yet"
+                  description="This task has not generated any to-do items yet. Please check again later."
                 />
               </div>
             )}
@@ -364,7 +364,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <AITaskDetailsCardList
                 key="forge"
                 type="forge"
-                colTitle="技能"
+                colTitle="Skills"
                 taskId={taskId}
                 fixedList={forgeFixedList}
                 dynamicList={forgeDynamicList}
@@ -374,7 +374,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <AITaskDetailsCardList
                 key="tool"
                 type="tool"
-                colTitle={'工具'}
+                colTitle={'Tools'}
                 taskId={taskId}
                 fixedList={planItemDetailsData?.tool.fixed || []}
                 dynamicList={planItemDetailsData?.tool.dynamic || []}
@@ -384,7 +384,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <AITaskDetailsCardList
                 key="yak_plugin"
                 type="yak_plugin"
-                colTitle={'插件'}
+                colTitle={'Plugins'}
                 taskId={taskId}
                 fixedList={planItemDetailsData?.plugins.fixed || []}
                 dynamicList={planItemDetailsData?.plugins.dynamic || []}
@@ -431,7 +431,7 @@ const AIBrowserProcesses: React.FC<AIBrowserProcessesProps> = React.memo((props)
             key={processes.process_id}
             title={processes.process_name}
             titleExtra={
-              <YakitPopconfirm title={'Are you sure you want to close it?'} onConfirm={() => onRemove(processes)}>
+              <YakitPopconfirm title={'Are you sure you want to close this?'} onConfirm={() => onRemove(processes)}>
                 <YakitButton isHover icon={<OutlineTrashIcon />} type="secondary2" colors="danger" />
               </YakitPopconfirm>
             }
@@ -685,7 +685,7 @@ const AITaskDetailsAddPopover: React.FC<AITaskDetailsAddPopoverProps> = React.me
         <div className={styles['ai-add-popover-title']}>
           {title}
           <YakitInput.Search
-            placeholder="Search by keyword"
+            placeholder="Enter a keyword to search"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             onSearch={onSearch}
@@ -733,16 +733,16 @@ const AITaskDetailsAddPopover: React.FC<AITaskDetailsAddPopoverProps> = React.me
         <div className={styles['footer-left']}>
           <div className={styles['select-all']}>
             <YakitCheckbox checked={allSelected} onChange={() => toggleAll()} indeterminate={partiallySelected} />
-            <span>全选</span>
+            <span>Select All</span>
           </div>
           <TableTotalAndSelectNumber total={response.total} selectNum={selected.length} />
         </div>
         <div className={styles['footer-right']}>
           <YakitButton onClick={onClose} type="outline1">
-            取消
+            Cancel
           </YakitButton>
           <YakitButton type="primary" onClick={onSave}>
-            确定
+            Confirm
           </YakitButton>
         </div>
       </div>
@@ -818,7 +818,7 @@ const AITaskDetailsCardList: React.FC<AITaskDetailsCardListProps> = React.memo((
             content={
               <AITaskDetailsAddPopover
                 type={type}
-                title={`添加${colTitle}`}
+                title={`Add ${colTitle}`}
                 taskId={taskId}
                 onClose={() => setVisible(false)}
               />
@@ -831,7 +831,7 @@ const AITaskDetailsCardList: React.FC<AITaskDetailsCardListProps> = React.memo((
             overlayClassName={styles['add-popover']}
           >
             <YakitButton type="text" className={styles['add-btn']}>
-              添加
+              Add
             </YakitButton>
           </YakitPopover>
         )}
@@ -852,7 +852,10 @@ const AITaskDetailsCardList: React.FC<AITaskDetailsCardListProps> = React.memo((
               description={dynamicItem.description}
               category={dynamicItem.category}
               titleExtra={
-                <YakitPopconfirm title={'Are you sure you want to delete it?'} onConfirm={() => onRemove(dynamicItem)}>
+                <YakitPopconfirm
+                  title={'Are you sure you want to delete this?'}
+                  onConfirm={() => onRemove(dynamicItem)}
+                >
                   <YakitButton isHover icon={<OutlineTrashIcon />} type="secondary2" colors="danger" />
                 </YakitPopconfirm>
               }
