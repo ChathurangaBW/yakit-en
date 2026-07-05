@@ -1,16 +1,16 @@
-export interface RemoteEngineProps {
+﻿export interface RemoteEngineProps {
   loading: boolean
   setLoading: (flag: boolean) => any
   onSubmit: (info: RemoteLinkInfo) => any
-  /** 取消 & 切换本地连接 */
+  /** Cancel & 切换本地Connect */
   onSwitchLocalEngine: () => any
 }
 
-/** @name 远程连接配置参数 */
+/** @name Remote Connection配置参数 */
 export interface RemoteLinkInfo {
-  /** 是否保存为历史连接 */
+  /** 是否Save as connection history */
   allowSave: boolean
-  /** 历史连接名称 */
+  /** 历史Connection Name称 */
   linkName?: string
   /** 远程主机地址 */
   host: string
@@ -23,7 +23,7 @@ export interface RemoteLinkInfo {
   password?: string
 }
 
-/** @name 本地缓存远程连接配置信息 */
+/** @name 本地缓存Remote Connection配置信息 */
 export interface YakitAuthInfo {
   name: string
   host: string

@@ -28,7 +28,7 @@ export interface ControlOperationProps {
   controlName: string
 }
 
-// 控制中 - 禁止操作
+// 控制中 - 禁止Actions
 export const ControlOperation: React.FC<ControlOperationProps> = (props) => {
   const { controlName } = props
   const { dynamicStatus } = yakitDynamicStatus()
@@ -42,7 +42,7 @@ export const ControlOperation: React.FC<ControlOperationProps> = (props) => {
   return (
     <div className={styles['control-operation']}>
       <div className={styles['control-operation-box']}>
-        <div className={styles['control-operation-title']}>远程控制中</div>
+        <div className={styles['control-operation-title']}>Remote Control Active</div>
         <div className={styles['control-operation-seconend-title']}>
           已被用户 {controlName} 远程控制，请勿关闭 {getReleaseEditionName()}
         </div>
@@ -82,7 +82,7 @@ export interface ResposeProps {
   alive: boolean
 }
 
-// 受控端
+// Controlled Side
 export const ControlMyself: React.FC<ControlMyselfProps> = (props) => {
   const { goBack } = props
   const [loading, setLoading] = useState<boolean>(true)
@@ -104,7 +104,7 @@ export const ControlMyself: React.FC<ControlMyselfProps> = (props) => {
 
   const run = () => {
     /* 
-            受控端步骤
+            Controlled Side步骤
             1.通过/remote/tunnel获取ip与password
         */
     NetWorkApi<any, API.RemoteTunnelResponse>({
@@ -221,7 +221,7 @@ export interface ControlOtherProps {
   runControl: (v: string, url: string) => void
 }
 
-// 控制端
+// Controller Side
 export const ControlOther: React.FC<ControlOtherProps> = (props) => {
   const { goBack, runControl } = props
   const [textAreaValue, setTextAreaValue] = useState<string>('')
@@ -239,9 +239,9 @@ export const ControlOther: React.FC<ControlOtherProps> = (props) => {
         },
       }).then((res) => {
         if (res.status) {
-          warn('由于远程目标已在远程控制中，暂无法连接')
+          warn('由于远程目标已在Remote Control Active，暂无法连接')
         } else {
-          // 如有受控端服务则杀掉
+          // 如有Controlled Side服务则杀掉
           ipcRenderer.invoke('kill-dynamic-control')
           setLoading(true)
           getRemoteValue(getRemoteHttpSettingGV()).then((setting) => {
@@ -272,7 +272,7 @@ export const ControlOther: React.FC<ControlOtherProps> = (props) => {
               'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             ]
             if (!typeArr.includes(f.type)) {
-              failed(`${f.name}非txt、Excel文件，请上传txt、Excel格式文件！`)
+              failed(`${f.name} is not a txt or Excel file. Please upload a txt or Excel file.`)
               return false
             }
 
@@ -296,7 +296,7 @@ export const ControlOther: React.FC<ControlOtherProps> = (props) => {
             setValue: (value) => setTextAreaValue(value),
             value: textAreaValue,
             autoSize: { minRows: 3, maxRows: 10 },
-            placeholder: '请将链接密钥粘贴/输入到文本框中',
+            placeholder: 'Paste or enter the link key into the text box.',
           }}
         />
       </YakitSpin>
@@ -327,7 +327,7 @@ export const SelectControlType: React.FC<SelectControlTypeProps> = (props) => {
           <ControlMyselfIcon />
         </div>
         <div className={styles['type-content']}>
-          <div className={styles['type-title']}>受控端</div>
+          <div className={styles['type-title']}>Controlled Side</div>
           <div className={styles['type-text']}>生成邀请密钥</div>
         </div>
       </div>
@@ -336,8 +336,8 @@ export const SelectControlType: React.FC<SelectControlTypeProps> = (props) => {
           <ControlOtherIcon />
         </div>
         <div className={styles['type-content']}>
-          <div className={styles['type-title']}>控制端</div>
-          <div className={styles['type-text']}>可通过受控端分享的密钥远程控制他的 客户端</div>
+          <div className={styles['type-title']}>Controller Side</div>
+          <div className={styles['type-text']}>可通过Controlled Side分享的密钥远程控制他的 客户端</div>
         </div>
       </div>
     </div>
@@ -450,7 +450,7 @@ export const ControlAdminPage: React.FC<ControlAdminPageProps> = (props) => {
           setTotal(res.pagemeta.total)
         })
         .catch((err) => {
-          failed('获取远程管理列表失败：' + err)
+          failed('获取Remote Management列表失败：' + err)
         })
         .finally(() => {
           setTimeout(() => {
@@ -483,7 +483,7 @@ export const ControlAdminPage: React.FC<ControlAdminPageProps> = (props) => {
         setTotal(res.pagemeta.total)
       })
       .catch((err) => {
-        failed('获取远程管理列表失败：' + err)
+        failed('获取Remote Management列表失败：' + err)
       })
       .finally(() => {
         setTimeout(() => {
@@ -509,7 +509,7 @@ export const ControlAdminPage: React.FC<ControlAdminPageProps> = (props) => {
 
   const columns: VirtualColumns[] = [
     {
-      title: '控制端',
+      title: 'Controller Side',
       render: (record) => {
         return (
           <div>
@@ -520,35 +520,35 @@ export const ControlAdminPage: React.FC<ControlAdminPageProps> = (props) => {
       },
     },
     {
-      title: '远程地址',
+      title: 'Remote Address',
       dataIndex: 'addr',
       render: (text) => <span>{text}</span>,
     },
     {
-      title: '开始时间',
+      title: 'Start Time',
       dataIndex: 'created_at',
       render: (text) => <span>{moment.unix(text).format('YYYY-MM-DD HH:mm')}</span>,
     },
     {
-      title: '结束时间',
+      title: 'End Time',
       dataIndex: 'updated_at',
       render: (text, record) => {
         return <span>{record.status ? '-' : moment.unix(text).format('YYYY-MM-DD HH:mm')}</span>
       },
     },
     {
-      title: '状态',
+      title: 'Status',
       dataIndex: 'status',
       render: (i: boolean) => {
         return (
           <div className={styles['radio-status']}>
             {i ? (
               <Radio className={styles['radio-status-active']} defaultChecked={true}>
-                远程中
+                Remote Active
               </Radio>
             ) : (
               <Radio disabled={true} checked={true}>
-                已结束
+                Finished
               </Radio>
             )}
           </div>
@@ -563,15 +563,15 @@ export const ControlAdminPage: React.FC<ControlAdminPageProps> = (props) => {
             data={[
               {
                 key: 'all',
-                label: '全部',
+                label: 'All',
               },
               {
                 key: 'true',
-                label: '远程中',
+                label: 'Remote Active',
               },
               {
                 key: 'false',
-                label: '已结束',
+                label: 'Finished',
               },
             ]}
             onClick={({ key }) => setParams({ ...getParams(), status: key === 'all' ? undefined : key })}
@@ -585,7 +585,7 @@ export const ControlAdminPage: React.FC<ControlAdminPageProps> = (props) => {
       <YakitSpin spinning={resetLoading}>
         <div className={styles['operation']}>
           <div className={styles['left-select']}>
-            <div className={styles['title-box']}>远程管理</div>
+            <div className={styles['title-box']}>Remote Management</div>
 
             <span className={styles['total-box']}>
               <span className={styles['title']}>Total</span> <span className={styles['content']}>{total}</span>
@@ -612,7 +612,7 @@ export const ControlAdminPage: React.FC<ControlAdminPageProps> = (props) => {
               />
             </div>
             <YakitInput.Search
-              placeholder={'请输入用户名'}
+              placeholder={'Enter a username'}
               enterButton={true}
               size="large"
               style={{ width: 200 }}

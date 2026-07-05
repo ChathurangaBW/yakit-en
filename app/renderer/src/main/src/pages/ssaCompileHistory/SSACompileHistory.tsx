@@ -190,7 +190,7 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
 
   const columns: VirtualListColumns<SSAProgram>[] = [
     {
-      title: '程序名称',
+      title: 'Program Name',
       dataIndex: 'Name',
       render: (text) => {
         return (
@@ -201,12 +201,12 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
       },
     },
     {
-      title: '语言',
+      title: 'Language',
       dataIndex: 'Language',
       width: 120,
     },
     {
-      title: '描述',
+      title: 'Description',
       dataIndex: 'Description',
       render: (text) => {
         return (
@@ -217,13 +217,13 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
       },
     },
     {
-      title: '更新时间',
+      title: 'Updated At',
       dataIndex: 'UpdateAt',
       width: 180,
       render: (text) => <div>{text === 0 ? '-' : formatTimestamp(text)}</div>,
     },
     {
-      title: '严重',
+      title: 'Critical',
       dataIndex: 'CriticalRiskNumber',
       render: (text) => {
         try {
@@ -236,7 +236,7 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
       width: 80,
     },
     {
-      title: '高危',
+      title: 'High',
       dataIndex: 'HighRiskNumber',
       render: (text) => {
         try {
@@ -249,7 +249,7 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
       width: 80,
     },
     {
-      title: '中危',
+      title: 'Medium',
       dataIndex: 'WarnRiskNumber',
       render: (text) => {
         try {
@@ -262,7 +262,7 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
       width: 80,
     },
     {
-      title: '低危',
+      title: 'Low',
       dataIndex: 'LowRiskNumber',
       render: (text) => {
         try {
@@ -275,13 +275,13 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
       width: 80,
     },
     {
-      title: '操作',
+      title: 'Actions',
       dataIndex: 'action',
       width: 120,
       render: (text, record) => {
         return (
           <div className={styles['audit-opt']} onClick={(e) => e.stopPropagation()}>
-            <Tooltip title={'打开项目'}>
+            <Tooltip title={'Open Project'}>
               <YakitButton
                 type="text"
                 icon={<OutlineArrowcirclerightIcon />}
@@ -309,7 +309,7 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
               onClick={(e) => {
                 e?.stopPropagation()
                 setDeleteParams({
-                  title: `确认删除 ${record.Name}？`,
+                  title: `Confirm deletion of ${record.Name}?`,
                   params: {
                     Filter: {
                       Ids: [record.Id],
@@ -335,7 +335,7 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
     <div className={styles['ssa-compile-history']} id="ssa-compile-history">
       <div className={styles['header']}>
         <div className={styles['main']}>
-          <div className={styles['title']}>SSA项目编译历史</div>
+          <div className={styles['title']}>SSA Project Compile History</div>
           <div className={styles['sub-title']}>
             <div className={styles['text']}>Total</div>
             <div className={styles['number']}>{total}</div>
@@ -361,7 +361,7 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
 
           <YakitInput.Search
             prefix={<OutlineSearchIcon className={styles['search-icon']} />}
-            placeholder="请输入关键词搜索"
+            placeholder="Search by keyword"
             value={params.Keyword}
             onChange={(e) => {
               setParams({ ...params, Keyword: e.target.value })
@@ -379,7 +379,10 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
             icon={<TrashIcon />}
             onClick={() => {
               setDeleteParams({
-                title: selectedRowKeys.length === 0 ? '确认清空列表数据？' : '确认删除勾选数据？',
+                title:
+                  selectedRowKeys.length === 0
+                    ? 'Confirm clearing the list data?'
+                    : 'Confirm deleting the selected data?',
                 params:
                   selectedRowKeys.length === 0
                     ? { DeleteAll: true }
@@ -426,7 +429,9 @@ const SSACompileHistory: React.FC<SSACompileHistoryProps> = (props) => {
       <YakitHint
         visible={!!deleteParams}
         title={deleteParams?.title}
-        content={selectedRowKeys.length === 0 ? '删除后数据将无法恢复' : '删除后数据将无法恢复'}
+        content={
+          selectedRowKeys.length === 0 ? 'Deleted data cannot be recovered.' : 'Deleted data cannot be recovered.'
+        }
         onOk={() => deleteParams && onDelete(deleteParams.params)}
         onCancel={() => setDeleteParams(undefined)}
       />

@@ -1,8 +1,8 @@
 {
   "DataCompare": {
-    "comparer": "資料對比"
+    "comparer": "Data Comparer"
   },
   "DataCompareModal": {
-    "codeCompare": "程式碼對比"
+    "codeCompare": "Code Compare"
   }
 }

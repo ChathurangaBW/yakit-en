@@ -50,11 +50,11 @@ import styles from './Misstatement.module.scss'
 const batchRefreshMenuData: YakitMenuItemProps[] = [
   {
     key: 'noResetRefresh',
-    label: '仅刷新',
+    label: 'Refresh Only',
   },
   {
     key: 'resetRefresh',
-    label: '重置查询条件刷新',
+    label: 'Reset Filters and Refresh',
   },
 ]
 
@@ -143,7 +143,7 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
 
     const columnArr: ColumnsTypeProps[] = [
       {
-        title: '序号',
+        title: 'No.',
         dataKey: 'id',
         fixed: 'left',
         ellipsis: false,
@@ -155,7 +155,7 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
         },
       },
       {
-        title: '标题',
+        title: 'Title',
         dataKey: 'titleVerbose',
         filterProps: {
           filterKey: 'title',
@@ -165,7 +165,7 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
         render: (_, record) => record?.titleVerbose || record.title || '-',
       },
       {
-        title: '类型',
+        title: 'Type',
         dataKey: 'riskTypeVerbose',
         width: 100,
         filterProps: {
@@ -177,7 +177,7 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
         },
       },
       {
-        title: '等级',
+        title: 'Severity',
         dataKey: 'severity',
         width: 75,
         align: 'center',
@@ -196,23 +196,23 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
           filters: [
             {
               value: 'critical',
-              label: '严重',
+              label: 'Critical',
             },
             {
               value: 'high',
-              label: '高危',
+              label: 'High',
             },
             {
               value: 'warning',
-              label: '中危',
+              label: 'Medium',
             },
             {
               value: 'low',
-              label: '低危',
+              label: 'Low',
             },
             {
               value: 'info',
-              label: '信息',
+              label: 'Info',
             },
           ],
         },
@@ -232,7 +232,7 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
         dataKey: 'url',
       },
       {
-        title: '所属项目',
+        title: 'Project',
         dataKey: 'programName',
         filterProps: {
           filterKey: 'programName',
@@ -243,7 +243,7 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
         },
       },
       {
-        title: '处置状态',
+        title: 'Handling Status',
         dataKey: 'tags',
         minWidth: 120,
         filterProps: {
@@ -262,20 +262,20 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
         ),
       },
       {
-        title: '发现时间',
+        title: 'Discovery Time',
         dataKey: tableType === 'risk' ? 'riskCreatedAt' : 'ssaRiskCreatedAt',
         width: 180,
         render: (text) => (text ? formatTimestamp(text) : '-'),
       },
       {
-        title: '提交时间',
+        title: 'Submission Time',
         dataKey: 'created_at',
         width: 180,
         fixed: 'right',
         render: (text) => (text ? formatTimestamp(text) : '-'),
       },
       {
-        title: '操作',
+        title: 'Actions',
         dataKey: 'action',
         width: 60,
         fixed: 'right',
@@ -545,7 +545,7 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
         <div className={styles['renderTitle-wrapper']}>
           <div className={styles['renderTitle-wrapper-left']}>
             {!advancedQuery && (
-              <Tooltip title="展开筛选" placement="topLeft" overlayClassName="plugins-tooltip">
+              <Tooltip title="Expand Filters" placement="topLeft" overlayClassName="plugins-tooltip">
                 <YakitButton
                   type="text2"
                   onClick={() => {
@@ -575,11 +575,11 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
               options={[
                 {
                   value: 'risk',
-                  label: '插件',
+                  label: 'Plugins',
                 },
                 {
                   value: 'auditHole',
-                  label: '规则',
+                  label: 'Rules',
                 },
               ]}
             />
@@ -594,7 +594,7 @@ export const Misstatement: React.FC<MisstatementProp> = (props) => {
             <YakitInput.Search
               value={keywords}
               onChange={(e) => setKeywords(e.target.value)}
-              placeholder="请输入关键词搜索"
+              placeholder="Search by keyword"
               onSearch={onSearch}
               onPressEnter={onPressEnter}
             />
@@ -742,7 +742,7 @@ const MisstatementQuery: React.FC<MisstatementQueryProps> = React.forwardRef((pr
     >
       <div className={styles['misstatement-query-heard']}>
         <span>高级查询</span>
-        <Tooltip title="收起筛选" placement="top" overlayClassName="plugins-tooltip">
+        <Tooltip title="Collapse Filters" placement="top" overlayClassName="plugins-tooltip">
           <YakitButton type="text2" onClick={onClose} icon={<OutlineCloseIcon />}></YakitButton>
         </Tooltip>
       </div>

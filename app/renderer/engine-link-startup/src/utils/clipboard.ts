@@ -1,12 +1,12 @@
-import { yakitClipboard } from './electronBridge'
+﻿import { yakitClipboard } from './electronBridge'
 import { yakitNotify } from './notification'
 
 interface SetClipboardTextExtraParams {
-  /** 是否隐藏复制成功提示 */
+  /** 是否隐藏Copied successfullyPrompt */
   hiddenHint?: boolean
-  /** 复制成功提示信息(默认: 复制成功) */
+  /** Copied successfullyPrompt信息(默认: Copied successfully) */
   hintText?: string
-  /** 复制成功后的回调 */
+  /** Copied successfully后的回调 */
   successCallback?: () => void
   /** 复制失败后的回调 */
   failedCallback?: () => void
@@ -24,7 +24,7 @@ export const setClipboardText = (text?: string, extra?: SetClipboardTextExtraPar
     yakitClipboard
       .setText(text)
       .then(() => {
-        if (!hiddenHint) yakitNotify('success', hintText || '复制成功')
+        if (!hiddenHint) yakitNotify('success', hintText || 'Copied successfully')
         successCallback && successCallback()
       })
       .catch(() => {

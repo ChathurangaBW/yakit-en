@@ -1,5 +1,5 @@
 /**
- * @description 此文件是 HTTPFuzzerPage 页面的通用常用变量
+ * @description 此文件是 HTTPFuzzerPage 页面的General常用变量
  * @author luoluo
  */
 
@@ -281,7 +281,7 @@ customFailureChecker = func(https, req, rsp, fail) {
 
 export const HotPatchTempDefault = [
   {
-    name: '响应解密（AES-CBC/Hex）',
+    name: 'Response Decryption (AES-CBC/Hex)',
     nameUi: 'HTTPFuzzerHotPatch.response_decrypt_aes_cbc_hex',
     temp: `// 响应解密模板 - 适用于响应 body 为 Hex 编码的 AES-CBC 密文
 // key / iv 使用 Base64 编码，请替换为实际值
@@ -320,7 +320,7 @@ afterRequest = func(https, originReq, req, originRsp, rsp) {
     isDefault: true,
   },
   {
-    name: '爆破 AES-CBC',
+    name: 'Brute Force AES-CBC',
     nameUi: 'HTTPFuzzerHotPatch.bruteforce_aes_cbc',
     temp: `decode = func(param) {
     key = codec.DecodeHex("31323334313233343132333431323334")~ /* 加密密钥 */
@@ -342,7 +342,7 @@ afterRequest = func(https, originReq, req, originRsp, rsp) {
     isDefault: true,
   },
   {
-    name: '爆破 RSA-OAEP',
+    name: 'Brute Force RSA-OAEP',
     nameUi: 'HTTPFuzzerHotPatch.bruteforce_rsa_oaep',
     temp: `decode2 = func(param) {
     publicKey64 = \`LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFvVlRNNjNuRXE3YXpGQ0Yza2lEKwpuMGgyMnlvWmd2eU92TDJaS001NDg0SWZ0TFFERGdLUjFGTGhBOHJpZDkzRUdYVTRwNVNKZHVHdmhLRmxqR2s1ClFXYmFDcWNOdVNqM3NuYi9RRXU0TXZ2ZmFTMStWd3R4Vk84Z0lIdTVMRCs4ZXNTT1FMdTZaY1Q4dVJ3Wm00c00KNEh0ZXltc2Fjc1lGZmpWME5vMklnMnNVSVJaOTBYR2NzK01CMVFlMFQzcHBHa2V1WGhORnpjMldzS3ZreXBRSApZUDlUeENXejUwR1VhV3YzK2xnUDJzUTZtcFd6SWRDeUZ2OWRlU1NWeE1uRlJQQzU0R0s1endFNmJ3blBhRHJJClhzS0IxN2VnK1NES0FFVHpEYi9YSGxXamZqcWo3aWlabUw5bHJxK3pTU2F0R2llMzM4NVdQMlpUVlZHcDZlSnQKd1FJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0t\` /* base64格式的publicKey */
@@ -368,7 +368,7 @@ afterRequest = func(https, originReq, req, originRsp, rsp) {
     isDefault: true,
   },
   {
-    name: '爆破 CSRF（带有保护用 token）',
+    name: 'Brute Force CSRF (Protected Token)',
     nameUi: 'HTTPFuzzerHotPatch.bruteforce_csrf_with_token',
     temp: `beforeRequest = func(req) { /* beforeRequest将在请求发起之前执行 */
     // 发送GET请求，获取响应
@@ -397,7 +397,7 @@ afterRequest = func(https, originReq, req, originRsp, rsp) {
     isDefault: true,
   },
   {
-    name: '破解 Signature',
+    name: 'Crack Signature',
     nameUi: 'HTTPFuzzerHotPatch.crack_signature',
     temp: `decode3 = func(param) {
     key = \`1234123412341234\`
@@ -424,7 +424,7 @@ afterRequest = func(https, originReq, req, originRsp, rsp) {
     isDefault: true,
   },
   {
-    name: '第三方验证码绕过',
+    name: 'Third-Party CAPTCHA Bypass',
     nameUi: 'HTTPFuzzerHotPatch.third_party_captcha_bypass',
     temp: `beforeRequest = func(req) {
     img_packet = \`\`
@@ -447,7 +447,7 @@ afterRequest = func(https, originReq, req, originRsp, rsp) {
     isDefault: true,
   },
   {
-    name: '[国密] 响应解密 SM4-CBC/Base64',
+    name: '[SM] Response Decryption SM4-CBC/Base64',
     nameUi: 'HTTPFuzzerHotPatch.response_decrypt_sm4_cbc_base64',
     temp: `// 响应解密模板 - 适用于响应 body 为 Base64 编码的国密 SM4-CBC 密文
 // key / iv 使用 Base64 编码，请替换为实际值
@@ -514,7 +514,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[国密] 请求&响应 SM4-CBC 双向加解密',
+    name: '[SM] Request & Response SM4-CBC Bidirectional Crypto',
     nameUi: 'HTTPFuzzerHotPatch.bidirectional_sm4_cbc',
     temp: `// 双向 SM4-CBC 加解密 - beforeRequest 加密请求体, afterRequest 解密响应体
 // key / iv 使用 Base64 编码，请替换为实际值
@@ -589,7 +589,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[国密-爆破] SM4-CBC 字典加密爆破',
+    name: '[SM-Brute] SM4-CBC Dictionary Encryption Brute Force',
     nameUi: 'HTTPFuzzerHotPatch.bruteforce_sm4_cbc',
     temp: `// SM4-CBC 字典爆破 - 输出加密后的字典数组供 Fuzzer 替换
 decodeSm4 = func(param) {
@@ -646,7 +646,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[国密-爆破] SM2 公钥加密字典爆破',
+    name: '[SM-Brute] SM2 Public-Key Dictionary Brute Force',
     nameUi: 'HTTPFuzzerHotPatch.bruteforce_sm2',
     temp: `// SM2 公钥加密字典爆破 - 默认使用 C1C3C2 排列（国密标准）
 // 请将下方 publicKeyPem 替换为目标系统的 SM2 公钥
@@ -721,7 +721,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[AES] 响应解密 AES-GCM/Base64',
+    name: '[AES] Response Decryption AES-GCM/Base64',
     nameUi: 'HTTPFuzzerHotPatch.response_decrypt_aes_gcm_base64',
     temp: `// AES-GCM 响应解密 - nonce 长度 12 字节
 // key / nonce 使用 Base64 编码，请替换为实际值
@@ -778,7 +778,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[AES] 响应解密 AES-ECB/Base64',
+    name: '[AES] Response Decryption AES-ECB/Base64',
     nameUi: 'HTTPFuzzerHotPatch.response_decrypt_aes_ecb_base64',
     temp: `// AES-ECB 响应解密 - 无需 IV
 // key 使用 Base64 编码，请替换为实际值
@@ -833,7 +833,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[AES] 请求&响应 AES-CBC 双向加解密',
+    name: '[AES] Request & Response AES-CBC Bidirectional Crypto',
     nameUi: 'HTTPFuzzerHotPatch.bidirectional_aes_cbc',
     temp: `// 双向 AES-CBC 加解密 - beforeRequest 加密请求体, afterRequest 解密响应体
 // key / iv 使用 Base64 编码，请替换为实际值
@@ -908,7 +908,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[签名-爆破] HMAC-MD5 签名',
+    name: '[Signature-Brute] HMAC-MD5 Signature',
     nameUi: 'HTTPFuzzerHotPatch.bruteforce_hmac_md5',
     temp: `// HMAC-MD5 签名爆破 - 输出包含 signature 的完整 JSON 字典数组
 decodeHmacMd5 = func(param) {
@@ -968,7 +968,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[签名] AppKey+Timestamp+Nonce 三方签名生成',
+    name: '[Signature] AppKey+Timestamp+Nonce Three-Party Signature',
     nameUi: 'HTTPFuzzerHotPatch.sign_appkey_timestamp_nonce',
     temp: `// AppKey + Timestamp + Nonce 三方签名 - beforeRequest 自动注入
 appKey = "demo-appkey-001"
@@ -1039,7 +1039,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[签名] Body MD5/SM3 防篡改签名',
+    name: '[Signature] Body MD5/SM3 Tamper-Proof Signature',
     nameUi: 'HTTPFuzzerHotPatch.sign_body_md5_sm3',
     temp: `// Body Hash 防篡改签名 - 计算 body 哈希注入到 header
 // 算法可选: "md5" / "sm3" / "sha256"
@@ -1103,7 +1103,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[JWT] HS256 重签名',
+    name: '[JWT] HS256 Resign',
     nameUi: 'HTTPFuzzerHotPatch.jwt_hs256_resign',
     temp: `// JWT HS256 重签名 - 修改 payload 后用已知 secret 重新签名
 jwtSecret = []byte("mysecret")  /* 替换为目标系统的 HS256 secret */
@@ -1188,7 +1188,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[会话] 自动登录注入 Authorization Token',
+    name: '[Session] Auto Login Inject Authorization Token',
     nameUi: 'HTTPFuzzerHotPatch.session_auto_login_token',
     temp: `// 自动登录获取 token 并注入到 Authorization 请求头
 // 请修改下方 loginRequest 为目标系统的真实登录请求
@@ -1304,7 +1304,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[工具] Hash fuzz tag (MD5/SHA1/SHA256/SM3)',
+    name: '[Tool] Hash fuzz tag (MD5/SHA1/SHA256/SM3)',
     nameUi: 'HTTPFuzzerHotPatch.tool_hash_fuzztag',
     temp: `// Hash fuzz tag - 第一个参数是算法名，第二个参数是明文
 hash = func(param) {
@@ -1375,7 +1375,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[工具] 时间戳 fuzz tag',
+    name: '[Tool] Timestamp fuzz tag',
     nameUi: 'HTTPFuzzerHotPatch.tool_timestamp_fuzztag',
     temp: `// 时间戳 fuzz tag - 支持 s / ms / ns / date 四种格式
 ts = func(param) {
@@ -1438,7 +1438,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[工具] UUID fuzz tag',
+    name: '[Tool] UUID fuzz tag',
     nameUi: 'HTTPFuzzerHotPatch.tool_uuid_fuzztag',
     temp: `// UUID fuzz tag - 默认输出标准 UUID v4，传入 "nohyphen" 输出去掉连字符的 hex
 uuidv4 = func(param) {
@@ -1483,7 +1483,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[工具] 随机字符串 fuzz tag',
+    name: '[Tool] Random String fuzz tag',
     nameUi: 'HTTPFuzzerHotPatch.tool_randstr_fuzztag',
     temp: `// 随机字符串 fuzz tag - 支持自定义长度和字符集
 randstr = func(param) {
@@ -1568,7 +1568,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[响应] customFailureChecker 自定义失败检查',
+    name: '[Response] customFailureChecker Custom Failure Check',
     nameUi: 'HTTPFuzzerHotPatch.response_custom_failure_checker',
     temp: `// 自定义失败检查 - 综合状态码、响应关键字、响应长度判断
 failureKeywords = ["error", "exception", "ratelimit", "rate limit", "失败", "异常", "请稍后", "blocked"]
@@ -1665,7 +1665,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[重试] retryHandler 智能重试',
+    name: '[Retry] retryHandler Smart Retry',
     nameUi: 'HTTPFuzzerHotPatch.retry_smart_retry',
     temp: `// retryHandler - 根据响应状态码采用不同重试策略
 retryHandler = func(https, retryCount, req, rsp, retry) {
@@ -1776,7 +1776,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[流处理] mirrorHTTPFlow 提取参数链',
+    name: '[Stream] mirrorHTTPFlow Extract Parameter Chain',
     nameUi: 'HTTPFuzzerHotPatch.mirror_flow_extract_chain',
     temp: `// mirrorHTTPFlow - 从响应中提取关键参数注入到下一个请求
 mirrorHTTPFlow = func(req, rsp, params) {
@@ -1870,7 +1870,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[挑战] 动态 Challenge + HMAC 签名注入',
+    name: '[Challenge] Dynamic Challenge + HMAC Signature Injection',
     nameUi: 'HTTPFuzzerHotPatch.challenge_response_sign',
     temp: `// 动态挑战应答签名模板
 // 流程: 取 challenge → AES-CBC 解密拿到 nonce → HMAC-SHA256 计算签名 → 注入 X-Auth-Signature
@@ -1998,7 +1998,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[会话] Bootstrap 动态会话 + 多 Header 签名 + 响应解密',
+    name: '[Session] Bootstrap Dynamic Session + Multi-Header Signature + Response Decryption',
     nameUi: 'HTTPFuzzerHotPatch.bootstrap_session_pipeline',
     temp: `// Bootstrap Session 完整 pipeline 模板
 // 流程:
@@ -2207,7 +2207,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[AES] 自带 key/iv 信封协议双向加解密',
+    name: '[AES] Envelope Protocol Bidirectional Crypto with key/iv',
     nameUi: 'HTTPFuzzerHotPatch.aes_cbc_key_iv_envelope',
     temp: `// 自带 key/iv 信封协议（key 与 iv 随请求/响应一并下发）
 // 请求方向: 把明文 body 用每次新生成的 key/iv 加密后，封装成 {key, iv, message} 发出
@@ -2322,7 +2322,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[MITM] hijackSaveHTTPFlow 数据库存储明文',
+    name: '[MITM] hijackSaveHTTPFlow Store Plaintext in Database',
     nameUi: 'HTTPFuzzerHotPatch.mitm_hijack_save_decrypt',
     temp: `// hijackSaveHTTPFlow 模板 - MITM 入库时把响应改写为明文，浏览器仍收原密文
 // 仅对命中 TARGET_PATH 的 flow 做改写；其他 flow 原样保存
@@ -2431,7 +2431,7 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[Mock] mockHTTPRequest 离线响应模拟',
+    name: '[Mock] mockHTTPRequest Offline Response Simulation',
     nameUi: 'HTTPFuzzerHotPatch.mock_http_offline_response',
     temp: `// mockHTTPRequest Hook - Fuzzer 不真正发包，由脚本直接返回响应
 // 函数签名: mockHTTPRequest(isHttps bool, url string, req []byte, mockResponse func)

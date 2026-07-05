@@ -438,7 +438,7 @@ export const defaultMITMFilterData: MITMFilterData = {
 
 export const MITMHotPatchTempDefault = [
   {
-    name: '加解密模板',
+    name: 'Encryption/Decryption Template',
     temp: `// 假设响应加密方式为 aes-cbc
 // 秘钥(key)为1234567890123456,向量(iv)为1234567890123456
 // 例如响应为{"encrypted":"nwvjULjLOqzUFt9nQt+gVg==", "key":"1234567890123456", "iv":"1234567890123456"}
@@ -520,7 +520,7 @@ hijackSaveHTTPFlow = func(flow /* *yakit.HTTPFlow */, modify /* func(modified *y
     isDefault: true,
   },
   {
-    name: 'MockHttp模板',
+    name: 'Mock HTTP Template',
     temp: `// mockHTTPRequest 会在请求即将发往真实服务器之前被调用。
 // 你可以通过调用 mockResponse(fakeResponse) 来伪造一个响应直接返回给客户端，从而阻止原始请求被发送。
 // isHttps    (bool):                  请求是否为HTTPS协议。
@@ -569,9 +569,9 @@ mockHTTPRequest = func(isHttps, url, req, mockResponse) {
     isDefault: true,
   },
   {
-    name: '[请求] hijackHTTPRequest 改 JSON 字段（金额/折扣演示）',
+    name: '[Request] hijackHTTPRequest Modify JSON Fields (Amount/Discount Demo)',
     temp: `/*
-模版名称: [请求] hijackHTTPRequest 改 JSON 字段（金额/折扣演示）
+模版名称: [Request] hijackHTTPRequest Modify JSON Fields (Amount/Discount Demo)
 关键词: hijackHTTPRequest, JSON 字段改写, 业务篡改, 金额, 折扣
 适用场景: 演示前端把订单金额/折扣写死在 JS 校验，MITM 在出站前修改 JSON 字段（如金额变负、折扣放大）
 参考文章: yak-project-public 031 (2025-10-17) MITM 热加载全流程解析 场景一
@@ -661,9 +661,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[请求] hijackHTTPRequest 注入 X-Auth-Token / Cookie',
+    name: '[Request] hijackHTTPRequest Inject X-Auth-Token / Cookie',
     temp: `/*
-模版名称: [请求] hijackHTTPRequest 注入 X-Auth-Token / Cookie
+模版名称: [Request] hijackHTTPRequest Inject X-Auth-Token / Cookie
 关键词: hijackHTTPRequest, Authorization, X-Auth-Token, Cookie 注入, 全局认证
 适用场景: 在 MITM 出站前自动给目标 host 的所有请求补一个 Authorization Bearer 或额外 Cookie，避免每个工具单独配置认证
 */
@@ -745,9 +745,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[请求] hijackHTTPRequest 黑名单 drop 静态资源/敏感 host',
+    name: '[Request] hijackHTTPRequest Drop Static Resources/Sensitive Hosts by Blacklist',
     temp: `/*
-模版名称: [请求] hijackHTTPRequest 黑名单 drop 静态资源/敏感 host
+模版名称: [Request] hijackHTTPRequest Drop Static Resources/Sensitive Hosts by Blacklist
 关键词: hijackHTTPRequest, drop, 黑名单, 静态资源, 噪音过滤, 广告统计屏蔽
 适用场景: MITM 抓包时希望直接丢弃静态资源（.css/.js/.png 等）或第三方统计/广告 host，减少数据库噪音，避免影响业务排查
 说明: yakit 的 MITM 过滤器只能"不入库"，drop() 才会真正阻断请求；本模板适用于希望浏览器都加载不到这些资源的场景
@@ -843,9 +843,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[响应] hijackHTTPResponseEx 删除阻断 JS (alert / location.href)',
+    name: '[Response] hijackHTTPResponseEx Remove Blocking JS (alert / location.href)',
     temp: `/*
-模版名称: [响应] hijackHTTPResponseEx 删除阻断 JS (alert / location.href)
+模版名称: [Response] hijackHTTPResponseEx Remove Blocking JS (alert / location.href)
 关键词: hijackHTTPResponseEx, JS 改写, alert 注释, location.href 屏蔽, 前端跳转拦截
 适用场景: 测试时前端 JS 经常自动 alert/跳走/刷新打断调试，MITM 在响应入站前用正则把这些 JS 改成无害字符串，让浏览器可以停在调试页面
 参考文章: yak-project-public 031 (2025-10-17) MITM 热加载全流程解析 场景二
@@ -937,9 +937,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[响应] hijackHTTPResponseEx 宽松 CORS / 删 CSP / 去 HttpOnly',
+    name: '[Response] hijackHTTPResponseEx Relax CORS / Remove CSP / Remove HttpOnly',
     temp: `/*
-模版名称: [响应] hijackHTTPResponseEx 宽松 CORS / 删 CSP / 去 HttpOnly
+模版名称: [Response] hijackHTTPResponseEx Relax CORS / Remove CSP / Remove HttpOnly
 关键词: hijackHTTPResponseEx, CORS, CSP, X-Frame-Options, HttpOnly, Set-Cookie, 安全头改写
 适用场景: 安全研究/调试时需要让浏览器跨域访问、可在 iframe 嵌入页面、JS 能读 Cookie，本模板把响应安全头改成宽松值方便测试
 警告: 仅用于授权环境调试，不要在生产环境使用
@@ -1055,9 +1055,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[镜像] mirrorHTTPFlow 按状态码统计 + 5xx 告警',
+    name: '[Mirror] mirrorHTTPFlow Status Code Stats + 5xx Alerts',
     temp: `/*
-模版名称: [镜像] mirrorHTTPFlow 按状态码统计 + 5xx 告警
+模版名称: [Mirror] mirrorHTTPFlow Status Code Stats + 5xx Alerts
 关键词: mirrorHTTPFlow, 状态码统计, 5xx 告警, 实时监控
 适用场景: 实时监控全量被代理流量按状态码分布；遇到 5xx/4xx 关键状态自动打 log，便于在大量流量中提前发现异常接口
 说明: mirrorHTTPFlow 是只读旁路 hook，不会影响请求/响应；适合做日志、统计、告警，不能修改流量
@@ -1152,9 +1152,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[镜像] mirrorFilteredHTTPFlow 流式提取手机号/邮箱/JWT',
+    name: '[Mirror] mirrorFilteredHTTPFlow Stream Extract Phone/Email/JWT',
     temp: `/*
-模版名称: [镜像] mirrorFilteredHTTPFlow 流式提取手机号/邮箱/JWT
+模版名称: [Mirror] mirrorFilteredHTTPFlow Stream Extract Phone/Email/JWT
 关键词: mirrorFilteredHTTPFlow, 敏感数据, 实时提取, 手机号, 邮箱, JWT
 适用场景: 用 MITM 过滤器锁定到目标 host 后，对过滤后的流量做实时敏感数据提取，发现一笔即立刻 log；与 A1（历史回放分析版）互补
 说明: mirrorFilteredHTTPFlow 在 mirrorHTTPFlow 基础上多了"经过 MITM 过滤器筛选"语义，更适合做高频"只关注目标"的旁路提取
@@ -1240,9 +1240,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[镜像] mirrorNewWebsite 新域名自动指纹识别',
+    name: '[Mirror] mirrorNewWebsite Auto Fingerprint New Domains',
     temp: `/*
-模版名称: [镜像] mirrorNewWebsite 新域名自动指纹识别
+模版名称: [Mirror] mirrorNewWebsite Auto Fingerprint New Domains
 关键词: mirrorNewWebsite, 指纹识别, Server, X-Powered-By, CMS, 技术栈识别
 适用场景: 在 MITM 抓取流量过程中，每发现一个新 schema+host 自动做轻量级离线指纹（基于 Server / X-Powered-By / Body 关键字），不发包，零开销
 参考文章: yak-project-public 031 (2025-10-17) MITM 热加载全流程解析
@@ -1346,9 +1346,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[镜像] mirrorNewWebsitePath 新路径自动 nuclei 扫描',
+    name: '[Mirror] mirrorNewWebsitePath Auto Nuclei Scan New Paths',
     temp: `/*
-模版名称: [镜像] mirrorNewWebsitePath 新路径自动 nuclei 扫描
+模版名称: [Mirror] mirrorNewWebsitePath Auto Nuclei Scan New Paths
 关键词: mirrorNewWebsitePath, nuclei, 自动扫描, 新路径触发, 资产发现
 适用场景: 边浏览边扫描，当 MITM 发现某网站出现新路径时，自动把该路径加入 nuclei 扫描队列；常用于结合渗透测试中"摸底+发现+扫描"自动化
 说明: 实际扫描在 doScan() 中，默认使用 nuclei；自测时被替换为内存队列，不真正发包
@@ -1437,9 +1437,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[入库] hijackSaveHTTPFlow 敏感关键字染色 + tag',
+    name: '[Save] hijackSaveHTTPFlow Highlight Sensitive Keywords + Tag',
     temp: `/*
-模版名称: [入库] hijackSaveHTTPFlow 敏感关键字染色 + tag
+模版名称: [Save] hijackSaveHTTPFlow Highlight Sensitive Keywords + Tag
 关键词: hijackSaveHTTPFlow, AddTag, Red, 关键字染色, 敏感词, 流量分类入库
 适用场景: 入库前根据请求/响应 body 命中的关键字给流量打 tag 并染色，便于在 yakit 历史中按 tag 检索定位
 说明: flow.Request / flow.Response 是 str.Quote 后的字符串，需 Unquote/Quote 回去；染色通过 flow.Red() 等方法
@@ -1560,9 +1560,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[入库] hijackSaveHTTPFlow PII 脱敏入库',
+    name: '[Save] hijackSaveHTTPFlow Desensitize PII Before Saving',
     temp: `/*
-模版名称: [入库] hijackSaveHTTPFlow PII 脱敏入库
+模版名称: [Save] hijackSaveHTTPFlow Desensitize PII Before Saving
 关键词: hijackSaveHTTPFlow, PII, 脱敏, 手机号, 身份证, 邮箱, 银行卡, 合规演示
 适用场景: 演示/合规场景下希望流量入库时不带原始 PII，又能保留接口结构供后续排查；本模板对 Response body 做手机号/身份证/邮箱/银行卡的中间位脱敏后保存
 说明: 浏览器端拿到的仍是原文，本 Hook 仅改写"保存到数据库"那一份；与 23（明文存储）相反，本模板降低数据库敏感等级
@@ -1688,9 +1688,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[Mock] mockHTTPRequest 危险操作保护 (DELETE/PUT 强制 mock)',
+    name: '[Mock] mockHTTPRequest Dangerous Operation Guard (Force Mock DELETE/PUT)',
     temp: `/*
-模版名称: [Mock] mockHTTPRequest 危险操作保护 (DELETE/PUT 强制 mock)
+模版名称: [Mock] mockHTTPRequest Dangerous Operation Guard (Force Mock DELETE/PUT)
 关键词: mockHTTPRequest, 危险操作保护, DELETE, PUT, drop 数据, 演练环境
 适用场景: 在演练/生产场景做 MITM 渗透时希望"看得到、操作得了"但不真的破坏；本模板把所有 DELETE/PUT 改为 mock 成功响应，确保不会真的把数据删了
 参考文章: yak-project-public 024 (2025-12-05) Mock 重塑无污染客户端测试
@@ -1793,9 +1793,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[Mock] mockHTTPRequest 虚拟靶场 (SQLi/RCE/SSRF)',
+    name: '[Mock] mockHTTPRequest Virtual Lab (SQLi/RCE/SSRF)',
     temp: `/*
-模版名称: [Mock] mockHTTPRequest 虚拟靶场 (SQLi/RCE/SSRF)
+模版名称: [Mock] mockHTTPRequest Virtual Lab (SQLi/RCE/SSRF)
 关键词: mockHTTPRequest, 虚拟靶场, SQLi, RCE, SSRF, 离线练习, 模板调试
 适用场景: 没有真实漏洞服务器时，用 mockHTTPRequest 在本地构造一个最小可用的 SQLi/RCE/SSRF 虚拟靶场，便于练习 PoC/Fuzz/插件
 参考文章: yak-project-public 021 (2025-12-26) Mock 热加载进阶 从 WebFuzzer 到模板调试的全链路支持
@@ -1938,14 +1938,14 @@ if YAK_MAIN {
 
 export const AnalyzeHotPatchTempDefault = [
   {
-    name: '代码模板',
+    name: 'Code Template',
     temp: HotPatchDefaultContent,
     isDefault: true,
   },
   {
-    name: '[分析] 敏感数据全量提取（手机号/JWT/Authorization）+ JSON 报告',
+    name: '[Analysis] Extract Sensitive Data (Phone/JWT/Authorization) + JSON Report',
     temp: `/*
-模版名称: [分析] 敏感数据全量提取（手机号/JWT/Authorization）+ JSON 报告
+模版名称: [Analysis] Extract Sensitive Data (Phone/JWT/Authorization) + JSON Report
 关键词: analyzeHTTPFlow, onAnalyzeHTTPFlowFinish, 手机号, Token, Authorization, JSON 报告, sync.NewMutex
 适用场景: 对历史流量做批量敏感数据扫描，输出汇总 JSON 报告到 yakit 临时目录；命中后自动给流量染色
 参考文章: yak-project-public 030 (2025-10-24) 流量分析热加载实战技巧 案例一
@@ -2100,9 +2100,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[分析] 主机访问次数统计',
+    name: '[Analysis] Host Access Count Statistics',
     temp: `/*
-模版名称: [分析] 主机访问次数统计
+模版名称: [Analysis] Host Access Count Statistics
 关键词: analyzeHTTPFlow, onAnalyzeHTTPFlowFinish, host 统计, 5xx 标红, 流量分布
 适用场景: 对历史流量按 host 维度做次数统计；同时把状态码 >= 500 的流量染红 + 上报 extract，结束时打印 host 排名
 参考文章: yak-project-public 030 (2025-10-24) 流量分析热加载实战技巧 案例二
@@ -2205,9 +2205,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[分析] 自动分类（登录/上传/后台）+ tag + 染色',
+    name: '[Analysis] Auto Categorize (Login/Upload/Admin) + Tag + Highlight',
     temp: `/*
-模版名称: [分析] 自动分类（登录/上传/后台）+ tag + 染色
+模版名称: [Analysis] Auto Categorize (Login/Upload/Admin) + Tag + Highlight
 关键词: analyzeHTTPFlow, AddTag, Blue, Purple, Green, 登录上传后台分类, 行为可视化
 适用场景: 对历史流量做快速业务分类，根据请求 URL/Body 自动给"登录/上传/后台/注销"等行为打 tag + 颜色，便于后续按 tag 检索定位
 参考文章: yak-project-public 030 (2025-10-24) 流量分析热加载实战技巧 案例三
@@ -2325,9 +2325,9 @@ if YAK_MAIN {
     isDefault: true,
   },
   {
-    name: '[分析] 异常状态码报告（4xx/5xx 饼图 + 表格）',
+    name: '[Analysis] Abnormal Status Code Report (4xx/5xx Pie + Table)',
     temp: `/*
-模版名称: [分析] 异常状态码报告（4xx/5xx 饼图 + 表格）
+模版名称: [Analysis] Abnormal Status Code Report (4xx/5xx Pie + Table)
 关键词: analyzeHTTPFlow, onAnalyzeHTTPFlowFinish, report.New, 饼图, 表格, 异常状态码, Markdown 报告
 适用场景: 对历史流量做异常状态码（>= 400）统计，结束时生成包含 Markdown 描述、饼图、表格的完整报告（自动写入 yakit 数据库->报告页）
 参考文章: yak-project-public 030 (2025-10-24) 流量分析热加载实战技巧 案例四

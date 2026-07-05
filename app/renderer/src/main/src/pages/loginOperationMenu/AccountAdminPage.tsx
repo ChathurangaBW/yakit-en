@@ -192,9 +192,9 @@ const OrganizationAdmin: React.FC<OrganizationAdminProps> = (props) => {
     orderBy: 'updated_at',
     order: 'desc',
   })
-  // 正常 - 组织架构
+  // 正常 - Organization
   const [department, setDepartment] = useState<DataSourceProps[]>([])
-  // 无归属 - 组织架构数量
+  // 无归属 - Organization数量
   const [noDepartmentNum, setNoDepartmentNum] = useState<number>()
   const [expandedKeys, setExpandedKeys] = useState<(string | number)[]>([])
 
@@ -203,9 +203,9 @@ const OrganizationAdmin: React.FC<OrganizationAdminProps> = (props) => {
   }, [])
 
   const getTreeData = () => {
-    // 获取正常组织架构
+    // 获取正常Organization
     getNomalOrganization(0)
-    // 获取无归属组织架构
+    // 获取无归属Organization
     noVestingOrganizationNum()
   }
   const getNomalOrganization = (offsetId: number) => {
@@ -307,7 +307,7 @@ const OrganizationAdmin: React.FC<OrganizationAdminProps> = (props) => {
             setDepartment(newDepartment)
             resolve(newDepartment)
           } else {
-            // 当获取结果为空 则为删除的最后一个
+            // 当获取结果为空 则为Delete的最后一个
             const newDepartment = department.map((node) => {
               if (node.key === key) {
                 return {
@@ -324,7 +324,7 @@ const OrganizationAdmin: React.FC<OrganizationAdminProps> = (props) => {
         })
         .catch((err) => {
           reject(err)
-          yakitNotify('error', '失败：' + err)
+          yakitNotify('error', 'Failed：' + err)
         })
     })
   }
@@ -402,7 +402,7 @@ const OrganizationAdmin: React.FC<OrganizationAdminProps> = (props) => {
           if (pid) {
             onLoadData({ key: pid })
           } else {
-            // 操作数据 仅动态删除一条
+            // Actions数据 仅动态Delete一条
             const filterArr = department.filter((item) => item.key !== id)
             setDepartment(filterArr)
           }
@@ -538,7 +538,7 @@ const OrganizationAdmin: React.FC<OrganizationAdminProps> = (props) => {
                       m.destroy()
                     }}
                     refresh={(obj) => {
-                      // 操作数据 仅动态添加一条
+                      // Actions数据 仅动态添加一条
                       if (obj) {
                         setDepartment((prev) => [
                           {
@@ -816,7 +816,7 @@ const AccountList: React.FC<AccountListProps> = (props) => {
 
   const queyChangeUpdateData = useDebounceFn(
     () => {
-      // 初次不通过此处请求数据
+      // 初次不通过此处Request数据
       if (!isInitRequestRef.current) {
         update(1)
       }
@@ -978,7 +978,7 @@ const AccountList: React.FC<AccountListProps> = (props) => {
           }
         }
 
-        // 无归属列表数据全部被删除 展示全部数据
+        // 无归属列表数据全部被Delete 展示全部数据
         if (query.departmentId === 0 && response.pagemeta.total === 0) {
           setQuery((prevQuery) => ({ ...prevQuery, departmentId: undefined }))
           onSetSelectTitle(undefined)
@@ -1005,17 +1005,20 @@ const AccountList: React.FC<AccountListProps> = (props) => {
         update(1)
         const { user_name, password } = res
         showYakitModal({
-          title: '账号信息',
+          title: 'Account Information',
           content: (
             <div style={{ padding: 15 }}>
               <div style={{ color: 'var(--Colors-Use-Neutral-Text-1-Title)' }}>
-                用户名：<span>{user_name}</span>
+                Username: <span>{user_name}</span>
               </div>
               <div style={{ color: 'var(--Colors-Use-Neutral-Text-1-Title)' }}>
-                密码：<span>{password}</span>
+                Password: <span>{password}</span>
               </div>
               <div style={{ textAlign: 'center', marginTop: 10 }}>
-                <YakitButton type="primary" onClick={() => setClipboardText(`用户名：${user_name}\n密码：${password}`)}>
+                <YakitButton
+                  type="primary"
+                  onClick={() => setClipboardText(`Username: ${user_name}\nPassword: ${password}`)}
+                >
                   复制
                 </YakitButton>
               </div>
@@ -1025,7 +1028,7 @@ const AccountList: React.FC<AccountListProps> = (props) => {
         })
       })
       .catch((err) => {
-        yakitNotify('error', '重置账号失败：' + err)
+        yakitNotify('error', '重置账号Failed：' + err)
       })
       .finally(() => {})
   }
@@ -1054,11 +1057,11 @@ const AccountList: React.FC<AccountListProps> = (props) => {
           const showData = unReadable(resultObj)
           setClipboardText(showData, { hintText: '复制远程连接成功' })
         } else {
-          yakitNotify('error', `暂无最新连接信息，请该用户发起远程连接后再操作`)
+          yakitNotify('error', `暂无最新连接信息，请该用户发起远程连接后再Actions`)
         }
       })
       .catch((err) => {
-        yakitNotify('error', `复制远程连接失败: ${err}`)
+        yakitNotify('error', `复制远程连接Failed: ${err}`)
       })
       .finally(() => {})
   }
@@ -1073,14 +1076,14 @@ const AccountList: React.FC<AccountListProps> = (props) => {
       },
     })
       .then((res) => {
-        yakitNotify('success', '删除用户成功')
+        yakitNotify('success', 'Delete用户成功')
         update(1)
         setSelectList([])
         setAllCheck(false)
         handleTreeReduceCount()
       })
       .catch((err) => {
-        yakitNotify('error', '删除账号失败：' + err)
+        yakitNotify('error', 'Delete账号Failed：' + err)
       })
       .finally(() => setTimeout(() => setLoading(false), 300))
   }
@@ -1094,7 +1097,7 @@ const AccountList: React.FC<AccountListProps> = (props) => {
       },
     })
       .then((res) => {
-        yakitNotify('success', '删除用户成功')
+        yakitNotify('success', 'Delete用户成功')
         setSelectList((s) => s.filter((ele) => ele.uid !== uid))
         const total = response.pagemeta.total - 1 > 0 ? response.pagemeta.total - 1 : 0
         setResponse({
@@ -1106,14 +1109,14 @@ const AccountList: React.FC<AccountListProps> = (props) => {
         })
         handleTreeCount(total)
         handleTreeReduceCount(department_id)
-        // 无归属列表数据全部被删除 展示全部数据
+        // 无归属列表数据全部被Delete 展示全部数据
         if (query.departmentId === 0 && total === 0) {
           setQuery((prevQuery) => ({ ...prevQuery, departmentId: undefined }))
           onSetSelectTitle(undefined)
         }
       })
       .catch((err) => {
-        yakitNotify('error', '删除账号失败：' + err)
+        yakitNotify('error', 'Delete账号Failed：' + err)
       })
   }
 
@@ -1180,10 +1183,10 @@ const AccountList: React.FC<AccountListProps> = (props) => {
                 setCreatCountVisible(true)
               }}
             >
-              创建账号
+              Create Account
             </YakitButton>
             <YakitPopconfirm
-              title={'确认删除选择的角色吗？不可恢复'}
+              title={'Are you sure you want to delete the selected role? This cannot be undone.'}
               onConfirm={(e) => {
                 e?.stopPropagation()
                 onRemoveMultiple()
@@ -1192,7 +1195,7 @@ const AccountList: React.FC<AccountListProps> = (props) => {
               disabled={selectNum === 0}
             >
               <YakitButton size="small" disabled={selectNum === 0}>
-                批量删除
+                批量Delete
               </YakitButton>
             </YakitPopconfirm>
           </div>
@@ -1220,7 +1223,7 @@ const AccountList: React.FC<AccountListProps> = (props) => {
       ></TableVirtualResize>
       <YakitModal
         visible={creatCountVisible}
-        title={editInfoRef.current ? '编辑账号' : '创建账号'}
+        title={editInfoRef.current ? 'Edit Account' : 'Create Account'}
         destroyOnClose={true}
         maskClosable={false}
         width={600}
@@ -1279,14 +1282,14 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [form] = Form.useForm()
   const [depData, setDepData] = useState<DepData[]>([])
-  // 组织架构请求参数
+  // OrganizationRequest参数
   const [depTreeQuery, setDepTreeQuery] = useState<DepartmentListRequest>({
     page: 1,
     limit: 10000,
     orderBy: 'updated_at',
     order: 'desc',
   })
-  // 角色分页
+  // Role分页
   const [rolePagination, setRolePagination] = useState({
     page: 1,
     limit: 20,
@@ -1327,7 +1330,7 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
           }
         })
         .catch((err) => {
-          yakitNotify('error', '加载数据失败：' + err)
+          yakitNotify('error', '加载数据Failed：' + err)
         })
     } else {
       getDepartmentData()
@@ -1354,7 +1357,7 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
         }
       })
       .catch((err) => {
-        yakitNotify('error', '失败：' + err)
+        yakitNotify('error', 'Failed：' + err)
       })
       .finally(() => {})
   }
@@ -1385,7 +1388,7 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
         }
       })
       .catch((err) => {
-        yakitNotify('error', '失败：' + err)
+        yakitNotify('error', 'Failed：' + err)
       })
       .finally(() => {})
   }
@@ -1412,7 +1415,7 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
         setRoleData(opsd)
       })
       .catch((err) => {
-        yakitNotify('error', '获取角色列表失败：' + err)
+        yakitNotify('error', '获取Role列表Failed：' + err)
       })
       .finally(() => {
         setSelectLoading(false)
@@ -1429,7 +1432,7 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
   const onFinish = useMemoizedFn((values) => {
     setLoading(true)
     const { user_name, department, role_id, nickName } = values
-    // 编辑
+    // Edit
     const departmentId: number = Array.isArray(department) ? department[department.length - 1] : department
     if (editInfo) {
       const params: API.EditUrmRequest = {
@@ -1449,7 +1452,7 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
           onCancel()
         })
         .catch((err) => {
-          yakitNotify('error', '修改账号失败：' + err?.message || err)
+          yakitNotify('error', 'Failed to update account: ' + err?.message || err)
         })
         .finally(() => {
           setLoading(false)
@@ -1473,19 +1476,19 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
           onCancel()
           refresh(departmentId)
           showYakitModal({
-            title: '账号信息',
+            title: 'Account Information',
             content: (
               <div style={{ padding: 15 }}>
                 <div style={{ color: 'var(--Colors-Use-Neutral-Text-1-Title)' }}>
-                  用户名：<span>{user_name}</span>
+                  Username: <span>{user_name}</span>
                 </div>
                 <div style={{ color: 'var(--Colors-Use-Neutral-Text-1-Title)' }}>
-                  密码：<span>{password}</span>
+                  Password: <span>{password}</span>
                 </div>
                 <div style={{ textAlign: 'center', marginTop: 10 }}>
                   <YakitButton
                     type="primary"
-                    onClick={() => setClipboardText(`用户名：${user_name}\n密码：${password}`)}
+                    onClick={() => setClipboardText(`Username: ${user_name}\nPassword: ${password}`)}
                   >
                     复制
                   </YakitButton>
@@ -1496,7 +1499,7 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
           })
         })
         .catch((err) => {
-          yakitNotify('error', '创建账号失败：' + (err?.message || err))
+          yakitNotify('error', 'Create AccountFailed：' + (err?.message || err))
         })
         .finally(() => {
           setLoading(false)
@@ -1510,15 +1513,15 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
 
   return (
     <Form labelCol={{ span: 5 }} wrapperCol={{ span: 16 }} form={form} onFinish={onFinish}>
-      <Form.Item name="user_name" label="用户名" rules={[{ required: true, message: '该项为必填' }]}>
-        <YakitInput placeholder="请输入用户名" allowClear />
+      <Form.Item name="user_name" label="Username" rules={[{ required: true, message: 'This field is required' }]}>
+        <YakitInput placeholder="Enter a username" allowClear />
       </Form.Item>
-      <Form.Item name="nickName" label="昵称">
-        <YakitInput placeholder="请输入昵称" allowClear />
+      <Form.Item name="nickName" label="Nickname">
+        <YakitInput placeholder="Enter a nickname" allowClear />
       </Form.Item>
-      <Form.Item name="department" label="组织架构" rules={[{ required: true, message: '该项为必填' }]}>
-        {/* <YakitCascader options={depData} loadData={loadData} placeholder='请选择组织架构' changeOnSelect /> */}
-        <YakitSelect showSearch placeholder="请选择组织架构" filterOption={filterOption}>
+      <Form.Item name="department" label="Organization" rules={[{ required: true, message: 'This field is required' }]}>
+        {/* <YakitCascader options={depData} loadData={loadData} placeholder='Please select an organization' changeOnSelect /> */}
+        <YakitSelect showSearch placeholder="Please select an organization" filterOption={filterOption}>
           {depData.map((item) => (
             <YakitSelect.Option key={item.value} value={item.value}>
               {item.label}
@@ -1526,10 +1529,10 @@ const AccountForm: React.FC<AccountFormProps> = (props) => {
           ))}
         </YakitSelect>
       </Form.Item>
-      <Form.Item name="role_id" label="角色" rules={[{ required: true, message: '该项为必填' }]}>
+      <Form.Item name="role_id" label="Role" rules={[{ required: true, message: 'This field is required' }]}>
         <YakitSelect
           showSearch
-          placeholder="请选择角色"
+          placeholder="Please select a role"
           optionFilterProp="children"
           filterOption={filterOption}
           onPopupScroll={(e) => {

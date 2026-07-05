@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+﻿import React, { useEffect } from 'react'
 import styles from './AuxWindowApp.module.scss'
 import EngineConsole from '@/auxWindow/pages/EngineConsole/EngineConsole'
 import AiChatLog from '@/auxWindow/pages/AiChatLog/AiChatLog'
@@ -31,11 +31,11 @@ const AuxWindowApp: React.FC = () => {
   }, [title])
 
   if (!windowId) {
-    return <div className={styles['aux-window-error']}>缺少 windowId</div>
+    return <div className={styles['aux-window-error']}>Missing windowId</div>
   }
 
   if (!isAuxWindowRoute(route)) {
-    return <div className={styles['aux-window-error']}>未知 route: {route}</div>
+    return <div className={styles['aux-window-error']}>Unknown route: {route}</div>
   }
 
   const Page = auxRouteMap[route]

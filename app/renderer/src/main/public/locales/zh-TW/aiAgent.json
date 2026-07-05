@@ -1,536 +1,536 @@
 {
   "AiAgengt": {
-    "intelligentModels": "高質模型",
-    "lightweightModels": "輕量模型",
-    "visionModels": "視覺模型",
-    "callingMode": "呼叫模式",
-    "aiModel": "AI模型",
-    "focusMode": "場景"
+    "intelligentModels": "High-Quality Models",
+    "lightweightModels": "Lightweight Models",
+    "visionModels": "Vision Models",
+    "callingMode": "Calling Mode",
+    "aiModel": "AI model",
+    "focusMode": "Focus Mode"
   },
   "AIAgentChat": {
-    "templateDataError": "準備使用的模板資料異常，請稍後再試",
-    "switchForgeTemplate": "切換forge模板",
-    "forgeTemplate": "forge模板?",
-    "executeTool": "執行工具",
-    "interruptConfirm": "是否<code>中斷</code>當前正在進行的對話,使用",
-    "confirmExecute": "確定要執行",
-    "toolSuffix": "工具?",
-    "useForgeTask": "我要使用 {{name}} forge執行任務",
-    "params": ",引數:",
-    "input": ",輸入",
-    "toolInfoError": "tool 資訊異常，請關閉重試",
-    "useToolTask": "我要使用 {{name}} 工具執行任務",
-    "templateErrorWithId": "準備使用的模板異常: id('{{id}}'), 操作失敗",
-    "toolErrorWithId": "準備使用的工具異常: id('{{id}}'), 操作失敗",
-    "cancelBuildPluginFailed": "取消構建知識外掛失敗: {{error}}",
-    "warning": "警告",
-    "replaceSkillTemplateConfirm": "是否要替換當前使用的技能模板?",
-    "replaceToolConfirm": "是否要替換當前使用的工具?",
-    "knowledgeNotBuiltTitle": "知識庫未構建完成",
-    "knowledgeNotBuiltDesc": "知識未構建完成，是否確定關閉頁面？"
+    "templateDataError": "Template data error, please try again later",
+    "switchForgeTemplate": "Switch Forge Template",
+    "forgeTemplate": "forge template?",
+    "executeTool": "Execute Tool",
+    "interruptConfirm": "Whether to <code>interrupt</code> the current conversation and use",
+    "confirmExecute": "Are you sure to execute",
+    "toolSuffix": " tool?",
+    "useForgeTask": "I want to use {{name}} forge to execute the task",
+    "params": ", params:",
+    "input": ", input:",
+    "toolInfoError": "Tool information error, please close and try again",
+    "useToolTask": "I want to use {{name}} tool to execute the task",
+    "templateErrorWithId": "Template error: id('{{id}}'), operation failed",
+    "toolErrorWithId": "Tool error: id('{{id}}'), operation failed",
+    "cancelBuildPluginFailed": "Failed to cancel build knowledge plugin: {{error}}",
+    "warning": "Warning",
+    "replaceSkillTemplateConfirm": "Whether to replace the current skill template?",
+    "replaceToolConfirm": "Whether to replace the current tool?",
+    "knowledgeNotBuiltTitle": "Knowledge base not built",
+    "knowledgeNotBuiltDesc": "Knowledge not built yet, are you sure to close the page?"
   },
   "AIReActTaskChatReview": {
-    "hideReview": "隱藏，稍後審閱",
-    "expandReview": "展開審閱資訊"
+    "hideReview": "Hide, review later",
+    "expandReview": "Expand review info"
   },
   "AIRenderTaskFooterExtra": {
-    "cancelSubtaskConfirm": "是否確認取消該子任務，取消後會按順序執行下一個子任務",
-    "skipSubtask": "跳過子任務",
-    "cancelTaskConfirm": "是否確認取消整個任務，確認將停止執行",
-    "continueTask": "繼續任務",
-    "resumeTask": "恢復任務",
-    "stoppingTask": "停止任務中..."
+    "cancelSubtaskConfirm": "Whether to confirm canceling this subtask, the next subtask will be executed in order after cancellation",
+    "skipSubtask": "Skip subtask",
+    "cancelTaskConfirm": "Whether to confirm canceling the entire task, it will stop execution after confirmation",
+    "continueTask": "Continue task",
+    "resumeTask": "Resume task",
+    "stoppingTask": "Stopping task ..."
   },
   "AIChatWelcome": {
-    "knowledgeBase": "知識庫",
-    "skillBase": "技能庫",
-    "toolBase": "工具庫",
-    "expandResources": "擴充套件資源",
-    "WelcomeHomeSubTitle": "你的智慧安全助手",
-    "maybeYouWantToAsk": "你可能想問:",
-    "refresh": "換一換",
-    "homeRecommend": "首頁推薦"
+    "knowledgeBase": "Knowledge",
+    "skillBase": "Skill",
+    "toolBase": "Tool",
+    "expandResources": "Expand Resources",
+    "WelcomeHomeSubTitle": "Your intelligent security assistant",
+    "maybeYouWantToAsk": "Maybe you want to ask:",
+    "refresh": "Refresh",
+    "homeRecommend": "Home Recommendation"
   },
   "SideSettingButton": {
-    "pinMenuOn": "已開啟固定選單欄，點選icon則可關閉",
-    "pinMenuOff": "點選icon高亮後則開啟固定選單欄，選單欄不會在失焦後自動關閉"
+    "pinMenuOn": "Fixed menu bar enabled, click icon to close",
+    "pinMenuOff": "Click icon to highlight and enable fixed menu bar, the menu bar will not automatically close after losing focus"
   },
   "AIToolEditorInfoForm": {
-    "formInstanceMissing": "獲取不到表單例項資料, 請關閉頁面後重試",
-    "nameRequired": "名稱不能為空",
-    "formValidateFailed": "表單驗證失敗，請檢查必填項是否填寫完整",
-    "basicInfo": "基礎資訊",
-    "toolName": "工具名稱",
-    "toolNameRequired": "工具名稱必填",
-    "toolNameMax100": "名稱最長100位",
-    "description": "描述",
-    "descriptionRequired": "描述必填",
-    "tagRequired": "Tag必填",
-    "writeCodeFirst": "請編寫程式碼以後再點選生成",
-    "aiGenerateHelp": "配置AI後可用AI生成描述與tags",
-    "clickToGenerate": "點選生成",
-    "notConfigured": "如未配置",
-    "clickToConfigure": "請點此配置"
+    "formInstanceMissing": "Cannot get form instance data, please close and try again",
+    "nameRequired": "Name cannot be empty",
+    "formValidateFailed": "Form validation failed, please check required fields",
+    "basicInfo": "Basic Information",
+    "toolName": "Tool Name",
+    "toolNameRequired": "Tool name is required",
+    "toolNameMax100": "Tool name cannot exceed 100 characters",
+    "description": "Description",
+    "descriptionRequired": "Description is required",
+    "tagRequired": "Tag is required",
+    "writeCodeFirst": "Please write code before clicking generate",
+    "aiGenerateHelp": "Configure AI to generate descriptions and tags",
+    "clickToGenerate": "Click to generate",
+    "notConfigured": "If not configured",
+    "clickToConfigure": "Please click here to configure"
   },
   "AIModelSelect": {
-    "configTitle": "AI 模型未配置",
-    "toConfigure": "去配置",
-    "configDesc": "無可使用AI模型，請配置後使用",
-    "openModelTabSuccess": "已開啟AI側邊欄模型配置",
-    "selectModel": "AI 模型選擇",
-    "openConfigTooltip": "開啟ai側邊欄模型配置"
+    "configTitle": "AI Model Not Configured",
+    "toConfigure": "Go to Configure",
+    "configDesc": "No available AI model found. Please configure one before use.",
+    "openModelTabSuccess": "AI sidebar model configuration opened",
+    "selectModel": "Select AI Model",
+    "openConfigTooltip": "Open AI sidebar model configuration"
   },
   "AIModelList": {
-    "onlineTooltip": "透過api訪問模型,接受AI資訊或向AI傳送訊息,可配置多個",
-    "localTooltip": "本地AI模型管理器用於管理本地AI模型,支援一鍵下載和安裝模型,支援模型狀態監控和管理。透過本地模型服務,可以實現本地化AI服務,無需依賴雲端服務",
-    "intelligentModelsDesc": "用於執行復雜度高的任務,對話方塊中可切換該模型",
-    "lightweightModelsDesc": "用於執行簡單任務和會話",
-    "visionModelsDesc": "用於識別圖片等,生成知識庫和任務執行都會用到",
-    "addModel": "新增模型",
-    "addThirdPartyApp": "新增第三方應用",
-    "addLocalModel": "新增本地模型",
-    "clearConfirm": "是否確認清空所有{{type}}模型配置",
-    "online": "線上",
-    "local": "本地",
-    "clearModelsTitle": "清空模型",
-    "clearModelsDesc": "確認要刪除所有下載和新增的模型嗎？確認刪除原始檔則自定義新增的模型檔案會被一起刪除",
-    "policyAuto": "根據請求內容自動選擇最合適的模型",
-    "policyPerformance": "優先使用高智慧模型",
-    "policyCost": "優先使用輕量級/低成本模型",
-    "policyBalance": "在響應速度、智慧程度和成本之間取得平衡"
+    "onlineTooltip": "Access models via API, receive AI info or send messages to AI, multiple configurations possible.",
+    "localTooltip": "Local AI model manager for managing local AI models, supports one-click download and installation, status monitoring and management. Localized AI services without cloud dependency.",
+    "intelligentModelsDesc": "Used for high-complexity tasks, switchable in dialog",
+    "lightweightModelsDesc": "Used for simple tasks and sessions",
+    "visionModelsDesc": "Used for image recognition, knowledge base generation, and task execution",
+    "addModel": "Add Model",
+    "addThirdPartyApp": "Add Third-Party Application",
+    "addLocalModel": "Add Local Model",
+    "clearConfirm": "Are you sure to clear all {{type}} model configurations?",
+    "online": "Online",
+    "local": "Local",
+    "clearModelsTitle": "Clear Models",
+    "clearModelsDesc": "Are you sure you want to delete all downloaded and added models? Confirming deletion of source files will also delete custom added model files.",
+    "policyAuto": "Automatically select the most suitable model based on request content",
+    "policyPerformance": "Prioritize high-intelligence models",
+    "policyCost": "Prioritize lightweight/low-cost models",
+    "policyBalance": "Balance between response speed, intelligence, and cost"
   },
   "AIOnlineModeSetting": {
-    "configUpdateFailed": "配置更新失敗,未獲取到全域性ai配置,請重試",
-    "disableFallback": "禁用降級到輕量模型",
-    "configErrorEdit": "配置錯誤，無法編輯"
+    "configUpdateFailed": "Configuration update failed, global AI configuration not obtained, please try again",
+    "disableFallback": "Disable fallback to lightweight models",
+    "configErrorEdit": "Configuration error, cannot edit"
   },
   "AIOnlineModelList": {
-    "noDataDesc": "透過 api 訪問模型，接受 AI 資訊或向 Al 傳送資訊，可配置多個。"
+    "noDataDesc": "Access models via API, receive AI info or send messages to AI, multiple configurations possible."
   },
   "AILocalModelList": {
-    "llamaServerNotReady": "Llama伺服器未準備就緒: {{reason}}",
-    "installLlamaServer": "安裝Llama伺服器",
-    "myAdded": "我新增的",
-    "recommendedModels": "推薦模型",
-    "notice": "注意",
-    "macNotice": "MAC系統在下載後，需要執行",
-    "macNoticeSuffix": "命令，允許llama-server可執行。",
-    "diskNotice": "首次使用需要先安裝模型環境，部分模型檔案較大，請確保有足夠的磁碟空間和網路頻寬。",
-    "localManagerTooltip": "本地AI模型管理器用於管理本地AI模型,支援一鍵下載和安裝模型,支援模型狀態監控和管理。透過本地模型服務,可以實現本地化AI服務,無需依賴雲端服務",
-    "localManagerDesc": "本地 AI 模型管理器用於管理本地 Al 模型，支援一鍵下載和安裝模型，支援模型狀態監控和管理。透過本地模型服務，可以實現本地化 AI 服務，無需依賴雲端服務。",
-    "llamaInstalling": "LIama 伺服器安裝中..."
+    "llamaServerNotReady": "Llama server not ready: {{reason}}",
+    "installLlamaServer": "Install Llama Server",
+    "myAdded": "My Added",
+    "recommendedModels": "Recommended Models",
+    "notice": "Notice",
+    "macNotice": "On macOS after downloading, you need to execute",
+    "macNoticeSuffix": "command to allow llama-server to be executable.",
+    "diskNotice": "First use requires installing the model environment. Some model files are large, ensure sufficient disk space and bandwidth.",
+    "localManagerTooltip": "Local AI model manager for managing local AI models, supports one-click download and installation, status monitoring and management. Localized AI services without cloud dependency.",
+    "localManagerDesc": "Local AI model manager for managing local AI models, supports one-click download and installation, status monitoring and management. Localized AI services without cloud dependency.",
+    "llamaInstalling": "Llama server installing..."
   },
   "AILocalModelListItem": {
-    "startModel": "啟動模型 - {{name}}",
-    "downloadModel": "下載模型",
-    "deleteConfirm": "確定要刪除廠商{{type}},模型名稱為{{name}} 嗎？",
-    "ipPort": "IP/埠: {{host}}:{{port}}",
-    "deleteModel": "刪除模型",
-    "editLocalModel": "修改本地模型",
-    "deleteModelConfirm": "確認刪除模型{{name}}嗎？確認刪除原始檔則自定義新增的模型檔案會被一起刪除",
-    "deleteSourceFile": "是否刪除原始檔",
-    "disableConfirm": "確定要停用模型 {{name}} 嗎？",
-    "downloadingModel": "模型 {{name}} 下載中..."
+    "startModel": "Start Model - {{name}}",
+    "downloadModel": "Download Model",
+    "deleteConfirm": "Are you sure you want to delete model {{name}} from vendor {{type}}?",
+    "ipPort": "IP/Port: {{host}}:{{port}}",
+    "deleteModel": "Delete Model",
+    "editLocalModel": "Edit Local Model",
+    "deleteModelConfirm": "Are you sure you want to delete model {{name}}? Confirming deletion of the source file will also delete custom added model files.",
+    "deleteSourceFile": "Delete source file",
+    "disableConfirm": "Are you sure you want to disable model {{name}}?",
+    "downloadingModel": "Downloading model {{name}}..."
   },
   "AIAgent": {
-    "getKnowledgeBaseFailed": "獲取知識庫列表失敗: {{error}}",
-    "tip": "提示",
-    "memfitUpdateNotice": "Memfit會話資料升級，會刪除系統內的所有歷史會話記錄",
-    "clearHistoryConfirm": "是否清除資料庫歷史記錄"
+    "getKnowledgeBaseFailed": "Failed to get knowledge base list: {{error}}",
+    "tip": "Tip",
+    "memfitUpdateNotice": "Memfit session data upgraded, all historical session records in the system will be deleted.",
+    "clearHistoryConfirm": "Whether to clear database history records"
   },
   "AIModelTestResult": {
-    "quickPreview": "快速預覽",
-    "modelTesting": "模型檢測",
-    "firstByteDelay": "首位元組延時",
-    "totalTime": "總耗時",
-    "responseStatusCode": "響應狀態碼",
-    "request": "請求",
-    "response": "響應",
-    "responseContent": "響應內容",
-    "recommendConfig": "推薦配置",
-    "applyRecommendConfig": "一鍵應用",
-    "testSuccess": "測試成功",
-    "testFailed": "測試失敗"
+    "quickPreview": "quick preview",
+    "modelTesting": "Model testing",
+    "firstByteDelay": "First byte delay",
+    "totalTime": "Total time",
+    "responseStatusCode": "Response status code",
+    "request": "Request",
+    "response": "Response",
+    "responseContent": "Response content",
+    "recommendConfig": "Recommend config",
+    "applyRecommendConfig": "Apply recommend config",
+    "testSuccess": "Test success",
+    "testFailed": "Test failed"
   },
   "AIReActTaskChatContent": {
-    "humanIntervention": "人工介入",
-    "globalDirective": "全域性指令",
-    "globalDirectiveDefault": "自訂AI全域指令",
-    "globalDirectivePlaceholder": "全域命令將對所有會話生效...",
-    "planPrompt": "Plan 提示詞",
-    "planPromptDefault": "自訂Plan提示詞",
-    "planPromptPlaceholder": "Plan 提示詞將在任務規劃階段生效，用於補充規劃說明..."
+    "humanIntervention": "Human intervention",
+    "globalDirective": "Global directive",
+    "globalDirectiveDefault": "Custom global AI directive",
+    "globalDirectivePlaceholder": "Global directives apply to all sessions...",
+    "planPrompt": "Plan prompt",
+    "planPromptDefault": "Custom plan prompt",
+    "planPromptPlaceholder": "Plan prompt applies during task planning as supplementary guidance..."
   },
   "AIModelGlobalConfig": {
-    "aiModelConfig": "AI模型配置",
-    "disableFallback": "禁用降級到輕量模型"
+    "aiModelConfig": "AI model configuration",
+    "disableFallback": "Disable fallback to lightweight model"
   },
   "AIToolEditor": {
-    "editToolInvalid": "嘗試編輯的工具異常(ID: {{id}}), 請關閉頁面重試",
-    "toolDetailMissing": "未獲取到待編輯工具的詳情, 請關閉頁面重試",
-    "toolUnsaved": "工具未儲存",
-    "saveToolConfirm": "是否要將工具儲存?",
-    "saveCurrentAndEditClicked": "是否要將當前工具儲存，並編輯點選的工具?",
-    "formMissing": "表單不存在",
-    "editIdRequired": "資料錯誤,編輯狀態下ID不能為空",
-    "debugTaskStarted": "除錯任務啟動成功，執行時 ID: {{rId}}",
-    "jsonSchemaFailed": "jsonSchema校驗失敗",
-    "editTool": "編輯工具",
-    "newTool": "新建工具",
-    "sourceCode": "原始碼",
-    "execResult": "執行結果",
-    "clickExecuteToStart": "點選【執行】以開始",
-    "paramPreview": "引數預覽",
-    "extraParamsOptional": "額外引數 (非必填)",
-    "basicCheck": "工具基礎檢測"
+    "editToolInvalid": "Tool error (ID: {{id}}), please close and try again",
+    "toolDetailMissing": "Tool details not found, please close and try again",
+    "toolUnsaved": "Tool Unsaved",
+    "saveToolConfirm": "Do you want to save the tool?",
+    "saveCurrentAndEditClicked": "Do you want to save the current tool and edit the clicked tool?",
+    "formMissing": "Form does not exist",
+    "editIdRequired": "Edit mode requires a non-empty ID",
+    "debugTaskStarted": "Debug task started successfully, runtime ID: {{rId}}",
+    "jsonSchemaFailed": "jsonSchema validation failed",
+    "editTool": "Edit Tool",
+    "newTool": "New Tool",
+    "sourceCode": "Source Code",
+    "execResult": "Execution Result",
+    "clickExecuteToStart": "Click Execute to start",
+    "paramPreview": "Parameter Preview",
+    "extraParamsOptional": "Extra Parameters (Optional)",
+    "basicCheck": "Tool Basic Check"
   },
   "AIChatTextarea": {
-    "dropToAddToChat": "鬆開以新增到對話"
+    "dropToAddToChat": "Release to add to chat"
   },
   "AIToolDecision": {
-    "decision": "決策"
+    "decision": "Decision"
   },
   "AIBottomSideBar": {
-    "terminal": "終端"
+    "terminal": "Terminal"
   },
   "AIStreamNode": {
-    "viewReference": "[檢視文獻]"
+    "viewReference": "[View Reference]"
   },
   "AiFailPlanCard": {
-    "failureReason": "失敗原因"
+    "failureReason": "Failure Reason"
   },
   "AIToolList": {
-    "all": "全部",
-    "collect": "收藏",
-    "templateIdError": "該模板 ID('{{id}}') 異常, 無法編輯"
+    "all": "All",
+    "collect": "Favorites",
+    "templateIdError": "Template ID('{{id}}') is invalid and cannot be edited"
   },
   "KnowledgeSidebarList": {
-    "manual": "手動新增",
-    "external": "外部匯入",
-    "other": "其他"
+    "manual": "Manual",
+    "external": "External",
+    "other": "Other"
   },
   "DragKnowledge": {
-    "dragHintPrefix": "可將檔案拖入框內，或",
-    "dragHintHighlight": "點選此處匯入",
-    "dragHintSuffix": "即可開始建立知識庫",
-    "dragSubHint": "資料會存到預設庫，可選擇多個檔案",
-    "defaultKnowledgeBaseDescription": "系統預設知識庫，儲存常用知識內容，為AI對話提供上下文增強。",
-    "downloadAll": "一鍵下載線上知識庫",
-    "downloadingAll": "下載中... ({{progress}}%)",
-    "downloadAllSuccess": "所有線上知識庫下載完成",
-    "downloadAllFailed": "一鍵下載所有線上知識庫失敗: {{error}}",
-    "createKnowledgeBaseSuccess": "建立知識庫成功",
-    "createKnowledgeBaseFailed": "建立知識庫失敗: {{error}}",
-    "getKnowledgeBaseListFailed": "獲取知識庫列表失敗: {{error}}"
+    "dragHintPrefix": "Drag files here or ",
+    "dragHintHighlight": "click to import",
+    "dragHintSuffix": " to start building the knowledge base",
+    "dragSubHint": "Data will be stored in the default base, and multiple files can be selected",
+    "defaultKnowledgeBaseDescription": "The system default knowledge base stores common knowledge for additional context in AI conversations.",
+    "downloadAll": "Download All Online Knowledge Bases",
+    "downloadingAll": "Downloading... ({{progress}}%)",
+    "downloadAllSuccess": "All online knowledge bases downloaded",
+    "downloadAllFailed": "Failed to download all online knowledge bases: {{error}}",
+    "createKnowledgeBaseSuccess": "Knowledge base created successfully",
+    "createKnowledgeBaseFailed": "Failed to create knowledge base: {{error}}",
+    "getKnowledgeBaseListFailed": "Failed to get knowledge base list: {{error}}"
   },
   "KnowledgeBaseFormModal": {
-    "createKnowledgeBaseSuccess": "建立知識庫成功",
-    "createKnowledgeBaseFailed": "建立知識庫失敗: {{error}}"
+    "createKnowledgeBaseSuccess": "Knowledge base created successfully",
+    "createKnowledgeBaseFailed": "Failed to create knowledge base: {{error}}"
   },
   "GuideFooter": {
-    "start": "開始體驗"
+    "start": "Start Experience"
   },
   "KnowledgeBaseTable": {
-    "getGlobalKnowledgeBaseFailed": "獲取全域性知識庫失敗: {{error}}"
+    "getGlobalKnowledgeBaseFailed": "Failed to get global knowledge base: {{error}}"
   },
   "AIAgentTabs": {
-    "historyChat": "歷史會話",
-    "config": "配置",
-    "skill": "技能",
-    "tool": "工具"
+    "historyChat": "History Chat",
+    "config": "Settings",
+    "skill": "Skill",
+    "tool": "Tool"
   },
   "AIMentionTabs": {
-    "skill": "技能",
-    "tool": "工具",
-    "knowledgeBase": "知識庫",
-    "fileSystem": "檔案系統",
-    "allKnowledgeBase": "@所有知識庫"
+    "skill": "Skill",
+    "tool": "Tool",
+    "knowledgeBase": "Knowledge Base",
+    "fileSystem": "File System",
+    "allKnowledgeBase": "@All Knowledge Bases"
   },
   "AITabs": {
-    "taskContent": "任務內容",
-    "fileSystem": "檔案系統",
-    "httpTraffic": "HTTP 流量",
-    "readWriteLog": "讀寫日誌"
+    "taskContent": "Task Content",
+    "fileSystem": "File System",
+    "httpTraffic": "HTTP Traffic",
+    "readWriteLog": "Read/Write Log"
   },
   "AIReviewRuleOptions": {
-    "manualLabel": "人工",
-    "manualDesc": "所有審閱都由使用者自己操作",
-    "yoloLabel": "託管 YOLO",
-    "yoloDesc": "所有審閱預設執行，不進行詢問",
-    "aiLabel": "協同 AI",
-    "aiDesc": "由AI判斷審閱風險，低風險預設執行，高風險由使用者操作"
+    "manualLabel": "manual",
+    "manualDesc": "All reviews are handled manually by the user",
+    "yoloLabel": "Escrow YOLO",
+    "yoloDesc": "All reviews are executed by default without prompting",
+    "aiLabel": "Collaborative AI",
+    "aiDesc": "AI judges review risk, low risk runs by default, high risk is handled by the user"
   },
   "AIModelPolicyOptions": {
-    "auto": "自動選擇",
-    "performance": "效能優先",
-    "cost": "成本優先",
-    "balance": "平衡策略"
+    "auto": "Auto Select",
+    "performance": "Performance First",
+    "cost": "Cost First",
+    "balance": "Balanced"
   },
   "AIAgentChatTemplate": {
-    "timeline": "時間線",
-    "tasklist": "任務列表"
+    "timeline": "Timeline",
+    "tasklist": "Task List"
   },
   "HistoryTaskTree": {
-    "stopCurrentTask": "停掉當前正在執行的任務，恢復此任務",
-    "restoreTaskConfirm": "是否確認恢復該此任務",
-    "updateTime": "更新時間: {{time}}"
+    "stopCurrentTask": "Stop the current task and restore this one",
+    "restoreTaskConfirm": "Are you sure you want to restore this task?",
+    "updateTime": "Updated: {{time}}"
   },
   "AITree": {
-    "cancelSubtaskConfirm": "是否確認取消該子任務，取消後會按順序執行下一個子任務?"
+    "cancelSubtaskConfirm": "Are you sure you want to cancel this subtask? The next subtask will be executed in order after cancellation"
   },
   "AIMemoryList": {
-    "recentMemory": "近期記憶({{count}})",
-    "scoreTitle": "C.O.R.E. P.A.C.T. Scores（記憶特徵）"
+    "recentMemory": "Recent Memory ({{count}})",
+    "scoreTitle": "C.O.R.E. P.A.C.T. Scores (Memory Traits)"
   },
   "AIEcharts": {
-    "pressureValue": "壓力值",
-    "latencyMs": "延遲(ms)",
-    "thresholdLine": "閾值分割線 ({{value}})"
+    "pressureValue": "Pressure Value",
+    "latencyMs": "Latency (ms)",
+    "thresholdLine": "Threshold Line ({{value}})"
   },
   "AddAIModel": {
-    "modelName": "模型名稱",
-    "enterModelName": "請輸入模型名稱",
-    "modelType": "模型型別",
-    "enterModelType": "請輸入模型型別",
-    "filePath": "檔案地址",
-    "enterFilePath": "請輸入檔案地址",
-    "modelDescription": "模型描述"
+    "modelName": "Model Name",
+    "enterModelName": "Please enter the model name",
+    "modelType": "Model Type",
+    "enterModelType": "Please enter the model type",
+    "filePath": "File Path",
+    "enterFilePath": "Please enter the file path",
+    "modelDescription": "Model Description"
   },
   "AIChatListItem": {
-    "thinking": "思考：",
-    "toolCall": "工具呼叫",
-    "taskEnd": "任務結束標誌",
-    "taskEndDesc": "當前任務已經結束，下面為新的任務資料"
+    "thinking": "Thinking: ",
+    "toolCall": "Tool Call",
+    "taskEnd": "Task End",
+    "taskEndDesc": "The current task has ended, below is the new task data"
   },
   "AIReportFinishCard": {
-    "openInAICodeAudit": "AI代碼審計中打開",
-    "openInAICodeAuditError": "當前頁面無法打開AI代碼審計",
-    "reportContentEmpty": "報告內容為空，無法導出",
-    "pdfExportSuccess": "PDF 匯出成功",
-    "pdfExportFailed": "PDF 匯出失敗: {{error}}"
+    "openInAICodeAudit": "Open in AI code audit",
+    "openInAICodeAuditError": "Current page cannot open AI code audit",
+    "reportContentEmpty": "Report content is empty, cannot export",
+    "pdfExportSuccess": "PDF export successfully",
+    "pdfExportFailed": "PDF export failed: {{error}}"
   },
   "AIHttpFlowFuzzStatusCard": {
-    "title": "發包統計",
-    "badgeStarting": "準備中",
-    "badgeSending": "傳送中",
-    "viewDetail": "檢視詳情",
-    "detailTitle": "發包詳情",
-    "sentTotal": "已發包數",
-    "successCount": "成功數",
-    "failCount": "失敗數",
-    "avgMs": "平均響應耗時",
-    "savedFlows": "已落庫 HTTPFlow",
-    "interesting": "可疑樣本",
-    "lastStatus": "最近狀態碼",
-    "statusDistribution": "狀態碼分佈",
-    "lengthDistribution": "響應體長度分佈",
-    "colCode": "狀態碼",
-    "colLength": "長度(bytes)",
-    "colCount": "數量"
+    "title": "Packet statistics",
+    "badgeStarting": "Starting",
+    "badgeSending": "Sending",
+    "viewDetail": "Details",
+    "detailTitle": "Fuzz details",
+    "sentTotal": "Requests sent",
+    "successCount": "Succeeded",
+    "failCount": "Failed",
+    "avgMs": "Avg response (ms)",
+    "savedFlows": "HTTP flows saved",
+    "interesting": "Interesting samples",
+    "lastStatus": "Last status code",
+    "statusDistribution": "Status code distribution",
+    "lengthDistribution": "Response body length distribution",
+    "colCode": "Code",
+    "colLength": "Length (bytes)",
+    "colCount": "Count"
   },
   "ToolInvokerCard": {
-    "skipConfirm": "跳過會取消工具呼叫，使用當前輸出結果進行後續工作決策，是否確認跳過",
-    "success": "成功",
-    "failed": "失敗",
-    "cancelled": "已取消",
-    "startTime": "開始時間",
-    "duration": "執行時長",
-    "relatedRisks": "漏洞",
-    "httpTraffic": "流量",
-    "refreshCodeBlockData": "重新整理程式碼塊資料",
-    "tool": "工具"
+    "skipConfirm": "Skipping will cancel the tool call and use the current output for follow-up decisions. Confirm skip?",
+    "success": "Success",
+    "failed": "Failed",
+    "cancelled": "Cancelled",
+    "startTime": "Start Time",
+    "duration": "Duration",
+    "relatedRisks": "Risks",
+    "httpTraffic": "Traffic",
+    "refreshCodeBlockData": "Refresh Code Block Data",
+    "tool": "Tool"
   },
   "FileTreeSystemItem": {
-    "joinPathFailed": "路徑拼接失敗",
-    "renameSame": "重新命名相同",
-    "renameJoinPathFailed": "重新命名路徑拼接失敗",
-    "sendToChat": "傳送到自由對話"
+    "joinPathFailed": "Path join failed",
+    "renameSame": "Rename target is the same",
+    "renameJoinPathFailed": "Rename path join failed",
+    "sendToChat": "Send to free chat"
   },
   "FileTreeSystem": {
-    "myOpenedFiles": "我開啟的檔案"
+    "myOpenedFiles": "My Opened Files"
   },
   "ExportAILogsModal": {
-    "title": "匯出 AI 日誌",
-    "remoteHint": "遠端模式下匯出後請開啟~memfit\\yakit-projects\\temp路徑檢視匯出檔案",
-    "exportContent": "匯出內容"
+    "title": "Export AI Logs",
+    "remoteHint": "After exporting in remote mode, please open the exported file in ~memfit\\yakit-projects\\temp",
+    "exportContent": "Export Content"
   },
   "FileList": {
-    "relatedFiles": "相關檔案 ({{count}})",
-    "parseError": "PluginExecuteLogFile.FileItem解析錯誤: {{error}}"
+    "relatedFiles": "Related Files ({{count}})",
+    "parseError": "PluginExecuteLogFile.FileItem parse error: {{error}}"
   },
   "OperationLog": {
-    "folder": "資料夾",
-    "nonFolder": "非資料夾"
+    "folder": "Folder",
+    "nonFolder": "Non-folder"
   },
   "FilePreview": {
-    "fileSystem": "檔案系統",
-    "chooseFile": "請在左側選擇檔案",
-    "binaryNotice": "此檔案是二進位制檔案或使用了不受支援的文字編碼，所以無法在文字編輯器中顯示。",
-    "openAnyway": "仍然開啟",
-    "warningTitle": "檔案警告",
-    "tooLarge": "檔案過大，無法預覽"
+    "fileSystem": "File System",
+    "chooseFile": "Please select a file on the left",
+    "binaryNotice": "This file is a binary file or uses an unsupported text encoding, so it cannot be displayed in the text editor.",
+    "openAnyway": "Open Anyway",
+    "warningTitle": "File Warning",
+    "tooLarge": "The file is too large to preview"
   },
   "AIChatContent": {
-    "noActiveChat": "當前沒有活躍的會話",
-    "fileSystem": "檔案系統",
-    "newChatTitle": "新會話",
-    "newChat": "新建會話",
-    "log": "日誌",
-    "exportLog": "匯出日誌"
+    "noActiveChat": "There is no active session",
+    "fileSystem": "File System",
+    "newChatTitle": "New Session",
+    "newChat": "New Session",
+    "log": "Log",
+    "exportLog": "Export Log"
   },
   "AIContextToken": {
-    "pressure": "上下文壓力",
-    "speed": "響應速度",
-    "peak": "峰值",
-    "dataDetails": "資料詳情",
-    "limit": "限制",
-    "totalInput": "總輸入",
-    "totalOutput": "總輸出",
-    "input": "輸入",
-    "output": "輸出",
-    "cache": "快取",
-    "cacheTooltip": "快取佔輸入百分比",
-    "switchChartMetric": "切換 Token / Byte"
+    "pressure": "Context Pressure",
+    "speed": "Response Speed",
+    "peak": "Peak",
+    "dataDetails": "Data Details",
+    "limit": "Limit",
+    "totalInput": "Total Input",
+    "totalOutput": "Total Output",
+    "input": "Input",
+    "output": "Output",
+    "cache": "Cache",
+    "cacheTooltip": "Cache hit ratio",
+    "switchChartMetric": "Switch between Token and Byte"
   },
   "InstallLlamaServerModelPrompt": {
-    "installing": "正在安裝模型環境",
-    "proxySettings": "代理設定",
-    "proxyHelp": "非必填，用於下載加速，格式：http://proxy:port 或 socks5://proxyport",
-    "proxyPlaceholder": "留空則不使用代理",
-    "downloadAndInstall": "下載並安裝",
-    "downloadModel": "開始下載模型"
+    "installing": "Installing model environment",
+    "proxySettings": "Proxy Settings",
+    "proxyHelp": "Optional, used to speed up downloads. Format: http://proxy:port or socks5://proxyport",
+    "proxyPlaceholder": "Leave blank to not use a proxy",
+    "downloadAndInstall": "Download and Install",
+    "downloadModel": "Download Model"
   },
   "AIReActChatReview": {
-    "autoExecuteSuffix": "後將自動執行",
-    "error": "異常錯誤",
-    "toolCall": "工具呼叫",
-    "userPrompt": "主動詢問",
-    "planReview": "計劃審閱",
-    "taskReview": "任務審閱",
-    "startApp": "啟動智慧應用",
-    "params": "引數",
-    "details": "詳細資訊",
-    "enterDetails": "請輸入一些細節資訊",
-    "tellMeMore": "請告訴我更多資訊...",
-    "submitForm": "提交表單內容",
-    "evaluating": "評估中...",
-    "aiRiskScore": "風險評分",
-    "loading": "載入中...",
-    "description": "描述",
-    "paramsGroup": "引數組"
+    "autoExecuteSuffix": "will be executed automatically",
+    "error": "Error",
+    "toolCall": "Tool Call",
+    "userPrompt": "User Prompt",
+    "planReview": "Plan Review",
+    "taskReview": "Task Review",
+    "startApp": "Start App",
+    "params": "Parameters",
+    "details": "Details",
+    "enterDetails": "Please enter some details",
+    "tellMeMore": "Tell me more...",
+    "submitForm": "Submit Form",
+    "evaluating": "Evaluating...",
+    "aiRiskScore": "Risk Score",
+    "loading": "Loading...",
+    "description": "Description",
+    "paramsGroup": "Parameters"
   },
   "AIReviewResult": {
-    "planReview": "計劃審閱",
-    "taskReview": "任務審閱",
-    "toolReview": "工具審閱",
-    "appReview": "智慧應用審閱",
-    "userPrompt": "主動詢問",
-    "reviewDecision": "Review 決策",
-    "unknownAction": "未知操作"
+    "planReview": "Plan Review",
+    "taskReview": "Task Review",
+    "toolReview": "Tool Review",
+    "appReview": "App Review",
+    "userPrompt": "User Prompt",
+    "reviewDecision": "Review Decision",
+    "unknownAction": "Unknown Action"
   },
   "AIFocusMode": {
-    "focusModeTooltip": "複雜場景限定使用框架，限制AI思考範圍"
+    "focusModeTooltip": "Use a framework for complex scenarios and limit the AI's thinking scope"
   },
   "HistoryChat": {
-    "title": "歷史會話",
-    "noChatsToClear": "暫無可清除的會話",
-    "allChatsCleared": "已清空全部會話",
-    "clearFailed": "清除會話失敗：{{error}}",
-    "noChatsBeforeDays": "暫無{{days}}天前的會話",
-    "clearedBeforeDays": "已清除{{days}}天前的會話",
-    "oneDay": "一天前",
-    "oneWeek": "一週前",
-    "thirtyDays": "30天前",
-    "clearConfirm": "確定要清除{{days}}的會話嗎？此操作不可恢復",
-    "clearAll": "清空全部",
-    "clearAllConfirm": "確定要清除全部會話嗎？此操作不可恢復",
-    "clearChats": "清除會話",
-    "newChat": "新建會話"
+    "title": "History Chat",
+    "noChatsToClear": "No sessions to clear",
+    "allChatsCleared": "All sessions cleared",
+    "clearFailed": "Failed to clear sessions: {{error}}",
+    "noChatsBeforeDays": "No sessions from {{days}} days ago",
+    "clearedBeforeDays": "Cleared sessions from {{days}} days ago",
+    "oneDay": "One day ago",
+    "oneWeek": "One week ago",
+    "thirtyDays": "30 days ago",
+    "clearConfirm": "Are you sure you want to clear sessions from {{days}}? This cannot be undone",
+    "clearAll": "Clear all",
+    "clearAllConfirm": "Are you sure you want to clear all sessions? This cannot be undone",
+    "clearChats": "Clear sessions",
+    "newChat": "New session"
   },
   "AIMCP": {
-    "enableServerRefreshTools": "請啟用該mcp伺服器後重新整理工具列表",
-    "toolList": "工具列表",
-    "protocolInfo": "Model Context Protocol(MCP)提供了標準化的Al模型上下文通訊協議,支援SSE和WebSocket連線方式",
-    "disabledRefreshTools": "未啟用,請啟用後重新整理工具列表",
-    "refresh": "重新整理",
-    "enableTools": "啟用工具",
-    "paramIntro": "引數介紹",
-    "addMcpServer": "新增MCP Server",
-    "mcpServerConfig": "MCP伺服器配置",
-    "editMcp": "修改MCP",
-    "deleteMcpServer": "刪除MCP Server",
-    "deleteMcpServerConfirm": "確定刪除該MCP Server嗎?",
-    "address": "地址: {{url}}",
-    "command": "命令: {{command}}",
-    "toolFetchFailed": "工具獲取失敗",
-    "toolCount": "{{count}}個工具",
-    "disableConfirm": "確定要停用 {{name}} 嗎？"
+    "enableServerRefreshTools": "Please enable this MCP server and refresh the tool list",
+    "toolList": "Tool List",
+    "protocolInfo": "Model Context Protocol (MCP) provides a standardized AI model context communication protocol, supporting SSE and WebSocket connections",
+    "disabledRefreshTools": "Disabled, please enable and refresh the tool list",
+    "refresh": "Refresh",
+    "enableTools": "Enable Tools",
+    "paramIntro": "Parameter Introduction",
+    "addMcpServer": "Add MCP Server",
+    "mcpServerConfig": "MCP Server Configuration",
+    "editMcp": "Edit MCP",
+    "deleteMcpServer": "Delete MCP Server",
+    "deleteMcpServerConfirm": "Are you sure you want to delete this MCP server?",
+    "address": "Address: {{url}}",
+    "command": "Command: {{command}}",
+    "toolFetchFailed": "Tool fetch failed",
+    "toolCount": "{{count}} tools",
+    "disableConfirm": "Are you sure you want to disable {{name}}?"
   },
   "AIMCPForm": {
-    "serverUrl": "伺服器URL",
-    "enterServerUrl": "請輸入伺服器URL",
-    "runCommand": "執行命令",
-    "enterRunCommand": "請輸入執行命令",
-    "completeBeforeAdd": "請設定完成後再新增",
-    "serverName": "伺服器名稱",
-    "enterServerName": "請輸入伺服器名稱",
-    "serverUrlExample": "例如: http://localhost:3000/sse",
-    "envVariables": "環境變數"
+    "serverUrl": "Server URL",
+    "enterServerUrl": "Please enter the server URL",
+    "runCommand": "Run Command",
+    "enterRunCommand": "Please enter the run command",
+    "completeBeforeAdd": "Please complete it before adding",
+    "serverName": "Server Name",
+    "enterServerName": "Please enter the server name",
+    "serverUrlExample": "e.g. http://localhost:3000/sse",
+    "envVariables": "Environment Variables"
   },
   "AIMarkdown": {
-    "openFromNotepad": "從記事本中開啟",
-    "downloadMd": "下載md檔案",
-    "switchToPreview": "切換預覽模式",
-    "switchToSource": "切換原始碼模式"
+    "openFromNotepad": "Open from Notepad",
+    "downloadMd": "Download md file",
+    "switchToPreview": "Switch to preview mode",
+    "switchToSource": "Switch to source mode"
   },
   "AIMilkdownInput": {
-    "placeholder": "請告訴我，你想做什麼...(shift + enter 換行)",
-    "selectedHttpFlowSummary": "勾選了 {{count}} 條流量"
+    "placeholder": "Tell me what you want to do... (shift + enter for a new line)",
+    "selectedHttpFlowSummary": "Selected {{count}} HTTP flows"
   },
   "AITaskQuery": {
-    "taskQueue": "任務佇列",
-    "focusMode": "場景: {{mode}}"
+    "taskQueue": "Task Queue",
+    "focusMode": "Focus Mode: {{mode}}"
   },
   "ForgeName": {
-    "exportForge": "匯出技能",
-    "importForge": "匯入技能",
-    "deleteForgeSuccess": "刪除Forge模板成功",
-    "templateIdError": "該模板 ID('{{id}}') 異常, 無法編輯",
-    "noMoreDescription": "暫無更多說明",
-    "relatedTools": "關聯工具",
-    "editForge": "編輯Forge",
-    "deleteForge": "刪除Forge",
-    "deleteForgeConfirm": "是否刪除該 Forge 模板?",
-    "fileName": "檔名",
-    "tool": "工具",
-    "chooseTool": "請選擇工具",
-    "password": "密碼",
-    "localPath": "本地路徑",
-    "enterLocalPath": "請輸入本地路徑"
+    "exportForge": "Export Forge",
+    "importForge": "Import Forge",
+    "deleteForgeSuccess": "Forge deleted successfully",
+    "templateIdError": "Template ID('{{id}}') is invalid and cannot be edited",
+    "noMoreDescription": "No more description",
+    "relatedTools": "Related Tools",
+    "editForge": "Edit Forge",
+    "deleteForge": "Delete Forge",
+    "deleteForgeConfirm": "Are you sure you want to delete this Forge template?",
+    "fileName": "File Name",
+    "tool": "Tool",
+    "chooseTool": "Select tool",
+    "password": "Password",
+    "localPath": "Local Path",
+    "enterLocalPath": "Please enter the local path"
   },
   "HistoryChatList": {
-    "justNow": "剛剛",
-    "oneHour": "一小時前",
-    "oneDay": "一天前",
-    "oneWeek": "一週前",
-    "thirtyDays": "30天前",
-    "updateTitleFailed": "修改對話標題失敗：{{error}}",
-    "chatNotFound": "未找到對應的對話",
-    "deleteFailed": "刪除會話失敗：{{error}}",
-    "editTitle": "編輯對話標題",
-    "deleteConfirm": "是否確認刪除該歷史對話，刪除後將無法恢復"
+    "justNow": "Just now",
+    "oneHour": "One hour ago",
+    "oneDay": "One day ago",
+    "oneWeek": "One week ago",
+    "thirtyDays": "30 days ago",
+    "updateTitleFailed": "Failed to update session title: {{error}}",
+    "chatNotFound": "Corresponding session not found",
+    "deleteFailed": "Failed to delete session: {{error}}",
+    "editTitle": "Edit session title",
+    "deleteConfirm": "Are you sure you want to delete this session? This cannot be recovered"
   },
   "ConcurrentStreamCard": {
-    "systemInfo": "系統資訊",
-    "refresh": "重新整理",
-    "openInNewWindow": "新視窗開啟",
-    "collapse": "收起",
-    "expand": "展開"
+    "systemInfo": "System Information",
+    "refresh": "Refresh",
+    "openInNewWindow": "Open in New Window",
+    "collapse": "Collapse",
+    "expand": "Expand"
   },
   "AIChatSetting": {
-    "permissionsAndSecurity": "基礎權限與安全",
-    "planningAndExecution": "任務規劃與執行",
-    "automation": "自動化配置",
-    "resourcesLimits": "資源與上下文閾值"
+    "permissionsAndSecurity": "Permissions & Security",
+    "planningAndExecution": "Planning & Execution",
+    "automation": "Automation",
+    "resourcesLimits": "Resources & Limits"
   }
 }

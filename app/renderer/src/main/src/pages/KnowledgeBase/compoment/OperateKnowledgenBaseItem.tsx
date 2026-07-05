@@ -55,7 +55,7 @@ const OperateKnowledgenBaseItem: FC<TOperateKnowledgenBaseItemProps> = ({
     const defaultName = items.KnowledgeBaseName ? `export-${items.KnowledgeBaseName}` : 'default-knowledge'
     try {
       const file = await handleSaveFileSystemDialog({
-        title: '导出知识库',
+        title: 'Export Knowledge Base',
         defaultPath: defaultName,
         filters: [{ name: 'Files', extensions: ['rag'] }],
       })
@@ -70,7 +70,7 @@ const OperateKnowledgenBaseItem: FC<TOperateKnowledgenBaseItemProps> = ({
 
       await ipcRenderer.invoke('ExportKnowledgeBase', { KnowledgeBaseId, TargetPath: filePath }, token)
     } catch (error) {
-      failed('导出知识库失败：' + error)
+      failed('Export Knowledge Base失败：' + error)
     }
   }
 
@@ -78,12 +78,12 @@ const OperateKnowledgenBaseItem: FC<TOperateKnowledgenBaseItemProps> = ({
     if (!exportToken) return
 
     const onError = (_: any, err: any) => {
-      failed('导出知识库失败: ' + err)
+      failed('Export Knowledge Base失败: ' + err)
       setExportToken('')
     }
 
     const onEnd = () => {
-      success('导出知识库成功')
+      success('Export Knowledge Base成功')
       setExportToken('')
     }
 
@@ -279,8 +279,8 @@ const DeleteConfirm: FC<
   return (
     <YakitHint
       visible={visible}
-      title="是否要删除"
-      content="确认删除后将会彻底删除"
+      title="Delete?"
+      content="After confirmation, it will be permanently deleted."
       footer={
         <div className={styles['delete-yakit-hint']}>
           <YakitButton size="large" type="outline1" onClick={() => setVisible(false)}>
@@ -360,7 +360,7 @@ const EditKnowledgenBaseModal: FC<TEditKnowledgeBaseModalProps> = (props) => {
 
   return (
     <YakitModal
-      title={'修改基础信息'}
+      title={'Edit Basic Information'}
       visible={visible}
       onCancel={onClose}
       width={600}
@@ -379,10 +379,10 @@ const EditKnowledgenBaseModal: FC<TEditKnowledgeBaseModalProps> = (props) => {
     >
       <Form form={form} layout="vertical">
         <Form.Item
-          label="知识库名："
+          label="Knowledge Base Name:"
           name="KnowledgeBaseName"
           rules={[
-            { required: true, message: '请输入知识库名' },
+            { required: true, message: 'Enter a knowledge base name' },
             {
               validator: (_, value) => {
                 if (typeof value === 'string' && value.length > 0 && value.trim() === '') {
@@ -393,17 +393,17 @@ const EditKnowledgenBaseModal: FC<TEditKnowledgeBaseModalProps> = (props) => {
             },
           ]}
         >
-          <YakitInput placeholder="请输入知识库名" />
+          <YakitInput placeholder="Enter a knowledge base name" />
         </Form.Item>
         <Form.Item label="Tags：" name="Tags">
-          <YakitSelect mode="tags" placeholder="请选择" options={knowledgeTypeOptions} />
+          <YakitSelect mode="tags" placeholder="Please select" options={knowledgeTypeOptions} />
         </Form.Item>
         <Form.Item
-          label="描述："
+          label="Description："
           name="KnowledgeBaseDescription"
-          rules={[{ max: 500, message: '描述最多 500 个字符' }]}
+          rules={[{ max: 500, message: 'Description cannot exceed 500 characters' }]}
         >
-          <YakitInput.TextArea maxLength={500} placeholder="请输入描述" rows={3} showCount />
+          <YakitInput.TextArea maxLength={500} placeholder="Enter a description" rows={3} showCount />
         </Form.Item>
       </Form>
     </YakitModal>

@@ -111,14 +111,14 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
       {
         key: 'pending',
         color: 'neutral-with-border',
-        title: '待处理',
+        title: 'Pending',
         footerLeft: 0,
         footerRight: <AIPendingNodeIcon />,
       },
-      { key: 'doing', color: 'main', title: '进行中', footerLeft: 0, footerRight: <AIDoingNodeIcon /> },
-      { key: 'done', color: 'green', title: '已完成', footerLeft: 0, footerRight: <AIDoneNodeIcon /> },
-      { key: 'skipped', color: 'neutral', title: '已跳过', footerLeft: 0, footerRight: <AISkippedNodeIcon /> },
-      { key: 'deleted', color: 'red', title: '已删除', footerLeft: 0, footerRight: <AIDeleteNodeIcon /> },
+      { key: 'doing', color: 'main', title: 'In Progress', footerLeft: 0, footerRight: <AIDoingNodeIcon /> },
+      { key: 'done', color: 'green', title: 'Completed', footerLeft: 0, footerRight: <AIDoneNodeIcon /> },
+      { key: 'skipped', color: 'neutral', title: 'Skipped', footerLeft: 0, footerRight: <AISkippedNodeIcon /> },
+      { key: 'deleted', color: 'red', title: 'Deleted', footerLeft: 0, footerRight: <AIDeleteNodeIcon /> },
     ]
 
     for (const item of planItemDetailsData?.todoList?.items || []) {
@@ -250,7 +250,7 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
         <div className={styles['header-row']}>
           <div className={styles['header-title']}>
             <OutlinePresentationchartbarIcon className={styles['header-icon']} />
-            <span className={styles['title-text']}>任务执行详情</span>
+            <span className={styles['title-text']}>Task Execution Details</span>
             <div className={styles['header-subtitle']}>{taskName}</div>
           </div>
           {onClose && <YakitButton icon={<OutlineXIcon />} type="text2" onClick={onClose} />}
@@ -281,12 +281,12 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
         {/* 左侧目标与意图 + 右侧统计 */}
         <div className={styles['top-section']}>
           <div className={styles['top-left']}>
-            <AITaskExecutionDetailsCard title="任务目标" content={taskGoal} />
-            <AITaskExecutionDetailsCard title="意图感知" content={perception?.summary} />
+            <AITaskExecutionDetailsCard title="Task Goal" content={taskGoal} />
+            <AITaskExecutionDetailsCard title="Intent Perception" content={perception?.summary} />
           </div>
           <div className={styles['task-statistics']}>
             <div className={styles['stats-header']}>
-              <span className={styles['title']}>待办任务</span>
+              <span className={styles['title']}>Todo Tasks</span>
               {!!total && (
                 <>
                   <span className={styles['progress-text']}>
@@ -308,13 +308,13 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
             </div>
             {!!total ? (
               <>
-                {/* 状态统计区块 */}
+                {/* Status统计区块 */}
                 <AITaskStatisticsStatus list={todoData.progressNumber} />
                 <div className={styles['stats-content']}>
-                  {/* 待办列表区块 */}
+                  {/* Todo列表区块 */}
                   <div className={styles['todo-list-wrapper']}>
                     <div className={styles['todo-list-header']}>
-                      <span className={styles['todo-title']}>待办</span>
+                      <span className={styles['todo-title']}>Todo</span>
                       <YakitTag border={false} fullRadius size="small">
                         {todoData.unFinish.length}
                       </YakitTag>
@@ -325,10 +325,10 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
                       ))}
                     </div>
                   </div>
-                  {/* 已结束 */}
+                  {/* Finished */}
                   <div className={styles['todo-list-wrapper']}>
                     <div className={styles['todo-list-header']}>
-                      <span className={styles['todo-title']}>已结束</span>
+                      <span className={styles['todo-title']}>Finished</span>
                       <YakitTag border={false} fullRadius size="small">
                         {todoData.finished.length}
                       </YakitTag>
@@ -345,8 +345,8 @@ export const AITaskExecutionDetails: React.FC<AITaskExecutionDetailsProps> = Rea
               <div className={styles['empty-body']}>
                 <YakitEmpty
                   imageStyle={{ width: 160, height: 140 }}
-                  title="暂无待办任务"
-                  description="当前任务暂未生成待办任务，请稍后查看"
+                  title="No Todo Tasks"
+                  description="当前任务暂未生成Todo Tasks，请稍后查看"
                 />
               </div>
             )}
@@ -422,7 +422,7 @@ const AIBrowserProcesses: React.FC<AIBrowserProcessesProps> = React.memo((props)
   })
   return (
     <div className={classNames(styles['browser-processes'])}>
-      <div className={styles['browser-processes-title']}>{'浏览器进程管理'}</div>
+      <div className={styles['browser-processes-title']}>{'Browser Process Management'}</div>
       <AITaskExecutionList<AIBrowserProcessesProps['list'][number]>
         classNameList={styles['browser-processes-list']}
         list={list}
@@ -431,7 +431,7 @@ const AIBrowserProcesses: React.FC<AIBrowserProcessesProps> = React.memo((props)
             key={processes.process_id}
             title={processes.process_name}
             titleExtra={
-              <YakitPopconfirm title={'确定要关闭嘛?'} onConfirm={() => onRemove(processes)}>
+              <YakitPopconfirm title={'Are you sure you want to close it?'} onConfirm={() => onRemove(processes)}>
                 <YakitButton isHover icon={<OutlineTrashIcon />} type="secondary2" colors="danger" />
               </YakitPopconfirm>
             }
@@ -685,7 +685,7 @@ const AITaskDetailsAddPopover: React.FC<AITaskDetailsAddPopoverProps> = React.me
         <div className={styles['ai-add-popover-title']}>
           {title}
           <YakitInput.Search
-            placeholder="请输入关键词搜索"
+            placeholder="Search by keyword"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             onSearch={onSearch}
@@ -764,11 +764,11 @@ const getType = (value: string) => {
 }
 const typeOptions = [
   {
-    label: '固定加载',
+    label: 'Fixed Load',
     value: 'fixed',
   },
   {
-    label: '动态加载',
+    label: 'Dynamic Load',
     value: 'dynamic',
   },
 ]
@@ -852,7 +852,7 @@ const AITaskDetailsCardList: React.FC<AITaskDetailsCardListProps> = React.memo((
               description={dynamicItem.description}
               category={dynamicItem.category}
               titleExtra={
-                <YakitPopconfirm title={'确定删除嘛?'} onConfirm={() => onRemove(dynamicItem)}>
+                <YakitPopconfirm title={'Are you sure you want to delete it?'} onConfirm={() => onRemove(dynamicItem)}>
                   <YakitButton isHover icon={<OutlineTrashIcon />} type="secondary2" colors="danger" />
                 </YakitPopconfirm>
               }
@@ -883,7 +883,7 @@ const AITaskExecutionDetailsCard: React.FC<AITaskExecutionDetailsCardProps> = Re
     <div className={classNames(styles['card'], className)}>
       <div className={styles['card-title']}>{title}</div>
       <div className={styles['card-content']}>
-        {!!content ? content : <span className={styles['empty-text']}>暂无信息...</span>}
+        {!!content ? content : <span className={styles['empty-text']}>No information available...</span>}
       </div>
     </div>
   )

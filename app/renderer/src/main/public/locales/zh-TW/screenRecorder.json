@@ -1,45 +1,45 @@
 {
   "ScreenRecorderPage": {
-    "notInstalled": "未安裝錄屏",
-    "installRecorder": "安裝錄屏",
-    "installing": "錄屏工具安裝中...",
-    "installFailed": "IsScrecorderReady失敗：{{error}}",
-    "installHint": "點選“安裝錄屏”，錄屏工具安裝成功後即可開始錄屏",
-    "timeout": "連線超時",
-    "downloaded": "已下載"
+    "notInstalled": "Not installed",
+    "installRecorder": "Install Screen Recorder",
+    "installing": "Screen recorder is installing...",
+    "installFailed": "IsScrecorderReady failed: {{error}}",
+    "installHint": "Click 'Install Screen Recorder' to start recording after the tool is installed",
+    "timeout": "connection timeout",
+    "downloaded": "Downloaded"
   },
   "ScrecorderModal": {
-    "recommended": "推薦",
-    "speed": "倍速",
-    "screenRecorderDesc": "本錄屏在 Windows 下，會同時錄製所有螢幕，合併在一個檔案中；在 MacOS 下多屏會生成多個檔案",
-    "framerate": "幀率",
-    "framerateHelp": "滲透測試過程記錄推薦使用低幀率（5fps 以下）以免 CPU 佔用過高",
-    "framerateTooltip": "幀率即每秒截圖次數",
-    "speedHelp": "直接錄製倍速影片，免影片後期處理",
-    "mouseCapture": "滑鼠捕捉",
-    "startRecording": "開始錄屏"
+    "recommended": "Recommended",
+    "speed": "Speed",
+    "screenRecorderDesc": "On Windows, all screens will be recorded and merged into one file; on MacOS, multiple screens will generate multiple files",
+    "framerate": "Framerate",
+    "framerateHelp": "Low framerate (below 5fps) is recommended for pentesting to avoid high CPU usage",
+    "framerateTooltip": "Framerate is the number of screenshots per second",
+    "speedHelp": "Record high-speed videos directly, no post-processing needed",
+    "mouseCapture": "Mouse Capture",
+    "startRecording": "Start Recording"
   },
   "ScreenRecorderList": {
-    "getListFailed": "獲取列表資料失敗：{{error}}",
-    "loginRequired": "請先登入，登入後方可使用",
-    "screenRecorder": "錄屏管理",
-    "stopRecording": "停止錄屏",
-    "deleteTitle": "刪除錄屏",
-    "deleteDesc": "刪除錄屏的同時會清除本地影片檔案"
+    "getListFailed": "Get list data failed: {{error}}",
+    "loginRequired": "Please login first",
+    "screenRecorder": "Screen Recorder",
+    "stopRecording": "Stop Recording",
+    "deleteTitle": "Delete Recording",
+    "deleteDesc": "Local video files will also be cleared"
   },
   "ScreenRecorderListItem": {
-    "fileNotFound": "目標檔案已不存在!",
-    "playFailed": "播放失敗：{{error}}",
-    "editVideoInfo": "編輯影片資訊",
-    "updateFailed": "修改失敗：{{error}}",
-    "video": "影片",
-    "videoName": "影片名稱",
-    "notes": "備註",
-    "noImage": "暫無圖片",
-    "openDirectory": "點選開啟影片所在目錄",
-    "deletePopconfirm": "刪除錄屏的同時會刪除本地錄屏檔案"
+    "fileNotFound": "Target file does not exist!",
+    "playFailed": "Play failed: {{error}}",
+    "editVideoInfo": "Edit Video Info",
+    "updateFailed": "Update failed: {{error}}",
+    "video": "Video",
+    "videoName": "Video Name",
+    "notes": "Notes",
+    "noImage": "No Image",
+    "openDirectory": "Click to open video directory",
+    "deletePopconfirm": "Deleting the recording will also delete the local recording file"
   },
   "ReactPlayerVideo": {
-    "fileNotPlayable": "該影片檔案不可播放"
+    "fileNotPlayable": "This video file cannot be played"
   }
 }

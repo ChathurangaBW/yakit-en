@@ -1,32 +1,32 @@
 {
   "YakPoC": {
-    "byKeyword": "按關鍵詞",
-    "byGroup": "按組選",
-    "selectPlugin": "選擇外掛"
+    "byKeyword": "By Keyword",
+    "byGroup": "By Group",
+    "selectPlugin": "Select Plugins"
   },
   "PluginListByGroup": {
-    "selectPrompt": "請選擇關鍵詞或外掛組進行掃描"
+    "selectPrompt": "Please select keywords or plugin groups to scan"
   },
   "PluginGroupByKeyWord": {
-    "noDataDesc": "可一鍵獲取預設關鍵詞與外掛,下載後請重啟 {{edition}} 獲取預設關鍵詞"
+    "noDataDesc": "One-click to get default keywords and plugins. Please restart {{edition}} after downloading."
   },
   "PluginGroupGrid": {
-    "searchGroupNamePlaceholder": "請輸入組名搜尋",
-    "manage": "管理",
-    "noGroupDataDesc": "可一鍵獲取預設分組與外掛,或點選管理手動新建"
+    "searchGroupNamePlaceholder": "Enter group name to search",
+    "manage": "Manage",
+    "noGroupDataDesc": "One-click to get default groups and plugins, or click Manage to create manually"
   },
   "PluginGroupByKeyWordItem": {
-    "plugins": "個外掛"
+    "plugins": " Plugins"
   },
   "YakPoCExecuteContent": {
-    "selectedPlugin": "已選外掛",
-    "pluginLog": "外掛日誌",
-    "taskList": "任務列表",
-    "pluginExecute": "外掛執行"
+    "selectedPlugin": "Selected Plugins",
+    "pluginLog": "Plugin Log",
+    "taskList": "Task List",
+    "pluginExecute": "Plugin Execution"
   },
   "PluginExecuteLog": {
-    "target": "執行目標",
-    "timeConsuming": "耗時",
-    "timeout": "超時"
+    "target": "Target",
+    "timeConsuming": "Time Consuming",
+    "timeout": "Timeout"
   }
 }

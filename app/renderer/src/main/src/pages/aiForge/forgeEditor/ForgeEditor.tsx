@@ -116,7 +116,7 @@ const { ipcRenderer } = window.require('electron')
 const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
   const { isModify } = props
 
-  // #region 判断新建还是编辑-编辑下读取编辑信息
+  // #region 判断新建还是编辑-编辑下读取编辑Info
   const { queryPagesDataById, updatePagesDataCacheById } = usePageInfo(
     (s) => ({
       queryPagesDataById: s.queryPagesDataById,
@@ -141,7 +141,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
       setFetchDataLoading(false)
     }, 200)
   })
-  // 编辑页面，初始化编辑数据功能
+  // 编辑页面，Initial化编辑数据功能
   const handleModifyInit = useMemoizedFn(async () => {
     setFetchDataLoading(true)
 
@@ -155,7 +155,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
         yakitNotify('error', `尝试编辑的模板异常(ID: ${id}), 请关闭页面重试`)
         return
       }
-      // 如果当前 ID 已经初始化过，不再重复拉取
+      // 如果当前 ID 已经Initial化过，不再重复拉取
       if (forgeData.current?.Id && forgeData.current?.Id === id) {
         setDelayCancelFetchDataLoading()
         return
@@ -164,7 +164,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
         const res = await grpcGetAIForge({ ID: id, InflateSkillPath: true })
 
         if (!res) {
-          yakitNotify('error', '未获取到待编辑模板的详情, 请关闭页面重试')
+          yakitNotify('error', '未获取到待Edit Template的Details, 请关闭页面重试')
           return
         }
 
@@ -213,7 +213,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
         setSkillPath(skillPath)
         setSkillInitPrompt(forgeData.current.InitPrompt || '')
       } catch (error) {
-        yakitNotify('error', '未获取到待编辑模板的详情, 请关闭页面重试')
+        yakitNotify('error', '未获取到待Edit Template的Details, 请关闭页面重试')
       } finally {
         setDelayCancelFetchDataLoading()
       }
@@ -279,7 +279,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
 
           // 生成最终需要保存的数据
           const requestData: AIForge = { ...(forgeData.current || {}), ...formData } as AIForge
-          // 清除无用字段里的内容
+          // 清除None用字段里的内容
           requestData.Params = undefined
 
           const apiFunc = requestData.Id ? grpcUpdateAIForge : grpcCreateAIForge
@@ -290,7 +290,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
                 const resID = Number(res?.CreateID) || 0
                 if (resID) resInfo.Id = resID
                 else {
-                  yakitNotify('error', `新建模板异常, 创建并未生成唯一ID号`)
+                  yakitNotify('error', `Create Template异常, 创建并未生成唯一ID号`)
                   reject()
                   return
                 }
@@ -304,7 +304,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
               reject()
             })
         } else {
-          yakitNotify('error', '未获取到模板信息表单，请关闭页面重试')
+          yakitNotify('error', '未获取到模板Info表单，请关闭页面重试')
           reject()
           return
         }
@@ -317,12 +317,12 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
       }
     })
   })
-  // 保存并执行功能
+  // 保存并Execute功能
   const handleSaveAndRun = useMemoizedFn(() => {
     handleSave()
       .then(() => {
         if (!forgeData.current) {
-          yakitNotify('warning', '保存成功但未获取到执行的模板数据')
+          yakitNotify('warning', '保存成功但未获取到Execute的模板数据')
           return
         }
         emiter.emit('menuOpenPage', JSON.stringify({ route: YakitRoute.AI_Agent }))
@@ -340,16 +340,16 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
   })
   // #endregion
 
-  // #region forge 基础信息相关逻辑
+  // #region forge 基础Info相关逻辑
   const infoFormRef = useRef<AIForgeEditorInfoFormRef>(null)
   const [type, setType] = useState<AIForge['ForgeType']>('yak')
   // #endregion
 
-  // #region forge prompt和源码信息相关逻辑
-  // 简易模板下的 promopt 信息和 action 信息
+  // #region forge prompt和Source CodeInfo相关逻辑
+  // 简易模板下的 promopt Info和 action Info
   const [promptAction, setPromptAction] = useState<ConfigTypeForgePromptAction>({})
 
-  // yak 模板下的源码或者简易模板下的参数代码
+  // yak 模板下的Source Code或者简易模板下的参数代码
   const [content, setContent] = useState(DefaultForgeYakToCode)
   const [triggerParseContent, setTriggerParseContent] = useState(false)
   const handleChangeContent = useMemoizedFn((value: string) => {
@@ -378,8 +378,8 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
               buttonStyle="solid"
               value={skillTab}
               options={[
-                { value: 'content', label: '正文' },
-                { value: 'files', label: '文件' },
+                { value: 'content', label: 'Content' },
+                { value: 'files', label: 'Files' },
               ]}
               onChange={(e) => setSkillTab(e.target.value)}
             />
@@ -396,7 +396,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
               buttonStyle="solid"
               value={configTypeActiveTab}
               options={[
-                { value: 'code', label: '源码' },
+                { value: 'code', label: 'Source Code' },
                 { value: 'prompt', label: 'Prompt' },
               ]}
               onChange={(e) => setConfigTypeActiveTab(e.target.value)}
@@ -462,7 +462,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
       })
       .catch(() => {})
   })
-  // 是否保存并打开触发编辑的模板信息
+  // 是否保存并打开触发编辑的模板Info
   const handleSaveAndOpen = useMemoizedFn(async (isSave?: boolean) => {
     try {
       if (isSave) await handleSave()
@@ -471,7 +471,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
     } catch (error) {}
   })
 
-  /** 获取编辑页面的打开的来源 */
+  /** 获取编辑页面的打开的Source */
   const getModifyAIForgeSource = useMemoizedFn(() => {
     const currentItem: PageNodeItemProps | undefined = queryPagesDataById(
       YakitRoute.ModifyAIForge,
@@ -480,21 +480,21 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
     return currentItem?.pageParamsInfo.modifyAIForgePageInfo?.source
   })
 
-  /** 获取新建页面的打开的来源 */
+  /** 获取新建页面的打开的Source */
   const getAddAIForgeSource = useMemoizedFn(() => {
     const currentItem: PageNodeItemProps | undefined = queryPagesDataById(YakitRoute.AddAIForge, YakitRoute.AddAIForge)
     return currentItem?.pageParamsInfo.addAIForgePageInfo?.source
   })
   const { setSubscribeClose, removeSubscribeClose } = useSubscribeClose()
-  // 二次提示框的实例
+  // 二次Notice框的实例
   const modalRef = useRef<any>(null)
   useEffect(() => {
     if (isModify) {
       setSubscribeClose(YakitRoute.ModifyAIForge, {
         close: async () => {
           return {
-            title: '模板未保存',
-            content: '是否要将模板保存?',
+            title: 'Template Not Saved',
+            content: 'Do you want to save the template?',
             maskClosable: false,
             confirmLoading: saveLoading,
             cancelText: '不保存',
@@ -521,8 +521,8 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
         },
         reset: async () => {
           return {
-            title: '模板未保存',
-            content: '是否要将当前模板保存，并编辑点击的模板?',
+            title: 'Template Not Saved',
+            content: 'Do you want to save the current template and edit the selected template?',
             maskClosable: false,
             confirmLoading: saveLoading,
             cancelText: '不保存',
@@ -552,8 +552,8 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
       setSubscribeClose(YakitRoute.AddAIForge, {
         close: async () => {
           return {
-            title: '模板未保存',
-            content: '是否要将模板保存?',
+            title: 'Template Not Saved',
+            content: 'Do you want to save the template?',
             confirmLoading: saveLoading,
             maskClosable: false,
             cancelText: '不保存',
@@ -602,11 +602,11 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
       <YakitSpin spinning={fetchDataLoading}>
         <div className={styles['forge-editor-wrapper']}>
           <div className={styles['forge-editor-header']}>
-            <div className={styles['header-title']}>{isModify ? '编辑模板' : '新建模板'}</div>
+            <div className={styles['header-title']}>{isModify ? 'Edit Template' : 'Create Template'}</div>
 
             <div className={styles['header-btn-group']}>
               <YakitButton loading={saveLoading} type="outline1" icon={<OutlineExitIcon />} onClick={handleSaveAndRun}>
-                保存并执行
+                保存并Execute
               </YakitButton>
               <YakitButton loading={saveLoading} icon={<SolidStoreIcon />} onClick={handleSave}>
                 保存
@@ -686,7 +686,7 @@ const ForgeEditor: React.FC<ForgeEditorProps> = memo((props) => {
 
 export default ForgeEditor
 
-/** @name 基础信息表单 */
+/** @name 基础Info表单 */
 const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
   forwardRef((props, ref) => {
     const { setType, setContent, skillPath, setSkillPath, createTemporarySkillDirectory } = props
@@ -738,7 +738,7 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
             ToolKeywords: formData.ToolKeywords ?? [],
           }
           if (!info.ForgeType || !info.ForgeName) {
-            yakitNotify('error', '类型和名称不能为空')
+            yakitNotify('error', 'Type和名称不能为空')
             resolve(null)
             return
           }
@@ -750,12 +750,12 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
       })
     })
 
-    /** forge-类型 */
+    /** forge-Type */
     const type = Form.useWatch('ForgeType', form)
     useUpdateEffect(() => {
       setType(type)
     }, [type])
-    /** 是否是简易模板类型 */
+    /** 是否是简易模板Type */
     const isTypeToConfig = useMemo(() => {
       return type === 'config'
     }, [type])
@@ -829,7 +829,7 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
               icon={<OutlineChevronrightIcon />}
             />
 
-            <div className={styles['header-title']}>基础信息</div>
+            <div className={styles['header-title']}>Basic Information</div>
           </div>
 
           <div className={styles['editor-info-form-body']}>
@@ -842,11 +842,11 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
               <Form.Item
                 label={
                   <>
-                    模板类型<span className="form-item-required">*</span>:
+                    模板Type<span className="form-item-required">*</span>:
                   </>
                 }
                 name="ForgeType"
-                rules={[{ required: true, message: '模板类型必填' }]}
+                rules={[{ required: true, message: 'Template type is required' }]}
               >
                 <YakitSelect
                   wrapperClassName={styles['forge-type-select']}
@@ -885,7 +885,7 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
               >
                 <YakitInput
                   wrapperClassName={styles['item-input']}
-                  placeholder="请输入..."
+                  placeholder="Please enter..."
                   size="large"
                   prefix={<OutlineIdentificationIcon />}
                   maxLength={100}
@@ -910,7 +910,7 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
                   },
                 ]}
               >
-                <YakitInput.TextArea rows={2} placeholder="请输入..." />
+                <YakitInput.TextArea rows={2} placeholder="Please enter..." />
               </Form.Item>
 
               <Form.Item
@@ -920,7 +920,7 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
                   </>
                 }
               >
-                <Form.Item noStyle name="Tag" rules={[{ required: true, message: 'Tag必填' }]}>
+                <Form.Item noStyle name="Tag" rules={[{ required: true, message: 'Tag is required' }]}>
                   <YakitSelect wrapperClassName={styles['item-select']} mode="tags" allowClear size="large">
                     {AIForgeBuiltInTag.map((item) => {
                       return (
@@ -938,7 +938,7 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
 
               {isTypeToConfig && (
                 <>
-                  <Form.Item name="ToolNames" label="工具名称">
+                  <Form.Item name="ToolNames" label="Tool Name">
                     <YakitSelect
                       mode="multiple"
                       allowClear
@@ -946,12 +946,12 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
                       showSearch={true}
                       filterOption={false}
                       options={tools}
-                      notFoundContent={fetchToolLoading ? '搜索中...' : '无匹配结果'}
+                      notFoundContent={fetchToolLoading ? 'Search中...' : 'None匹配Result'}
                       onSearch={handleSearchTool}
                     ></YakitSelect>
                   </Form.Item>
 
-                  <Form.Item name="ToolKeywords" label="工具关键词">
+                  <Form.Item name="ToolKeywords" label="Tool Keywords">
                     <YakitSelect mode="tags" allowClear size="large"></YakitSelect>
                   </Form.Item>
                 </>
@@ -968,7 +968,7 @@ const AIForgeEditorInfoForm: React.FC<AIForgeEditorInfoFormProps> = memo(
               className={styles['expand-btn']}
               icon={<OutlineChevrondownIcon />}
             />
-            <div className={styles['header-title']}>基础信息</div>
+            <div className={styles['header-title']}>Basic Information</div>
           </div>
         </div>
       </div>
@@ -1017,7 +1017,7 @@ const PromptAndActiveTextarea: React.FC<PromptAndActiveTextareaProps> = memo((pr
       <QSInputTextarea
         ref={textareaRef}
         className={classNames(styles['textarea-body'])}
-        placeholder={placeholder ?? '请输入...'}
+        placeholder={placeholder ?? 'Please enter...'}
         value={question}
         onBlur={handleBlur}
         onChange={handleTextareaChange}
@@ -1040,29 +1040,29 @@ const AIForgeEditorPromptAndAction: React.FC<AIForgeEditorPromptAndActionProps> 
   return (
     <div className={styles['ai-forge-editor-prompt-and-action']}>
       <PromptAndActiveTextarea
-        title="初始"
+        title="Initial"
         value={promptAction.InitPrompt ?? ''}
         onChange={(value) => handleChangePromptAction('InitPrompt', value)}
       />
       <PromptAndActiveTextarea
-        title="计划"
+        title="Plan"
         value={promptAction.PlanPrompt ?? ''}
         onChange={(value) => handleChangePromptAction('PlanPrompt', value)}
       />
       <PromptAndActiveTextarea
-        title="持久记忆"
+        title="Persistent Memory"
         value={promptAction.PersistentPrompt ?? ''}
         onChange={(value) => handleChangePromptAction('PersistentPrompt', value)}
       />
       <PromptAndActiveTextarea
-        title="结果"
+        title="Result"
         value={promptAction.ResultPrompt ?? ''}
         onChange={(value) => handleChangePromptAction('ResultPrompt', value)}
       />
       <PromptAndActiveTextarea
-        title="结果提取"
-        hint={`用于指定需提取的 action 名称，应与“结果 Prompt”中定义的 action 保持一致。系统会根据此配置\n从 AI 的输出结果中自动提取对应的结构化数据，作为生成总结报告、\n构建数据结构或驱动后续任务的依据。支持多个 action，多个 action之间通过英文逗号分隔。`}
-        placeholder="要提取多个字段则逗号分隔输入多个字段名..."
+        title="Result Extraction"
+        hint={`用于指定需提取的 action 名称，应与“Result Prompt”中定义的 action 保持一致。系统会根据此配置\n从 AI 的输出Result中自动提取对应的结构化数据，作为生成Summary报告、\n构建数据结构或驱动后续任务的依据。支持多个 action，多个 action之间通过英文逗号分隔。`}
+        placeholder="To extract multiple fields, enter multiple field names separated by commas..."
         value={promptAction.Action ?? ''}
         onChange={(value) => handleChangePromptAction('Action', value)}
       />
@@ -1070,7 +1070,7 @@ const AIForgeEditorPromptAndAction: React.FC<AIForgeEditorPromptAndActionProps> 
   )
 })
 
-/** @name 源码和参数展示 */
+/** @name Source Code和参数展示 */
 const AIForgeEditorCodeAndParams: React.FC<AIForgeEditorCodeAndParamsProps> = memo((props) => {
   const { triggerParse, className } = props
 
@@ -1155,7 +1155,7 @@ const AIForgeEditorCodeAndParams: React.FC<AIForgeEditorCodeAndParamsProps> = me
 
       <div className={styles['editor-params-preview-wrapper']}>
         <div className={styles['params-preview-header']}>
-          <div className={styles['header-title']}>参数预览</div>
+          <div className={styles['header-title']}>Parameter Preview</div>
           <div className={styles['header-extra']}>
             <YakitButton type="text" loading={fetchParamsLoading} onClick={handleFetchParams}>
               获取参数
@@ -1174,7 +1174,7 @@ const AIForgeEditorCodeAndParams: React.FC<AIForgeEditorCodeAndParamsProps> = me
             labelWrap={true}
             validateMessages={{
               /* eslint-disable no-template-curly-in-string */
-              required: '${label} 是必填字段',
+              required: '${label} is required',
             }}
           >
             <div className={styles['custom-params-wrapper']}>
@@ -1197,7 +1197,7 @@ const AIForgeEditorCodeAndParams: React.FC<AIForgeEditorCodeAndParamsProps> = me
   )
 })
 
-/** @name 正文md */
+/** @name Contentmd */
 const AIForgeMilkdownBase: React.FC<AIForgeMilkdownBaseProps> = memo((props) => {
   const { readonly, defaultValue, onUpdateContent, onUpdateEditor, classNameWrapper } = props
   const { get, loading } = useEditor(
@@ -1276,7 +1276,7 @@ const AIForgeMilkdown: React.FC<AIForgeMilkdownProps> = React.memo((props) => {
   )
 })
 
-/** @name 文件树和代码展示 */
+/** @name Files树和代码展示 */
 const AIForgeEditorSkillFiles: React.FC<AIForgeEditorSkillFilesProps> = memo((props) => {
   const { skillPath, setSkillPath, createTemporarySkillDirectory } = props
   const treeRef = useRef<FileTreeSystemListRef>(null)
@@ -1326,8 +1326,8 @@ const AIForgeEditorSkillFiles: React.FC<AIForgeEditorSkillFilesProps> = memo((pr
 
   const menuData = useMemo(
     () => [
-      { key: 'createFile', label: '新建文件', disabled: !skillPath },
-      { key: 'createFolder', label: '新建文件夹' },
+      { key: 'createFile', label: 'Create File', disabled: !skillPath },
+      { key: 'createFolder', label: 'Create Folder' },
     ],
     [skillPath],
   )
@@ -1357,11 +1357,11 @@ const AIForgeEditorSkillFiles: React.FC<AIForgeEditorSkillFilesProps> = memo((pr
       basePath = selected.isFolder ? selected.path : selected.parent || skillPath
     }
     try {
-      // 先加载当前文件夹
+      // 先加载当前Files夹
       await treeRef.current?.loadFolder(basePath)
       let path = await getPathJoin(basePath, `${uuidv4()}-create`)
       if (!path.length) return
-      // 通知新增临时文件夹或文件
+      // 通知新增临时Files夹或Files
       const event: FileMonitorProps = {
         Id: watchToken.current!,
         CreateEvents: [
@@ -1382,26 +1382,26 @@ const AIForgeEditorSkillFiles: React.FC<AIForgeEditorSkillFilesProps> = memo((pr
     return [
       {
         key: 'openFolder',
-        label: '在文件夹中显示',
+        label: 'Show in Folder',
       },
       {
         key: 'path',
-        label: '复制路径',
+        label: 'Copy Path',
       },
       {
         key: 'relativePath',
-        label: '复制相对路径',
+        label: 'Copy Relative Path',
       },
       {
         type: 'divider',
       },
       {
         key: 'delete',
-        label: <span style={{ color: 'var(--Colors-Use-Error-Primary)' }}>删除</span>,
+        label: <span style={{ color: 'var(--Colors-Use-Error-Primary)' }}>Delete</span>,
       },
       {
         key: 'rename',
-        label: '重命名',
+        label: 'Rename',
       },
     ] satisfies YakitMenuItemType[]
   })
@@ -1460,9 +1460,9 @@ const AIForgeEditorSkillFiles: React.FC<AIForgeEditorSkillFilesProps> = memo((pr
         ChangeEvents: [],
       }
       emiter.emit('onRefreshYakRunnerFileTree', JSON.stringify(event))
-      yakitNotify('success', '删除成功')
+      yakitNotify('success', 'Delete成功')
     } catch (error) {
-      yakitNotify('error', '删除失败')
+      yakitNotify('error', 'Delete失败')
     } finally {
       operatingNode.current = undefined
       setShowDelete(false)
@@ -1488,9 +1488,9 @@ const AIForgeEditorSkillFiles: React.FC<AIForgeEditorSkillFilesProps> = memo((pr
         firstNode={
           <div className={styles['fileTree-wrapper']}>
             <div className={styles['fileTree-header']}>
-              <div className={styles['title-style']}>文件列表</div>
+              <div className={styles['title-style']}>File List</div>
               <div className={styles['extra']}>
-                <Tooltip title={'刷新'}>
+                <Tooltip title={'Refresh'}>
                   <YakitButton
                     type="text2"
                     icon={<OutlineRefreshIcon />}
@@ -1530,8 +1530,8 @@ const AIForgeEditorSkillFiles: React.FC<AIForgeEditorSkillFilesProps> = memo((pr
               />
               <YakitHint
                 visible={showDelete}
-                title={`是否要删除${operatingNode.current?.name}`}
-                content={`确认删除后将会彻底删除（windows系统将会移入回收站）`}
+                title={`Delete ${operatingNode.current?.name}?`}
+                content={`After confirmation, it will be permanently deleted. On Windows it will be moved to the Recycle Bin.`}
                 onOk={onDelete}
                 onCancel={() => setShowDelete(false)}
               />
@@ -1547,7 +1547,7 @@ const AIForgeEditorSkillFiles: React.FC<AIForgeEditorSkillFilesProps> = memo((pr
     </div>
   )
 })
-/** @name 文件树代码展示 */
+/** @name Files树代码展示 */
 const AIForgeSkillFileCont: React.FC<{ data?: FileNodeProps }> = ({ data }) => {
   const path = data?.path ?? ''
   const name = data?.name ?? ''
@@ -1647,7 +1647,7 @@ const AIForgeSkillFileCont: React.FC<{ data?: FileNodeProps }> = ({ data }) => {
           {isBinary ? (
             <Result
               status={'warning'}
-              subTitle={'此文件是二进制文件或使用了不受支持的文本编码，所以无法在文本编辑器中显示。'}
+              subTitle={'此Files是二进制Files或使用了不受支持的文本编码，所以None法在文本编辑器中显示。'}
               extra={[
                 <YakitButton size="max" type="primary" onClick={() => setIsBinary(false)}>
                   仍然打开
@@ -1665,11 +1665,11 @@ const AIForgeSkillFileCont: React.FC<{ data?: FileNodeProps }> = ({ data }) => {
           )}
         </YakitSpin>
 
-        {/* 文件过大弹窗 */}
+        {/* Files过大弹窗 */}
         <YakitHint
           visible={showFileHint}
-          title="文件警告"
-          content="文件过大，无法预览"
+          title="File Warning"
+          content="The file is too large to preview."
           cancelButtonProps={{ style: { display: 'none' } }}
           onOk={() => {
             setFileInfo(null)

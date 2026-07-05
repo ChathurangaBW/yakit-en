@@ -112,11 +112,11 @@ export const MisstatementRiskDetails = <T extends API.RiskFeedBackData>(props: M
             options={[
               {
                 value: 'request',
-                label: '请求',
+                label: 'Request',
               },
               {
                 value: 'response',
-                label: '响应',
+                label: 'Response',
               },
             ]}
           />
@@ -226,25 +226,29 @@ export const MisstatementRiskDetails = <T extends API.RiskFeedBackData>(props: M
             <div className={styles['content-resize-second']} ref={descriptionsRef}>
               <Descriptions bordered size="small" column={column} labelStyle={{ width: 120 }}>
                 <Descriptions.Item label="Host">{info.host || '-'}</Descriptions.Item>
-                <Descriptions.Item label="类型">
+                <Descriptions.Item label="Type">
                   {(info?.riskTypeVerbose || info.riskType).replaceAll('NUCLEI-', '')}
                 </Descriptions.Item>
-                <Descriptions.Item label="来源">{info?.fromYakScript || '漏洞检测'}</Descriptions.Item>
-                <Descriptions.Item label="反连Token" contentStyle={{ minWidth: 120 }}>
+                <Descriptions.Item label="Source">{info?.fromYakScript || 'Vulnerability Detection'}</Descriptions.Item>
+                <Descriptions.Item label="Reverse Token" contentStyle={{ minWidth: 120 }}>
                   {info?.reverseToken || '-'}
                 </Descriptions.Item>
                 <Descriptions.Item label="Hash">{info?.riskHash || '-'}</Descriptions.Item>
-                <Descriptions.Item label="验证状态">
+                <Descriptions.Item label="Verification Status">
                   <YakitTag color={`${!info.waitingVerified ? 'success' : 'info'}`}>
                     {!info.waitingVerified ? '已验证' : '未验证'}
                   </YakitTag>
                 </Descriptions.Item>
 
                 <>
-                  <Descriptions.Item label="漏洞描述" span={column} contentStyle={{ whiteSpace: 'pre-wrap' }}>
+                  <Descriptions.Item
+                    label="Vulnerability Description"
+                    span={column}
+                    contentStyle={{ whiteSpace: 'pre-wrap' }}
+                  >
                     {info.description || '-'}
                   </Descriptions.Item>
-                  <Descriptions.Item label="解决方案" span={column} contentStyle={{ whiteSpace: 'pre-wrap' }}>
+                  <Descriptions.Item label="Solution" span={column} contentStyle={{ whiteSpace: 'pre-wrap' }}>
                     {info.solution || '-'}
                   </Descriptions.Item>
                   <Descriptions.Item label="Parameter" span={column}>
@@ -253,7 +257,7 @@ export const MisstatementRiskDetails = <T extends API.RiskFeedBackData>(props: M
                   <Descriptions.Item label="Payload" span={column}>
                     <div style={{ maxHeight: 180, overflow: 'auto' }}>{`${info.payload}` || '-'}</div>
                   </Descriptions.Item>
-                  <Descriptions.Item label="详情" span={column}>
+                  <Descriptions.Item label="Details" span={column}>
                     <div style={{ height: 180 }}>
                       <YakitEditor type="yak" value={`${info.details || ''}`} readOnly={true} />
                     </div>
@@ -397,7 +401,7 @@ export const MisstatementAuditRiskDetails = <T extends API.SSARiskResponseData>(
         {...extraResizeBoxProps}
         firstNode={
           <div className={styles['content-resize-collapse']}>
-            <div className={styles['main-title']}>相关代码段</div>
+            <div className={styles['main-title']}>Related Code Snippet</div>
             <MisstatementAuditResultCollapse
               data={yakURLData}
               collapseProps={{
@@ -473,21 +477,21 @@ const MisstatementAuditResultDescribe: React.FC<MisstatementAuditResultDescribeP
   }, [])
 
   const getRule = useMemoizedFn(() => {
-    return info?.fromRule || '漏洞检测'
+    return info?.fromRule || 'Vulnerability Detection'
   })
   return (
     <div className={styles['content-resize-second']}>
       <Descriptions bordered size="small" column={column} labelStyle={{ width: 120 }}>
-        <Descriptions.Item label="类型">
+        <Descriptions.Item label="Type">
           {(info?.riskTypeVerbose || info?.riskType || '').replaceAll('NUCLEI-', '')}
         </Descriptions.Item>
         <Descriptions.Item label="Hash">{info?.hash || '-'}</Descriptions.Item>
-        <Descriptions.Item label="扫描规则">{getRule()}</Descriptions.Item>
+        <Descriptions.Item label="Scan Rule">{getRule()}</Descriptions.Item>
         <>
-          <Descriptions.Item label="漏洞描述" span={column} contentStyle={{ whiteSpace: 'pre-wrap' }}>
+          <Descriptions.Item label="Vulnerability Description" span={column} contentStyle={{ whiteSpace: 'pre-wrap' }}>
             {info.description || '-'}
           </Descriptions.Item>
-          <Descriptions.Item label="解决方案" span={column} contentStyle={{ whiteSpace: 'pre-wrap' }}>
+          <Descriptions.Item label="Solution" span={column} contentStyle={{ whiteSpace: 'pre-wrap' }}>
             {info.solution || '-'}
           </Descriptions.Item>
         </>

@@ -403,7 +403,7 @@ export const PluginTunHijackTable: React.FC<PluginTunHijackTableProps> = React.m
           dataKey: 'ip_addr',
         },
         // {
-        //     title: "Tun名称",
+        //     title: "Tun Name",
         //     dataKey: "tun_name",
         // },
         {

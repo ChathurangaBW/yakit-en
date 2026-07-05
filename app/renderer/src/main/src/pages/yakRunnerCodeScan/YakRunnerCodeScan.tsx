@@ -322,7 +322,7 @@ const CodeScanRuleByGroup: React.FC<CodeScanRuleByGroupProps> = React.memo((prop
               <YakitInput.Search
                 value={keywords}
                 onChange={(e) => setKeywords(e.target.value)}
-                placeholder="请输入组名搜索"
+                placeholder="Search by group name"
                 onSearch={onSearch}
                 onPressEnter={onPressEnter}
               />
@@ -418,7 +418,7 @@ const CodeScanRuleSetting: React.FC<CodeScanRuleSettingProps> = React.memo((prop
         placement="bottomRight"
         trigger={'click'}
       >
-        <Tooltip title="规则设置">
+        <Tooltip title="Rule Settings">
           <YakitButton
             type="text"
             icon={
@@ -596,7 +596,7 @@ const CodeScanRuleByKeyWord: React.FC<CodeScanRuleByKeyWordProps> = React.memo((
             <YakitInput.Search
               value={keywords}
               onChange={(e) => setKeywords(e.target.value)}
-              placeholder="请输入关键字搜索"
+              placeholder="Search by keyword"
               onSearch={onSearch}
               onPressEnter={onPressEnter}
             />
@@ -706,11 +706,11 @@ const CodeScanRuleByKeyWord: React.FC<CodeScanRuleByKeyWordProps> = React.memo((
 })
 const YakRunnerCodeScanTab: YakitTabsProps[] = [
   {
-    label: '按组选',
+    label: 'By Group',
     value: 'group',
   },
   {
-    label: '按关键词',
+    label: 'By Keyword',
     value: 'keyword',
   },
 ]
@@ -937,7 +937,7 @@ const CodeScanByExecute: React.FC<CodeScanByExecuteProps> = React.memo((props) =
   return (
     <div className={classNames(styles['code-scan-by-execute-wrapper'])}>
       {data.length === 0 ? (
-        <YakitEmpty title="暂无更多执行规则" style={{ paddingTop: 48 }} />
+        <YakitEmpty title="No more execution rules" style={{ paddingTop: 48 }} />
       ) : (
         <RollingLoadList<SyntaxFlowScanActiveTaskShow>
           data={data}
@@ -951,8 +951,8 @@ const CodeScanByExecute: React.FC<CodeScanByExecuteProps> = React.memo((props) =
             const time = `${minutes === 0 ? '' : minutes + '分'}${seconds}秒`
             return (
               <>
-                <span className={classNames(styles['name'], 'content-ellipsis')}>规则名: {info.RuleName}</span>
-                <span className="content-ellipsis">项目名 : {info.ProgramName}</span>
+                <span className={classNames(styles['name'], 'content-ellipsis')}>Rule Name: {info.RuleName}</span>
+                <span className="content-ellipsis">Project Name: {info.ProgramName}</span>
                 <span className="content-ellipsis">Info : {info.Info}</span>
                 <span className={styles['footer']}>
                   <span
@@ -1215,7 +1215,7 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
       <div className={styles['code-scan-execute-wrapper']}>
         <ExpandAndRetract isExpand={isExpand} onExpand={onExpand} status={executeStatus}>
           <div className={styles['code-scan-executor-title']}>
-            <span className={styles['code-scan-executor-title-text']}>规则执行</span>
+            <span className={styles['code-scan-executor-title-text']}>Rule Execution</span>
             {(pageInfo.selectTotal || 0) > 0 && (
               <YakitTag closable onClose={onRemove} color="info">
                 {pageInfo.selectTotal}
@@ -1226,7 +1226,7 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
             {progressShow && (
               <PluginExecuteProgress
                 percent={progressShow.progress}
-                name={progressShow.type === 'new' ? '编译' : '扫描'}
+                name={progressShow.type === 'new' ? 'Compile' : 'Scan'}
               />
             )}
             <YakitButton
@@ -1336,10 +1336,12 @@ const CodeScanExecuteContent: React.FC<CodeScanExecuteContentProps> = React.memo
       </React.Suspense>
       <YakitHint
         visible={selectProject.length > 0}
-        title={'选择项目打开'}
+        title={'Select a project to open'}
         children={
           <>
-            <div className={styles['default-content']}>代码审计只能打开一个项目，请选择项目在代码审计中查看</div>
+            <div className={styles['default-content']}>
+              Code audit can only open one project at a time. Please choose a project to view in code audit.
+            </div>
             <Radio.Group
               className="plugins-radio-wrapper"
               value={openProject}
@@ -1956,14 +1958,14 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
 
     const getTabsState = useMemo(() => {
       const tabsState = [
-        { tabName: '漏洞与风险', type: 'ssa-risk' },
-        { tabName: '日志', type: 'log' },
+        { tabName: 'Vulnerabilities and Risks', type: 'ssa-risk' },
+        { tabName: 'Logs', type: 'log' },
         { tabName: 'Console', type: 'console' },
       ]
       if (runtimeId) {
         return [
           {
-            tabName: '审计结果',
+            tabName: 'Audit Results',
             type: 'result',
             customProps: { onDetail: handleShowDetail, updateDataCallback: handleUpdateAuditData },
           },
@@ -2023,7 +2025,7 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
               value: item.Name,
             }
           })
-          newCompileHistoryList.unshift({ label: '编译并扫描最新代码', value: 'recompileAndScan' })
+          newCompileHistoryList.unshift({ label: 'Compile and Scan Latest Code', value: 'recompileAndScan' })
           setCompileHistoryList(newCompileHistoryList)
         })
         .finally(() => {
@@ -2095,11 +2097,11 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
                 options={[
                   {
                     value: 'new',
-                    label: '新项目',
+                    label: 'New Project',
                   },
                   {
                     value: 'old',
-                    label: '项目列表',
+                    label: 'Project List',
                   },
                 ]}
               />
@@ -2130,25 +2132,29 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
               wrapperCol={{ span: 12 }} //这样设置是为了让输入框居中
               validateMessages={{
                 /* eslint-disable no-template-curly-in-string */
-                required: '${label} 是必填字段',
+                required: '${label} is required',
               }}
               labelWrap={true}
             >
-              <Form.Item label="项目名称" name="project" rules={[{ required: true, message: '请选择项目名称' }]}>
+              <Form.Item
+                label="Project Name"
+                name="project"
+                rules={[{ required: true, message: 'Please select a project name' }]}
+              >
                 <YakitSelect
                   allowClear
                   showSearch
-                  placeholder="请选择项目名称"
+                  placeholder="Please select a project name"
                   options={auditCodeList}
                   onChange={onSelectProject}
                 />
               </Form.Item>
 
-              <Form.Item label="编译历史" name="history">
+              <Form.Item label="Compile History" name="history">
                 <YakitSelect
                   allowClear
                   showSearch
-                  placeholder="请选择编译历史"
+                  placeholder="Please select compile history"
                   options={compileHistoryList}
                   disabled={compileHistoryList.length === 0}
                 />
@@ -2228,7 +2234,7 @@ export const CodeScanMainExecuteContent: React.FC<CodeScaMainExecuteContentProps
               visible={auditDetailShow}
               onClose={handleCancelDetail}
               width="90%"
-              title="审计详情"
+              title="Audit Details"
               extra={
                 <YakitButton icon={<OutlineTerminalIcon />} type="outline2" onClick={() => jumpCodeScanPage()}>
                   在代码审计中打开
@@ -2713,12 +2719,16 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
           wrapperCol={{ span: 12 }} //这样设置是为了让输入框居中
           validateMessages={{
             /* eslint-disable no-template-curly-in-string */
-            required: '${label} 是必填字段',
+            required: '${label} is required',
           }}
           labelWrap={true}
           className={styles['code-scan-form']}
         >
-          <Form.Item name="target" label="项目路径" rules={[{ required: true, message: '请输入项目路径' }]}>
+          <Form.Item
+            name="target"
+            label="Project Path"
+            rules={[{ required: true, message: 'Please enter a project path' }]}
+          >
             <YakitDragger
               isShowPathNumber={false}
               selectType="all"
@@ -2785,12 +2795,12 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
                   }}
                 >
                   <YakitPanel key="defalut" header={`参数组`}>
-                    <Form.Item name="language" label="语言">
+                    <Form.Item name="language" label="Language">
                       <YakitSelect options={customParams.languageArr.data} />
                     </Form.Item>
                     <Form.Item
                       name="proxy"
-                      label="代理"
+                      label="Proxy"
                       extra={
                         <>
                           <div className={styles['agent-down-stream-proxy']} onClick={onClickDownstreamProxy}>
@@ -2831,7 +2841,7 @@ const CodeScanAuditExecuteForm: React.FC<CodeScanAuditExecuteFormProps> = React.
                     </Form.Item>
                     <Form.Item
                       name="peephole"
-                      label="编译速度"
+                      label="Compile Speed"
                       help="小文件无需配置，大文件可根据需求选择，速度越快，精度越小"
                     >
                       <Slider

@@ -28,15 +28,15 @@ const DefaultStreamInfo = {
  * StreamProcessorManager 负责统一管理所有插件的 StreamProcessor 实例。
  *
  * 主要职责如下：
- * 1. 管控所有插件的日志条数上限；
+ * 1. 管控所有插件的Logs条数上限；
  * 2. 跟踪和记录每个插件的更新状态（如新插件、新表格、新表格数据、新 Markdown 数据）；
- * 3. 统一收集并生成所有插件的流输出快照（包括日志、卡片、tab页等）；
+ * 3. 统一收集并生成所有插件的流输出快照（包括Logs、卡片、tab页等）；
  * 4. 支持订阅通知机制，当插件数据有变动时自动通知 UI 刷新；
  * 5. 提供按插件名路由消费流数据的能力、及对应的 StreamProcessor 实例管理；
- * 6. 支持插件日志条数上限调整、全量/单插件更新标记清除等常用操作。
+ * 6. 支持插件Logs条数上限调整、全量/单插件更新标记清除等常用操作。
  */
 export class StreamProcessorManager {
-  // 控制所有插件日志保留的最大条数
+  // 控制所有插件Logs保留的最大条数
   limitLogNum = DEFAULT_LOG_LIMIT
   // 插件名 -> StreamProcessor 映射
   processors = new Map<string, StreamProcessor>()
@@ -163,7 +163,7 @@ export class StreamProcessorManager {
   }
 
   /**
-   * 重置全部插件数据和更新状态，清空所有缓存（日志、表格、卡片等全部重置）
+   * 重置全部插件数据和更新状态，清空所有缓存（Logs、表格、卡片等全部重置）
    */
   reset() {
     this.processors.clear()
@@ -173,7 +173,7 @@ export class StreamProcessorManager {
   }
 
   /**
-   * 调整所有 StreamProcessor 的日志条数上限
+   * 调整所有 StreamProcessor 的Logs条数上限
    * @param limit 限制条数
    */
   setLimitLogNum(limit: number) {
@@ -248,13 +248,13 @@ export class StreamProcessor {
   tabsText = new Map<string, string>()
   // logs
   messages: StreamResult.Message[] = []
-  // 插件日志条数
+  // 插件Logs条数
   limitLogNum = DEFAULT_LOG_LIMIT
   // 监听新加表格
   onNewTable?: (tableName: string) => void
   // 监听表格追加新数据
   onTableData?: (tableName: string) => void
-  // 监听Markdown日志新数据
+  // 监听MarkdownLogs新数据
   onMarkdownData?: () => void
 
   /**自定义tab页放前面还是后面 */
@@ -265,13 +265,13 @@ export class StreamProcessor {
     }
   }
 
-  /**放入日志队列 */
+  /**放入Logs队列 */
   pushLogs(log: StreamResult.Message) {
     this.messages.unshift({
       ...log,
       content: { ...log.content, id: uuidv4() },
     })
-    // 只缓存 全局配置的插件日志条数的结果（日志类型 + 数据类型）
+    // 只缓存 全局配置的插件Logs条数的结果（Logs类型 + 数据类型）
     if (this.messages.length > this.limitLogNum) {
       this.messages.pop()
     }
@@ -317,7 +317,7 @@ export class StreamProcessor {
     if (this.handleTextData(obj, logData)) return
 
     this.handleMarkdownData(obj, logData)
-    // 日志信息
+    // Logs信息
     this.pushLogs(obj)
   }
 
@@ -544,7 +544,7 @@ export const useStreamProcessorManager = (manager: StreamProcessorManager) => {
   }, [manager])
 
   return {
-    streamInfos: manager.buildAllStreamInfo([{ tabName: '日志', type: 'log' }]),
+    streamInfos: manager.buildAllStreamInfo([{ tabName: 'Logs', type: 'log' }]),
     updates: new Map(manager.getUpdates()),
     hasUpdate: manager.getAnyUpdate(),
   }

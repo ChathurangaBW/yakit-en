@@ -30,21 +30,21 @@ export const getHtmlTemplate = () => {
                 {
                     key: ["info", "fingerprint", "infof", "default"],
                     value: "title-info",
-                    name: "信息",
+                    name: "Info",
                     tag: "#56c991"
                 },
-                { key: ["low"], value: "title-low", name: "低危", tag: "#ffb660" },
+                { key: ["low"], value: "title-low", name: "Low", tag: "#ffb660" },
                 {
                     key: ["middle", "warn", "warning", "medium"],
                     value: "title-middle",
-                    name: "中危",
+                    name: "Medium",
                     tag: "#f28b44"
                 },
-                { key: ["high"], value: "title-high", name: "高危", tag: "#f4736b" },
+                { key: ["high"], value: "title-high", name: "High", tag: "#f4736b" },
                 {
                     key: ["fatal", "critical", "panic"],
                     value: "title-fatal",
-                    name: "严重",
+                    name: "Critical",
                     tag: "#cb2318"
                 }
             ]
@@ -77,14 +77,14 @@ export const getHtmlTemplate = () => {
                                 size="small"
                                 style={{ width: 90 }}
                             >
-                                搜索
+                                Search
                             </Button>
                             <Button
                                 onClick={() => clearFilters && handleReset(clearFilters)}
                                 size="small"
                                 style={{ width: 90 }}
                             >
-                                重置
+                                Reset
                             </Button>
                         </Space>
                     </div>
@@ -100,7 +100,7 @@ export const getHtmlTemplate = () => {
             });
             const columns = [
                 {
-                    title: "序号",
+                    title: "No.",
                     dataIndex: "Id",
                     key: "Id",
                     sorter: (a, b) => +a.Id - +b.Id,
@@ -109,7 +109,7 @@ export const getHtmlTemplate = () => {
                     ellipsis:true,
                 },
                 {
-                    title: "标题",
+                    title: "Title",
                     dataIndex: "TitleVerbose",
                     key: "TitleVerbose",
                     ellipsis:true,
@@ -117,36 +117,36 @@ export const getHtmlTemplate = () => {
                     ...getColumnSearchProps('TitleVerbose'),
                 },
                 {
-                    title: "类型",
+                    title: "Type",
                     dataIndex: "RiskTypeVerbose",
                     key: "RiskTypeVerbose",
                     ...getColumnSearchProps('RiskTypeVerbose'),
                 },
                 {
-                    title: "等级",
+                    title: "Severity",
                     dataIndex: "Severity",
                     key: "Severity",
                     width:100,
                     filters: [
                         {
-                            text: '信息',
-                            value: '信息',
+                            text: 'Info',
+                            value: 'Info',
                         },
                         {
-                            text: '低危',
-                            value: '低危',
+                            text: 'Low',
+                            value: 'Low',
                         },
                         {
-                            text: '中危',
-                            value: '中危',
+                            text: 'Medium',
+                            value: 'Medium',
                         },
                         {
-                            text: '高危',
-                            value: '高危',
+                            text: 'High',
+                            value: 'High',
                         },
                         {
-                            text: '严重',
-                            value: '严重',
+                            text: 'Critical',
+                            value: 'Critical',
                         },
                     ],
                     onFilter: (value, record) => {
@@ -183,7 +183,7 @@ export const getHtmlTemplate = () => {
                     render: (text) => !!text ? text.replaceAll("|", ",") : "-"
                 },
                 {
-                    title: "发现时间",
+                    title: "Discovery Time",
                     dataIndex: "CreatedAt",
                     key: "CreatedAt",
                     width:200,
@@ -205,27 +205,27 @@ export const getHtmlTemplate = () => {
                                             {info.IP || "-"}
                                         </Descriptions.Item>
                                         <Descriptions.Item label='ID'>{info.Id || "-"}</Descriptions.Item>
-                                        <Descriptions.Item label='端口'>{info.Port || "-"}</Descriptions.Item>
+                                        <Descriptions.Item label='Port'>{info.Port || "-"}</Descriptions.Item>
                                         <Descriptions.Item label='Host'>{info.Host || "-"}</Descriptions.Item>
-                                        <Descriptions.Item label='类型'>
+                                        <Descriptions.Item label='Type'>
                                             {(info?.RiskTypeVerbose || info.RiskType).replaceAll("NUCLEI-", "")}
                                         </Descriptions.Item>
-                                        <Descriptions.Item label='来源'>{info?.FromYakScript || "漏洞检测"}</Descriptions.Item>
-                                        <Descriptions.Item label='反连Token' contentStyle={{ minWidth: 120 }}>
+                                        <Descriptions.Item label='Source'>{info?.FromYakScript || "Vulnerability Detection"}</Descriptions.Item>
+                                        <Descriptions.Item label='Reverse Token' contentStyle={{ minWidth: 120 }}>
                                             {info?.ReverseToken || "-"}
                                         </Descriptions.Item>
                                         <Descriptions.Item label='Hash'>{info?.Hash || "-"}</Descriptions.Item>
-                                        <Descriptions.Item label='验证状态'>
+                                        <Descriptions.Item label='Verification Status'>
                                             <Tag color={!info.WaitingVerified ? "success" : "info"}>
-                                                {!info.WaitingVerified ? "已验证" : "未验证"}
+                                                {!info.WaitingVerified ? "Verified" : "Unverified"}
                                             </Tag>
                                         </Descriptions.Item>
 
                                         <>
-                                            <Descriptions.Item label='漏洞描述' span={3} contentStyle={{ whiteSpace: "pre-wrap" }}>
+                                            <Descriptions.Item label='Vulnerability Description' span={3} contentStyle={{ whiteSpace: "pre-wrap" }}>
                                                 {info.Description || "-"}
                                             </Descriptions.Item>
-                                            <Descriptions.Item label='解决方案' span={3} contentStyle={{ whiteSpace: "pre-wrap" }}>
+                                            <Descriptions.Item label='Solution' span={3} contentStyle={{ whiteSpace: "pre-wrap" }}>
                                                 {info.Solution || "-"}
                                             </Descriptions.Item>
                                             <Descriptions.Item label='Parameter' span={3}>
@@ -252,7 +252,7 @@ export const getHtmlTemplate = () => {
                                                     </Descriptions.Item>
                                                 </>
                                             }
-                                            <Descriptions.Item label='详情' span={3}>
+                                            <Descriptions.Item label='Details' span={3}>
                                                 <div style={{ maxHeight: 180, overflow: "auto" }}>{info.Details || "-"}</div>
                                             </Descriptions.Item>
                                         </>
@@ -309,23 +309,23 @@ export const getHtmlZhTWTemplate = () => {
       {
         key: ["info", "fingerprint", "infof", "default"],
         value: "title-info",
-        name: "信息",
+        name: "Info",
         nameUi: "info",
         tag: "#56c991"
       },
-      { key: ["low"], value: "title-low", name: "低危", nameUi: "low", tag: "#ffb660" },
+      { key: ["low"], value: "title-low", name: "Low", nameUi: "low", tag: "#ffb660" },
       {
         key: ["middle", "warn", "warning", "medium"],
         value: "title-middle",
-        name: "中危",
+        name: "Medium",
         nameUi: "warning",
         tag: "#f28b44"
       },
-      { key: ["high"], value: "title-high", name: "高危", nameUi: "high", tag: "#f4736b" },
+      { key: ["high"], value: "title-high", name: "High", nameUi: "high", tag: "#f4736b" },
       {
         key: ["fatal", "critical", "panic"],
         value: "title-fatal",
-        name: "严重",
+        name: "Critical",
         nameUi: "high",
         tag: "#cb2318"
       }
@@ -359,14 +359,14 @@ export const getHtmlZhTWTemplate = () => {
               size="small"
               style={{ width: 90 }}
             >
-              搜尋
+              Search
             </Button>
             <Button
               onClick={() => clearFilters && handleReset(clearFilters)}
               size="small"
               style={{ width: 90 }}
             >
-              重置
+              Reset
             </Button>
           </Space>
         </div>
@@ -382,7 +382,7 @@ export const getHtmlZhTWTemplate = () => {
     });
     const columns = [
       {
-        title: "序號",
+        title: "No.",
         dataIndex: "Id",
         key: "Id",
         sorter: (a, b) => +a.Id - +b.Id,
@@ -391,7 +391,7 @@ export const getHtmlZhTWTemplate = () => {
         ellipsis: true,
       },
       {
-        title: "標題",
+        title: "Title",
         dataIndex: "TitleVerbose",
         key: "TitleVerbose",
         ellipsis: true,
@@ -399,36 +399,36 @@ export const getHtmlZhTWTemplate = () => {
         ...getColumnSearchProps('TitleVerbose'),
       },
       {
-        title: "類型",
+        title: "Type",
         dataIndex: "RiskTypeVerbose",
         key: "RiskTypeVerbose",
         ...getColumnSearchProps('RiskTypeVerbose'),
       },
       {
-        title: "等級",
+        title: "Severity",
         dataIndex: "Severity",
         key: "Severity",
         width: 100,
         filters: [
           {
-            text: '訊息',
-            value: '信息',
+            text: 'Info',
+            value: 'Info',
           },
           {
-            text: '低危',
-            value: '低危',
+            text: 'Low',
+            value: 'Low',
           },
           {
-            text: '中危',
-            value: '中危',
+            text: 'Medium',
+            value: 'Medium',
           },
           {
-            text: '高危',
-            value: '高危',
+            text: 'High',
+            value: 'High',
           },
           {
-            text: '嚴重',
-            value: '严重',
+            text: 'Critical',
+            value: 'Critical',
           },
         ],
         onFilter: (value, record) => {
@@ -465,7 +465,7 @@ export const getHtmlZhTWTemplate = () => {
         render: (text) => !!text ? text.replaceAll("|", ",") : "-"
       },
       {
-        title: "發現時間",
+        title: "Discovery Time",
         dataIndex: "CreatedAt",
         key: "CreatedAt",
         width: 200,
@@ -487,27 +487,27 @@ export const getHtmlZhTWTemplate = () => {
                     {info.IP || "-"}
                   </Descriptions.Item>
                   <Descriptions.Item label='ID'>{info.Id || "-"}</Descriptions.Item>
-                  <Descriptions.Item label='連接埠'>{info.Port || "-"}</Descriptions.Item>
+                  <Descriptions.Item label='Port'>{info.Port || "-"}</Descriptions.Item>
                   <Descriptions.Item label='Host'>{info.Host || "-"}</Descriptions.Item>
-                  <Descriptions.Item label='類型'>
+                  <Descriptions.Item label='Type'>
                     {(info?.RiskTypeVerbose || info.RiskType).replaceAll("NUCLEI-", "")}
                   </Descriptions.Item>
-                  <Descriptions.Item label='來源'>{info?.FromYakScript || "Vulnerability Detection"}</Descriptions.Item>
-                  <Descriptions.Item label='反連 Token' contentStyle={{ minWidth: 120 }}>
+                  <Descriptions.Item label='Source'>{info?.FromYakScript || "Vulnerability Detection"}</Descriptions.Item>
+                  <Descriptions.Item label='Reverse Token' contentStyle={{ minWidth: 120 }}>
                     {info?.ReverseToken || "-"}
                   </Descriptions.Item>
                   <Descriptions.Item label='Hash'>{info?.Hash || "-"}</Descriptions.Item>
-                  <Descriptions.Item label='驗證狀態'>
+                  <Descriptions.Item label='Verification Status'>
                     <Tag color={!info.WaitingVerified ? "success" : "info"}>
-                      {!info.WaitingVerified ? "已驗證" : "未驗證"}
+                      {!info.WaitingVerified ? "Verified" : "Unverified"}
                     </Tag>
                   </Descriptions.Item>
 
                   <>
-                    <Descriptions.Item label='漏洞描述' span={3} contentStyle={{ whiteSpace: "pre-wrap" }}>
+                    <Descriptions.Item label='Vulnerability Description' span={3} contentStyle={{ whiteSpace: "pre-wrap" }}>
                       {info.Description || "-"}
                     </Descriptions.Item>
-                    <Descriptions.Item label='解決方案' span={3} contentStyle={{ whiteSpace: "pre-wrap" }}>
+                    <Descriptions.Item label='Solution' span={3} contentStyle={{ whiteSpace: "pre-wrap" }}>
                       {info.Solution || "-"}
                     </Descriptions.Item>
                     <Descriptions.Item label='Parameter' span={3}>
@@ -534,7 +534,7 @@ export const getHtmlZhTWTemplate = () => {
                         </Descriptions.Item>
                       </>
                     }
-                    <Descriptions.Item label='詳情' span={3}>
+                    <Descriptions.Item label='Details' span={3}>
                       <div style={{ maxHeight: 180, overflow: "auto" }}>{info.Details || "-"}</div>
                     </Descriptions.Item>
                   </>
@@ -591,23 +591,23 @@ export const getHtmlEnTemplate = () => {
       {
         key: ["info", "fingerprint", "infof", "default"],
         value: "title-info",
-        name: "信息",
+        name: "Info",
         nameUi: "info",
         tag: "#56c991"
       },
-      { key: ["low"], value: "title-low", name: "低危", nameUi: "low", tag: "#ffb660" },
+      { key: ["low"], value: "title-low", name: "Low", nameUi: "low", tag: "#ffb660" },
       {
         key: ["middle", "warn", "warning", "medium"],
         value: "title-middle",
-        name: "中危",
+        name: "Medium",
         nameUi: "warning",
         tag: "#f28b44"
       },
-      { key: ["high"], value: "title-high", name: "高危", nameUi: "high", tag: "#f4736b" },
+      { key: ["high"], value: "title-high", name: "High", nameUi: "high", tag: "#f4736b" },
       {
         key: ["fatal", "critical", "panic"],
         value: "title-fatal",
-        name: "严重",
+        name: "Critical",
         nameUi: "high",
         tag: "#cb2318"
       }
@@ -694,23 +694,23 @@ export const getHtmlEnTemplate = () => {
         filters: [
           {
             text: 'info',
-            value: '信息',
+            value: 'Info',
           },
           {
             text: 'low',
-            value: '低危',
+            value: 'Low',
           },
           {
             text: 'warning',
-            value: '中危',
+            value: 'Medium',
           },
           {
             text: 'high',
-            value: '高危',
+            value: 'High',
           },
           {
             text: 'critical',
-            value: '严重',
+            value: 'Critical',
           },
         ],
         onFilter: (value, record) => {

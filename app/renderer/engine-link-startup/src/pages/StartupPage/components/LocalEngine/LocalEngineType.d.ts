@@ -1,4 +1,4 @@
-import { SoftwareVersion } from '@/utils/envfile'
+﻿import { SoftwareVersion } from '@/utils/envfile'
 import React, { Dispatch, SetStateAction } from 'react'
 
 export interface LocalEngineProps {
@@ -14,15 +14,15 @@ export interface LocalEngineProps {
 }
 
 export interface LocalEngineLinkFuncProps {
-  /** 初始化并检查所有前置项后的本地连接 */
+  /** 初始化并检查所有前置项后的本地Connect */
   init: (port: number) => void
   /** 检查引擎版本 */
   checkEngine: () => void
   /** 校验引擎来源 */
   checkEngineSource: (version?: string) => void
-  /** 开始连接本地引擎 */
+  /** 开始Connect本地引擎 */
   startYakEngine: () => void
-  /** 检查引擎版本后的本地连接 */
+  /** 检查引擎版本后的本地Connect */
   link: (port: number) => void
 }
 

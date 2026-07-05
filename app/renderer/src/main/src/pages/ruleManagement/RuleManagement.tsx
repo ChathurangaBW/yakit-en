@@ -245,7 +245,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
   const columns: ColumnsTypeProps[] = useMemo<ColumnsTypeProps[]>(() => {
     return [
       {
-        title: '规则名',
+        title: 'Rule Name',
         dataKey: 'RuleName',
         render: (text) => {
           return (
@@ -256,7 +256,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '规则类型',
+        title: 'Rule Type',
         dataKey: 'Purpose',
         width: 100,
         render: (text) => {
@@ -276,7 +276,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '语言',
+        title: 'Language',
         dataKey: 'Language',
         width: 130,
         render: (text) => {
@@ -296,7 +296,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '分组',
+        title: 'Group',
         dataKey: 'GroupName',
         render: (text) => {
           return (
@@ -307,7 +307,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '描述',
+        title: 'Description',
         dataKey: 'Description',
         render: (text) => {
           return (
@@ -318,7 +318,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '操作',
+        title: 'Actions',
         dataKey: 'action',
         fixed: 'right',
         width: 100,
@@ -416,7 +416,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
   /** ---------- 导出逻辑 ---------- */
   const [exportExtra, setExportExtra] = useState<ImportExportModalExtra>({
     hint: false,
-    title: '导出规则',
+    title: 'Export Rules',
     type: 'export',
     apiKey: 'ExportSyntaxFlows',
   })
@@ -797,7 +797,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
   const onlineColumns: ColumnsTypeProps[] = useMemo<ColumnsTypeProps[]>(() => {
     return [
       {
-        title: '规则名',
+        title: 'Rule Name',
         dataKey: 'ruleName',
         render: (text) => {
           return (
@@ -808,7 +808,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '规则类型',
+        title: 'Rule Type',
         dataKey: 'purpose',
         width: 100,
         render: (text) => {
@@ -828,7 +828,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '语言',
+        title: 'Language',
         dataKey: 'language',
         width: 130,
         render: (text) => {
@@ -848,7 +848,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '分组',
+        title: 'Group',
         dataKey: 'groupName',
         render: (text) => {
           return (
@@ -859,7 +859,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '描述',
+        title: 'Description',
         dataKey: 'description',
         render: (text) => {
           return (
@@ -870,7 +870,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
         },
       },
       {
-        title: '操作',
+        title: 'Actions',
         dataKey: 'action',
         fixed: 'right',
         width: 65,
@@ -926,8 +926,8 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
                   isDownloadOnlineRuleGroupRef.current = true
                   infoRef.current = {
                     type: 'download',
-                    title: '下载提示',
-                    content: '如果规则id相同则会直接覆盖，是否确认下载',
+                    title: 'Download Notice',
+                    content: 'If the rule ID is the same, the existing rule will be overwritten. Confirm download?',
                   }
                   setInfoVisible(true)
                 }}
@@ -982,7 +982,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
                         <YakitInput.Search
                           allowClear
                           size="large"
-                          placeholder="请输入关键词搜索"
+                          placeholder="Search by keyword"
                           onSearch={handleSearch}
                         />
                         <div className={styles['divider-style']}></div>
@@ -1001,7 +1001,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
                             icon={<OutlineExportIcon />}
                             onClick={() =>
                               handleOpenExportHint({
-                                title: '导出规则',
+                                title: 'Export Rules',
                                 type: 'export',
                                 apiKey: 'ExportSyntaxFlows',
                               })
@@ -1015,7 +1015,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
                             icon={<OutlineImportIcon />}
                             onClick={() =>
                               handleOpenExportHint({
-                                title: '导入规则',
+                                title: 'Import Rules',
                                 type: 'import',
                                 apiKey: 'ImportSyntaxFlows',
                               })
@@ -1031,8 +1031,8 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
                               onClick={() => {
                                 infoRef.current = {
                                   type: 'upload',
-                                  title: '上传提示',
-                                  content: '如果存在同名规则库，会直接覆盖',
+                                  title: 'Upload Notice',
+                                  content: 'If a rule library with the same name exists, it will be overwritten.',
                                 }
                                 setInfoVisible(true)
                               }}
@@ -1130,7 +1130,7 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
                         <YakitInput.Search
                           size="large"
                           allowClear
-                          placeholder="请输入关键词搜索"
+                          placeholder="Search by keyword"
                           onSearch={handleOnlineSearch}
                         />
                         <div className={styles['divider-style']}></div>
@@ -1152,8 +1152,9 @@ export const RuleManagement: React.FC<RuleManagementProps> = memo((props) => {
                               isDownloadOnlineRuleGroupRef.current = false
                               infoRef.current = {
                                 type: 'download',
-                                title: '下载提示',
-                                content: '如果规则id相同则会直接覆盖，是否确认下载',
+                                title: 'Download Notice',
+                                content:
+                                  'If the rule ID is the same, the existing rule will be overwritten. Confirm download?',
                               }
                               setInfoVisible(true)
                             }}

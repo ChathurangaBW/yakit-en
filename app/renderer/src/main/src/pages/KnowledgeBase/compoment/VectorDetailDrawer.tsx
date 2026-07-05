@@ -55,7 +55,7 @@ const VectorDetailDrawer: FC<VectorDetailDrawerProps> = ({
       width="80%"
       onClose={() => setOpenVectorDetailDrawerData((preValue) => ({ ...preValue, vectorDetailModalVisible: false }))}
       visible={openVectorDetailDrawerData.vectorDetailModalVisible}
-      title={'向量详情'}
+      title={'Vector Details'}
       maskClosable={true}
       destroyOnClose={true}
       footer={null}
@@ -63,25 +63,25 @@ const VectorDetailDrawer: FC<VectorDetailDrawerProps> = ({
     >
       <div className={styles['vector-drawer-container']}>
         <div className={styles['vector-drawer-box']}>
-          <div className={styles['title']}>基本信息</div>
+          <div className={styles['title']}>Basic Information</div>
           <div className={styles['box-content']}>
             <Descriptions bordered column={5}>
-              <Descriptions.Item label="条目 ID">
+              <Descriptions.Item label="Entry ID">
                 {openVectorDetailDrawerData.selectedVectorDetail?.ID ?? '-'}
               </Descriptions.Item>
-              <Descriptions.Item label="集合 ID">{knowledgeBaseId}</Descriptions.Item>
-              <Descriptions.Item label="向量维度">
+              <Descriptions.Item label="Collection ID">{knowledgeBaseId}</Descriptions.Item>
+              <Descriptions.Item label="Vector Dimensions">
                 {openVectorDetailDrawerData.selectedVectorDetail?.Embedding
                   ? openVectorDetailDrawerData.selectedVectorDetail.Embedding.length
                   : 0}
               </Descriptions.Item>
-              <Descriptions.Item label="内容长度">
+              <Descriptions.Item label="Content Length">
                 {openVectorDetailDrawerData.selectedVectorDetail?.Content
                   ? openVectorDetailDrawerData.selectedVectorDetail.Content.length
                   : 0}{' '}
                 字符
               </Descriptions.Item>
-              <Descriptions.Item label="元数据长度">
+              <Descriptions.Item label="Metadata Length">
                 {openVectorDetailDrawerData.selectedVectorDetail?.Metadata
                   ? openVectorDetailDrawerData.selectedVectorDetail.Metadata.length
                   : 0}{' '}
@@ -94,14 +94,14 @@ const VectorDetailDrawer: FC<VectorDetailDrawerProps> = ({
           </div>
         </div>
         <div className={styles['vector-drawer-box']}>
-          <div className={styles['title']}>内容预览</div>
+          <div className={styles['title']}>Content Preview</div>
           <SafeMarkdown
             source={openVectorDetailDrawerData.selectedVectorDetail?.Content}
             className={classNames(styles['box-content'], styles['markdown-box'])}
           />
         </div>
         <div className={styles['vector-drawer-box']}>
-          <div className={styles['title']}>元数据</div>
+          <div className={styles['title']}>Metadata</div>
           <SafeMarkdown
             source={openVectorDetailDrawerData.selectedVectorDetail?.Metadata}
             className={classNames(styles['box-content'], styles['markdown-box'])}
@@ -109,31 +109,31 @@ const VectorDetailDrawer: FC<VectorDetailDrawerProps> = ({
         </div>
         {entryDocument ? (
           <div className={styles['vector-drawer-box']}>
-            <div className={styles['title']}>关联知识库条目</div>
+            <div className={styles['title']}>Related Knowledge Base Entry</div>
             <div className={styles['box-content']}>
               <Descriptions bordered column={3}>
-                <Descriptions.Item label="标题:" span={2}>
+                <Descriptions.Item label="Title:" span={2}>
                   {entryDocument?.KnowledgeTitle ?? '-'}
                 </Descriptions.Item>
 
-                <Descriptions.Item label="类型:">{entryDocument?.KnowledgeType ?? '-'}</Descriptions.Item>
+                <Descriptions.Item label="Type:">{entryDocument?.KnowledgeType ?? '-'}</Descriptions.Item>
 
-                <Descriptions.Item label="重要度:">{entryDocument?.ImportanceScore ?? '-'}</Descriptions.Item>
+                <Descriptions.Item label="Importance:">{entryDocument?.ImportanceScore ?? '-'}</Descriptions.Item>
 
-                <Descriptions.Item label="源页码:">{entryDocument?.SourcePage ?? '-'}</Descriptions.Item>
+                <Descriptions.Item label="Source Page:">{entryDocument?.SourcePage ?? '-'}</Descriptions.Item>
 
-                <Descriptions.Item label="潜在问题:">
+                <Descriptions.Item label="Potential Issues:">
                   {entryDocument?.PotentialQuestions?.join('; ') ?? '-'}
                 </Descriptions.Item>
 
-                <Descriptions.Item label="详细内容" span={3}>
+                <Descriptions.Item label="Detailed Content" span={3}>
                   {entryDocument.KnowledgeDetails ?? '-'}
                 </Descriptions.Item>
-                <Descriptions.Item label="摘要:" span={3}>
+                <Descriptions.Item label="Summary:" span={3}>
                   {entryDocument?.Summary ?? '-'}
                 </Descriptions.Item>
 
-                <Descriptions.Item label="关键词:" span={3}>
+                <Descriptions.Item label="Keywords:" span={3}>
                   {entryDocument?.Keywords?.join(', ') ?? '-'}
                 </Descriptions.Item>
               </Descriptions>
@@ -141,7 +141,7 @@ const VectorDetailDrawer: FC<VectorDetailDrawerProps> = ({
           </div>
         ) : null}
         <div className={classNames(styles['vector-drawer-box'])}>
-          <div className={styles['title']}>向量数据(前20维)</div>
+          <div className={styles['title']}>Vector Data (First 20 Dimensions)</div>
           {openVectorDetailDrawerData.selectedVectorDetail?.Embedding &&
           openVectorDetailDrawerData.selectedVectorDetail?.Embedding.length > 0 ? (
             <div className={classNames(styles['box-content'], styles['vector-drawer-tag'])}>

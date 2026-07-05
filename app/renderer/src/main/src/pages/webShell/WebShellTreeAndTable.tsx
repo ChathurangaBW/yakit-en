@@ -71,31 +71,31 @@ export const WebShellURLTreeAndTable: React.FC<WebShellURLTreeAndTableProp> = (p
   const columns: ColumnsTypeProps[] = useMemo<ColumnsTypeProps[]>(() => {
     return [
       {
-        title: '类型',
+        title: 'Type',
         dataKey: 'Type',
         width: 40,
         render: (_, t: TreeNode) => (t.data?.ResourceType === 'dir' ? <FolderOpenOutlined /> : <FileOutlined />),
       },
       {
-        title: '名称',
+        title: 'Name',
         dataKey: 'Name',
         width: 300,
         render: (_, t: TreeNode) => t.data?.ResourceName,
       },
       {
-        title: '大小',
+        title: 'Size',
         dataKey: 'Size',
         width: 300,
         render: (_, t: TreeNode) => t.data?.SizeVerbose,
       },
       {
-        title: '修改时间',
+        title: 'Modified Time',
         dataKey: 'ModifiedTimestamp',
         width: 300,
         render: (_, t: TreeNode) => (t.data?.ModifiedTimestamp ? formatTimestamp(t.data?.ModifiedTimestamp) : '-'),
       },
       {
-        title: '权限',
+        title: 'Permissions',
         dataKey: 'Permission',
         width: 300,
         render: (_, t: TreeNode) => (
@@ -162,12 +162,12 @@ export const WebShellURLTreeAndTable: React.FC<WebShellURLTreeAndTableProp> = (p
   const fileMenuData = [
     {
       key: 'file-curd',
-      label: '文件操作',
+      label: 'File Actions',
       children: [
-        { key: 'file-curd-open', label: '打开' },
-        { key: 'file-curd-edit', label: '编辑' },
-        { key: 'file-curd-copy', label: '复制文件名' },
-        { key: 'file-curd-delete', label: '删除', itemIcon: <TrashIcon /> },
+        { key: 'file-curd-open', label: 'Open' },
+        { key: 'file-curd-edit', label: 'Edit' },
+        { key: 'file-curd-copy', label: 'Copy File Name' },
+        { key: 'file-curd-delete', label: 'Delete', itemIcon: <TrashIcon /> },
       ],
     },
   ]
@@ -182,7 +182,7 @@ export const WebShellURLTreeAndTable: React.FC<WebShellURLTreeAndTableProp> = (p
   useEffect(() => {
     if (shouldEdit && content) {
       const edit = showYakitModal({
-        title: '编辑文件',
+        title: 'Edit File',
         width: '60%',
         onCancelText: '返回',
         onOkText: '保存',
@@ -220,7 +220,7 @@ export const WebShellURLTreeAndTable: React.FC<WebShellURLTreeAndTableProp> = (p
               edit.destroy()
             })
             .catch((e) => {
-              yakitFailed(`更新失败: ${e}`)
+              yakitFailed(`更新Failed: ${e}`)
             })
           setShouldEdit(false) // 在保存后重置 shouldEdit
           edit.destroy()
@@ -277,7 +277,7 @@ export const WebShellURLTreeAndTable: React.FC<WebShellURLTreeAndTableProp> = (p
     if (rowData) {
       setSelected(rowData)
     }
-    // showByCustom已废弃，删除，更换为 showByRightContext
+    // showByCustom已废弃，Delete，更换为 showByRightContext
     // showByCustom(
     //     {
     //         reactNode: (
@@ -347,7 +347,7 @@ export const WebShellURLTreeAndTable: React.FC<WebShellURLTreeAndTableProp> = (p
       setLoading(false)
     }).catch((error) => {
       setLoading(false)
-      yakitFailed(`加载失败: ${error}`)
+      yakitFailed(`加载Failed: ${error}`)
     })
   }, [currentYakURL])
 
@@ -399,9 +399,9 @@ export const WebShellURLTreeAndTable: React.FC<WebShellURLTreeAndTableProp> = (p
             renderTitle={
               <div className={cveStyles['cve-list-title-body']}>
                 <div className={cveStyles['cve-list-title-left']}>
-                  <div className={cveStyles['cve-list-title']}>文件列表</div>
+                  <div className={cveStyles['cve-list-title']}>File List</div>
                   <Space>
-                    <Tooltip title="刷新会重置所有查询条件">
+                    <Tooltip title="Refresh will reset all filters">
                       <Button size={'middle'} type={'link'} onClick={() => {}} icon={<RefreshIcon />} />
                     </Tooltip>
                   </Space>

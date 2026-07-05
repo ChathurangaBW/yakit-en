@@ -106,11 +106,11 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
   const batchRefreshMenuData: YakitMenuItemProps[] = [
     {
       key: 'noResetRefresh',
-      label: '仅刷新',
+      label: 'Refresh Only',
     },
     {
       key: 'resetRefresh',
-      label: '重置查询条件刷新',
+      label: 'Reset Filters and Refresh',
     },
   ]
 
@@ -400,7 +400,7 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
 
   const columns: ColumnsTypeProps[] = [
     {
-      title: '序号',
+      title: 'No.',
       dataKey: 'ResultID',
       fixed: 'left',
       ellipsis: false,
@@ -408,18 +408,18 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
       enableDrag: false,
     },
     {
-      title: '扫描目标',
+      title: 'Scan Target',
       dataKey: 'ProgramName',
       width: 200,
       render: (text) => text || '-',
     },
     {
-      title: '规则名称',
+      title: 'Rule Name',
       dataKey: 'Title',
       render: (text) => text || '-',
     },
     {
-      title: '等级',
+      title: 'Severity',
       dataKey: 'Severity',
       width: 75,
       render: (_, i: SyntaxFlowResult) => {
@@ -437,29 +437,29 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
         filters: [
           {
             value: 'critical',
-            label: '严重',
+            label: 'Critical',
           },
           {
             value: 'high',
-            label: '高危',
+            label: 'High',
           },
           {
             value: 'middle',
-            label: '中危',
+            label: 'Medium',
           },
           {
             value: 'low',
-            label: '低危',
+            label: 'Low',
           },
           {
             value: 'info',
-            label: '信息',
+            label: 'Info',
           },
         ],
       },
     },
     {
-      title: '风险个数',
+      title: 'Risk Count',
       dataKey: 'RiskCount',
       width: 160,
       render: (text) => text || '-',
@@ -475,7 +475,7 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
       ),
     },
     {
-      title: '操作',
+      title: 'Actions',
       dataKey: 'action',
       width: 100,
       fixed: 'right',
@@ -483,7 +483,7 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
         return (
           <>
             <Tooltip
-              title="在代码审计中打开"
+              title="Open in Code Audit"
               destroyTooltipOnHide={true}
               overlayStyle={{ paddingBottom: 0 }}
               placement="top"
@@ -672,7 +672,7 @@ export const CodeScanResultTable: React.FC<CodeScanResultTableProps> = React.mem
           extra={
             <div className={styles['domainAsset-table-extra']}>
               <YakitInput.Search
-                placeholder="请输入关键词搜索"
+                placeholder="Search by keyword"
                 style={{ maxWidth: 200 }}
                 onSearch={updateData}
                 onPressEnter={updateData}

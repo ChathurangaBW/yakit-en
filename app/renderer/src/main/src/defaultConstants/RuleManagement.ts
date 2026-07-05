@@ -22,7 +22,7 @@ export const RuleLanguageList: { value: string; label: string }[] = [
   { value: 'yak', label: 'Yaklang' },
   { value: 'js', label: 'JavaScript' },
   { value: 'golang', label: 'Golang' },
-  { value: 'general', label: '通用' },
+  { value: 'general', label: 'General' },
 ]
 
 /** 默认的规则源码 */

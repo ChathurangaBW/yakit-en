@@ -164,7 +164,7 @@ const SsaResDiff: React.FC<SsaResDiffProps> = React.memo((props) => {
               <div className={styles['ssaResDiff-ssaDiffItem']}>
                 <span>选择扫描结果</span>
                 <YakitSelect
-                  placeholder="请选择后对比"
+                  placeholder="Select and Compare"
                   options={syntaxFlowScanTask}
                   notFoundContent="暂无数据"
                   onChange={(value) => setBaseTaskID(value)}
@@ -181,7 +181,7 @@ const SsaResDiff: React.FC<SsaResDiffProps> = React.memo((props) => {
               <div className={styles['ssaResDiff-ssaDiffItem']}>
                 <span>对比扫描结果</span>
                 <YakitSelect
-                  placeholder="请选择后对比"
+                  placeholder="Select and Compare"
                   options={syntaxFlowScanTask}
                   notFoundContent="暂无数据"
                   onChange={(value) => setCompareTaskID(value)}
@@ -349,7 +349,7 @@ const SsaResTable: React.FC<SsaResTableProps> = React.memo((props) => {
   const columns: ColumnsTypeProps[] = useCreation<ColumnsTypeProps[]>(() => {
     const columnArr: ColumnsTypeProps[] = [
       {
-        title: '序号',
+        title: 'No.',
         dataKey: 'Id',
         fixed: 'left',
         ellipsis: false,
@@ -357,16 +357,16 @@ const SsaResTable: React.FC<SsaResTableProps> = React.memo((props) => {
         enableDrag: false,
       },
       {
-        title: '标题',
+        title: 'Title',
         dataKey: 'TitleVerbose',
         render: (_, record) => record?.titleVerbose || record.title || '-',
       },
       {
-        title: '类型',
+        title: 'Type',
         dataKey: 'RiskTypeVerbose',
       },
       {
-        title: '等级',
+        title: 'Severity',
         dataKey: 'Severity',
         align: 'center',
         width: 75,
@@ -381,11 +381,11 @@ const SsaResTable: React.FC<SsaResTableProps> = React.memo((props) => {
         },
       },
       {
-        title: '所属项目',
+        title: 'Project',
         dataKey: 'ProgramName',
       },
       {
-        title: '处置状态',
+        title: 'Handling Status',
         dataKey: 'Tags',
         render: (text, record, index) => (
           <>
@@ -396,7 +396,7 @@ const SsaResTable: React.FC<SsaResTableProps> = React.memo((props) => {
         ),
       },
       {
-        title: '发现时间',
+        title: 'Discovery Time',
         dataKey: 'CreatedAt',
         render: (text) => (text ? formatTimestamp(text) : '-'),
       },

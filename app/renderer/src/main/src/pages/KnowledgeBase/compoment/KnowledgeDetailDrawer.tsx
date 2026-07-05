@@ -83,12 +83,12 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
     {
       manual: true,
       debounceWait: 2000,
-      onError: (err) => failed(`获取实体关系图代码失败: ${err}`),
+      onError: (err) => failed(`获取EntitiesRelationsGraph代码失败: ${err}`),
       debounceLeading: true,
     },
   )
 
-  // 获取实体关系图
+  // 获取EntitiesRelationsGraph
   const { data, runAsync, loading } = useRequest(
     async (depth?: number) => {
       const response = await ipcRenderer.invoke('QuerySubERM', {
@@ -103,7 +103,7 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
     {
       manual: true,
       onError: (err) => {},
-      // onError: (err) => failed(`获取实体关系图失败: ${err}`),
+      // onError: (err) => failed(`获取EntitiesRelationsGraph失败: ${err}`),
       debounceWait: 2000,
       debounceLeading: true,
     },
@@ -126,7 +126,7 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
     },
     {
       manual: true,
-      onError: (err) => failed(`获取实体信息失败: ${err}`),
+      onError: (err) => failed(`获取Entities信息失败: ${err}`),
     },
   )
 
@@ -180,7 +180,7 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
       .then(() => {
         setTData(newTableData)
         setStatus('preview')
-        success('知识更新成功')
+        success('Knowledge更新成功')
       })
       .catch((err) => {
         failed(`${err}`)
@@ -214,7 +214,7 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
       width="80%"
       onClose={onClose}
       visible={knowledgeDrawerDetail.visible}
-      title={'知识详情'}
+      title={'Knowledge Details'}
       maskClosable={true}
       destroyOnClose={true}
       className={classNames(styles['knowledge-detail-drawer'])}
@@ -233,11 +233,11 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
                 options={[
                   {
                     value: 'base',
-                    label: '基础信息',
+                    label: 'Basic Information',
                   },
                   {
                     value: 'related',
-                    label: '相关实体',
+                    label: 'Related Entities',
                   },
                 ]}
               />
@@ -253,40 +253,48 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
           <div className={styles['detail-container']}>
             {type === 'base' ? (
               <Form form={form} layout="vertical">
-                <Item label="知识标题" name="KnowledgeTitle" rules={[{ required: true, message: '请输入知识标题' }]}>
-                  <YakitInput placeholder="请输入知识标题" disabled={status === 'preview'} />
+                <Item
+                  label="Knowledge Title"
+                  name="KnowledgeTitle"
+                  rules={[{ required: true, message: 'Please enter a knowledge title' }]}
+                >
+                  <YakitInput placeholder="Enter a knowledge title" disabled={status === 'preview'} />
                 </Item>
                 <Item
-                  label="类型"
+                  label="Type"
                   name="KnowledgeType"
-                  rules={[{ required: true, message: '请输入知识类型' }]}
+                  rules={[{ required: true, message: 'Enter a knowledge type' }]}
                   style={{ marginTop: 24 }}
                 >
-                  <YakitInput placeholder="请输入知识类型" disabled={status === 'preview'} />
+                  <YakitInput placeholder="Enter a knowledge type" disabled={status === 'preview'} />
                 </Item>
                 <Item
-                  label="重要度评分"
+                  label="Importance Score"
                   name="ImportanceScore"
-                  rules={[{ required: true, message: '请输入重要度评分' }]}
+                  rules={[{ required: true, message: 'Please enter an importance score' }]}
                 >
                   <YakitInputNumber min={1} max={10} style={{ width: '100%' }} disabled={status === 'preview'} />
                 </Item>
 
-                <Item label="关键词" name="Keywords">
+                <Item label="Keywords" name="Keywords">
                   <YakitSelect mode="tags" disabled={status === 'preview'} />
                 </Item>
-                <Item label="知识详情" name="KnowledgeDetails" rules={[{ required: true, message: '请输入知识详情' }]}>
+                <Item
+                  label="Knowledge Details"
+                  name="KnowledgeDetails"
+                  rules={[{ required: true, message: 'Please enter knowledge details' }]}
+                >
                   <YakitInput.TextArea
-                    placeholder="请输入知识详情"
+                    placeholder="Enter knowledge details"
                     rows={6}
                     maxLength={5000}
                     showCount
                     disabled={status === 'preview'}
                   />
                 </Item>
-                <Item label="摘要" name="Summary">
+                <Item label="Summary" name="Summary">
                   <YakitInput.TextArea
-                    placeholder="请输入摘要"
+                    placeholder="Enter a summary"
                     rows={3}
                     maxLength={500}
                     showCount
@@ -325,7 +333,7 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
 
         <div className={styles['detail-right']}>
           <div className={styles['detail-header']}>
-            <div className={styles['title']}>知识 - 实体关系图</div>
+            <div className={styles['title']}>Knowledge - EntitiesRelationsGraph</div>
             <div className={styles['header-buttons']}>
               <div className={styles['in-depth-description']}>深度</div>
               <YakitInputNumber
@@ -351,7 +359,7 @@ const KnowledgeDetailDrawer: FC<KnowledgeDetailDrawerProps> = ({
                     iconWidth={1500}
                     icon={<OutlinePlay2Icon />}
                     type="outline1"
-                    name={'从实体生成知识'}
+                    name={'Generate Knowledge from Entities'}
                   />
                 }
               />
