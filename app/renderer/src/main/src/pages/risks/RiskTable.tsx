@@ -103,30 +103,30 @@ export const TitleColor = [
   {
     key: ['trace', 'debug', 'note'],
     value: 'title-debug',
-    name: '调试信息',
+    name: 'Debug Info',
     img: debugImg,
     tag: 'title-background-debug',
   },
   {
     key: ['info', 'fingerprint', 'infof', 'default'],
     value: 'title-info',
-    name: '信息',
+    name: 'Info',
     img: infoImg,
     tag: 'title-background-info',
   },
-  { key: ['low'], value: 'title-low', name: '低危', img: lowImg, tag: 'title-background-low' },
+  { key: ['low'], value: 'title-low', name: 'Low', img: lowImg, tag: 'title-background-low' },
   {
     key: ['middle', 'warn', 'warning', 'medium'],
     value: 'title-middle',
-    name: '中危',
+    name: 'Medium',
     img: middleImg,
     tag: 'title-background-middle',
   },
-  { key: ['high'], value: 'title-high', name: '高危', img: highImg, tag: 'title-background-high' },
+  { key: ['high'], value: 'title-high', name: 'High', img: highImg, tag: 'title-background-high' },
   {
     key: ['fatal', 'critical', 'panic'],
     value: 'title-fatal',
-    name: '严重',
+    name: 'Critical',
     img: fatalImg,
     tag: 'title-background-fatal',
   },
@@ -329,7 +329,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
 
   const columns = [
     {
-      title: '标题',
+      title: 'Title',
       dataIndex: 'TitleVerbose',
       render: (_, i: Risk) => (
         <Paragraph style={{ maxWidth: 400, marginBottom: 0 }} ellipsis={{ tooltip: true }}>
@@ -346,7 +346,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
           params &&
           setParams && (
             <TableFilterDropdownString
-              label={'搜索关键字'}
+              label={'Search Keywords'}
               params={params}
               setParams={setParams}
               filterName={'Search'}
@@ -359,7 +359,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
       },
     },
     {
-      title: '类型',
+      title: 'Type',
       dataIndex: 'RiskTypeVerbose',
       width: 90,
       filteredValue: (getParams()['RiskType'] && ['RiskTypeVerbose']) || null,
@@ -372,7 +372,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
           params &&
           setParams && (
             <TableFilterDropdownString
-              label={'搜索类型关键字'}
+              label={'Search Type Keywords'}
               params={params}
               setParams={setParams}
               filterName={'RiskType'}
@@ -385,7 +385,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
       },
     },
     {
-      title: '等级',
+      title: 'Severity',
       dataIndex: 'Severity',
       render: (_, i: Risk) => {
         const title = TitleColor.filter((item) => item.key.includes(i.Severity || ''))[0]
@@ -406,7 +406,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
           params &&
           setParams && (
             <TableFilterDropdownString
-              label={'搜索网段'}
+              label={'Search Network Segment'}
               params={params}
               setParams={setParams}
               filterName={'Network'}
@@ -429,12 +429,12 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
       width: 400,
     },
     {
-      title: '发现时间',
+      title: 'Discovery Time',
       dataIndex: 'CreatedAt',
       render: (_, i: Risk) => <Tag>{i.CreatedAt > 0 ? formatTimestamp(i.CreatedAt) : '-'}</Tag>,
     },
     {
-      title: '操作',
+      title: 'Actions',
       dataIndex: 'Action',
       render: (_, i: Risk) => {
         return (
@@ -445,7 +445,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
               onClick={() => {
                 let m = showModal({
                   width: '80%',
-                  title: '详情',
+                  title: 'Details',
                   content: (
                     <div style={{ overflow: 'auto' }}>
                       <RiskDetails info={i} onClose={() => m.destroy()} />
@@ -537,7 +537,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
                 <div className="table-title">
                   <Space>
                     漏洞与风险
-                    <Tooltip title="刷新会重置所有查询条件">
+                    <Tooltip title="Refresh will reset all filters">
                       <Button
                         size={'small'}
                         type={'link'}
@@ -605,7 +605,7 @@ export const RiskTable: React.FC<RiskTableProp> = (props) => {
             return {
               onContextMenu: (event) => {
                 showByContextMenu({
-                  data: [{ key: 'delect-repeat', title: '删除重复标题数据' }],
+                  data: [{ key: 'delect-repeat', title: 'Delete duplicate title data' }],
                   onClick: ({ key }) => {
                     if (key === 'delect-repeat') {
                       const newParams = {
@@ -966,27 +966,27 @@ export const RiskDetails: React.FC<RiskDetailsProp> = React.memo((props: RiskDet
       <Descriptions.Item label="ID">
         <div>{info.Id || '-'}</div>
       </Descriptions.Item>
-      <Descriptions.Item label="端口">
+      <Descriptions.Item label="Port">
         <div>{info.Port || '-'}</div>
       </Descriptions.Item>
 
       <Descriptions.Item label="Host">
         <div>{info.Host || '-'}</div>
       </Descriptions.Item>
-      <Descriptions.Item label="类型">
+      <Descriptions.Item label="Type">
         <div>{(info?.RiskTypeVerbose || info.RiskType).replaceAll('NUCLEI-', '')}</div>
       </Descriptions.Item>
-      <Descriptions.Item label="来源">
+      <Descriptions.Item label="Source">
         <div>{info?.FromYakScript || '漏洞检测'}</div>
       </Descriptions.Item>
 
-      <Descriptions.Item label="反连Token">
+      <Descriptions.Item label="Reverse Token">
         <div>{info.ReverseToken || '-'}</div>
       </Descriptions.Item>
       <Descriptions.Item label="Hash">
         <div>{info.Hash || '-'}</div>
       </Descriptions.Item>
-      <Descriptions.Item label="验证状态">
+      <Descriptions.Item label="Verification Status">
         <div style={{ color: `${!info.WaitingVerified ? '#11AB4E' : '#FAAF2B'}` }}>
           {!info.WaitingVerified ? '已验证' : '未验证'}
         </div>
@@ -994,10 +994,10 @@ export const RiskDetails: React.FC<RiskDetailsProp> = React.memo((props: RiskDet
 
       {!shrink && (
         <>
-          <Descriptions.Item label="漏洞描述" span={3}>
+          <Descriptions.Item label="Vulnerability Description" span={3}>
             <div style={{ whiteSpace: 'pre-wrap' }}>{info.Description || '-'}</div>
           </Descriptions.Item>
-          <Descriptions.Item label="解决方案" span={3}>
+          <Descriptions.Item label="Solution" span={3}>
             <div style={{ whiteSpace: 'pre-wrap' }}>{info.Solution || '-'}</div>
           </Descriptions.Item>
           <Descriptions.Item label="Parameter" span={3}>
@@ -1007,7 +1007,7 @@ export const RiskDetails: React.FC<RiskDetailsProp> = React.memo((props: RiskDet
             <div>{info.Payload || '-'}</div>
           </Descriptions.Item>
           {items}
-          <Descriptions.Item label="详情" span={3}>
+          <Descriptions.Item label="Details" span={3}>
             <div style={{ maxHeight: 180, overflow: 'auto' }}>{`${info.Details}` || '-'}</div>
           </Descriptions.Item>
         </>

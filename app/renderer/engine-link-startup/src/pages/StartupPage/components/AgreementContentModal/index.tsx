@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+﻿import React, { useRef, useState } from 'react'
 import { AgrAndQSModalProps } from '../QuestionModal'
 import { useMemoizedFn } from 'ahooks'
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable'
@@ -7,7 +7,7 @@ import { MacUIOpCloseSvgIcon, WinUIOpCloseSvgIcon } from '@/assets/newIcon'
 import { DragHeaderHeight } from '../../utils'
 import styles from './AgreementContentModal.module.scss'
 
-/** @name 用户协议弹窗 */
+/** @name User Agreement弹窗 */
 export const AgreementContentModal: React.FC<AgrAndQSModalProps> = React.memo((props) => {
   const { isTop, setIsTop, system, visible, setVisible } = props
 
@@ -107,7 +107,7 @@ export const AgreementContentModal: React.FC<AgrAndQSModalProps> = React.memo((p
                 <br />
                 如您在使用本工具的过程中存在任何非法行为，您需自行承担相应后果，我们将不承担任何法律及连带责任。
                 <br />
-                在安装并使用本工具前，请您{' '}
+                在Install并使用本工具前，请您{' '}
                 <span className={styles['sign-bold-content']}>务必审慎阅读、充分理解各条款内容。</span>
                 <br />
                 限制、免责条款或者其他涉及您重大权益的条款可能会以{' '}
@@ -115,7 +115,7 @@ export const AgreementContentModal: React.FC<AgrAndQSModalProps> = React.memo((p
                 <span className={styles['underline-content']}>加下划线</span>
                 等形式提示您重点注意。
                 <br />
-                除非您已充分阅读、完全理解并接受本协议所有条款，否则，请您不要安装并使用本工具。您的使用行为或者您以其他任何明示或者默示方式表示接受本协议的，即视为您已阅读并同意本协议的约束。
+                除非您已充分阅读、完全理解并接受本协议所有条款，否则，请您不要Install并使用本工具。您的使用行为或者您以其他任何明示或者默示方式表示接受本协议的，即视为您已阅读并同意本协议的约束。
               </div>
             </div>
           </div>

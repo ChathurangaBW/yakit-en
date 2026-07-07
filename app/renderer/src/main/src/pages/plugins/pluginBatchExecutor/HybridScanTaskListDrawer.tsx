@@ -57,19 +57,19 @@ const HybridScanTaskListDrawer: React.FC<HybridScanTaskListDrawerProps> = React.
       visible={visible}
       onClose={onClose}
       width="45%"
-      title="任务列表"
+      title="Task List"
       extra={
         <>
           {selectedRowKeys.length === 0 ? (
-            <YakitPopconfirm title="该操作会清空下面所有数据" onConfirm={onRemove}>
+            <YakitPopconfirm title="This action will clear all data below." onConfirm={onRemove}>
               <YakitButton loading={removeLoading} type="primary" danger>
                 清空
               </YakitButton>
             </YakitPopconfirm>
           ) : (
-            <YakitPopconfirm title="该操作会删除勾选数据" onConfirm={onRemove}>
+            <YakitPopconfirm title="This action will delete the selected data." onConfirm={onRemove}>
               <YakitButton loading={removeLoading} type="primary" danger>
-                删除
+                Delete
               </YakitButton>
             </YakitPopconfirm>
           )}
@@ -157,29 +157,29 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
           return (
             <div className={styles['table-status-item']}>
               <SolidCheckCircleIcon className={styles['icon-success']} />
-              <span className={styles['status-text']}>已完成</span>
+              <span className={styles['status-text']}>Completed</span>
             </div>
           )
         case 'executing':
           return (
             <div className={styles['table-status-item']}>
               <OutlineLoadingIcon className={styles['icon-primary']} />
-              <span className={styles['status-text']}>执行中</span>
+              <span className={styles['status-text']}>Running</span>
             </div>
           )
         case 'paused':
           return (
             <div className={styles['table-status-item']}>
               <SolidPlayIcon className={styles['icon-helper']} />
-              <span className={styles['status-text']}>暂停</span>
+              <span className={styles['status-text']}>Paused</span>
             </div>
           )
         default:
           return (
             <div className={styles['table-status-item']}>
               <SolidXcircleIcon className={styles['icon-danger']} />
-              <span className={styles['status-text']}>失败</span>
-              <Tooltip title={record.Reason || '未知原因'}>
+              <span className={styles['status-text']}>Failed</span>
+              <Tooltip title={record.Reason || 'Unknown reason'}>
                 <OutlineQuestionmarkcircleIcon className={styles['icon-question']} />
               </Tooltip>
             </div>
@@ -197,7 +197,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
                 onPaused(record)
               }}
             >
-              暂停
+              Paused
             </YakitButton>
           )
         case 'paused':
@@ -222,7 +222,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
                 onRemoveSingle(record.TaskId)
               }}
             >
-              删除
+              Delete
             </YakitButton>
           )
       }
@@ -230,7 +230,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
     const columns: ColumnsTypeProps[] = useCreation<ColumnsTypeProps[]>(() => {
       return [
         {
-          title: '扫描目标',
+          title: 'Scan Target',
           dataKey: 'FirstTarget',
           width: 160,
           fixed: 'left',
@@ -240,7 +240,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
           },
         },
         {
-          title: '状态',
+          title: 'Status',
           dataKey: 'Status',
           width: 90,
           render: (_, record: HybridScanTask) => getStatusNode(record),
@@ -252,19 +252,19 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
             filterKey: 'StatusType',
             filters: [
               {
-                label: '已完成',
+                label: 'Completed',
                 value: 'done',
               },
               {
-                label: '执行中',
+                label: 'Running',
                 value: 'executing',
               },
               {
-                label: '暂停',
+                label: 'Paused',
                 value: 'paused',
               },
               {
-                label: '失败',
+                label: 'Failed',
                 value: 'error',
               },
             ],
@@ -272,7 +272,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
         },
 
         {
-          title: '创建时间',
+          title: 'Created At',
           dataKey: 'CreatedAt',
           render: (v) => (v ? formatTimestamp(v) : '-'),
           sorterProps: {
@@ -281,7 +281,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
           },
         },
         {
-          title: '更新时间',
+          title: 'Updated At',
           dataKey: 'UpdatedAt',
           render: (v) => (v ? formatTimestamp(v) : '-'),
           enableDrag: false,
@@ -291,7 +291,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
           },
         },
         {
-          title: '操作',
+          title: 'Actions',
           dataKey: 'action',
           fixed: 'right',
           width: 120,
@@ -382,7 +382,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
     const onDetails = useMemoizedFn((runtimeId: string, hybridScanMode: HybridScanModeType) => {
       const route = getRouteByTaskSource(hybridScanTaskSource)
       if (!route) {
-        yakitNotify('error', '任务来源异常')
+        yakitNotify('error', '任务Source异常')
         return
       }
       const current: PageNodeItemProps | undefined = getPageInfoByRuntimeId(route, runtimeId)
@@ -390,7 +390,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
       if (!!current && hybridScanMode !== 'new') {
         emiter.emit('switchSubMenuItem', JSON.stringify({ pageId: current.pageId }))
         setTimeout(() => {
-          // 页面打开的情况下，查看只需要切换二级菜单选中项，不需要重新查询数据
+          // 页面Open的情况下，查看只需要切换二级菜单选中项，不需要重新查询数据
           if (hybridScanMode !== 'status') {
             emiter.emit('switchTaskStatus', JSON.stringify({ runtimeId, hybridScanMode, pageId: current.pageId }))
           }
@@ -463,7 +463,7 @@ const HybridScanTaskList: React.FC<HybridScanTaskListProps> = React.memo(
         setIsAllSelect(false)
       }
     })
-    /**暂停任务 */
+    /**Paused任务 */
     const onPaused = useMemoizedFn((record: HybridScanTask) => {
       onDetails(record.TaskId, 'pause')
     })

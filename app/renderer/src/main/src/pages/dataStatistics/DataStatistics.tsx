@@ -646,11 +646,11 @@ export const UpsOrDowns: React.FC<UpsOrDownsProps> = (props) => {
 const batchRefreshMenuData: YakitMenuItemProps[] = [
   {
     key: 'noResetRefresh',
-    label: '仅刷新',
+    label: 'Refresh Only',
   },
   {
     key: 'resetRefresh',
-    label: '重置查询条件刷新',
+    label: 'Reset Filters and Refresh',
   },
 ]
 type RangeValue = [Moment | null, Moment | null] | null
@@ -696,19 +696,19 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
   const getActiveShowType = useMemo(() => {
     return [
       {
-        label: '天',
+        label: 'Day',
         value: 'day',
       },
       {
-        label: '周',
+        label: 'Week',
         value: 'week',
       },
       {
-        label: '月',
+        label: 'Month',
         value: 'month',
       },
       {
-        label: '年',
+        label: 'Year',
         value: 'year',
       },
     ]
@@ -717,19 +717,19 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
   const getRiseShowType = useMemo(() => {
     return [
       {
-        label: '天',
+        label: 'Day',
         value: 'day',
       },
       {
-        label: '周',
+        label: 'Week',
         value: 'week',
       },
       {
-        label: '月',
+        label: 'Month',
         value: 'month',
       },
       {
-        label: '年',
+        label: 'Year',
         value: 'year',
       },
     ]
@@ -822,7 +822,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
               document.body.removeChild(a)
               yakitNotify('success', '导出成功')
             } else {
-              message.error('下载失败')
+              message.error('Download failed')
             }
           }
         })
@@ -870,7 +870,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
       }
     })
     if (rangeObj.length === 0) {
-      message.warn('没有数据可以导出')
+      message.warn('No data available to export')
       return
     }
     if (rangeObj.length === 1) {
@@ -889,7 +889,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
       return
     }
     const m = showYakitModal({
-      title: '导出范围',
+      title: 'Export Range',
       content: (
         <div style={{ padding: 24, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           {rangeObj.map((item) => (
@@ -1094,18 +1094,18 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                 </div>
                 <div className={styles['count-box']}>
                   <div className={styles['count']}>{userData ? numeral(userData.touristTotal).format('0,0') : ''}</div>
-                  <div className={styles['sub-title']}>总用户数</div>
+                  <div className={styles['sub-title']}>Total Users</div>
                 </div>
               </div>
               <div className={styles['institution-total']}>
                 <div className={styles['count']}>
                   {userData ? numeral(userData.institutionTotal).format('0,0') : ''}
                 </div>
-                <div className={styles['sub-title']}>机构用户数</div>
+                <div className={styles['sub-title']}>Organization Users</div>
               </div>
               <div className={styles['login-user']}>
                 <div className={styles['count']}>{userData ? numeral(userData.loginTotal).format('0,0') : ''}</div>
-                <div className={styles['sub-title']}>登录用户总数</div>
+                <div className={styles['sub-title']}>Total Logged-In Users</div>
               </div>
               <div className={styles['refresh']}>
                 <YakitButton type="text2" icon={<OutlineRefreshIcon />} onClick={() => getUserData()} />
@@ -1119,7 +1119,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                   <UpsOrDowns type={userData?.dayGainUpOrDown} value={userData?.dayGain} />
                 </div>
 
-                <div className={styles['title']}>今日新增用户</div>
+                <div className={styles['title']}>New Users Today</div>
               </div>
               <div className={classNames(styles['week-card'], styles['user-card'])}>
                 <div className={styles['line']} />
@@ -1127,7 +1127,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                   <div className={styles['count']}>{userData?.weekNew ?? ''}</div>
                   <UpsOrDowns type={userData?.weekGainUpOrDown} value={userData?.weekGain} />
                 </div>
-                <div className={styles['title']}>本周新增用户</div>
+                <div className={styles['title']}>New Users This Week</div>
               </div>
               <div className={classNames(styles['month-card'], styles['user-card'])}>
                 <div className={styles['line']} />
@@ -1135,7 +1135,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                   <div className={styles['count']}>{userData?.monthNew ?? ''}</div>
                   <UpsOrDowns type={userData?.monthGainUpOrDown} value={userData?.monthGain} />
                 </div>
-                <div className={styles['title']}>本月新增用户</div>
+                <div className={styles['title']}>New Users This Month</div>
               </div>
             </div>
           </YakitSpin>
@@ -1153,11 +1153,11 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
               options={[
                 {
                   value: 'useDetail',
-                  label: '使用详情',
+                  label: 'Usage Details',
                 },
                 {
                   value: 'IPDistribution',
-                  label: 'IP分布',
+                  label: 'IP Distribution',
                 },
               ]}
             />
@@ -1262,7 +1262,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
             ) : (
               <>
                 <div className={styles['header']}>
-                  <div className={styles['title']}>IP地理位置分布 Top10</div>
+                  <div className={styles['title']}>Top 10 IP Geographic Distributions</div>
                   <div className={styles['extra']}>
                     {cityDate && (
                       <>
@@ -1298,11 +1298,11 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                   options={[
                     {
                       value: 'total',
-                      label: '总数',
+                      label: 'Total',
                     },
                     {
                       value: 'incr',
-                      label: '增长数',
+                      label: 'Growth',
                     },
                   ]}
                 />
@@ -1395,11 +1395,11 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                 options={[
                   {
                     value: 'active',
-                    label: '活跃度统计',
+                    label: 'Activity Statistics',
                   },
                   {
                     value: 'times',
-                    label: '使用时长统计',
+                    label: 'Usage Duration Statistics',
                   },
                 ]}
               />
@@ -1485,7 +1485,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                         </div>
                         <UpsOrDowns type={activeData?.dayActiveGainUpOrDown} value={activeData?.dayActiveGain} />
                       </div>
-                      <div className={styles['title']}>日活</div>
+                      <div className={styles['title']}>Daily Active Users</div>
                     </div>
                     <div className={styles['card-item']}>
                       <div className={styles['show']}>
@@ -1494,7 +1494,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                         </div>
                         <UpsOrDowns type={activeData?.weekActiveGainUpOrDown} value={activeData?.weekActiveGain} />
                       </div>
-                      <div className={styles['title']}>周活</div>
+                      <div className={styles['title']}>Weekly Active Users</div>
                     </div>
                     <div className={styles['card-item']}>
                       <div className={styles['show']}>
@@ -1503,7 +1503,7 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                         </div>
                         <UpsOrDowns type={activeData?.monthActiveGainUpOrDown} value={activeData?.monthActiveGain} />
                       </div>
-                      <div className={styles['title']}>月活</div>
+                      <div className={styles['title']}>Monthly Active Users</div>
                     </div>
                   </>
                 ) : (
@@ -1513,21 +1513,21 @@ export const DataStatistics: React.FC<DataStatisticsProps> = (props) => {
                         <div className={styles['count']}>{timeData ? minutesToHours(timeData.dayTimes) : ''}</div>
                         <UpsOrDowns type={timeData?.dayTimesGainUpOrDown} value={timeData?.dayTimesGain} />
                       </div>
-                      <div className={styles['title']}>今日总时长/h</div>
+                      <div className={styles['title']}>Total Hours Today</div>
                     </div>
                     <div className={styles['card-item']}>
                       <div className={styles['show']}>
                         <div className={styles['count']}>{timeData ? minutesToHours(timeData.weekTimes) : ''}</div>
                         <UpsOrDowns type={timeData?.weekTimesGainUpOrDown} value={timeData?.weekTimesGain} />
                       </div>
-                      <div className={styles['title']}>本周总时长/h</div>
+                      <div className={styles['title']}>Total Hours This Week</div>
                     </div>
                     <div className={styles['card-item']}>
                       <div className={styles['show']}>
                         <div className={styles['count']}>{timeData ? minutesToHours(timeData.monthTimes) : ''}</div>
                         <UpsOrDowns type={timeData?.monthTimesGainUpOrDown} value={timeData?.monthTimesGain} />
                       </div>
-                      <div className={styles['title']}>本月总时长/h</div>
+                      <div className={styles['title']}>Total Hours This Month</div>
                     </div>
                   </>
                 )}

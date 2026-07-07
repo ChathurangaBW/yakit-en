@@ -16,93 +16,93 @@ import styles from './PluginLog.module.scss'
 export const PluginLogTabBars: PluginLogTabInfo[] = [
   {
     key: 'all',
-    name: '全部日志',
+    name: 'All Logs',
   },
   {
     key: 'check',
-    name: '审核',
+    name: 'Review',
   },
   {
     key: 'update',
-    name: '修改',
+    name: 'Edit',
   },
   {
     key: 'comment',
-    name: '评论',
+    name: 'Comment',
   },
 ]
 
-/** 日志类型-对应展示信息和样式类 */
+/** 日志类型-对应展示Info和样式类 */
 export const PluginLogTypeToInfo: Record<string, PluginLogTypeToInfoProps> = {
   submit: {
     key: 'submit',
-    content: '创建插件',
+    content: 'Create Plugin',
     className: styles['plugin-log-type-info'],
     icon: <LogNodeStatusNewIcon />,
   },
   applyMerge: {
     key: 'applyMerge',
-    content: '申请修改插件',
+    content: 'Request Plugin Edit',
     className: styles['plugin-log-type-info'],
     icon: <LogNodeStatusModifyIcon />,
   },
   mergePass: {
     key: 'mergePass',
-    content: '已合并',
+    content: 'Merged',
     className: styles['plugin-log-type-success'],
     icon: <LogNodeStatusSuccessIcon />,
   },
   mergeNoPass: {
     key: 'mergeNoPass',
-    content: '驳回',
+    content: 'Rejected',
     className: styles['plugin-log-type-failed'],
     icon: <LogNodeStatusAuditFailedIcon />,
   },
   update: {
     key: 'update',
-    content: '修改插件',
+    content: 'Edit Plugin',
     className: styles['plugin-log-type-info'],
     icon: <LogNodeStatusModifyIcon />,
   },
   checkPass: {
     key: 'checkPass',
-    content: '审核通过',
+    content: 'Review Approved',
     className: styles['plugin-log-type-success'],
     icon: <LogNodeStatusSuccessIcon />,
   },
   checkNoPass: {
     key: 'checkNoPass',
-    content: '审核不通过',
+    content: 'Review Rejected',
     className: styles['plugin-log-type-failed'],
     icon: <LogNodeStatusAuditFailedIcon />,
   },
   delete: {
     key: 'delete',
-    content: '删除插件',
+    content: 'Delete Plugin',
     className: styles['plugin-log-type-info'],
     icon: <LogNodeStatusDeleteIcon />,
   },
   recover: {
     key: 'recover',
-    content: '恢复插件',
+    content: 'Restore Plugin',
     className: styles['plugin-log-type-info'],
     icon: <LogNodeStatusRecoverIcon />,
   },
   comment: {
     key: 'comment',
-    content: '发布评论',
+    content: 'Post Comment',
     className: styles['plugin-log-type-comment'],
     icon: <LogNodeStatusCommentIcon />,
   },
   reply: {
     key: 'reply',
-    content: '回复',
+    content: 'Reply',
     className: styles['plugin-log-type-comment'],
     icon: <LogNodeStatusCommentIcon />,
   },
   default: {
     key: 'default',
-    content: '未知日志',
+    content: 'Unknown Log',
     className: styles['plugin-log-type-info'],
     icon: <LogNodeStatusInfoIcon />,
   },

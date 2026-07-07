@@ -5,7 +5,7 @@ export enum ManualHijackListAction {
   Hijack_List_Add = 'add',
   Hijack_List_Delete = 'delete',
   Hijack_List_Update = 'update',
-  /**重置手动劫持表格数据 */
+  /**重置Manual Hijack表格数据 */
   Hijack_List_Reload = 'reload',
 }
 
@@ -17,13 +17,13 @@ export enum ManualHijackListStatus {
 }
 
 export enum ManualHijackType {
-  /**手动劫持 */
+  /**Manual Hijack */
   Manual = 'manual',
-  /**自动放行 */
+  /**Auto Forward */
   Log = 'log',
-  /*插件输出 */
+  /*Plugins输出 */
   PluginOutput = 'pluginOutput',
-  /**条件劫持 */
+  /**Conditional Hijack */
   HijackFilter = 'hijackFilter',
 }
 
@@ -34,10 +34,10 @@ export enum PackageType {
 }
 
 export const ManualHijackListStatusMap: Record<string, string> = {
-  'hijacking request': '劫持请求',
-  'hijacking response': '劫持响应',
-  'wait hijack': '等待劫持',
-  'hijacking ws': 'WS 劫持',
+  'hijacking request': 'Hijack Request',
+  'hijacking response': 'Hijack Response',
+  'wait hijack': 'Waiting for Hijack',
+  'hijacking ws': 'WS Hijack',
 }
 
 export const defaultSingleManualHijack: SingleManualHijackControlMessage = {

@@ -32,18 +32,18 @@ export const CVEDescription = React.memo(
   }: CVEDetail) => {
     const color = useCreation(() => {
       let text = 'success'
-      if (Severity === '严重') {
+      if (Severity === 'Critical') {
         text = 'serious'
       }
-      if (Severity === '高危') {
+      if (Severity === 'High') {
         text = 'danger'
       }
-      if (Severity === '中危') {
+      if (Severity === 'Medium') {
         text = 'warning'
       }
       return text
     }, [BaseCVSSv2Score, Severity, Severity])
-    // 过滤掉 ftp 的参考链接 eg: CVE-2001-0830
+    // 过滤掉 ftp 的References eg: CVE-2001-0830
     const references_links = References ? References.split('\n').filter((link) => !link.startsWith('ftp://')) : []
     const handleClickLink = (link) => {
       ipcRenderer.invoke('open-url', link)
@@ -51,10 +51,10 @@ export const CVEDescription = React.memo(
     return (
       <div className={styles['description-content']}>
         <Descriptions bordered size="small" column={3}>
-          <Descriptions.Item label="CVE编号" span={2} contentStyle={{ fontSize: 16, fontWeight: 'bold' }}>
+          <Descriptions.Item label="CVE ID" span={2} contentStyle={{ fontSize: 16, fontWeight: 'bold' }}>
             {CVE || '-'}
           </Descriptions.Item>
-          <Descriptions.Item label="漏洞级别" span={1} contentStyle={{ minWidth: 110 }}>
+          <Descriptions.Item label="Vulnerability Severity" span={1} contentStyle={{ minWidth: 110 }}>
             {Severity === '-' ? (
               '-'
             ) : (
@@ -70,20 +70,20 @@ export const CVEDescription = React.memo(
               </div>
             )}
           </Descriptions.Item>
-          <Descriptions.Item label="标题" span={2}>
+          <Descriptions.Item label="Title" span={2}>
             {Title || '-'}
           </Descriptions.Item>
-          <Descriptions.Item label="披露时间" span={1}>
+          <Descriptions.Item label="Disclosure Time" span={1}>
             {moment.unix(PublishedAt).format('YYYY/MM/DD')}
           </Descriptions.Item>
-          <Descriptions.Item label="漏洞总结" span={3}>
+          <Descriptions.Item label="Vulnerability Summary" span={3}>
             {DescriptionZh || DescriptionOrigin || '-'}
           </Descriptions.Item>
 
-          <Descriptions.Item label="利用路径" span={2}>
+          <Descriptions.Item label="Exploit Path" span={2}>
             {AccessVector || '-'}
           </Descriptions.Item>
-          <Descriptions.Item label="利用难度" span={2}>
+          <Descriptions.Item label="Exploit Difficulty" span={2}>
             {AccessComplexity === '-' ? (
               '-'
             ) : (
@@ -98,14 +98,14 @@ export const CVEDescription = React.memo(
               </div>
             )}
           </Descriptions.Item>
-          <Descriptions.Item label="影响产品" span={3}>
+          <Descriptions.Item label="Affected Product" span={3}>
             {Product || '-'}
           </Descriptions.Item>
 
-          <Descriptions.Item label="解决方案" span={3}>
+          <Descriptions.Item label="Solution" span={3}>
             {Solution || '-'}
           </Descriptions.Item>
-          <Descriptions.Item label="参考链接" span={3}>
+          <Descriptions.Item label="References" span={3}>
             {references_links.length > 0 ? (
               <div>
                 {references_links.map((link, index) => (
@@ -173,22 +173,22 @@ export const CWEDescriptionItem: React.FC<CWEDescriptionItemProps> = React.memo(
   const { item, onSelectCve } = props
   return (
     <Descriptions bordered size="small" column={3}>
-      <Descriptions.Item label={'CWE编号'} span={2} contentStyle={{ fontSize: 16, fontWeight: 'bold' }}>
+      <Descriptions.Item label={'CWE ID'} span={2} contentStyle={{ fontSize: 16, fontWeight: 'bold' }}>
         {item.CWE || '-'}
       </Descriptions.Item>
-      <Descriptions.Item label={'CWE 状态'} span={1}>
+      <Descriptions.Item label={'CWE Status'} span={1}>
         {item.Status || '-'}
       </Descriptions.Item>
-      <Descriptions.Item label={'类型'} span={3}>
+      <Descriptions.Item label={'Type'} span={3}>
         {item.NameZh || item.Name || '-'}
       </Descriptions.Item>
-      <Descriptions.Item label={'描述信息'} span={3}>
+      <Descriptions.Item label={'Description'} span={3}>
         {item.DescriptionZh || item.Description || '-'}
       </Descriptions.Item>
-      <Descriptions.Item label={'修复方案'} span={3}>
+      <Descriptions.Item label={'Remediation'} span={3}>
         {item.Solution || '-'}
       </Descriptions.Item>
-      <Descriptions.Item label={'其他案例'} span={3} contentStyle={{ paddingBottom: 8 }}>
+      <Descriptions.Item label={'Other Cases'} span={3} contentStyle={{ paddingBottom: 8 }}>
         {item.RelativeCVE.map((c) => (
           <div key={c} className={styles['cwe-tag']} onClick={() => onSelectCve(c)}>
             {c}

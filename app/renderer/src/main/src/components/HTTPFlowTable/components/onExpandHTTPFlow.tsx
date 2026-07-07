@@ -1,4 +1,4 @@
-import { TFunction } from '@/i18n/useI18nNamespaces'
+﻿import { TFunction } from '@/i18n/useI18nNamespaces'
 import { HTTPFlow } from '../HTTPFlowTable'
 import { HTTPHistorySourcePageType } from '@/components/HTTPHistory'
 import { YakitEmpty } from '@/components/yakitUI/YakitEmpty/YakitEmpty'
@@ -12,7 +12,7 @@ export const onExpandHTTPFlow = (
   pageType?: HTTPHistorySourcePageType,
 ) => {
   if (!flow) {
-    return <YakitEmpty title={t?.('HTTPFlowTable.requestDetailsNotFound') || '找不到该请求详情'}></YakitEmpty>
+    return <YakitEmpty title={t?.('HTTPFlowTable.requestDetailsNotFound') || 'Request details not found'}></YakitEmpty>
   }
 
   return (

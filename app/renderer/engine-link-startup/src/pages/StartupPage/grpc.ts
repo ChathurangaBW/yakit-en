@@ -1,4 +1,4 @@
-import { yakitNotify } from '@/utils/notification'
+﻿import { yakitNotify } from '@/utils/notification'
 import { APIFunc, APINoRequestFunc, APIOptionalFunc } from '@/utils/api'
 import { yakitApp, yakitEngine, yakitShell } from '@/utils/electronBridge'
 import {
@@ -21,20 +21,20 @@ export const grpcInitCVEDatabase: APINoRequestFunc<unknown> = (hiddenError) => {
       .initCVEDatabase()
       .then(resolve)
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('info', `漏洞信息库检查错误：${e}`)
+        if (!hiddenError) yakitNotify('info', `Vulnerability database check error: ${e}`)
         reject(e)
       })
   })
 }
 
-/** @name 获取引擎是否安装的结果 */
+/** @name 获取引擎是否Install的结果 */
 export const grpcFetchYakInstallResult: APINoRequestFunc<boolean> = (hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitEngine
       .isYaklangEngineInstalled()
       .then(resolve)
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', '获取本地是否存在引擎结果失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to check whether the local engine exists: ' + e)
         reject(e)
       })
   })
@@ -42,7 +42,7 @@ export const grpcFetchYakInstallResult: APINoRequestFunc<boolean> = (hiddenError
 
 /**
  * @name 获取Yak内置引擎版本号
- * 如果没有内置引擎压缩包，也算无法获取到内置引擎版本号
+ * 如果没有内置引擎压缩包，也算None法获取到内置引擎版本号
  */
 export const grpcFetchBuildInYakVersion: APINoRequestFunc<string> = (hiddenError) => {
   return new Promise(async (resolve, reject) => {
@@ -50,7 +50,7 @@ export const grpcFetchBuildInYakVersion: APINoRequestFunc<string> = (hiddenError
       .getBuildInEngineVersion()
       .then(resolve)
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', '获取内置引擎版本失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to get built-in engine version: ' + e)
         reject(e)
       })
   })
@@ -63,7 +63,7 @@ export const grpcUnpackBuildInYak: APINoRequestFunc<unknown> = (hiddenError) => 
       .restoreEngineAndPlugin()
       .then(resolve)
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', '解压内置引擎失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to extract built-in engine: ' + e)
         reject(e)
       })
   })
@@ -76,7 +76,7 @@ export const grpcRelaunch: APINoRequestFunc<unknown> = (hiddenError) => {
       .relaunch()
       .then(resolve)
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', '重启失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Restart failed: ' + e)
         reject(e)
       })
   })
@@ -92,13 +92,13 @@ export const grpcFetchLatestYakVersion: APINoRequestFunc<string> = (hiddenError)
         resolve(newVersion)
       })
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', '获取最新引擎版本失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to get latest engine version: ' + e)
         reject(e)
       })
   })
 }
 
-/** @name 下载指定版本Yak引擎 */
+/** @name Download指定版本Yak引擎 */
 export const grpcFetchDownloadYak: APIFunc<string, boolean> = (version, hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitEngine
@@ -107,13 +107,13 @@ export const grpcFetchDownloadYak: APIFunc<string, boolean> = (version, hiddenEr
         resolve(true)
       })
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', version + ' 下载失败：' + e)
+        if (!hiddenError) yakitNotify('error', version + ' Download failed：' + e)
         reject(e)
       })
   })
 }
 
-/** @name 考虑在mac下载完成后，在其yakit-projects目录下写入一个文件engine-sha256.txt，注入当前引擎hash值 */
+/** @name 考虑在macDownload完成后，在其yakit-projects目录下写入一个文件engine-sha256.txt，注入Current引擎hash值 */
 export const grpcWriteEngineKeyToYakitProjects: APIFunc<WriteEngineKeyToYakitProjects, boolean> = (
   params,
   hiddenError,
@@ -125,7 +125,7 @@ export const grpcWriteEngineKeyToYakitProjects: APIFunc<WriteEngineKeyToYakitPro
         resolve(true)
       })
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', params.version + '写入engine-sha256.txt失败：' + e)
+        if (!hiddenError) yakitNotify('error', params.version + 'failed to write engine-sha256.txt：' + e)
         reject(e)
       })
   })
@@ -140,13 +140,13 @@ export const grpcClearLocalYaklangVersionCache: APINoRequestFunc<boolean> = (hid
         resolve(true)
       })
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', '清除版本缓存失败：' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to clear version cache：' + e)
         reject(e)
       })
   })
 }
 
-/** @name 安装指定版本Yak引擎 */
+/** @name Install指定版本Yak引擎 */
 export const grpcInstallYak: APIFunc<string, boolean> = (version, hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitEngine
@@ -155,13 +155,13 @@ export const grpcInstallYak: APIFunc<string, boolean> = (version, hiddenError) =
         resolve(true)
       })
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', version + ' 安装失败：' + e)
+        if (!hiddenError) yakitNotify('error', version + ' Installation failed: ' + e)
         reject(e)
       })
   })
 }
 
-/** @name 取消下载指定版本Yak引擎 */
+/** @name CancelDownload指定版本Yak引擎 */
 export const grpcCancelDownloadYakEngineVersion: APIFunc<string, boolean> = (version, hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitEngine
@@ -170,7 +170,7 @@ export const grpcCancelDownloadYakEngineVersion: APIFunc<string, boolean> = (ver
         resolve(true)
       })
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', version + ' 取消下载失败：' + e)
+        if (!hiddenError) yakitNotify('error', version + ' CancelDownload failed：' + e)
         reject(e)
       })
   })
@@ -194,7 +194,7 @@ export const grpcFetchLatestOSSDomain: APINoRequestFunc<string> = (hiddenError) 
   })
 }
 
-/** @name 打开引擎文件位置 */
+/** @name Open Engine File位置 */
 export const grpcOpenYaklangPath: APINoRequestFunc<boolean> = (hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitShell
@@ -203,13 +203,13 @@ export const grpcOpenYaklangPath: APINoRequestFunc<boolean> = (hiddenError) => {
         resolve(true)
       })
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', '打开失败：' + e)
+        if (!hiddenError) yakitNotify('error', 'Open failed：' + e)
         reject(e)
       })
   })
 }
 
-/** @name 引擎连接前校验 */
+/** @name 引擎Connect前校验 */
 export const grpcCheckAllowSecretLocal: APIFunc<CheckAllowSecretLocal, AllowSecretLocalExecResult> = (
   params,
   hiddenError,
@@ -226,7 +226,7 @@ export const grpcCheckAllowSecretLocal: APIFunc<CheckAllowSecretLocal, AllowSecr
   })
 }
 
-/** @name 修复数据库 */
+/** @name Repair Database */
 export const grpcFixupDatabase: APIFunc<FixupDatabase, FixupDatabaseExecResult> = (params, hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitEngine
@@ -240,7 +240,7 @@ export const grpcFixupDatabase: APIFunc<FixupDatabase, FixupDatabaseExecResult> 
   })
 }
 
-/** @name 回收数据库空间 */
+/** @name Reclaim Database Space */
 export const grpcReclaimDatabaseSpace: APIFunc<ReclaimDatabaseSpace, ExecResult> = (params, hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitEngine
@@ -272,7 +272,7 @@ export const grpcFetchLocalYakitVersion: APINoRequestFunc<string> = (hiddenError
         resolve(newVersion)
       })
       .catch((e) => {
-        if (!hiddenError) yakitNotify('error', '获取本地软件版本失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to get local app version: ' + e)
         reject(e)
       })
   })
@@ -291,13 +291,13 @@ export const grpcFetchLatestYakitVersion: APIOptionalFunc<GrpcToHTTPRequestProps
       })
       .then(resolve)
       .catch((e) => {
-        if (!hiddenError) yakitNotify('error', '获取最新软件版本失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to get latest app version: ' + e)
         reject(e)
       })
   })
 }
 
-/** @name 下载指定版本yakit */
+/** @name Download指定版本yakit */
 export const grpcDownloadYakit: APIFunc<string, string> = (version, hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitEngine
@@ -308,13 +308,13 @@ export const grpcDownloadYakit: APIFunc<string, string> = (version, hiddenError)
       })
       .then(resolve)
       .catch((e) => {
-        if (!hiddenError) yakitNotify('error', '下载失败: ' + e)
+        if (!hiddenError) yakitNotify('error', 'Download failed: ' + e)
         reject(e)
       })
   })
 }
 
-/** @name 取消下载指定版本Yakit */
+/** @name CancelDownload指定版本Yakit */
 export const grpcCancelDownloadYakit: APINoRequestFunc<boolean> = (hiddenError) => {
   return new Promise(async (resolve, reject) => {
     yakitEngine
@@ -323,7 +323,7 @@ export const grpcCancelDownloadYakit: APINoRequestFunc<boolean> = (hiddenError) 
         resolve(true)
       })
       .catch((e: any) => {
-        if (!hiddenError) yakitNotify('error', '取消下载失败：' + e)
+        if (!hiddenError) yakitNotify('error', 'CancelDownload failed：' + e)
         reject(e)
       })
   })
@@ -336,7 +336,7 @@ export const grpcFetchLocalYakVersion: APINoRequestFunc<string> = (hiddenError) 
       .getCurrentYak()
       .then(resolve)
       .catch((e) => {
-        if (!hiddenError) yakitNotify('error', '获取本地引擎版本失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to get local engine version: ' + e)
         reject(e)
       })
   })
@@ -353,7 +353,7 @@ export const grpcFetchSpecifiedYakVersionHash: APIFunc<{ version: string; config
       .fetchCheckYaklangSource(version, config)
       .then(resolve)
       .catch((e) => {
-        if (!hiddenError) yakitNotify('error', '获取线上引擎 hash 失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to get online engine hash: ' + e)
         reject(e)
       })
   })
@@ -366,7 +366,7 @@ export const grpcFetchLocalYakVersionHash: APINoRequestFunc<string[]> = (hiddenE
       .calcEngineSha265()
       .then(resolve)
       .catch((e) => {
-        if (!hiddenError) yakitNotify('error', '获取本地引擎 hash 失败:' + e)
+        if (!hiddenError) yakitNotify('error', 'Failed to get local engine hash: ' + e)
         reject(e)
       })
   })
@@ -386,7 +386,7 @@ export const grpcStartLocalEngine: APIFunc<StartLocalEngine, ExecResult> = (para
   })
 }
 
-/** @name 检测是否连接成功 */
+/** @name 检测是否Connect成功 */
 export const isEngineConnectionAlive = () => {
   const text = randomString(30)
   return yakitEngine.echo({ text }).then((res: { result: string }) => {

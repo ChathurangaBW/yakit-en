@@ -1,4 +1,4 @@
-import { info, yakitFailed, yakitNotify } from '@/utils/notification'
+﻿import { info, yakitFailed, yakitNotify } from '@/utils/notification'
 import { randomString } from '@/utils/randomUtil'
 import emiter from '../eventBus/eventBus'
 import { Uint8ArrayToString } from '../str'
@@ -169,14 +169,14 @@ export const startupDuplexConn = () => {
                       fontSize: 14,
                     }}
                   >
-                    复制报错信息
+                    Copy Error Details
                   </YakitButton>
                   <YakitButton
                     type="text"
                     danger
                     onClick={() => {
                       setOpenPerformanceTips(false)
-                      yakitNotify('success', '已关闭数据写入慢提示')
+                      yakitNotify('success', 'Slow data-write warnings disabled')
                     }}
                     style={{
                       position: 'relative',
@@ -185,7 +185,7 @@ export const startupDuplexConn = () => {
                       fontSize: 14,
                     }}
                   >
-                    不再提醒
+                    Do not remind me again
                   </YakitButton>
                 </div>
               ),

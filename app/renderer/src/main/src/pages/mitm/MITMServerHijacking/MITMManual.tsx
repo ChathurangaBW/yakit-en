@@ -77,7 +77,7 @@ export const MITMManualHeardExtra: React.FC<MITMManualHeardExtraProps> = React.m
       >
         <div className={styles['manual-select']}>
           <div className={styles['manual-select-label']} style={{ minWidth: 60 }}>
-            标注颜色:
+            Highlight Color:
           </div>
           <YakitSelect
             size="small"
@@ -88,7 +88,7 @@ export const MITMManualHeardExtra: React.FC<MITMManualHeardExtraProps> = React.m
             }}
           >
             <YakitSelect.Option value={''}>
-              <div style={{ paddingLeft: 20 }}>无</div>
+              <div style={{ paddingLeft: 20 }}>None</div>
             </YakitSelect.Option>
             {availableColors.map((item) => (
               <YakitSelect.Option value={item.searchWord} key={item.searchWord}>
@@ -99,11 +99,11 @@ export const MITMManualHeardExtra: React.FC<MITMManualHeardExtraProps> = React.m
         </div>
         <div className={styles['manual-select']}>
           <YakitButton type="primary" size="small" onClick={() => onSetBeautifyTrigger(!beautifyTriggerRefresh)}>
-            美化
+            Beautify
           </YakitButton>
         </div>
         <div className={styles['manual-select']}>
-          <span className={styles['manual-select-label']}>劫持响应:</span>
+          <span className={styles['manual-select-label']}>Hijack Response:</span>
           <YakitSwitch
             checked={hijackResponseType === 'all'}
             onChange={(val: boolean) => {
@@ -118,10 +118,10 @@ export const MITMManualHeardExtra: React.FC<MITMManualHeardExtraProps> = React.m
           disabled={status === 'hijacking'}
           onClick={() => onDiscardRequest()}
         >
-          丢弃数据
+          Discard Data
         </YakitButton>
         <YakitButton disabled={status === 'hijacking'} onClick={() => onSubmitData(true)}>
-          提交数据
+          Submit Data
         </YakitButton>
       </div>
     </div>
@@ -180,7 +180,7 @@ export const ManualUrlInfo: React.FC<ManualUrlInfoProps> = React.memo((props) =>
           }}
           size="small"
         >
-          HTTP 响应
+          HTTP Response
         </YakitTag>
       ) : (
         <>
@@ -194,7 +194,7 @@ export const ManualUrlInfo: React.FC<ManualUrlInfoProps> = React.memo((props) =>
             }}
             size="small"
           >
-            HTTP 请求
+            HTTP Request
           </YakitTag>
         </>
       )}

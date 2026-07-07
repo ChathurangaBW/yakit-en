@@ -152,7 +152,7 @@ const FingerprintManage: React.FC<FingerprintManageProp> = (props) => {
   const importExportContainerRef = useRef<string>(currentPageTabRouteKey)
   const [importExportExtra, setImportExportExtra] = useState<ImportExportModalExtra>({
     hint: false,
-    title: '导入指纹',
+    title: 'Import Fingerprints',
     type: 'import',
     apiKey: 'ImportFingerprint',
   })
@@ -194,7 +194,7 @@ const FingerprintManage: React.FC<FingerprintManageProp> = (props) => {
                 onSetLocalGroupLen={setLocalGroupLen}
                 onImport={() => {
                   handleOpenImportExportHint({
-                    title: '导入指纹',
+                    title: 'Import Fingerprints',
                     type: 'import',
                     apiKey: 'ImportFingerprint',
                   })
@@ -214,7 +214,7 @@ const FingerprintManage: React.FC<FingerprintManageProp> = (props) => {
               onSetLocalFingerprintLen={setLocalFingerprintLen}
               onImport={() => {
                 handleOpenImportExportHint({
-                  title: '导入指纹',
+                  title: 'Import Fingerprints',
                   type: 'import',
                   apiKey: 'ImportFingerprint',
                 })
@@ -222,7 +222,7 @@ const FingerprintManage: React.FC<FingerprintManageProp> = (props) => {
               onExport={(includeId) => {
                 includeIdRef.current = includeId
                 handleOpenImportExportHint({
-                  title: '导出指纹',
+                  title: 'Export Fingerprints',
                   type: 'export',
                   apiKey: 'ExportFingerprint',
                 })
@@ -254,13 +254,13 @@ const FingerprintManage: React.FC<FingerprintManageProp> = (props) => {
               icon={<OutlineImportIcon />}
               onClick={() => {
                 handleOpenImportExportHint({
-                  title: '导入指纹',
+                  title: 'Import Fingerprints',
                   type: 'import',
                   apiKey: 'ImportFingerprint',
                 })
               }}
             >
-              导入指纹
+              Import Fingerprints
             </YakitButton>
           </div>
         </YakitEmpty>
@@ -354,7 +354,7 @@ const LocalFingerprintGroupList: React.FC<LocalFingerprintGroupListProps> = memo
       return select.map((item) => item.GroupName)
     }, [select])
     useUpdateEffect(() => {
-      // 这里的延时触发搜索由外层去控制
+      // 这里的延时触发Search由外层去控制
       onGroupChange(select.map((item) => item.GroupName))
     }, [select])
     const handleSelect = useMemoizedFn((info: FingerprintGroup) => {
@@ -463,7 +463,7 @@ const LocalFingerprintGroupList: React.FC<LocalFingerprintGroupListProps> = memo
         })
     })
 
-    /** ---------- 删除 ---------- */
+    /** ---------- Delete ---------- */
     const [loadingDelKeys, setLoadingDelKeys] = useState<string[]>([])
     const handleDelete = useMemoizedFn((info: FingerprintGroup) => {
       const { GroupName } = info
@@ -475,7 +475,7 @@ const LocalFingerprintGroupList: React.FC<LocalFingerprintGroupListProps> = memo
       })
       grpcDeleteLocalFingerprintGroup({ GroupNames: [GroupName] })
         .then(() => {
-          // 删除后自动把选中里的该条去掉
+          // Delete后自动把选中里的该条去掉
           setSelect((arr) => arr.filter((item) => item.GroupName !== info.GroupName))
           handleUpdateData('delete', info)
         })
@@ -504,13 +504,13 @@ const LocalFingerprintGroupList: React.FC<LocalFingerprintGroupListProps> = memo
             </YakitButton>
             <Divider type="vertical" />
             <YakitButton type="text" onClick={handleReset}>
-              重置
+              Reset
             </YakitButton>
             <YakitDropdownMenu
               menu={{
                 data: [
-                  { key: 'addGroup', label: '新建分组', itemIcon: <OutlineFolderaddIcon /> },
-                  { key: 'importFingerprint', label: '导入指纹', itemIcon: <OutlineImportIcon /> },
+                  { key: 'addGroup', label: 'Create Group', itemIcon: <OutlineFolderaddIcon /> },
+                  { key: 'importFingerprint', label: 'Import Fingerprints', itemIcon: <OutlineImportIcon /> },
                 ],
                 onClick: ({ key }) => {
                   switch (key) {
@@ -536,7 +536,7 @@ const LocalFingerprintGroupList: React.FC<LocalFingerprintGroupListProps> = memo
         </div>
 
         <div className={styles['list-search-and-add']}>
-          {/* 新建规则组输入框 */}
+          {/* 新建Rule组输入框 */}
           <YakitInput
             ref={addInputRef}
             wrapperClassName={activeAdd ? styles['show-add-input'] : styles['hidden-add-input']}
@@ -641,7 +641,7 @@ const LocalFingerprintGroupList: React.FC<LocalFingerprintGroupListProps> = memo
                     })}
                   </>
                 ) : (
-                  <YakitEmpty style={{ marginTop: 8 }} title="暂无分组"></YakitEmpty>
+                  <YakitEmpty style={{ marginTop: 8 }} title="No Groups Yet"></YakitEmpty>
                 )}
               </div>
             </div>
@@ -765,7 +765,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
               }}
             />
           )}
-          序号
+          No.
         </div>
       ),
       dataIndex: 'index',
@@ -796,7 +796,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
       },
     },
     {
-      title: '指纹名',
+      title: 'Fingerprint Name',
       dataIndex: 'RuleName',
       editable: true,
       editType: 'input',
@@ -809,7 +809,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
       ),
     },
     {
-      title: '规则',
+      title: 'Rule',
       dataIndex: 'MatchExpression',
       editable: true,
       editType: 'input',
@@ -822,7 +822,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
       ),
     },
     {
-      title: '分组',
+      title: 'Group',
       dataIndex: 'GroupName',
       editable: true,
       editType: 'select',
@@ -837,7 +837,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
       ),
     },
     {
-      title: '操作',
+      title: 'Actions',
       dataIndex: 'operation',
       width: 88,
       // @ts-ignore
@@ -849,7 +849,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
               onClick={() => {
                 grpcDeleteFingerprint({ Filter: { IncludeId: [record.Id] } })
                   .then(() => {
-                    yakitNotify('success', '删除成功')
+                    yakitNotify('success', 'Delete成功')
                     onSetRefreshLocalGroup((prev) => !prev)
                     let page = data.Pagination.Page
                     if (data.Data.length === 1) {
@@ -926,9 +926,9 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
           })
       }
     } else if (newRow.RuleName.length === 0) {
-      yakitNotify('warning', '指纹名不能为空')
+      yakitNotify('warning', 'Fingerprint Name不能为空')
     } else if (newRow.MatchExpression.length === 0) {
-      yakitNotify('warning', '规则不能为空')
+      yakitNotify('warning', 'Rule不能为空')
     }
   }
 
@@ -943,7 +943,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
     }
     callCountRef.current += 1
     if (callCountRef.current >= 2) {
-      callCountRef.current = 0 // 重置计数器
+      callCountRef.current = 0 // Reset计数器
       setEditingObj({ Id: record.Id, dataIndex: column.dataIndex })
       if (column.editType === 'select' && column.dataIndex === 'GroupName') {
         grpcFetchLocalFingerprintGroupList()
@@ -957,7 +957,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
           .catch(() => {})
       }
     } else if (callCountRef.current === 1) {
-      // 这里开启一个定时器，若在300ms内没有第二次点击，则重置计数器
+      // 这里开启一个定时器，若在300ms内没有第二次点击，则Reset计数器
       setTimeout(() => {
         callCountRef.current = 0
       }, 300)
@@ -1007,7 +1007,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
 
           <div className={styles['header-extra']}>
             <YakitInput.Search
-              placeholder="请输入关键词搜索"
+              placeholder="Search by keyword"
               allowClear
               onSearch={(val) => {
                 onSetFilter((prev) => {
@@ -1033,7 +1033,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
                       },
                     })
                       .then(() => {
-                        yakitNotify('success', '删除成功')
+                        yakitNotify('success', 'Delete成功')
                         onSetRefreshLocalGroup((prev) => !prev)
                         let page = data.Pagination.Page
                         if (rowSelectionKeys.length === data.Data.length) {
@@ -1062,7 +1062,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
                       },
                     })
                       .then(() => {
-                        yakitNotify('success', '删除成功')
+                        yakitNotify('success', 'Delete成功')
                         onSetRefreshLocalGroup((prev) => !prev)
                         update(1, data.Pagination.Limit)
                       })
@@ -1123,7 +1123,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
               style={{ padding: 0 }}
               onClick={() => {
                 let m = showYakitModal({
-                  title: '指纹规则',
+                  title: 'Fingerprint Rules',
                   width: '75%',
                   closable: true,
                   maskClosable: false,
@@ -1143,7 +1143,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
                 })
               }}
             >
-              指纹规则
+              指纹Rule
             </YakitButton>
           </div>
         </div>
@@ -1185,7 +1185,7 @@ const LocalFingerprintTable: React.FC<LocalFingerprintTableProps> = memo((props)
         />
       </div>
 
-      {/* 新建编辑指纹 */}
+      {/* 新建Edit Fingerprint */}
       {fingerprintFormVisible && (
         <FingerprintFormModal
           initialValues={
@@ -1289,7 +1289,7 @@ const FingerprintFormModal: React.FC<FingerprintFormModalProps> = (props) => {
   return (
     <YakitModal
       visible={true}
-      title={(initialValues ? '编辑' : '创建') + '指纹'}
+      title={(initialValues ? 'Edit ' : 'Create ') + 'Fingerprint'}
       width={500}
       onOk={() => {
         form
@@ -1311,16 +1311,20 @@ const FingerprintFormModal: React.FC<FingerprintFormModalProps> = (props) => {
           e.preventDefault()
         }}
       >
-        <Form.Item label="指纹名" name="RuleName" rules={[{ required: true, message: '请填写指纹名' }]}>
+        <Form.Item
+          label="Fingerprint Name"
+          name="RuleName"
+          rules={[{ required: true, message: 'Please enter a fingerprint name' }]}
+        >
           <YakitInput></YakitInput>
         </Form.Item>
-        <Form.Item label="规则" name="MatchExpression" rules={[{ required: true, message: '请填写规则' }]}>
+        <Form.Item label="Rule" name="MatchExpression" rules={[{ required: true, message: 'Please enter a rule' }]}>
           <YakitInput.TextArea></YakitInput.TextArea>
         </Form.Item>
-        <Form.Item label="分组" name="GroupName">
+        <Form.Item label="Group" name="GroupName">
           <YakitSelect
             mode="tags"
-            placeholder="请选择分组"
+            placeholder="Please select a group"
             allowClear
             options={groups}
             searchValue={groupSearch}
@@ -1443,7 +1447,7 @@ interface UpdateFingerprintToGroupProps {
   allCheck: boolean
   rules: number[]
   filters: FingerprintFilter
-  /** 完成操作后触发指纹组数据刷新 */
+  /** 完成Actions后触发指纹组数据Refresh */
   callback: () => void
 }
 interface FrontFingerprintGroup extends FingerprintGroup {
@@ -1453,7 +1457,7 @@ interface FrontFingerprintGroup extends FingerprintGroup {
 const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((props) => {
   const { allCheck, rules, filters, callback } = props
 
-  /** 添加分组按钮是否可用 */
+  /** 添加Group按钮是否可用 */
   const isActive = useMemo(() => {
     if (allCheck) return true
     return !!rules.length
@@ -1464,21 +1468,21 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
     else return { IncludeId: rules }
   })
 
-  // 规则所属组交集
+  // Rule所属组交集
   const [oldGroup, setOldGroup, getOldGroup] = useGetSetState<FrontFingerprintGroup[]>([])
-  // 全部规则组
+  // 全部Rule组
   const allGroup = useRef<FrontFingerprintGroup[]>([])
-  // 可选规则组
+  // 可选Rule组
   const [showGroup, setShowGroup] = useState<FrontFingerprintGroup[]>([])
-  // 搜索内容
+  // Search内容
   const [search, setSearch] = useState<string>('')
 
-  // 新加规则组
+  // 新加Rule组
   const [addGroup, setAddGroup] = useState<FrontFingerprintGroup[]>([])
-  // 移除规则组
+  // 移除Rule组
   const [removeGroup, setRemoveGroup] = useState<FrontFingerprintGroup[]>([])
 
-  /** ---------- 获取规则所属组交集、全部规则组-逻辑 Start ---------- */
+  /** ---------- 获取Rule所属组交集、全部Rule组-逻辑 Start ---------- */
   const getFilter = useMemoizedFn(() => {
     return cloneDeep(filters)
   })
@@ -1510,7 +1514,7 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
     { wait: 300 },
   )
 
-  // 新加规则组popover
+  // 新加Rule组popover
   const [addGroupVisible, setAddGroupVisible] = useState<boolean>(false)
   const handleAddGroupVisibleChange = useMemoizedFn((visible: boolean) => {
     setAddGroupVisible(visible)
@@ -1535,9 +1539,9 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
         })
     }
   }, [addGroupVisible])
-  /** ---------- 获取规则所属组交集、全部规则组-逻辑 End ---------- */
+  /** ---------- 获取Rule所属组交集、全部Rule组-逻辑 End ---------- */
 
-  /** ---------- 移除旧规则组 Start ---------- */
+  /** ---------- 移除旧Rule组 Start ---------- */
   const delGroups = useRef<string[]>([])
   // 单个
   const handleSingleRemove = useMemoizedFn((info: FrontFingerprintGroup) => {
@@ -1576,9 +1580,9 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
       })
       .catch(() => {})
   })
-  /** ---------- 移除旧规则组 End ---------- */
+  /** ---------- 移除旧Rule组 End ---------- */
 
-  /** ---------- 新增规则组逻辑 Start ---------- */
+  /** ---------- 新增Rule组逻辑 Start ---------- */
   useDebounceEffect(
     () => {
       setShowGroup(allGroup.current.filter((item) => item.GroupName.indexOf(search || '') > -1))
@@ -1587,7 +1591,7 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
     { wait: 300 },
   )
 
-  // 新建一条规则组
+  // 新建一条Rule组
   const handleCreateGroup = useMemoizedFn((name: string) => {
     const group: FrontFingerprintGroup = {
       GroupName: name,
@@ -1612,7 +1616,7 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
 
   const handleCheck = useMemoizedFn((checked: boolean, info: FrontFingerprintGroup) => {
     if (checked) {
-      // 判断规则组是否属于已经存在于交集的规则组
+      // 判断Rule组是否属于已经存在于交集的Rule组
       const isExist = oldGroup.findIndex((item) => item.GroupName === info.GroupName) > -1
       const setHooks = isExist ? setRemoveGroup : setAddGroup
       setHooks((arr) => [...arr, info])
@@ -1622,7 +1626,7 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
       const setHooks = isExistRemove ? setRemoveGroup : setAddGroup
       setHooks((arr) => arr.filter((item) => item.GroupName !== info.GroupName))
       if (!isExistRemove && info.isCreate) {
-        // 新建的规则组在取消勾选后要从列表中移除
+        // 新建的Rule组在取消勾选后要从列表中移除
         allGroup.current = allGroup.current.filter((item) => item.GroupName !== info.GroupName)
         setShowGroup((arr) => arr.filter((item) => item.GroupName !== info.GroupName))
       }
@@ -1662,7 +1666,7 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
     setAddGroupVisible(false)
     setConfirmVisible(false)
   })
-  /** ---------- 新增规则组逻辑 End ---------- */
+  /** ---------- 新增Rule组逻辑 End ---------- */
 
   return (
     <div className={styles['update-fingerprint-to-group']}>
@@ -1710,7 +1714,7 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
               placement="bottom"
             >
               <YakitTag closable onClose={handleAllRemove}>
-                规则组{oldGroup.length}
+                Rule组{oldGroup.length}
               </YakitTag>
             </YakitPopover>
           )}
@@ -1725,11 +1729,11 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
         content={
           <div className={styles['add-and-remove-group']}>
             <div className={styles['search-header']}>
-              勾选表示加入组，取消勾选则表示移出组，创建新分组直接在输入框输入名称回车即可。
+              勾选表示加入组，取消勾选则表示移出组，创建新Group直接在输入框输入名称回车即可。
             </div>
             <div className={styles['search-input']}>
               <YakitInput
-                placeholder="输入关键字..."
+                placeholder="Enter keywords..."
                 maxLength={50}
                 allowClear
                 prefix={<OutlineSearchIcon className={styles['search-icon']} />}
@@ -1751,7 +1755,7 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
                 <div className={styles['group-list-item']}>
                   <YakitCheckbox onChange={handleCheckboxCreate}>
                     <span className={classNames(styles['title-style'], 'yakit-content-single-ellipsis')} title={search}>
-                      新增分组 "{search}"
+                      新增Group "{search}"
                     </span>
                   </YakitCheckbox>
                 </div>
@@ -1812,13 +1816,13 @@ const UpdateFingerprintToGroup: React.FC<UpdateFingerprintToGroupProps> = memo((
         onVisibleChange={handleAddGroupVisibleChange}
       >
         <YakitButton type="text" disabled={!isActive} icon={<OutlinePluscircleIcon />}>
-          {oldGroup.length ? undefined : '添加分组'}
+          {oldGroup.length ? undefined : '添加Group'}
         </YakitButton>
       </YakitPopover>
       <YakitHint
         visible={confirmVisible}
-        title="提示"
-        content="确定要添加所有数据到分组吗？"
+        title="Notice"
+        content="Are you sure you want to add all data to the group?"
         onCancel={() => {
           setConfirmVisible(false)
         }}

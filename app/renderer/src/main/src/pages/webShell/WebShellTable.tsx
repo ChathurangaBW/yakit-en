@@ -149,7 +149,7 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
         render: (_, i: WebShellDetail) => i.Id,
       },
       {
-        title: '状态',
+        title: 'Status',
         dataKey: 'Status',
         width: 55,
         render: (_, i: WebShellDetail) =>
@@ -199,7 +199,7 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
         render: (_, i: WebShellDetail) => (i.Tag ? <YakitTag color="bluePurple">{i.Tag}</YakitTag> : null),
       },
       {
-        title: '备注',
+        title: 'Remarks',
         dataKey: 'Remark',
         width: 120,
         render: (_, i: WebShellDetail) => (
@@ -210,7 +210,7 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
                 type="primary"
                 onClick={() => {
                   let m = showModal({
-                    title: '备注',
+                    title: 'Remarks',
                     width: '60%',
                     content: <RemarkDetail remark={i.Remark} />,
                     modalAfterClose: () => m && m.destroy(),
@@ -225,7 +225,7 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
         ),
       },
       {
-        title: '添加时间',
+        title: 'Added Time',
         dataKey: 'CreatedAt',
         render: (v) => (v ? formatTimestamp(v) : '-'),
         sorterProps: {
@@ -234,7 +234,7 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
         },
       },
       {
-        title: '操作',
+        title: 'Actions',
         dataKey: 'action',
         width: 80,
         fixed: 'right',
@@ -369,24 +369,24 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
   const wsmMenuData = [
     {
       key: 'webshell-curd',
-      label: 'Shell 操作',
+      label: 'Shell Actions',
       children: [
-        { key: 'webshell-curd-edit', label: '编辑' },
-        { key: 'webshell-curd-copy', label: '复制 URL' },
-        { key: 'webshell-curd-share', label: '分享' },
-        { key: 'webshell-curd-delete', label: '删除', itemIcon: <TrashIcon /> },
+        { key: 'webshell-curd-edit', label: 'Edit' },
+        { key: 'webshell-curd-copy', label: 'Copy URL' },
+        { key: 'webshell-curd-share', label: 'Share' },
+        { key: 'webshell-curd-delete', label: 'Delete', itemIcon: <TrashIcon /> },
       ],
     },
     { type: 'divider' },
-    { key: 'webshell-feature-ping', label: '验证存活' },
-    { key: 'webshell-feature-file_tree', label: '验证存活' },
+    { key: 'webshell-feature-ping', label: 'Check Alive' },
+    { key: 'webshell-feature-file_tree', label: 'Check Alive' },
   ]
   const wsmMenuSelect = useMemoizedFn((key: string) => {
     if (!selected) return
     switch (key) {
       case 'webshell-curd-edit':
         const edit = showModal({
-          title: '编辑 Shell',
+          title: 'Edit Shell',
           width: '60%',
           content: (
             <WebShellCreatorForm
@@ -418,7 +418,7 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
     if (rowData) {
       setSelected(rowData)
     }
-    // showByCustom已废弃，删除，更换为 showByRightContext
+    // showByCustom已废弃，Delete，更换为 showByRightContext
     // showByCustom(
     //     {
     //         reactNode: (
@@ -464,13 +464,13 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
                 <div className={cveStyles['cve-list-title-left']}>
                   {!advancedQuery && (
                     <div className={cveStyles['cve-list-title-query']}>
-                      <span className={cveStyles['cve-list-title-query-text']}>高级设置</span>
+                      <span className={cveStyles['cve-list-title-query-text']}>Advanced Settings</span>
                       <YakitSwitch checked={advancedQuery} onChange={setAdvancedQuery} />
                     </div>
                   )}
-                  <div className={cveStyles['cve-list-title']}>网站管理</div>
+                  <div className={cveStyles['cve-list-title']}>Website Management</div>
                   <Space>
-                    <Tooltip title="刷新会重置所有查询条件">
+                    <Tooltip title="Refresh will reset all filters">
                       <Button
                         size={'small'}
                         type={'link'}
@@ -488,7 +488,7 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
                     onClick={() => {
                       // setDataBaseUpdateVisible(true)
                       let m = showModal({
-                        title: '添加网站',
+                        title: 'Add Website',
                         width: '60%',
                         content: (
                           <WebShellCreatorForm
@@ -504,7 +504,7 @@ const WebShellTableList: React.FC<WebShellTableListProps> = React.memo((props) =
                     }}
                   >
                     <SMViewGridAddIcon />
-                    添加网站
+                    Add Website
                   </YakitButton>
                 </div>
               </div>

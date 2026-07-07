@@ -305,7 +305,7 @@ export const PortTable: React.FC<PortTableProps> = React.memo(
     const columns: ColumnsTypeProps[] = useMemo<ColumnsTypeProps[]>(() => {
       return [
         {
-          title: '序号',
+          title: 'No.',
           dataKey: 'Id',
           fixed: 'left',
           ellipsis: false,
@@ -313,7 +313,7 @@ export const PortTable: React.FC<PortTableProps> = React.memo(
           enableDrag: false,
         },
         {
-          title: '网络地址',
+          title: 'Network Address',
           dataKey: 'Host',
           // fixed: "left",
           render: (text) => (
@@ -324,19 +324,19 @@ export const PortTable: React.FC<PortTableProps> = React.memo(
           ),
         },
         {
-          title: '端口',
+          title: 'Port',
           dataKey: 'Port',
           width: 100,
           render: (text) => <YakitTag color="blue">{text}</YakitTag>,
         },
         {
-          title: '协议',
+          title: 'Protocol',
           dataKey: 'Proto',
           width: 100,
           render: (text) => <YakitTag color="success">{text}</YakitTag>,
         },
         {
-          title: '服务指纹',
+          title: 'Service Fingerprint',
           dataKey: 'ServiceType',
         },
         {
@@ -359,7 +359,7 @@ export const PortTable: React.FC<PortTableProps> = React.memo(
           ),
         },
         {
-          title: '最近更新时间',
+          title: 'Last Updated',
           dataKey: 'UpdatedAt',
           fixed: 'right',
           sorterProps: {
@@ -399,10 +399,10 @@ export const PortTable: React.FC<PortTableProps> = React.memo(
     const menuData: YakitMenuItemType[] = useMemo(() => {
       return [
         {
-          label: '发送到漏洞检测',
+          label: 'Send to Vulnerability Detection',
           key: 'bug-test',
         },
-        { label: '发送到爆破', key: 'brute' },
+        { label: 'Send to Brute Force', key: 'brute' },
       ]
     }, [])
     const onRowContextMenu = useMemoizedFn((rowData: PortAsset, selectedRows: PortAsset[], event: React.MouseEvent) => {
@@ -523,7 +523,7 @@ export const PortTable: React.FC<PortTableProps> = React.memo(
                         type: 'outline2',
                       }}
                       getData={getData}
-                      text="导出全部"
+                      text="导出All"
                     />
                     {!isEnpriTraceAgent() && (
                       <YakitDropdownMenu

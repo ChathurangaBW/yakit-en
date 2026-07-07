@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+﻿import React, { useEffect, useRef } from 'react'
 import { getReleaseEditionName } from '@/utils/envfile'
 import { xtermFit } from '@/utils/xtermUtils'
 import ReactResizeDetector from 'react-resize-detector'
@@ -37,7 +37,7 @@ export const EngineLog: React.FC<EngineLogProps> = React.memo((props) => {
       return
     }
 
-    writeToConsole(`欢迎使用 ${getReleaseEditionName()}!\n`)
+    writeToConsole(`Welcome to ${getReleaseEditionName()}!\n`)
 
     const offLiveStdio = yakitLogs.onLiveEngineStdio((stdout) => {
       writeToConsole(stdout)
@@ -67,7 +67,7 @@ export const EngineLog: React.FC<EngineLogProps> = React.memo((props) => {
       currentLine += text.trimEnd()
 
       if (!isWrapped) {
-        // 当前行不是 wrap → 本行结束
+        // Current行不是 wrap → 本行结束
         if (currentLine.trim() !== '') {
           result.push(currentLine)
         }
@@ -89,7 +89,7 @@ export const EngineLog: React.FC<EngineLogProps> = React.memo((props) => {
     setClipboardText(fullText, {
       hiddenHint: true,
       finalCallback: () => {
-        yakitNotify('success', '复制成功')
+        yakitNotify('success', 'Copied successfully')
       },
     })
   })
@@ -111,7 +111,7 @@ export const EngineLog: React.FC<EngineLogProps> = React.memo((props) => {
       />
       <XTerm ref={xtermRef} options={terminalOptions} />
       <div className={styles['engine-copy']}>
-        <Tooltip title="复制日志信息" placement="topRight">
+        <Tooltip title="Copy log details" placement="topRight">
           <YakitButton
             icon={<OutlineDocumentduplicateIcon />}
             type="secondary2"

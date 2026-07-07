@@ -63,21 +63,21 @@ a=1&b=2 Content-Length: a
       <AutoCard
         title={
           <DemoItemSelectOne
-            label={'调试组件'}
+            label={'Debug Component'}
             data={[
-              { value: 'space-engine-operator', label: '空间引擎操作台' },
-              { value: 'java-decompiler', label: 'Java反编译1' },
-              { value: 'hybrid-scan-demo', label: 'HybridScan 批量' },
-              { value: 'hybrid-scan-task', label: 'HybridScan 任务列表' },
-              { value: 'chaos-maker-rule', label: '流量生成器规则' },
-              { value: 'risk-table', label: '漏洞查询规则' },
-              { value: 'http-monaco-editor', label: 'HTTP 数据包编辑器' },
-              { value: 'fs-tree', label: '文件系统树' },
-              { value: 'knowledge-base', label: '知识库管理' },
-              { value: 'rag-manager', label: 'RAG 向量存储管理' },
-              { value: 'third-party-binary', label: '第三方应用管理' },
-              { value: 'entity-repository', label: '实体仓库' },
-              { value: 'vitest__test__', label: 'Vitest 测试组件' },
+              { value: 'space-engine-operator', label: 'Space Engine Console' },
+              { value: 'java-decompiler', label: 'Java Decompiler 1' },
+              { value: 'hybrid-scan-demo', label: 'HybridScan Batch' },
+              { value: 'hybrid-scan-task', label: 'HybridScan Task List' },
+              { value: 'chaos-maker-rule', label: 'Traffic Generator Rules' },
+              { value: 'risk-table', label: 'Vulnerability Query Rules' },
+              { value: 'http-monaco-editor', label: 'HTTP Packet Editor' },
+              { value: 'fs-tree', label: 'File System Tree' },
+              { value: 'knowledge-base', label: 'Knowledge Base Management' },
+              { value: 'rag-manager', label: 'RAG Vector Store Management' },
+              { value: 'third-party-binary', label: 'Third-Party App Management' },
+              { value: 'entity-repository', label: 'Entity Repository' },
+              { value: 'vitest__test__', label: 'Vitest Test Component' },
             ]}
             formItemStyle={{ margin: 0 }}
             value={mode}

@@ -48,19 +48,19 @@ const CreateKnowledgeBase: FC<{ form: FormInstance<any>; type?: 'new' }> = ({ fo
       }}
     >
       <Form.Item
-        label="知识库名："
+        label="Knowledge Base Name:"
         name="KnowledgeBaseName"
         required
         rules={[
           {
             validator: (_, value) => {
               if (!value || value.trim() === '') {
-                return Promise.reject(new Error('请输入知识库名'))
+                return Promise.reject(new Error('Enter a knowledge base name'))
               }
               if (type !== 'new') {
                 const exists = knowledgeBases.some((it) => it.KnowledgeBaseName === value)
                 if (exists) {
-                  return Promise.reject(new Error('知识库名称重复，请重新输入'))
+                  return Promise.reject(new Error('Knowledge Base名称重复，请重新输入'))
                 }
               }
 
@@ -69,13 +69,13 @@ const CreateKnowledgeBase: FC<{ form: FormInstance<any>; type?: 'new' }> = ({ fo
           },
         ]}
       >
-        <YakitInput placeholder="请输入知识库名" />
+        <YakitInput placeholder="Enter a knowledge base name" />
       </Form.Item>
 
       <YakitFormDragger
         formItemProps={{
           name: 'KnowledgeBaseFile',
-          label: '上传文件',
+          label: 'Upload File',
           rules: [
             {
               validator: ValidatorFilePath,
@@ -93,12 +93,12 @@ const CreateKnowledgeBase: FC<{ form: FormInstance<any>; type?: 'new' }> = ({ fo
       />
 
       <Form.Item
-        label="构建模式"
+        label="Build Mode"
         name="disableERM"
         help={
           watchDisableERM === 'true'
-            ? '仅存储知识和向量，不会存储实体，构建速度更快'
-            : '会存储实体、知识和向量全部内容，构建速度较慢'
+            ? '仅存储Knowledge和Vectors，不会存储Entities，构建速度更快'
+            : '会存储Entities、Knowledge和Vectors全部内容，构建速度较慢'
         }
       >
         <YakitRadioButtons
@@ -107,56 +107,56 @@ const CreateKnowledgeBase: FC<{ form: FormInstance<any>; type?: 'new' }> = ({ fo
           options={[
             {
               value: 'false',
-              label: '增强知识图谱索引',
+              label: 'Enhanced Knowledge Graph Index',
             },
             {
               value: 'true',
-              label: '仅构建知识索引',
+              label: 'Build Knowledge Index Only',
             },
           ]}
         />
       </Form.Item>
 
       <Form.Item label="Tags：" name="Tags">
-        <YakitSelect mode="tags" placeholder="请选择" options={knowledgeTypeOptions} />
+        <YakitSelect mode="tags" placeholder="Please select" options={knowledgeTypeOptions} />
       </Form.Item>
       {type === 'new' ? (
         <React.Fragment>
-          <Form.Item label="补充提示词：" name="prompt">
-            <YakitInput placeholder="请输入补充提示词" />
+          <Form.Item label="Supplemental Prompt:" name="prompt">
+            <YakitInput placeholder="Enter a supplemental prompt" />
           </Form.Item>
           <Form.Item
-            label="描述："
+            label="Description:"
             name="KnowledgeBaseDescription"
-            rules={[{ max: 500, message: '描述最多 500 个字符' }]}
+            rules={[{ max: 500, message: 'Description cannot exceed 500 characters' }]}
           >
-            <YakitInput.TextArea maxLength={500} placeholder="请输入描述" rows={2} showCount />
+            <YakitInput.TextArea maxLength={500} placeholder="Enter a description" rows={2} showCount />
           </Form.Item>
 
-          <Form.Item label="知识条目长度限制：" name="KnowledgeBaseLength" initialValue={300}>
+          <Form.Item label="Knowledge Entry Length Limit:" name="KnowledgeBaseLength" initialValue={300}>
             <YakitInputNumber />
           </Form.Item>
-          <Form.Item label="分析并发数：" name="concurrency" initialValue={10}>
+          <Form.Item label="Analysis Concurrency:" name="concurrency" initialValue={10}>
             <YakitInputNumber />
           </Form.Item>
 
-          <Form.Item label="切片粒度：" name="chunk" initialValue={'Medium'}>
+          <Form.Item label="Chunk Size:" name="chunk" initialValue={'Medium'}>
             <YakitSelect
               options={[
                 {
-                  label: '超细粒度 4k',
+                  label: 'Ultra Fine 4k',
                   value: 'UltraFine',
                 },
                 {
-                  label: '细粒度 10k',
+                  label: 'Fine 10k',
                   value: 'Fine',
                 },
                 {
-                  label: '中粒度 20k',
+                  label: 'Medium 20k',
                   value: 'Medium',
                 },
                 {
-                  label: '粗粒度 40k',
+                  label: 'Coarse 40k',
                   value: 'Coarse',
                 },
               ]}
@@ -166,41 +166,41 @@ const CreateKnowledgeBase: FC<{ form: FormInstance<any>; type?: 'new' }> = ({ fo
       ) : (
         <YakitCollapse bordered={false} className={styles['create-knowledge-configuration']}>
           <Collapse.Panel header="高级配置" key="1">
-            <Form.Item label="补充提示词：" name="prompt">
-              <YakitInput placeholder="请输入补充提示词" />
+            <Form.Item label="Supplemental Prompt:" name="prompt">
+              <YakitInput placeholder="Enter a supplemental prompt" />
             </Form.Item>
             <Form.Item
-              label="描述："
+              label="Description:"
               name="KnowledgeBaseDescription"
-              rules={[{ max: 500, message: '描述最多 500 个字符' }]}
+              rules={[{ max: 500, message: 'Description cannot exceed 500 characters' }]}
             >
-              <YakitInput.TextArea maxLength={500} placeholder="请输入描述" rows={3} showCount />
+              <YakitInput.TextArea maxLength={500} placeholder="Enter a description" rows={3} showCount />
             </Form.Item>
 
-            <Form.Item label="知识条目长度限制：" name="KnowledgeBaseLength" initialValue={300}>
+            <Form.Item label="Knowledge Entry Length Limit:" name="KnowledgeBaseLength" initialValue={300}>
               <YakitInputNumber />
             </Form.Item>
-            <Form.Item label="分析并发数：" name="concurrency" initialValue={10}>
+            <Form.Item label="Analysis Concurrency:" name="concurrency" initialValue={10}>
               <YakitInputNumber />
             </Form.Item>
 
-            <Form.Item label="切片粒度：" name="chunk" initialValue={'Medium'}>
+            <Form.Item label="Chunk Size:" name="chunk" initialValue={'Medium'}>
               <YakitSelect
                 options={[
                   {
-                    label: '超细粒度 4k',
+                    label: 'Ultra Fine 4k',
                     value: 'UltraFine',
                   },
                   {
-                    label: '细粒度 10k',
+                    label: 'Fine 10k',
                     value: 'Fine',
                   },
                   {
-                    label: '中粒度 20k',
+                    label: 'Medium 20k',
                     value: 'Medium',
                   },
                   {
-                    label: '粗粒度 40k',
+                    label: 'Coarse 40k',
                     value: 'Coarse',
                   },
                 ]}

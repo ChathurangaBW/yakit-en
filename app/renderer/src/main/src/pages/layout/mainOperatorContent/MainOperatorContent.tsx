@@ -542,8 +542,8 @@ const getInitPageCache: (softMode: SoftMode) => PageCache[] = (softMode) => {
         return [
           {
             routeKey: routeConvertKey(YakitRoute.MITMHacker, ''),
-            verbose: 'MITM 交互式劫持',
-            verboseKey: 'YakitRoute.MITM Interactive Hijacking',
+            verbose: 'MITM Interactive Hijacking',
+            verboseKey: 'YakitRoute.MITM',
             menuName: YakitRouteToPageInfo[YakitRoute.MITMHacker].label,
             route: YakitRoute.MITMHacker,
             singleNode: true,

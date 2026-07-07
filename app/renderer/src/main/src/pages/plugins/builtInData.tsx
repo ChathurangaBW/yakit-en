@@ -17,7 +17,7 @@ export function GetPluginLanguage(type: string): string {
   return pluginTypeToName[type]?.language || type
 }
 
-/** 插件类型对应的详细信息 */
+/** 插件类型对应的详细Info */
 interface PluginTypeInfoProps {
   /** 插件类型名 */
   name: string
@@ -33,27 +33,29 @@ interface PluginTypeInfoProps {
   language: string
 }
 
-/** @name 插件类型对应的详细信息 */
+/** @name 插件类型对应的详细Info */
 export const pluginTypeToName: Record<string, PluginTypeInfoProps> = {
   yak: {
-    name: 'Yak 原生插件',
-    description: '内置了众多网络安全常用库，可快速编写安全小工具，该原生模块只支持手动调用',
+    name: 'Yak Native Plugin',
+    description:
+      'Built-in common network security libraries let you quickly create small security tools. This native module supports manual invocation only.',
     icon: <SolidYakitPluginIcon />,
     color: 'warning',
     content: 'yakit.AutoInitYakit()\n\n# Input your code!\n\n',
     language: 'yak',
   },
   mitm: {
-    name: 'Yak-MITM 模块',
-    description: '专用于 MITM 模块中的模块，编写 MITM 插件，可以轻松对经过的流量进行修改',
+    name: 'Yak-MITM Module',
+    description: '专用于 MITM 模块中的模块，编写 MITM 插件，可以轻松对经过的流量进行Edit',
     icon: <SolidPluginYakMitmIcon />,
     color: 'blue',
     content: MITMPluginTemplate,
     language: 'yak',
   },
   'port-scan': {
-    name: 'Yak-端口扫描',
-    description: '该插件会对目标进行端口扫描，再对扫描的指纹结果做进一步的处理，常用场景先指纹识别，再 Poc 检测',
+    name: 'Yak Port Scan',
+    description:
+      'This plugin scans target ports and then further processes fingerprint results. A common workflow is fingerprinting first, then PoC verification.',
     icon: <SolidPluginProtScanIcon />,
     color: 'success',
     content: PortScanPluginTemplate,
@@ -61,30 +63,32 @@ export const pluginTypeToName: Record<string, PluginTypeInfoProps> = {
   },
   codec: {
     name: 'Yak-Codec',
-    description: 'Yakit 中的编解码模块，可以自定义实现所需要的编解码、加解密',
+    description:
+      'The codec module in Yakit lets you customize the encoding, decoding, encryption, and decryption you need.',
     icon: <SolidSparklesPluginIcon />,
     color: 'purple',
     content: CodecPluginTemplate,
     language: 'yak',
   },
   lua: {
-    name: 'Lua 模块',
-    description: '监修中，无法使用',
+    name: 'Lua Module',
+    description: 'Under review and currently unavailable.',
     icon: <SolidDocumentSearchPluginIcon />,
     color: 'bluePurple',
     content: '',
     language: 'lua',
   },
   nuclei: {
-    name: 'Nuclei YamI 模块',
-    description: '使用 YakVM 构建了一个沙箱，可以兼容执行 Nuclei DSL ，无感使用 Nuclei 自带的 Yaml 模板',
+    name: 'Nuclei YAML Module',
+    description:
+      'Built with a YakVM sandbox, this module can run Nuclei DSL and use built-in Nuclei YAML templates seamlessly.',
     icon: <SolidCollectionPluginIcon />,
     color: 'cyan',
     content: '# Add your nuclei formatted PoC!',
     language: 'yaml',
   },
   config: {
-    name: '简易模板',
+    name: 'Simple Template',
     description: '',
     icon: <SolidCollectionPluginIcon />,
     color: 'cyan',
@@ -92,7 +96,7 @@ export const pluginTypeToName: Record<string, PluginTypeInfoProps> = {
     language: 'yak',
   },
   skillmd: {
-    name: '技能模板',
+    name: 'Skill Template',
     description: '',
     icon: <SolidSparklesPluginIcon />,
     color: 'blue',
@@ -100,7 +104,7 @@ export const pluginTypeToName: Record<string, PluginTypeInfoProps> = {
     language: 'yak',
   },
 }
-/** @name 类型选择-脚本类型选项信息 */
+/** @name 类型选择-脚本类型选项Info */
 export const DefaultTypeList: { icon: ReactNode; name: string; description: string; key: string }[] = [
   { ...pluginTypeToName['yak'], key: 'yak' },
   { ...pluginTypeToName['mitm'], key: 'mitm' },
@@ -110,14 +114,14 @@ export const DefaultTypeList: { icon: ReactNode; name: string; description: stri
   { ...pluginTypeToName['nuclei'], key: 'nuclei' },
 ]
 
-/** @name 审核状态对应展示名称 */
+/** @name ReviewStatus对应展示名称 */
 export const aduitStatusToName: Record<string, { name: string; icon: ReactNode }> = {
-  '0': { name: '待审核', icon: <SolidCircleIcon className="aduit-status-solid-circle-color" /> },
-  '1': { name: '已通过', icon: <SolidBadgecheckIcon className="aduit-status-badge-check-color" /> },
-  '2': { name: '未通过', icon: <SolidBanIcon className="aduit-status-ban-color" /> },
-  '3': { name: '审核中', icon: <SolidFlagIcon className="aduit-status-flag-color" /> },
+  '0': { name: 'Pending Review', icon: <SolidCircleIcon className="aduit-status-solid-circle-color" /> },
+  '1': { name: 'Approved', icon: <SolidBadgecheckIcon className="aduit-status-badge-check-color" /> },
+  '2': { name: 'Rejected', icon: <SolidBanIcon className="aduit-status-ban-color" /> },
+  '3': { name: 'Under Review', icon: <SolidFlagIcon className="aduit-status-flag-color" /> },
 }
-/** @name 审核状态选择列表 */
+/** @name ReviewStatus选择列表 */
 export const DefaultStatusList: TypeSelectOpt[] = [
   { key: '0', ...aduitStatusToName['0'] },
   { key: '1', ...aduitStatusToName['1'] },
@@ -139,8 +143,8 @@ export const defaultSearch: PluginSearchParams = {
 }
 
 export const funcSearchType: { value: string; label: string }[] = [
-  { value: 'fieldKeywords', label: '关键字' },
-  { value: 'userName', label: '按作者' },
-  { value: 'tag', label: '按标签' },
-  { value: 'keyword', label: '全文搜索' },
+  { value: 'fieldKeywords', label: 'Keywords' },
+  { value: 'userName', label: 'By Author' },
+  { value: 'tag', label: 'By Tag' },
+  { value: 'keyword', label: 'Full Text Search' },
 ]

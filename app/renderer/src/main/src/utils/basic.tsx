@@ -1,4 +1,4 @@
-import React, { useEffect, useImperativeHandle, useRef, useState } from 'react'
+﻿import React, { useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { Alert, Divider, Form, Space } from 'antd'
 import { InputItem, SwitchItem } from './inputUtil'
 import { useGetState, useMemoizedFn } from 'ahooks'
@@ -150,7 +150,7 @@ export const ConfigGlobalReverse = React.memo(() => {
 
   // // 如果 addr 和 password 都存在，且没有连接，则马上连接一次
   // useEffect(() => {
-  //     // 如果已经连上就退出
+  //     // 如果已经连上就Exit
   //     if (ok) {
   //         return
   //     }
@@ -181,7 +181,7 @@ export const ConfigGlobalReverse = React.memo(() => {
 
   useEffect(() => {
     const offError = yakitReverse.onError((data) => {
-      failed(`全局反连配置失败：${data}`)
+      failed(`Global reverse connection configuration failed：${data}`)
     })
     return () => {
       offError()

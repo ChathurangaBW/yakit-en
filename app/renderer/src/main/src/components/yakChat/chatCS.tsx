@@ -244,7 +244,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
 
     const lists: CacheChatCSProps = {
       token: randomString(10),
-      name: `临时对话窗-${randomString(4)}`,
+      name: `Temporary Chat-${randomString(4)}`,
       isRename: false,
       is_bing: isBing,
       is_plugin: isPlugin,
@@ -282,9 +282,9 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
     }, 300)
   })
 
-  // 搜索引擎增强
+  // Search Engine Enhancement
   const [isBing, setBing] = useState<boolean>(false)
-  // 插件调试执行
+  // Plugin Debug Execution
   const [isPlugin, setPlugin] = useState<boolean>(false)
   const [question, setQuestion] = useState<string>('')
 
@@ -443,16 +443,16 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
     onSubmit(data)
   })
 
-  /** 获取历史会话记录 */
+  /** 获取History会话记录 */
   const fetchHistory = useMemoizedFn((list: ChatInfoProps[]) => {
     const chatHistory: { role: string; content: string }[] = []
     const arr = list.map((item) => item).reverse()
 
-    // 新对话，暂无对话历史记录
+    // 新对话，暂无对话History记录
     if (arr.length === 1) return chatHistory
-    // 用户问题未选择cs或vuln，不获取历史记录
+    // 用户问题未选择cs或vuln，不获取History记录
     // if (!(arr[0].info as ChatMeInfoProps)?.baseType) return chatHistory
-    // 历史记录不包含用户刚问的问题
+    // History记录不包含用户刚问的问题
     arr.shift()
 
     let stag: string = ''
@@ -462,14 +462,18 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
       if (item.isMe) {
         const info = item.info as ChatMeInfoProps
 
-        // 用户历史操作的问题
+        // 用户HistoryActions的问题
         // if (!info.baseType) {
         //     stag = ""
         //     continue
         // } else {
         chatHistory.push({
           role: 'assistant',
-          content: ['暂无可用解答', '该类型请求异常，请稍后重试'].includes(stag) ? '回答中断' : stag || '回答中断',
+          content: ['No answer available', 'This request type encountered an error. Please try again later.'].includes(
+            stag,
+          )
+            ? 'Answer interrupted'
+            : stag || 'Answer interrupted',
         })
         chatHistory.push({ role: 'user', content: info.content })
         // }
@@ -567,7 +571,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
 
   const setContentPluginList = useMemoizedFn(
     (info: ChatCSSingleInfoProps, contents: ChatCSMultipleInfoProps, group: CacheChatCSProps[]) => {
-      /** 插件调试执行由于接口不是流式，只存在一项 */
+      /** Plugin Debug Execution由于接口不是流式，只存在一项 */
       contents.content = [info]
       setHistroy([...group])
       setStorage([...group])
@@ -636,7 +640,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
             /** 流式输出逻辑 */
             if (cs.content.length === 0) {
               cs.is_plugin = false
-              cs.content = '暂无可用解答'
+              cs.content = 'No answer available'
               cs.end = true
               setContentPluginList(cs, contents, group)
             } else {
@@ -651,7 +655,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
             // console.log("catch---",e);
             if (!cs.content) {
               cs.is_plugin = false
-              cs.content = '该类型请求异常，请稍后重试'
+              cs.content = 'This request type encountered an error. Please try again later.'
             }
             cs.end = true
             setContentPluginList(cs, contents, group)
@@ -712,7 +716,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
           .then((res: any) => {
             // /** 流式输出逻辑 */
             if (cs.content.length === 0) {
-              cs.content = '暂无可用解答'
+              cs.content = 'No answer available'
               cs.end = true
               setContentList(cs, contents, group)
             } else {
@@ -723,7 +727,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
           })
           .catch((e) => {
             if (!cs.content) {
-              cs.content = '该类型请求异常，请稍后重试'
+              cs.content = 'This request type encountered an error. Please try again later.'
             }
             cs.end = true
             setContentList(cs, contents, group)
@@ -733,13 +737,13 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
     },
   )
   const onSubmit = useMemoizedFn(async (info: ChatInfoProps) => {
-    // 缓存的会话历史名称
+    // 缓存的会话History名称
     // @ts-ignore
-    const cacheName: string = (info.info?.content || info.info?.input || '临时对话窗').slice(0, 45)
+    const cacheName: string = (info.info?.content || info.info?.input || 'Temporary Chat').slice(0, 45)
     const group = [...history]
     const filterIndex = group.findIndex((item) => item.token === active)
 
-    // 定位当前对话数据历史对象
+    // 定位当前对话数据History对象
     const lists: CacheChatCSProps =
       filterIndex > -1
         ? group[filterIndex]
@@ -762,7 +766,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
     if (filterIndex === -1) group.push(lists)
     else lists.time = formatDate(+new Date())
 
-    // 状态变为准备请求，同时保存当前数据
+    // Status变为准备请求，同时保存当前数据
     setLoading(true)
     setHistroy([...group])
     setStorage([...group])
@@ -774,14 +778,14 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
     resTimeRef.current = setInterval(() => {
       setResTime(formatDate(+new Date()))
     }, 1000)
-    // 初始化请求状态变量
+    // 初始化请求Status变量
     /** 流式输出逻辑 */
     isBreak.current = false
     controller.current = null
     /** 一次性输出逻辑 */
     // controller.current = []
 
-    // 获取对话历史记录
+    // 获取对话History记录
     const chatHistory = fetchHistory(lists.history)
 
     const params = info.info as ChatMeInfoProps
@@ -834,7 +838,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
         controller.current = abort
         await new Promise((resolve, reject) => {
           ipcRenderer.invoke('QueryYakScriptLocalAll').then(async (item: QueryYakScriptsResponse) => {
-            // 因后端要求 - 限制只要mitm和端口扫描插件
+            // 因后端要求 - 限制只要mitm和Port扫描插件
             let scripts: ScriptsProps[] = item.Data.filter(
               (item) => item.Type === 'port-scan' || item.Type === 'mitm',
             ).map((i) => ({
@@ -955,12 +959,12 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
   })
   const [editShow, setEditShow] = useState<boolean>(false)
   const [editInfo, setEditInfo] = useState<CacheChatCSProps>()
-  /** 编辑指定对话标题 */
+  /** 编辑指定对话Title */
   const onEdit = useMemoizedFn((info: CacheChatCSProps) => {
     setEditInfo(info)
     setEditShow(true)
   })
-  /** 编辑指定对话标题(完成编辑) */
+  /** 编辑指定对话Title(完成编辑) */
   const onEditCallback = useMemoizedFn((name: string) => {
     if (!editInfo) return
     const data = history.map((item) => {
@@ -1023,7 +1027,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
     }
   })
 
-  /** 插件调试执行 - 运行结束 - 更改历史/缓存结果 */
+  /** Plugin Debug Execution - 运行结束 - 更改History/缓存结果 */
   const onPluginEnd = useMemoizedFn(({ token, info, status, runtimeId, riskState }: PluginEndProps) => {
     const data = [...history]
     const filterIndex = data.findIndex((item) => item.token === active)
@@ -1136,7 +1140,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                         <Tooltip
                             overlayClassName={classNames(styles["tooltip-wrapper"], styles["info-hint-popover"])}
                             overlayStyle={{paddingTop: 4}}
-                            title={"ChatCS模型参数：6.5b，训练Token: 1.5T 显卡资源：A40*4，使用文心增强知识推理能力"}
+                            title={"ChatCS model parameters: 6.5b, trained on 1.5T tokens, GPU resources: A40*4, enhanced with Wenxin for knowledge reasoning."}
                         >
                             <OutlineInformationcircleIcon className={styles["info-hint"]} />
                         </Tooltip> */}
@@ -1157,11 +1161,11 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                                 },
                                 {
                                     value: "PluginAI",
-                                    label: "插件输出"
+                                    label: "Plugin Output"
                                 }
                             ]}
                         /> */}
-            插件输出
+            Plugin Output
           </div>
           <div className={styles['header-extra']}>
             {chatcsType === 'ChatCS' && history.length !== 0 && (
@@ -1172,7 +1176,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
             <div className={styles['extra-base-btn']}>
               {chatcsType === 'ChatCS' && history.length !== 0 && (
                 <>
-                  <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'会话历史记录'}>
+                  <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'Conversation History'}>
                     <div
                       className={classNames(styles['big-btn'], styles['btn-style'], {
                         [styles['disable-style']]: loading,
@@ -1190,7 +1194,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
               )}
               {chatcsType === 'PluginAI' && pluginAIList.length > 0 && !showOnly && (
                 <>
-                  <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'清空插件输出'}>
+                  <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'清空Plugin Output'}>
                     <div
                       className={classNames(styles['small-btn'], styles['btn-style'])}
                       onClick={() => {
@@ -1205,7 +1209,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
               )}
               {chatcsType === 'PluginAI' && showOnly && (
                 <>
-                  <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'历史'}>
+                  <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'History'}>
                     <div
                       className={classNames(styles['big-btn'], styles['btn-style'])}
                       onClick={() => {
@@ -1266,7 +1270,8 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                       <div className={styles['list-wrapper']}>
                         <div className={styles['info-hint-wrapper']}>
                           <OutlineInformationcircleIcon />
-                          ChatCS模型参数：6.5b，训练Token: 1.5T 显卡资源：A40*4，使用文心增强知识推理能力
+                          ChatCS model parameters: 6.5b, trained on 1.5T tokens, GPU resources: A40*4, enhanced with
+                          Wenxin for knowledge reasoning.
                         </div>
                       </div>
                     </div>
@@ -1334,7 +1339,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                   <Input.TextArea
                     className={styles['text-area-wrapper']}
                     bordered={false}
-                    placeholder={`问我任何问题...(${convertKeyboardToUIKey(
+                    placeholder={`Ask me anything...(${convertKeyboardToUIKey(
                       getChatCSShortcutKeyEvents()['nextLine*chatCS'].keys,
                     )} 换行)`}
                     value={question}
@@ -1364,10 +1369,10 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                           <div className={styles['footer-popover-wrapper']}>
                             <div className={styles['footer-type-wrapper']}>
                               <div className={styles['type-title']}>
-                                回答类型
+                                回答Type
                                 <Tooltip
                                   overlayClassName={styles['tooltip-wrapper']}
-                                  title={'ChatCS 将根据选择的类型回答你的问题'}
+                                  title={'ChatCS will answer your question based on the selected type.'}
                                 >
                                   <QuestionMarkCircleIcon />
                                 </Tooltip>
@@ -1379,7 +1384,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                                 })}
                                 onClick={() => setBing(!isBing)}
                               >
-                                搜索引擎增强
+                                Search Engine Enhancement
                               </div>
                               <div
                                 className={classNames(styles['single-btn'], {
@@ -1387,12 +1392,12 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                                 })}
                                 onClick={() => setPlugin(!isPlugin)}
                               >
-                                插件调试执行
+                                Plugin Debug Execution
                               </div>
                             </div>
                             {isPlugin && (
                               <div className={styles['plugin-run-max-number-box']}>
-                                <div className={styles['title']}>最大执行数量：</div>
+                                <div className={styles['title']}>Maximum Execution Count:</div>
                                 <div>
                                   <YakitInputNumber
                                     className={styles['input-left']}
@@ -1417,8 +1422,11 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                     ) : (
                       <div className={styles['footer-type-wrapper']}>
                         <div className={styles['type-title']}>
-                          回答类型
-                          <Tooltip overlayStyle={{ paddingBottom: 5 }} title={'ChatCS 将根据选择的类型回答你的问题'}>
+                          回答Type
+                          <Tooltip
+                            overlayStyle={{ paddingBottom: 5 }}
+                            title={'ChatCS will answer your question based on the selected type.'}
+                          >
                             <QuestionMarkCircleIcon />
                           </Tooltip>
                           :
@@ -1429,7 +1437,7 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                           })}
                           onClick={() => setBing(!isBing)}
                         >
-                          搜索引擎增强
+                          Search Engine Enhancement
                         </div>
                         <div
                           className={classNames(styles['single-btn'], {
@@ -1437,16 +1445,16 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
                           })}
                           onClick={() => setPlugin(!isPlugin)}
                         >
-                          插件调试执行
+                          Plugin Debug Execution
                         </div>
                         {isPlugin && (
                           <YakitPopover
-                            title={'插件配置'}
+                            title={'Plugin Configuration'}
                             // placement="topLeft"
                             overlayClassName={styles['chatcs-plugin-option-popover']}
                             content={
                               <div className={styles['option-box']}>
-                                <div>最大执行数量：</div>
+                                <div>Maximum Execution Count:</div>
                                 <div>
                                   <YakitInputNumber
                                     className={styles['input-left']}
@@ -1524,8 +1532,8 @@ export const YakChatCS: React.FC<YakChatCSProps> = (props) => {
           width={modalWidth}
           getContainer={divRef.current}
           visible={addShow}
-          title="超过对话框个数限制"
-          content="新建会默认删除最早的对话框，确认新建吗？"
+          title="Conversation Limit Exceeded"
+          content="Creating a new conversation will delete the oldest one by default. Continue?"
           okButtonText="仍要新建"
           okButtonProps={{ loading: delLoading }}
           cancelButtonText="稍后再说"
@@ -1658,7 +1666,7 @@ const PluginRunStatus: React.FC<PluginRunStatusProps> = memo((props) => {
     <div className={styles['plugin-run-status']}>
       {status === 'loading' && (
         <div className={styles['plugin-run']}>
-          <div className={styles['title']}>{pluginNameList.length}个插件执行中，请耐心等待...</div>
+          <div className={styles['title']}>{pluginNameList.length} plugins are running. Please wait...</div>
           <div className={styles['sub-title']}>
             一般来说，检测将会在 <span className={styles['highlight']}>10-20s</span> 内结束
           </div>
@@ -1694,17 +1702,17 @@ const PluginRunStatus: React.FC<PluginRunStatusProps> = memo((props) => {
               <div ref={wrapperRef}>
                 {list.map((item) => {
                   const { data, index } = item
-                  /**获取风险等级的展示tag类型 */
+                  /**获取风险等级的展示tagType */
                   const getSeverity = (type) => {
                     switch (type) {
                       case 'low':
-                        return '低危'
+                        return 'Low'
                       case 'middle':
-                        return '中危'
+                        return 'Medium'
                       case 'high':
-                        return '高危'
+                        return 'High'
                       case 'critical':
-                        return '严重'
+                        return 'Critical'
                       case 'info':
                         return '信息'
                       default:
@@ -1853,7 +1861,7 @@ const PluginListContent: React.FC<PluginListContentProps> = memo((props) => {
     }
   })
 
-  /** 单项副标题组件 */
+  /** 单项副Title组件 */
   const optExtra = useMemoizedFn((data: YakScript) => {
     if (privateDomainRef.current !== data.OnlineBaseUrl) return <></>
     if (data.OnlineIsPrivate) {
@@ -1978,12 +1986,12 @@ const ChatCSContent: React.FC<ChatCSContentProps> = memo((props) => {
   })
   /**是否进入执行 */
   const [pluginRun, setPluginRun] = useState<boolean>(false)
-  /**展示类型 */
+  /**展示Type */
   const [showType, setShowType] = useState<'loading' | 'succee' | 'fail' | 'info'>('loading')
   const [lastRiskState, setLastRiskState] = useState<StreamResult.Risk[]>()
   /**执行的插件名数组 */
   const [pluginNameList, setPluginNameList] = useState<string[]>([])
-  // 渲染之前执行过后的状态
+  // 渲染之前执行过后的Status
   useEffect(() => {
     const { content } = info
     if (Array.isArray(content) && content.length > 0) {
@@ -2081,9 +2089,9 @@ const ChatCSContent: React.FC<ChatCSContentProps> = memo((props) => {
     let content: string = ''
     for (let item of info.content) {
       if (item.is_bing) {
-        content = `${content}# 搜索引擎增强\n${item.content}\n`
+        content = `${content}# Search Engine Enhancement\n${item.content}\n`
       } else if (item.is_plugin) {
-        content = `${content}# "插件调试执行"\n${item.content}\n`
+        content = `${content}# "Plugin Debug Execution"\n${item.content}\n`
       } else {
         content = `${content}${item.content}\n`
       }
@@ -2213,9 +2221,11 @@ const ChatCSContent: React.FC<ChatCSContentProps> = memo((props) => {
                     {info.content.map((item, index) => {
                       return (
                         <React.Fragment key={index + item.id}>
-                          {item.is_bing && <div className={styles['content-type-title']}>{`# ${'搜索引擎增强'}`}</div>}
+                          {item.is_bing && (
+                            <div className={styles['content-type-title']}>{`# ${'Search Engine Enhancement'}`}</div>
+                          )}
                           {item.is_plugin && (
-                            <div className={styles['content-type-title']}>{`# ${'插件调试执行'}`}</div>
+                            <div className={styles['content-type-title']}>{`# ${'Plugin Debug Execution'}`}</div>
                           )}
                           <>
                             {/* 兼容之前版本没有end load_content数据导致load_content遍历失败的问题 */}
@@ -2292,7 +2302,7 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = memo((props) => {
     >
       <div className={styles['drawer-body']}>
         <div className={styles['body-header']}>
-          <div className={styles['header-title']}>会话历史记录</div>
+          <div className={styles['header-title']}>Conversation History</div>
           <div className={styles['header-close']} onClick={() => setVisible(false)}>
             <RemoveIcon />
           </div>
@@ -2318,7 +2328,7 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = memo((props) => {
                       </div>
                     </div>
                     <div className={styles['opt-operate']}>
-                      <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'编辑对话标题'}>
+                      <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'Edit Conversation Title'}>
                         <div
                           className={styles['operate-btn']}
                           onClick={(e) => {
@@ -2329,7 +2339,7 @@ const HistoryDrawer: React.FC<HistoryDrawerProps> = memo((props) => {
                           <PencilAltIcon />
                         </div>
                       </Tooltip>
-                      <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'删除该对话'}>
+                      <Tooltip overlayClassName={styles['tooltip-wrapper']} title={'Delete This Conversation'}>
                         <div
                           className={styles['operate-btn']}
                           onClick={(e) => {
@@ -2491,7 +2501,7 @@ const PromptWidget: React.FC<PromptWidgetProps> = memo((props) => {
   const getLabelText = useMemoizedFn((v: PromptLabelItem) => {
     switch (v) {
       case 'Team_all':
-        return '全部'
+        return 'All'
       case 'RedTeam_vuln':
         return '漏洞情报'
       case 'BlueTeam_com':
@@ -2583,7 +2593,7 @@ const PromptWidget: React.FC<PromptWidgetProps> = memo((props) => {
           <span className={styles['sub-title']}>Prompt</span>
         </div>
         <div className={styles['extra']}>
-          <Tooltip placement="left" title="向右收起">
+          <Tooltip placement="left" title="Collapse Right">
             <OutlineOpenIcon
               className={styles['fold-icon']}
               onClick={() => {
@@ -2595,7 +2605,7 @@ const PromptWidget: React.FC<PromptWidgetProps> = memo((props) => {
       </div>
       <div className={styles['prompt-search']}>
         <YakitInput.Search
-          placeholder="请输入关键词搜索"
+          placeholder="Search by keyword"
           size="large"
           value={searchValue}
           onChange={(e) => {
@@ -2749,13 +2759,13 @@ const ChatCsPromptForm: React.FC<ChatCsPromptFormProps> = memo((props) => {
         })}
 
         {/* <div className={styles["form-item"]}>
-                    <div className={styles["title"]}>情报需求：</div>
+                    <div className={styles["title"]}>Intelligence Request:</div>
                     <div className={styles["input-text-area"]}>
                         <Input.TextArea
                             autoSize={true}
                             bordered={false}
                             className={styles["text-area-wrapper"]}
-                            placeholder='请输入情报需求...'
+                            placeholder='Enter an intelligence request...'
                         />
                     </div>
                 </div> */}
@@ -2818,7 +2828,7 @@ const EditNameModal: React.FC<EditNameModalProps> = memo((props) => {
 
   const onSubmit = useMemoizedFn(() => {
     if (!name) {
-      yakitNotify('error', '请输入对话标题')
+      yakitNotify('error', '请输入对话Title')
       return
     }
     setLoading(true)
@@ -2841,7 +2851,7 @@ const EditNameModal: React.FC<EditNameModalProps> = memo((props) => {
     >
       <div className={styles['name-edit-modal']}>
         <div className={styles['name-edit-modal-heard']}>
-          <div className={styles['name-edit-modal-title']}>修改对话标题</div>
+          <div className={styles['name-edit-modal-title']}>Rename Conversation Title</div>
           <div className={styles['close-icon']} onClick={() => setVisible(false)}>
             <RemoveIcon />
           </div>
@@ -2953,7 +2963,7 @@ export const PluginAIComponent: React.FC<PluginAIComponentProps> = (props) => {
           return item
         }),
       )
-      // 更新历史展示
+      // 更新History展示
       setPluginAIList((newPluginAIList) =>
         newPluginAIList.map((item, index) => {
           if (newPluginAIList.length === index + 1) {

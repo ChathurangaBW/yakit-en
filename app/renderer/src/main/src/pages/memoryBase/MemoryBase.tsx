@@ -94,11 +94,11 @@ export default MemoryBase
 
 const searchOptions: YakitCombinationSearchProps['addonBeforeOption'] = [
   {
-    label: '语义搜索',
+    label: 'Semantic Search',
     value: 'ai',
   },
   {
-    label: '关键字',
+    label: 'Keywords',
     value: 'keyword',
   },
 ]
@@ -110,7 +110,7 @@ interface RateRemoveListItem {
 }
 const rateRemoveList: RateRemoveListItem[] = [
   {
-    label: '低相关',
+    label: 'Low Relevance',
     key: 'delete_candidate_noise',
     params: {
       RScore: {
@@ -121,7 +121,7 @@ const rateRemoveList: RateRemoveListItem[] = [
     },
   },
   {
-    label: '强负面且低信息量',
+    label: 'Strongly Negative and Low Information',
     key: 'delete_candidate_emotional',
     params: {
       EScore: {
@@ -147,7 +147,7 @@ const rateRemoveList: RateRemoveListItem[] = [
     },
   },
   {
-    label: '疑似过时且无复用价值',
+    label: 'Possibly Outdated and Not Reusable',
     key: 'delete_candidate_stale',
     params: {
       TScore: {
@@ -198,7 +198,7 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
       emiter.off('onRefreshQueryAIMemoryEntity', onStartInterval)
     }
   }, [])
-  /**开启实时数据刷新 */
+  /**开启实时数据Refresh */
   const onStartInterval = useMemoizedFn(() => {
     const filter: AIMemoryEntityFilter = getAIMemoryEntityFilter({ query: queryParams, search })
     if (!!filter.SemanticQuery) return
@@ -234,7 +234,7 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
   const columns: ColumnsTypeProps[] = useCreation(() => {
     const columnsArr: ColumnsTypeProps[] = [
       {
-        title: '序号',
+        title: 'No.',
         dataKey: 'Id',
         width: 80,
         sorterProps: {
@@ -262,19 +262,19 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
         },
       },
       {
-        title: '记忆总结',
+        title: 'Memory Summary',
         dataKey: 'Content',
         enableDrag: false,
       },
       {
-        title: '操作',
+        title: 'Actions',
         dataKey: 'HiddenIndex',
         width: 60,
         fixed: 'right',
         render: (_, recorder) => (
           <div>
             <YakitPopconfirm
-              title="确认删除吗?"
+              title="Confirm deletion?"
               onConfirm={(e) => {
                 e?.stopPropagation()
                 onRemove(recorder)
@@ -516,7 +516,7 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
       }
       if (!!filter.SemanticQuery) {
         // debugVirtualTableEvent.stopT()
-        //ai 搜索限制200条
+        //ai Search限制200条
         debugVirtualTableEvent.setP({ ...newParams, startLoop: false })
       } else {
         debugVirtualTableEvent.setP({ ...newParams, endLoop: true })
@@ -535,7 +535,7 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
   const onFastRemove = useMemoizedFn((key) => {
     const item = rateRemoveList.find((ele) => ele.key === key)
     if (!item) {
-      yakitNotify('error', '未找到快捷删除配置')
+      yakitNotify('error', '未找到快捷Delete配置')
       return
     }
     removeItemRef.current = item
@@ -548,7 +548,7 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
       grpcDeleteAIMemoryEntity({
         Filter: filterParams,
       }).then(() => {
-        yakitNotify('success', `已删除${removeItemRef.current?.label}的相关记忆`)
+        yakitNotify('success', `Deleted related memories for ${removeItemRef.current?.label}`)
         setVisibleRemove(false)
         debugVirtualTableEvent.noResetRefreshT()
       })
@@ -575,7 +575,7 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
             <div className={styles['memory-table-heard']}>
               <div className={styles['memory-table-title']}>
                 <div className={styles['memory-table-title-left']}>
-                  <span className={styles['title-text']}>记忆库</span>
+                  <span className={styles['title-text']}>Memory Library</span>
                   <TableTotalAndSelectNumber total={tableTotal} />
                   {queryNumber > 2 ? (
                     <YakitPopover
@@ -623,17 +623,17 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
                     }}
                   >
                     <YakitButton className={styles['btn-style']} type="outline1">
-                      快捷删除
+                      快捷Delete
                     </YakitButton>
                   </YakitDropdownMenu>
-                  <YakitPopconfirm title={'确定删除吗?'} onConfirm={onBatchRemove}>
+                  <YakitPopconfirm title={'Confirm deletion?'} onConfirm={onBatchRemove}>
                     <YakitButton
                       danger
                       type="outline1"
                       disabled={!batchLoading && disabledBatchRemove}
                       loading={batchLoading}
                     >
-                      批量删除
+                      批量Delete
                     </YakitButton>
                   </YakitPopconfirm>
                   <YakitDropdownMenu
@@ -684,7 +684,7 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
       {currentSelectItem && (
         <div className={styles['memory-detail']}>
           <div className={styles['memory-detail-header']}>
-            <div>详情</div>
+            <div>Details</div>
             <YakitButton type="text2" icon={<OutlineXIcon />} onClick={() => setCurrentItem(undefined)} />
           </div>
           <div className={styles['memory-detail-content']}>
@@ -694,8 +694,8 @@ const MemoryTable: React.FC<MemoryTableProps> = React.memo((props) => {
       )}
       <NoPromptHint
         visible={visibleRemove}
-        title="删除确认"
-        content={`是否确认删除${removeItemRef.current?.label}的所有相关记忆,删除后不可恢复`}
+        title="Delete Confirmation"
+        content={`Are you sure you want to delete all related memories for ${removeItemRef.current?.label}? This cannot be undone.`}
         cacheKey={RemoteAIAgentGV.AIMemoryRemove}
         onCallback={delHintCallback}
       />
@@ -756,34 +756,34 @@ const ratingList: RatingListItem[] = [
 
 const rateOption: YakitSelectProps['options'] = [
   {
-    label: '无',
+    label: 'None',
     value: 'none',
   },
   {
-    label: '关键偏好',
+    label: 'Key Preference',
     value: 'must_aware',
   },
   {
-    label: '重要经验',
+    label: 'Important Experience',
     value: 'action_tips',
   },
   {
-    label: '高相关但低可信',
+    label: 'Highly Relevant but Low Confidence',
     value: 'reliability_warning',
   },
   {
-    label: '强关联线索',
+    label: 'Strong Related Clue',
     value: 'connection_links',
   },
 ]
 
 const COREPAT_DATA = [
   { l: 'C', en: 'Connectivity', cn: '关联度' },
-  { l: 'O', en: 'Origin', cn: '来源与确定性' },
+  { l: 'O', en: 'Origin', cn: 'Source与确定性' },
   { l: 'R', en: 'Relevance', cn: '相关性' },
   { l: 'E', en: 'Emotion', cn: '情感' },
   { l: 'P', en: 'Preference', cn: '个人偏好' },
-  { l: 'A', en: 'Actionability', cn: '可操作性' },
+  { l: 'A', en: 'Actionability', cn: '可Actions性' },
   { l: 'T', en: 'Temporality', cn: '时效性' },
 ]
 const MemoryQuery: React.FC<MemoryQueryProps> = React.memo((props) => {
@@ -1105,7 +1105,7 @@ const MemoryQuery: React.FC<MemoryQueryProps> = React.memo((props) => {
                   onClick={onResetRate}
                   size="small"
                 >
-                  重置
+                  Reset
                 </YakitButton>
               </>
             }
@@ -1185,7 +1185,7 @@ const MemoryQuery: React.FC<MemoryQueryProps> = React.memo((props) => {
                   onClick={onResetTags}
                   size="small"
                 >
-                  重置
+                  Reset
                 </YakitButton>
               </>
             }
@@ -1229,7 +1229,7 @@ const AITextarea: React.FC<AITextareaProps> = React.memo((props) => {
         <div className={styles['query-input']}>
           <OutlineSparklesColorsIcon />
           <QSInputTextarea
-            placeholder="请输入关注内容，Al 将帮你聚焦相关记忆..."
+            placeholder="Enter a topic of interest, and AI will help focus related memories..."
             className={styles['query-input-text-area']}
             {...textProps}
           />
