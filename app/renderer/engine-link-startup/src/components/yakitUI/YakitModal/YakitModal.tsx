@@ -133,7 +133,7 @@ export const YakitModal: React.FC<YakitModalProp> = (props) => {
                     onClick={onCancel}
                     {...cancelButtonProps}
                   >
-                    {cancelText || '取消'}
+                    {cancelText || 'Cancel'}
                   </YakitButton>
                   <YakitButton
                     loading={confirmLoading}
@@ -142,7 +142,7 @@ export const YakitModal: React.FC<YakitModalProp> = (props) => {
                     onClick={onOk}
                     {...okButtonProps}
                   >
-                    {okText || '确定'}
+                    {okText || 'OK'}
                   </YakitButton>
                 </div>
               </>

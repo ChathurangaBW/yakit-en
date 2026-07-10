@@ -3,14 +3,14 @@ import { DynamicStatusProps } from '@/store'
 
 export const EngineModeVerbose = (m: YaklangEngineMode, n?: DynamicStatusProps) => {
   if (n && n.isDynamicStatus) {
-    return '控制模式'
+    return 'Control Mode'
   }
   switch (m) {
     case 'local':
-      return '本地模式'
+      return 'Local Mode'
     case 'remote':
-      return '远程模式'
+      return 'Remote Mode'
     default:
-      return '未知模式'
+      return 'Unknown Mode'
   }
 }

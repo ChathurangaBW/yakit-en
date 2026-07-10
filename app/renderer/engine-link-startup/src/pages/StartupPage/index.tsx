@@ -1174,13 +1174,13 @@ export const StartupPage: React.FC = () => {
 
   const startupRightImg = useMemo(() => {
     if (isIRify()) {
-      return <img src={irifyRight} alt="暂无图片" />
+      return <img src={irifyRight} alt="No image" />
     }
     if (isCommunityMemfit() || isMemfit())
       return (
         <video src={theme === 'light' ? memfitRight : memfitRightDark} autoPlay loop muted playsInline preload="auto" />
       )
-    return <img src={yakitRight} alt="暂无图片" />
+    return <img src={yakitRight} alt="No image" />
   }, [theme])
 
   return (
@@ -1195,7 +1195,7 @@ export const StartupPage: React.FC = () => {
               <startupLogo.component style={{ height: startupLogo.height, width: startupLogo.width }} />
             )}
           </div>
-          <div className={styles['startup-desc']}>为网络安全而生</div>
+          <div className={styles['startup-desc']}>Born for cybersecurity</div>
         </div>
         <YaklangEngineWatchDog
           credential={credential}

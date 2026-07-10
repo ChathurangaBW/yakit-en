@@ -236,11 +236,11 @@ const KnowledgeBase: FC = () => {
       <div className={styles['repository-container']}>{knowledgeBaseEntrance}</div>
       <YakitHint
         visible={visible}
-        title={'知识库未构建完成'}
-        content={'知识未构建完成，是否确定关闭'}
-        okButtonText="立即关闭"
+        title={'Knowledge Base not fully built'}
+        content={'Knowledge base is not fully built. Close anyway?'}
+        okButtonText="Close now"
         onOk={() => contentRef.current?.onOK?.()}
-        cancelButtonText="稍后再说"
+        cancelButtonText="Later"
         onCancel={onCancel}
       />
     </div>

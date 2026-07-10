@@ -89,7 +89,7 @@ export const EngineLog: React.FC<EngineLogProps> = React.memo((props) => {
     setClipboardText(fullText, {
       hiddenHint: true,
       finalCallback: () => {
-        yakitNotify('success', '复制成功')
+        yakitNotify('success', 'Copied successfully')
       },
     })
   })
@@ -111,7 +111,7 @@ export const EngineLog: React.FC<EngineLogProps> = React.memo((props) => {
       />
       <XTerm ref={xtermRef} options={terminalOptions} />
       <div className={styles['engine-copy']}>
-        <Tooltip title="复制日志信息" placement="topRight">
+        <Tooltip title="Copy log information" placement="topRight">
           <YakitButton
             icon={<OutlineDocumentduplicateIcon />}
             type="secondary2"
